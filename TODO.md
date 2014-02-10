@@ -16,9 +16,19 @@
 * Bellman-ford
 
 ## Data structures
+* Linked List
 * BST
 * Red Black Tree
 * Heap
 * Queue
 * Stack
 * Set
+
+## Math
+* -Fibonacci-
+* Reservoir sample
+* Euclide's (GCD)
+
+## Misc
+* -Binary Search-
+* Levenshtein distance
