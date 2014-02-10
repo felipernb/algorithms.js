@@ -3,7 +3,7 @@ var Fib = require('../../algorithms/math/fibonacci'),
 
 describe('Fibonacci', function() {
   describe('#exponential()', function() {
-    it('should return the right value for fibonacci sequence', function(){
+    it('should return the right value for fibonacci sequence', function() {
       assert.equal(0, Fib.exponential(0));
       assert.equal(1, Fib.exponential(1));
       assert.equal(1, Fib.exponential(2));
@@ -21,7 +21,7 @@ describe('Fibonacci', function() {
   });
 
   describe('#linear()', function() {
-    it('should return the right value for fibonacci sequence', function(){
+    it('should return the right value for fibonacci sequence', function() {
       assert.equal(0, Fib.linear(0));
       assert.equal(1, Fib.linear(1));
       assert.equal(1, Fib.linear(2));
@@ -39,7 +39,7 @@ describe('Fibonacci', function() {
   });
 
   describe('#withMemoization()', function() {
-    it('should return the right value for fibonacci sequence', function(){
+    it('should return the right value for fibonacci sequence', function() {
       assert.equal(0, Fib.withMemoization(0));
       assert.equal(1, Fib.withMemoization(1));
       assert.equal(1, Fib.withMemoization(2));
