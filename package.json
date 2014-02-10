@@ -1,5 +1,5 @@
 {
-  "name": "js-for-computer-scientists",
+  "name": "algorithms.js",
   "version": "0.0.1",
   "description": "Traditional computer science algorithms and data structures implemented in JavaScript",
   "directories": {
@@ -10,7 +10,7 @@
     "mocha": "*"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha test/**/*.js"
   },
   "repository": {
     "type": "git",
