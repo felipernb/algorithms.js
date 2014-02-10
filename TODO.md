@@ -20,8 +20,8 @@
 * BST
 * Red Black Tree
 * Heap
-* Queue
-* Stack
+* ~~Queue~~
+* ~~Stack~~
 * Set
 
 ## Math
