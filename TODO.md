@@ -16,7 +16,7 @@
 * Bellman-ford
 
 ## Data structures
-* Linked List
+* ~~Linked List~~
 * BST
 * Red Black Tree
 * Heap
@@ -25,10 +25,10 @@
 * Set
 
 ## Math
-* -Fibonacci-
+* ~~Fibonacci~~
 * Reservoir sample
-* -Euclidean Algorithm (GCD)-
+* ~~Euclidean Algorithm (GCD)~~
 
 ## Misc
-* -Binary Search-
+* ~~Binary Search~~
 * Levenshtein distance
