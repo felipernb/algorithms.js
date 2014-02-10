@@ -27,7 +27,7 @@
 ## Math
 * -Fibonacci-
 * Reservoir sample
-* Euclide's (GCD)
+* -Euclidean Algorithm (GCD)-
 
 ## Misc
 * -Binary Search-
