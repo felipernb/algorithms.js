@@ -1,0 +1,31 @@
+{
+  "name": "js-for-computer-scientists",
+  "version": "0.0.1",
+  "description": "Traditional computer science algorithms and data structures implemented in JavaScript",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "*"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/felipernb/js-for-computer-scientists"
+  },
+  "keywords": [
+    "computer science",
+    "cs",
+    "algorithms",
+    "data structures"
+  ],
+  "author": "Felipe Ribeiro <felipernb@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/felipernb/js-for-computer-scientists/issues"
+  },
+  "homepage": "https://github.com/felipernb/js-for-computer-scientists"
+}
