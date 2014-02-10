@@ -1,5 +1,7 @@
 # Algorithms.js
 
+[![Build Status](https://travis-ci.org/felipernb/algorithms.js.png?branch=master)](https://travis-ci.org/felipernb/algorithms.js)
+
 Classic algorithms and data structures implemented in JavaScript, you know... FOR SCIENCE.
 
 Atwood's law applied to CS101.
