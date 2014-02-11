@@ -26,6 +26,8 @@
  */
 var quicksort = function(array, lo, hi) {
 
+  // Sets the lo and hi values when they're not provided
+  // (i.e. the initial call)
   if (lo === undefined) lo = 0;
   if (hi === undefined) hi = array.length - 1;
 
@@ -50,11 +52,11 @@ var partition = function(a, lo, hi) {
   // use it as pivot
   swap(a, Math.floor(Math.random() * (hi - lo)) + lo, hi);
   var pivot = hi;
-  
-  // dividerPosition keeps track of the position 
+
+  // dividerPosition keeps track of the position
   // where the pivot should be inserted
   var dividerPosition = lo;
-  
+
   for (var i = lo; i < hi; i++) {
     if (a[i] < a[pivot]) {
       swap(a, i, dividerPosition);
@@ -73,7 +75,5 @@ var swap = function(array, x, y) {
   array[y] = array[x];
   array[x] = tmp;
 };
-
-
 
 module.exports = quicksort;
