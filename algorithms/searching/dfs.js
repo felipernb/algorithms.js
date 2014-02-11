@@ -23,8 +23,8 @@
 
 /**
  * Depth first search for trees
+ * (in order)
  */
-
 var inOrder = function(node, callback) {
   if (node) {
     inOrder(node.left, callback);
@@ -33,6 +33,9 @@ var inOrder = function(node, callback) {
   }
 };
 
+/**
+ * Pre order
+ */
 var preOrder = function(node, callback) {
   if (node) {
     callback(node.value);
@@ -41,6 +44,9 @@ var preOrder = function(node, callback) {
   }
 };
 
+/**
+ * Post order
+ */
 var postOrder = function(node, callback) {
   if (node) {
     postOrder(node.left, callback);
@@ -49,8 +55,7 @@ var postOrder = function(node, callback) {
   }
 };
 
-module.exports = {
-  inOrder: inOrder,
-  preOrder: preOrder,
-  postOrder: postOrder
-};
+// Set inOrder as the default implementation
+inOrder.preOrder = preOrder;
+inOrder.postOrder = postOrder;
+module.exports = inOrder;

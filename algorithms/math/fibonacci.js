@@ -78,8 +78,7 @@ var fibWithMemoization = (function() {
   return fib;
 })();
 
-module.exports = {
-  exponential: fibExponential,
-  linear: fibLinear,
-  withMemoization: fibWithMemoization
-};
+// Use fibLinear as the default implementation
+fibLinear.exponential = fibExponential;
+fibLinear.withMemoization = fibWithMemoization;
+module.exports = fibLinear;

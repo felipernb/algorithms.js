@@ -20,61 +20,61 @@
  * IN THE SOFTWARE.
  */
 
-var Fib = require('../../../algorithms/math/fibonacci'),
+var fib = require('../../../algorithms/math/fibonacci'),
     assert = require('assert');
 
 describe('Fibonacci', function() {
   describe('#exponential()', function() {
     it('should return the right value for fibonacci sequence', function() {
-      assert.equal(0, Fib.exponential(0));
-      assert.equal(1, Fib.exponential(1));
-      assert.equal(1, Fib.exponential(2));
-      assert.equal(2, Fib.exponential(3));
-      assert.equal(3, Fib.exponential(4));
-      assert.equal(5, Fib.exponential(5));
-      assert.equal(8, Fib.exponential(6));
-      assert.equal(13, Fib.exponential(7));
-      assert.equal(21, Fib.exponential(8));
-      assert.equal(34, Fib.exponential(9));
-      assert.equal(55, Fib.exponential(10));
-      assert.equal(89, Fib.exponential(11));
-      assert.equal(144, Fib.exponential(12));
+      assert.equal(0, fib.exponential(0));
+      assert.equal(1, fib.exponential(1));
+      assert.equal(1, fib.exponential(2));
+      assert.equal(2, fib.exponential(3));
+      assert.equal(3, fib.exponential(4));
+      assert.equal(5, fib.exponential(5));
+      assert.equal(8, fib.exponential(6));
+      assert.equal(13, fib.exponential(7));
+      assert.equal(21, fib.exponential(8));
+      assert.equal(34, fib.exponential(9));
+      assert.equal(55, fib.exponential(10));
+      assert.equal(89, fib.exponential(11));
+      assert.equal(144, fib.exponential(12));
     });
   });
 
   describe('#linear()', function() {
     it('should return the right value for fibonacci sequence', function() {
-      assert.equal(0, Fib.linear(0));
-      assert.equal(1, Fib.linear(1));
-      assert.equal(1, Fib.linear(2));
-      assert.equal(2, Fib.linear(3));
-      assert.equal(3, Fib.linear(4));
-      assert.equal(5, Fib.linear(5));
-      assert.equal(8, Fib.linear(6));
-      assert.equal(13, Fib.linear(7));
-      assert.equal(21, Fib.linear(8));
-      assert.equal(34, Fib.linear(9));
-      assert.equal(55, Fib.linear(10));
-      assert.equal(89, Fib.linear(11));
-      assert.equal(144, Fib.linear(12));
+      assert.equal(0, fib(0));
+      assert.equal(1, fib(1));
+      assert.equal(1, fib(2));
+      assert.equal(2, fib(3));
+      assert.equal(3, fib(4));
+      assert.equal(5, fib(5));
+      assert.equal(8, fib(6));
+      assert.equal(13, fib(7));
+      assert.equal(21, fib(8));
+      assert.equal(34, fib(9));
+      assert.equal(55, fib(10));
+      assert.equal(89, fib(11));
+      assert.equal(144, fib(12));
     });
   });
 
   describe('#withMemoization()', function() {
     it('should return the right value for fibonacci sequence', function() {
-      assert.equal(0, Fib.withMemoization(0));
-      assert.equal(1, Fib.withMemoization(1));
-      assert.equal(1, Fib.withMemoization(2));
-      assert.equal(2, Fib.withMemoization(3));
-      assert.equal(3, Fib.withMemoization(4));
-      assert.equal(5, Fib.withMemoization(5));
-      assert.equal(8, Fib.withMemoization(6));
-      assert.equal(13, Fib.withMemoization(7));
-      assert.equal(21, Fib.withMemoization(8));
-      assert.equal(34, Fib.withMemoization(9));
-      assert.equal(55, Fib.withMemoization(10));
-      assert.equal(89, Fib.withMemoization(11));
-      assert.equal(144, Fib.withMemoization(12));
+      assert.equal(0, fib.withMemoization(0));
+      assert.equal(1, fib.withMemoization(1));
+      assert.equal(1, fib.withMemoization(2));
+      assert.equal(2, fib.withMemoization(3));
+      assert.equal(3, fib.withMemoization(4));
+      assert.equal(5, fib.withMemoization(5));
+      assert.equal(8, fib.withMemoization(6));
+      assert.equal(13, fib.withMemoization(7));
+      assert.equal(21, fib.withMemoization(8));
+      assert.equal(34, fib.withMemoization(9));
+      assert.equal(55, fib.withMemoization(10));
+      assert.equal(89, fib.withMemoization(11));
+      assert.equal(144, fib.withMemoization(12));
     });
   });
 });

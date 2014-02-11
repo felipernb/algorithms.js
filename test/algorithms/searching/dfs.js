@@ -21,7 +21,7 @@
  */
 
 var BST = require('../../../data_structures/bst'),
-    DFS = require('../../../algorithms/searching/dfs'),
+    dfs = require('../../../algorithms/searching/dfs'),
     assert = require('assert');
 
 describe('Depth First Search', function() {
@@ -42,19 +42,19 @@ describe('Depth First Search', function() {
 
   it('should return the items sorted when retrieving in order', function() {
     var a = [];
-    DFS.inOrder(bst.root, callbackGenerator(a));
+    dfs(bst.root, callbackGenerator(a));
     assert.deepEqual(a, [0, 1, 2, 3, 4, 5, 8, 10, 100]);
   });
 
   it('should return parents before children when retrieving pre-order', function() {
     var a = [];
-    DFS.preOrder(bst.root, callbackGenerator(a));
+    dfs.preOrder(bst.root, callbackGenerator(a));
     assert.deepEqual(a, [4, 2, 1, 0, 3, 8, 5, 10, 100]);
   });
 
   it('should return children before parents when retrieving post-order', function() {
     var a = [];
-    DFS.postOrder(bst.root, callbackGenerator(a));
+    dfs.postOrder(bst.root, callbackGenerator(a));
     assert.deepEqual(a, [0, 1, 3, 2, 5, 100, 10, 8, 4]);
   });
 });
