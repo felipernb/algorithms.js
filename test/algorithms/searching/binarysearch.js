@@ -19,7 +19,7 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  */
-var binarySearch = require('../../../algorithms/array/binarysearch'),
+var binarySearch = require('../../../algorithms/searching/binarysearch'),
     assert = require('assert');
 
 describe('Binary Search', function() {
