@@ -19,7 +19,11 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  */
+'use strict';
 
+/**
+ * Bubble sort algorithm O(n^2)
+ */
 var bubbleSort = function(a) {
   for (var i = 0; i < a.length; i++) {
     for (var j = i; j < a.length; j++) {
