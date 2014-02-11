@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-var Fib = require('../../algorithms/math/fibonacci'),
+var Fib = require('../../../algorithms/math/fibonacci'),
     assert = require('assert');
 
 describe('Fibonacci', function() {

@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-var Stack = require('../../algorithms/data_structures/stack'),
+var Stack = require('../../data_structures/stack'),
     assert = require('assert');
 
 describe('Stack', function() {

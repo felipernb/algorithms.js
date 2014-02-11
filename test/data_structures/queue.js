@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-var Queue = require('../../algorithms/data_structures/queue'),
+var Queue = require('../../data_structures/queue'),
     assert = require('assert');
 
 describe('Queue', function() {

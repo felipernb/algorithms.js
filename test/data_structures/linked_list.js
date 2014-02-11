@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-var LinkedList = require('../../algorithms/data_structures/linked_list'),
+var LinkedList = require('../../data_structures/linked_list'),
     assert = require('assert');
 
 describe('LinkedList', function () {

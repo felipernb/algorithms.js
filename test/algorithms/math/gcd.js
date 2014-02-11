@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-var gcd = require('../../algorithms/math/gcd'),
+var gcd = require('../../../algorithms/math/gcd'),
     assert = require('assert');
 
 describe('GCD', function() {
