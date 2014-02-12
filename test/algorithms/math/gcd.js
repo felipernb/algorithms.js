@@ -19,12 +19,13 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  */
+'use strict';
 
 var gcd = require('../../../algorithms/math/gcd'),
     assert = require('assert');
 
-describe('GCD', function() {
-  it('should calculate the correct GCD between two numbers', function() {
+describe('GCD', function () {
+  it('should calculate the correct GCD between two numbers', function () {
     assert.equal(gcd(1, 0), 1);
     assert.equal(gcd(2, 2), 2);
     assert.equal(gcd(2, 4), 2);

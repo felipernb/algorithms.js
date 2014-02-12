@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-"use strict";
+'use strict';
 
 /**
  * Euclidean algorithm to calculate the Greatest Common Divisor (GCD)
@@ -30,7 +30,7 @@
  *
  * @return Number
  */
-var gcd = function(a, b) {
+var gcd = function (a, b) {
   while (b !== 0) {
     if (a > b) {
       a -= b;

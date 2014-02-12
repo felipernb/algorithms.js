@@ -19,13 +19,14 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  */
+'use strict';
 
 var fib = require('../../../algorithms/math/fibonacci'),
     assert = require('assert');
 
-describe('Fibonacci', function() {
-  describe('#exponential()', function() {
-    it('should return the right value for fibonacci sequence', function() {
+describe('Fibonacci', function () {
+  describe('#exponential()', function () {
+    it('should return the right value for fibonacci sequence', function () {
       assert.equal(0, fib.exponential(0));
       assert.equal(1, fib.exponential(1));
       assert.equal(1, fib.exponential(2));
@@ -42,8 +43,8 @@ describe('Fibonacci', function() {
     });
   });
 
-  describe('#linear()', function() {
-    it('should return the right value for fibonacci sequence', function() {
+  describe('#linear()', function () {
+    it('should return the right value for fibonacci sequence', function () {
       assert.equal(0, fib(0));
       assert.equal(1, fib(1));
       assert.equal(1, fib(2));
@@ -60,8 +61,8 @@ describe('Fibonacci', function() {
     });
   });
 
-  describe('#withMemoization()', function() {
-    it('should return the right value for fibonacci sequence', function() {
+  describe('#withMemoization()', function () {
+    it('should return the right value for fibonacci sequence', function () {
       assert.equal(0, fib.withMemoization(0));
       assert.equal(1, fib.withMemoization(1));
       assert.equal(1, fib.withMemoization(2));

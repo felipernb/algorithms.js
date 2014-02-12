@@ -19,12 +19,13 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  */
+'use strict';
 
 var BST = require('../../data_structures/bst'),
     assert = require('assert');
 
-describe('Binary Search Tree', function() {
-  it('should insert elements respecting the BST restrictions', function() {
+describe('Binary Search Tree', function () {
+  it('should insert elements respecting the BST restrictions', function () {
     var bst = new BST();
     bst.insert(4);
     bst.insert(8);
@@ -37,7 +38,7 @@ describe('Binary Search Tree', function() {
     bst.insert(100);
     assert.equal(bst.size, 9);
   });
-  it ('should check if an element exists (in O(lg n))', function() {
+  it('should check if an element exists (in O(lg n))', function () {
     var bst = new BST();
     bst.insert(4);
     bst.insert(8);

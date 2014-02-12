@@ -19,18 +19,19 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  */
+'use strict';
 
 var Stack = require('../../data_structures/stack'),
     assert = require('assert');
 
-describe('Stack', function() {
-  it('should start empty', function() {
+describe('Stack', function () {
+  it('should start empty', function () {
     var s = new Stack();
     assert(s.isEmpty());
     assert.equal(s.length, 0);
   });
 
-  it('should implement a LIFO logic', function() {
+  it('should implement a LIFO logic', function () {
     var s = new Stack();
     s.push(1);
     s.push(2);
@@ -40,7 +41,7 @@ describe('Stack', function() {
     assert.equal(s.pop(), 2);
     assert.equal(s.pop(), 1);
     assert(s.isEmpty());
-    assert.throws(function() {s.pop();}, Error);
+    assert.throws(function () { s.pop(); }, Error);
   });
 });
 

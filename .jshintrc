@@ -1,4 +1,24 @@
 {
   "node": true,
-  "browser": true
+  "browser": true,
+  "camelcase": true,
+  "immed": true,
+  "indent": 2,
+  "newcap": true,
+  "noempty": true,
+  "quotmark": "single",
+  "undef": true,
+  "unused": true,
+  "strict": true,
+  "maxlen": 80,
+  "white": true,
+  "curly": false,
+  "globals": {
+    "describe"   : false,
+    "it"         : false,
+    "before"     : false,
+    "beforeEach" : false,
+    "after"      : false,
+    "afterEach"  : false
+  }
 }

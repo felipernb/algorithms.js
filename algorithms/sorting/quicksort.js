@@ -25,7 +25,7 @@
  * Quicksort recursively sorts parts of the array in
  * O(n.lg n)
  */
-var quicksort = function(array, lo, hi) {
+var quicksort = function (array, lo, hi) {
 
   // Sets the lo and hi values when they're not provided
   // (i.e. the initial call)
@@ -48,7 +48,7 @@ var quicksort = function(array, lo, hi) {
  *
  * @return Number the positon of the pivot
  */
-var partition = function(a, lo, hi) {
+var partition = function (a, lo, hi) {
   // pick a random element, swap with the rightmost and
   // use it as pivot
   swap(a, Math.floor(Math.random() * (hi - lo)) + lo, hi);
@@ -71,7 +71,7 @@ var partition = function(a, lo, hi) {
 /**
  * Swaps two elements in the array
  */
-var swap = function(array, x, y) {
+var swap = function (array, x, y) {
   var tmp = array[y];
   array[y] = array[x];
   array[x] = tmp;

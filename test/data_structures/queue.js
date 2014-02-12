@@ -19,18 +19,19 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  */
+'use strict';
 
 var Queue = require('../../data_structures/queue'),
     assert = require('assert');
 
-describe('Queue', function() {
-  it('should start empty', function() {
+describe('Queue', function () {
+  it('should start empty', function () {
     var q = new Queue();
     assert(q.isEmpty());
     assert.equal(q.length, 0);
   });
 
-  it('should implement a FIFO logic', function() {
+  it('should implement a FIFO logic', function () {
     var q = new Queue();
     q.push(1);
     q.push(2);
@@ -40,7 +41,7 @@ describe('Queue', function() {
     assert.equal(q.pop(), 2);
     assert.equal(q.pop(), 3);
     assert(q.isEmpty());
-    assert.throws(function() {q.pop();}, Error);
+    assert.throws(function () { q.pop(); }, Error);
   });
 });
 

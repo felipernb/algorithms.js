@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-"use strict";
+'use strict';
 
 /**
   * Binary Search finds elements in sorted arrays in logarithmic
@@ -31,7 +31,7 @@
   *
   * @return Boolean
   */
-var binarySearch = function(sortedArray, element) {
+var binarySearch = function (sortedArray, element) {
   var init = 0,
       end = sortedArray.length - 1;
 

@@ -26,7 +26,7 @@
  * @author Felipe Ribeiro <felipernb@gmail.com>
  */
 
-"use strict";
+'use strict';
 
 /**
   * Regular fibonacci implementation following the definition:
@@ -38,7 +38,7 @@
   * @return Number
   */
 var fibExponential = function (n) {
-  return n < 2 ? n : fibExponential(n-1) + fibExponential(n-2);
+  return n < 2 ? n : fibExponential(n - 1) + fibExponential(n - 2);
 };
 
 /**
@@ -47,7 +47,7 @@ var fibExponential = function (n) {
   * @param Number
   * @return Number
   */
-var fibLinear = function(n) {
+var fibLinear = function (n) {
   var fibNMinus2 = 0,
       fibNMinus1 = 1,
       fib = n;
@@ -65,12 +65,12 @@ var fibLinear = function(n) {
   * @param Number
   * @return Number
   */
-var fibWithMemoization = (function() {
+var fibWithMemoization = (function () {
   var cache = [0, 1];
 
-  var fib = function(n) {
+  var fib = function (n) {
     if (cache[n] === undefined) {
-      cache[n] = fib(n-1) + fib(n-2);
+      cache[n] = fib(n - 1) + fib(n - 2);
     }
     return cache[n];
   };

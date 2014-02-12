@@ -19,18 +19,20 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  */
+'use strict';
 
 var bubbleSort = require('../../../algorithms/sorting/bubble_sort'),
     assert = require('assert');
 
-describe('BUbble Sort', function() {
-  it('should sort the given array', function() {
+describe('BUbble Sort', function () {
+  it('should sort the given array', function () {
     assert.deepEqual(bubbleSort([]), []);
     assert.deepEqual(bubbleSort([1]), [1]);
-    assert.deepEqual(bubbleSort([2,1]), [1,2]);
-    assert.deepEqual(bubbleSort([3,1,2]), [1,2,3]);
-    assert.deepEqual(bubbleSort([1,2,3,4,5,6]), [1,2,3,4,5,6]);
-    assert.deepEqual(bubbleSort([6,5,4,3,2,1]), [1,2,3,4,5,6]);
-    assert.deepEqual(bubbleSort([1,295,3,6,8,10,10,20,0,5]), [0,1,3,5,6,8,10,10,20,295]);
+    assert.deepEqual(bubbleSort([2, 1]), [1, 2]);
+    assert.deepEqual(bubbleSort([3, 1, 2]), [1, 2, 3]);
+    assert.deepEqual(bubbleSort([1, 2, 3, 4, 5, 6]), [1, 2, 3, 4, 5, 6]);
+    assert.deepEqual(bubbleSort([6, 5, 4, 3, 2, 1]), [1, 2, 3, 4, 5, 6]);
+    assert.deepEqual(bubbleSort([1, 295, 3, 6, 8, 10, 10, 20, 0, 5]),
+      [0, 1, 3, 5, 6, 8, 10, 10, 20, 295]);
   });
 });

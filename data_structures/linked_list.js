@@ -25,14 +25,16 @@
  * Doubly-linked list
  */
 function LinkedList() {
-  
+
   this._length = 0;
   this.head = null;
   this.tail = null;
 
   // Read-only length property
   Object.defineProperty(this, 'length', {
-    get: (function() { return this._length; }).bind(this)
+    get: function () {
+      return this._length;
+    }.bind(this)
   });
 }
 
@@ -66,11 +68,11 @@ LinkedList.prototype.add = function (n, index) {
   }
 
   var node = new Node(n);
-  
+
   if (index !== undefined && index < this.length) {
     var prevNode,
         nextNode;
-    
+
     if (index  === 0) {
       // Insert in the beginning
       nextNode = this.head;
@@ -86,14 +88,14 @@ LinkedList.prototype.add = function (n, index) {
   } else {
     // Insert at the end
     if (!this.head) this.head = node;
-    
+
     if (this.tail) {
       this.tail.next = node;
       node.prev = this.tail;
     }
     this.tail = node;
   }
-    
+
   this._length++;
 };
 
@@ -117,7 +119,7 @@ LinkedList.prototype.getNode = function (index) {
   if (index >= this.length || index < 0) {
     throw new Error('Index out of bounds');
   }
-  
+
   var node = this.head;
   for (var i = 1; i <= index; i++) {
     node = node.next;
@@ -136,8 +138,8 @@ LinkedList.prototype.del = function (index) {
     throw new Error('Index out of bounds');
   }
   var node = this.getNode(index);
-  
-  if (node === this.tail) { 
+
+  if (node === this.tail) {
     // node is the last element
     this.tail = node.prev;
   } else {

@@ -32,7 +32,7 @@ function BST() {
    * Read-only property for the size of the tree
    */
   Object.defineProperty(this, 'size', {
-    get: (function() { return this._size; }).bind(this)
+    get: function () { return this._size; }.bind(this)
   });
 }
 
@@ -48,7 +48,7 @@ function Node(value) {
 /**
  * Insert elements to the tree respecting the BST restrictions
  */
-BST.prototype.insert = function(value, parent) {
+BST.prototype.insert = function (value, parent) {
   // Set the root as the initial insertion point
   // if it has not been passed
   if (!parent) {
@@ -80,7 +80,7 @@ BST.prototype.insert = function(value, parent) {
 /**
  * Returns if a tree contains an element in O(lg n)
  */
-BST.prototype.contains = function(e, root) {
+BST.prototype.contains = function (e, root) {
   if (!root) {
     if (this.root) root = this.root;
     else return false;
