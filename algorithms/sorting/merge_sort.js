@@ -46,12 +46,9 @@ var merge = function (a, b) {
     result.push(a[i] < b[j] ? a[i++] : b[j++]);
   }
 
-  if (i < a.length)
-    result = result.concat(a.slice(i));
-  else
-    result = result.concat(b.slice(j));
-
-  return result;
+  // Concats the elements from the sub-array
+  // that has not been included yet
+  return result.concat((i < a.length ? a.slice(i) : b.slice(j)));
 };
 
 module.exports = mergeSort;
