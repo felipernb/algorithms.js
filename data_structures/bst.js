@@ -61,20 +61,12 @@ BST.prototype.insert = function (value, parent) {
     parent = this.root;
   }
 
-  if (value < parent.value) {
-    if (parent.left)
-      this.insert(value, parent.left);
-    else {
-      parent.left = new Node(value, parent);
-      this._size++;
-    }
-  } else {
-    if (parent.right)
-      this.insert(value, parent.right);
-    else {
-      parent.right = new Node(value, parent);
-      this._size++;
-    }
+  var child = value < parent.value ? 'left' : 'right';
+  if (parent[child])
+    this.insert(value, parent[child]);
+  else {
+    parent[child] = new Node(value, parent);
+    this._size++;
   }
 };
 
