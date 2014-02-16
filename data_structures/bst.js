@@ -39,8 +39,9 @@ function BST() {
 /**
  * Tree node
  */
-function Node(value) {
+function Node(value, parent) {
   this.value = value;
+  this.parent = parent;
   this.left = null;
   this.right = null;
 }
@@ -64,14 +65,14 @@ BST.prototype.insert = function (value, parent) {
     if (parent.left)
       this.insert(value, parent.left);
     else {
-      parent.left = new Node(value);
+      parent.left = new Node(value, parent);
       this._size++;
     }
   } else {
     if (parent.right)
       this.insert(value, parent.right);
     else {
-      parent.right = new Node(value);
+      parent.right = new Node(value, parent);
       this._size++;
     }
   }
@@ -80,15 +81,73 @@ BST.prototype.insert = function (value, parent) {
 /**
  * Returns if a tree contains an element in O(lg n)
  */
-BST.prototype.contains = function (e, root) {
+BST.prototype.contains = function (e) {
+  return !!this._find(e);
+};
+
+BST.prototype._find = function (e, root) {
+
   if (!root) {
     if (this.root) root = this.root;
     else return false;
   }
 
-  if (e < root.value) return root.left && this.contains(e, root.left);
-  if (e > root.value) return root.right && this.contains(e, root.right);
-  return true;
+  if (e < root.value) return root.left && this._find(e, root.left);
+  if (e > root.value) return root.right && this._find(e, root.right);
+  return root;
+};
+
+/**
+ * Substitute two nodes
+ */
+BST.prototype._replaceNodeInParent = function (currNode, newNode) {
+  var parent = currNode.parent;
+  if (parent) {
+    parent[currNode === parent.left ? 'left' : 'right'] = newNode;
+    if (newNode)
+      newNode.parent = parent;
+  } else {
+    this.root = newNode;
+  }
+};
+
+/**
+ * Find the minimum value in a tree
+ */
+BST.prototype._findMin = function (root) {
+  var minNode = root;
+  while (minNode.left) {
+    minNode = minNode.left;
+  }
+  return minNode;
+};
+
+/**
+ * Remove an element from the BST
+ */
+BST.prototype.remove = function (e) {
+  var node = this._find(e);
+  if (!node) {
+    throw new Error('Item not found in the tree');
+  }
+
+  if (node.left && node.right) {
+    /**
+     * If the node to be removed has both left and right children,
+     * replace the node's value by the minimum value of the right
+     * sub-tree, and remove the leave containing the value
+     */
+    var successor = this._findMin(node.right);
+    this.remove(successor.value);
+    node.value = successor.value;
+  } else {
+    /**
+     * If the node is a leaf, just make the parent point to null,
+     * and if it has one child, make the parent point to this child
+     * instead
+     */
+    this._replaceNodeInParent(node, node.left || node.right);
+  }
 };
 
 module.exports = BST;

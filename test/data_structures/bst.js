@@ -22,6 +22,7 @@
 'use strict';
 
 var BST = require('../../data_structures/bst'),
+    bfs = require('../../algorithms/searching/bfs'),
     assert = require('assert');
 
 describe('Binary Search Tree', function () {
@@ -62,4 +63,90 @@ describe('Binary Search Tree', function () {
     assert(!bst.contains(30));
     assert(!bst.contains(7));
   });
+
+  /**
+   *            4
+   *       2          8
+   *    1     3    5     10
+   *  0    2.5               100
+   */
+  var bst = new BST();
+  bst.insert(4);
+  bst.insert(8);
+  bst.insert(10);
+  bst.insert(2);
+  bst.insert(1);
+  bst.insert(3);
+  bst.insert(0);
+  bst.insert(5);
+  bst.insert(100);
+  bst.insert(2.5);
+
+  var callbackGenerator = function (a) {
+    return function (n) { a.push(n); };
+  };
+
+
+  it('should remove a leaf without altering anything else in ' +
+      'the structure of the tree', function () {
+
+    bst.remove(0);
+    /**
+     *            4
+     *       2          8
+     *    1     3    5     10
+     *       2.5               100
+     */
+    var a = [];
+    bfs(bst.root, callbackGenerator(a));
+    assert.deepEqual(a, [4, 2, 8, 1, 3, 5, 10, 2.5, 100]);
+  });
+
+  it('should remove an element with just one child and substitute ' +
+      'it as the root of only subtree', function () {
+
+    bst.remove(10);
+    /**
+     *            4
+     *       2          8
+     *    1     3    5     100
+     *       2.5
+     */
+    var a = [];
+    bfs(bst.root, callbackGenerator(a));
+    assert.deepEqual(a, [4, 2, 8, 1, 3, 5, 100, 2.5]);
+  });
+
+  it('should substitute an element by the leftmost child in the right ' +
+      'subtree and remove it as a leaf', function () {
+    /**
+     *            4
+     *       2          8
+     *    1     3    5     100
+     *       2.5
+     */
+    bst.remove(2);
+    /**
+     *            4
+     *       2.5        8
+     *     1     3    5     100
+     *
+     */
+    var a = [];
+    bfs(bst.root, callbackGenerator(a));
+    assert.deepEqual(a, [4, 2.5, 8, 1, 3, 5, 100]);
+
+    bst.remove(4);
+    /**
+     *            5
+     *       2.5        8
+     *     1     3        100
+     *
+     */
+    a = [];
+    bfs(bst.root, callbackGenerator(a));
+    assert.deepEqual(a, [5, 2.5, 8, 1, 3, 100]);
+
+  });
 });
+
