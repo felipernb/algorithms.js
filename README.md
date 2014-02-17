@@ -1,6 +1,7 @@
 # Algorithms.js
 
 [![Build Status](https://travis-ci.org/felipernb/algorithms.js.png?branch=master)](https://travis-ci.org/felipernb/algorithms.js)
+[![Coverage Status](https://coveralls.io/repos/felipernb/algorithms.js/badge.png)](https://coveralls.io/r/felipernb/algorithms.js)
 
 Classic algorithms and data structures implemented in JavaScript, you know... FOR SCIENCE.
 

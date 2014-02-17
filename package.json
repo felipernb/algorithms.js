@@ -7,10 +7,9 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "coveralls": "*",
+    "istanbul": "*",
     "mocha": "*"
-  },
-  "scripts": {
-    "test": "mocha --recursive test"
   },
   "repository": {
     "type": "git",
