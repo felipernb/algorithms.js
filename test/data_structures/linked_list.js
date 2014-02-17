@@ -144,4 +144,26 @@ describe('LinkedList', function () {
     assert.equal(l.get(3), 5);
     assert.equal(l.get(4), 7);
   });
+
+  it('should perform a function to all elements with map', function () {
+    var l = new LinkedList();
+    l.add(5);
+    l.add(1);
+    l.add(3);
+    l.add(10);
+    l.add(1000);
+
+    var a = [];
+    l.map(function (e) {
+      a.push(e);
+    });
+
+    assert.deepEqual(a, [5, 1, 3, 10, 1000]);
+  });
+
+  it('should throw an error when trying to delete from an empty list',
+      function () {
+        var l = new LinkedList();
+        assert.throws(function () { l.del(0); }, Error);
+      });
 });

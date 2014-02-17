@@ -147,6 +147,44 @@ describe('Binary Search Tree', function () {
     bfs(bst.root, callbackGenerator(a));
     assert.deepEqual(a, [5, 2.5, 8, 1, 3, 100]);
 
+    bst.remove(2.5);
+    /**
+     *            5
+     *        3        8
+     *     1              100
+     *
+     */
+    a = [];
+    bfs(bst.root, callbackGenerator(a));
+    assert.deepEqual(a, [5, 3, 8, 1, 100]);
   });
+
+  it('should always return the right root and size', function () {
+    var bst = new BST();
+    bst.insert(5);
+    assert.equal(bst.size, 1);
+    bst.remove(5);
+    assert.equal(bst.size, 0);
+    assert.equal(bst.root, null);
+    bst.insert(10);
+    bst.insert(3);
+    bst.insert(20);
+    assert.equal(bst.size, 3);
+    bst.remove(10);
+    assert.equal(bst.size, 2);
+    bst.remove(20);
+    assert.equal(bst.size, 1);
+    bst.remove(3);
+    assert.equal(bst.size, 0);
+  });
+
+  it('should throw an error when trying to remove an unexisting node',
+      function () {
+        var bst = new BST();
+        assert.throws(function () { bst.remove(0); }, Error);
+        bst.insert(3);
+        assert.throws(function () { bst.remove(0); }, Error);
+      });
+
 });
 

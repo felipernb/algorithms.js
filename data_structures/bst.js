@@ -139,6 +139,7 @@ BST.prototype.remove = function (e) {
      * instead
      */
     this._replaceNodeInParent(node, node.left || node.right);
+    this._size--;
   }
 };
 

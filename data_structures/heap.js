@@ -69,15 +69,13 @@ function MinHeap() {
 MinHeap.prototype = new Heap();
 
 /**
- * Sift up the element in pos
+ * Sift up the last element
  * O(lg n)
  */
-MinHeap.prototype._siftUp = function (pos) {
-  if (pos === undefined) pos = this.n;
-
+MinHeap.prototype._siftUp = function () {
   var i, parent;
 
-  for (i = pos;
+  for (i = this.n;
       i > 1 && (parent = i >> 1) && this._elements[parent] > this._elements[i];
       i = parent) {
     this._swap(parent, i);
@@ -85,14 +83,12 @@ MinHeap.prototype._siftUp = function (pos) {
 };
 
 /**
- * Sifts down the element in pos
+ * Sifts down the first element
  * O(lg n)
  */
-MinHeap.prototype._siftDown = function (pos) {
-  if (pos === undefined) pos = 1;
-
+MinHeap.prototype._siftDown = function () {
   var i, c;
-  for (i = pos; (c = i << 1) <= this.n; i = c) {
+  for (i = 1; (c = i << 1) <= this.n; i = c) {
     // checks which is the smaller child to compare with
     if (c + 1 <= this.n && this._elements[c + 1] < this._elements[c])
       // use the right child if it's lower than the left one
@@ -114,15 +110,13 @@ function MaxHeap() {
 MaxHeap.prototype = new Heap();
 
 /**
- * Sift up the element in pos
+ * Sift up the last element
  * O(lg n)
  */
-MaxHeap.prototype._siftUp = function (pos) {
-  if (pos === undefined) pos = this.n;
-
+MaxHeap.prototype._siftUp = function () {
   var i, parent;
 
-  for (i = pos;
+  for (i = this.n;
       i > 1 && (parent = i >> 1) && this._elements[parent] < this._elements[i];
       i = parent) {
     this._swap(parent, i);
@@ -130,14 +124,12 @@ MaxHeap.prototype._siftUp = function (pos) {
 };
 
 /**
- * Sifts down the element in pos
+ * Sifts down the first element
  * O(lg n)
  */
-MaxHeap.prototype._siftDown = function (pos) {
-  if (pos === undefined) pos = 1;
-
+MaxHeap.prototype._siftDown = function () {
   var i, c;
-  for (i = pos; (c = i << 1) <= this.n; i = c) {
+  for (i = 1; (c = i << 1) <= this.n; i = c) {
     // checks which is the greater child to compare with
     if (c + 1 <= this.n && this._elements[c + 1] > this._elements[c])
       // use the right child if it's greater than the left one
