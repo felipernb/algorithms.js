@@ -31,6 +31,11 @@
  * @return Number
  */
 var gcd = function (a, b) {
+  var tmp = a;
+  a = Math.max(a, b);
+  b = Math.min(tmp, b);
+  if (a % b === 0) return b;
+
   while (b !== 0) {
     if (a > b) {
       a -= b;
