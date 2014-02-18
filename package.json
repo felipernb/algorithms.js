@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/felipernb/js-for-computer-scientists"
+    "url": "https://github.com/felipernb/algorithms.js"
   },
   "scripts": {
     "test": "mocha -R spec --recursive test",
@@ -29,7 +29,7 @@
   "author": "Felipe Ribeiro <felipernb@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/felipernb/js-for-computer-scientists/issues"
+    "url": "https://github.com/felipernb/algorithms.js/issues"
   },
-  "homepage": "https://github.com/felipernb/js-for-computer-scientists"
+  "homepage": "https://github.com/felipernb/algorithms.js"
 }
