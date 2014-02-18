@@ -10,12 +10,12 @@
 
 Classic algorithms and data structures implemented in JavaScript, you know... FOR SCIENCE.
 
-## install
+## Install
 
 ```
 npm install git://github.com/felipernb/algorithms.js
 ```
 
-## usage
+## Usage
 
 Definitions and examples on how to use the code can be found on the [Wiki](https://github.com/felipernb/algorithms.js/wiki)

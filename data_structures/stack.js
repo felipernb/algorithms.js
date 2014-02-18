@@ -21,42 +21,27 @@
  */
 'use strict';
 
-var LinkedList = require('./linked_list');
+var Queue = require('./queue');
 
 /**
  * Stack (LIFO) using a Linked List as basis
  */
 function Stack() {
-  this._elements = new LinkedList();
-
-  Object.defineProperty(this, 'length', {
-    get: function () {
-      return this._elements.length;
-    }.bind(this)
-  });
+  Queue.call(this);
 }
 
-Stack.prototype.isEmpty = function () {
-  return this._elements.isEmpty();
-};
+/**
+ * Use a Queue as prototype and just overwrite
+ * the push method to insert at the 0 position
+ * instead of the end of the queue
+ */
+Stack.prototype = new Queue();
 
 /**
- * Adds element to the end of the stack
+ * Adds element to the top of the stack
  */
 Stack.prototype.push = function (e) {
-  this._elements.add(e);
-};
-
-/**
- * Pops the element in the top of the stack
- */
-Stack.prototype.pop = function () {
-  if (this.isEmpty()) {
-    throw new Error('Empty stack');
-  }
-  var e = this._elements.get(this.length - 1);
-  this._elements.del(this.length - 1);
-  return e;
+  this._elements.add(e, 0);
 };
 
 module.exports = Stack;

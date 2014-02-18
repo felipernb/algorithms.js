@@ -59,4 +59,12 @@ Queue.prototype.pop = function () {
   return e;
 };
 
+Queue.prototype.peek = function () {
+  if (this.isEmpty()) {
+    throw new Error('Empty queue');
+  }
+
+  return this._elements.get(0);
+};
+
 module.exports = Queue;
