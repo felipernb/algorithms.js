@@ -143,6 +143,15 @@ describe('LinkedList', function () {
     assert.equal(l.get(2), 4);
     assert.equal(l.get(3), 5);
     assert.equal(l.get(4), 7);
+
+    for (var i = 0; i < 5; i++) {
+      l.del(0);
+    }
+
+    assert(l.isEmpty());
+    assert.equal(l.head, null);
+    assert.equal(l.tail, null);
+    assert.equal(l.length, 0);
   });
 
   it('should perform a function to all elements with map', function () {
