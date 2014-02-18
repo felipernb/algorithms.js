@@ -10,5 +10,5 @@
 
 Classic algorithms and data structures implemented in JavaScript, you know... FOR SCIENCE.
 
-### [Documentation](https://github.com/felipernb/algorithms.js/wiki)
+### [DOCS](https://github.com/felipernb/algorithms.js/wiki)
 
