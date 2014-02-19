@@ -25,9 +25,9 @@ var Comparator = require('../util/comparator');
 /**
  * Basic Heap structure
  */
-function MinHeap() {
+function MinHeap(compareFn) {
   this._elements = [null];
-  this._comparator = new Comparator();
+  this._comparator = new Comparator(compareFn);
 
   Object.defineProperty(this, 'n', {
     get: function () {
@@ -100,13 +100,21 @@ MinHeap.prototype._siftDown = function () {
  * To avoid code repetition, the Min Heap is used just with
  * a reverse comparator;
  */
-function MaxHeap() {
+function MaxHeap(compareFn) {
   MinHeap.apply(this);
 
-  var maxHeapCompareFn = function (a, b) {
-    if (a == b) return 0;
-    return a < b ? 1 : -1;
-  };
+  var maxHeapCompareFn;
+  if (compareFn) {
+    // Invert the function to reuse the code from MinHeap
+    maxHeapCompareFn = function (a, b) {
+      return -compareFn(a, b);
+    };
+  } else {
+    maxHeapCompareFn = function (a, b) {
+      if (a == b) return 0;
+      return a < b ? 1 : -1;
+    };
+  }
 
   this._comparator = new Comparator(maxHeapCompareFn);
 }
