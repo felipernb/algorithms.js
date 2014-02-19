@@ -27,7 +27,7 @@ var lib = {
   },
   Math: {
     fibonacci: require('./algorithms/math/fibonacci'),
-    fisherYattes: require('./algorithms/math/fisher_yates'),
+    fisherYates: require('./algorithms/math/fisher_yates'),
     gcd: require('./algorithms/math/gcd')
   },
   Search: {
