@@ -20,30 +20,34 @@
  * IN THE SOFTWARE.
  */
 'use strict';
+var Comparator = require('../../util/comparator');
 
 /**
  * Merge sort
  * O(n.lgn)
  */
-var mergeSort = function (a) {
+var mergeSortInit = function (a, compareFn) {
+  var comparator = new Comparator(compareFn);
 
-  if (a.length > 1) {
-    var middle = a.length >> 1;
-    var left = mergeSort(a.slice(0, middle));
-    var right = mergeSort(a.slice(middle));
-    a = merge(left, right);
-  }
+  return (function mergeSort(a) {
+    if (a.length > 1) {
+      var middle = a.length >> 1;
+      var left = mergeSort(a.slice(0, middle));
+      var right = mergeSort(a.slice(middle));
+      a = merge(left, right, comparator);
+    }
 
-  return a;
+    return a;
+  })(a);
 };
 
-var merge = function (a, b) {
+var merge = function (a, b, comparator) {
   var i = 0,
       j = 0,
       result = [];
 
   while (i < a.length && j < b.length) {
-    result.push(a[i] < b[j] ? a[i++] : b[j++]);
+    result.push(comparator.lessThan(a[i], b[j]) ? a[i++] : b[j++]);
   }
 
   // Concats the elements from the sub-array
@@ -51,4 +55,4 @@ var merge = function (a, b) {
   return result.concat((i < a.length ? a.slice(i) : b.slice(j)));
 };
 
-module.exports = mergeSort;
+module.exports = mergeSortInit;

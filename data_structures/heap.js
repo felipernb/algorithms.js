@@ -20,12 +20,14 @@
  * IN THE SOFTWARE.
  */
 'use strict';
+var Comparator = require('../util/comparator');
 
 /**
  * Basic Heap structure
  */
-function Heap() {
+function MinHeap() {
   this._elements = [null];
+  this._comparator = new Comparator();
 
   Object.defineProperty(this, 'n', {
     get: function () {
@@ -34,22 +36,22 @@ function Heap() {
   });
 }
 
-Heap.prototype._swap = function (a, b) {
+MinHeap.prototype._swap = function (a, b) {
   var tmp = this._elements[a];
   this._elements[a] = this._elements[b];
   this._elements[b] = tmp;
 };
 
-Heap.prototype.isEmpty = function () {
+MinHeap.prototype.isEmpty = function () {
   return this.n === 0;
 };
 
-Heap.prototype.insert = function (e) {
+MinHeap.prototype.insert = function (e) {
   this._elements.push(e);
   this._siftUp();
 };
 
-Heap.prototype.extract = function () {
+MinHeap.prototype.extract = function () {
   var element = this._elements[1];
   // Get the one from the bottom in insert it on top
   this._elements[1] = this._elements.pop();
@@ -57,16 +59,6 @@ Heap.prototype.extract = function () {
 
   return element;
 };
-
-
-/**
- * Min Heap, keeps the lowest element always on top
- */
-function MinHeap() {
-  Heap.apply(this);
-}
-
-MinHeap.prototype = new Heap();
 
 /**
  * Sift up the last element
@@ -76,7 +68,8 @@ MinHeap.prototype._siftUp = function () {
   var i, parent;
 
   for (i = this.n;
-      i > 1 && (parent = i >> 1) && this._elements[parent] > this._elements[i];
+      i > 1 && (parent = i >> 1) && this._comparator.greaterThan(
+        this._elements[parent], this._elements[i]);
       i = parent) {
     this._swap(parent, i);
   }
@@ -90,55 +83,35 @@ MinHeap.prototype._siftDown = function () {
   var i, c;
   for (i = 1; (c = i << 1) <= this.n; i = c) {
     // checks which is the smaller child to compare with
-    if (c + 1 <= this.n && this._elements[c + 1] < this._elements[c])
+    if (c + 1 <= this.n && this._comparator.lessThan(
+          this._elements[c + 1], this._elements[c]))
       // use the right child if it's lower than the left one
       c++;
-    if (this._elements[i] < this._elements[c])
+    if (this._comparator.lessThan(this._elements[i],
+          this._elements[c]))
       break;
     this._swap(i, c);
   }
 };
-
 
 /**
  * Max Heap, keeps the highest element always on top
+ *
+ * To avoid code repetition, the Min Heap is used just with
+ * a reverse comparator;
  */
 function MaxHeap() {
-  Heap.apply(this);
+  MinHeap.apply(this);
+
+  var maxHeapCompareFn = function (a, b) {
+    if (a == b) return 0;
+    return a < b ? 1 : -1;
+  };
+
+  this._comparator = new Comparator(maxHeapCompareFn);
 }
 
-MaxHeap.prototype = new Heap();
-
-/**
- * Sift up the last element
- * O(lg n)
- */
-MaxHeap.prototype._siftUp = function () {
-  var i, parent;
-
-  for (i = this.n;
-      i > 1 && (parent = i >> 1) && this._elements[parent] < this._elements[i];
-      i = parent) {
-    this._swap(parent, i);
-  }
-};
-
-/**
- * Sifts down the first element
- * O(lg n)
- */
-MaxHeap.prototype._siftDown = function () {
-  var i, c;
-  for (i = 1; (c = i << 1) <= this.n; i = c) {
-    // checks which is the greater child to compare with
-    if (c + 1 <= this.n && this._elements[c + 1] > this._elements[c])
-      // use the right child if it's greater than the left one
-      c++;
-    if (this._elements[i] > this._elements[c])
-      break;
-    this._swap(i, c);
-  }
-};
+MaxHeap.prototype = new MinHeap();
 
 module.exports = {
   MinHeap: MinHeap,

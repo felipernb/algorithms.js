@@ -20,25 +20,25 @@
  * IN THE SOFTWARE.
  */
 'use strict';
+var Comparator = require('../../util/comparator');
 
 /**
  * Quicksort recursively sorts parts of the array in
  * O(n.lg n)
  */
-var quicksort = function (array, lo, hi) {
+var quicksortInit = function (array, comparatorFn) {
 
-  // Sets the lo and hi values when they're not provided
-  // (i.e. the initial call)
-  if (lo === undefined) lo = 0;
-  if (hi === undefined) hi = array.length - 1;
+  var comparator = new Comparator(comparatorFn);
 
-  if (lo < hi) {
-    var p = partition(array, lo, hi);
-    quicksort(array, lo, p - 1);
-    quicksort(array, p + 1, hi);
-  }
+  return (function quicksort(array, lo, hi) {
+    if (lo < hi) {
+      var p = partition(array, comparator, lo, hi);
+      quicksort(array, lo, p - 1);
+      quicksort(array, p + 1, hi);
+    }
 
-  return array;
+    return array;
+  })(array, 0, array.length - 1);
 };
 
 /**
@@ -48,7 +48,7 @@ var quicksort = function (array, lo, hi) {
  *
  * @return Number the positon of the pivot
  */
-var partition = function (a, lo, hi) {
+var partition = function (a, comparator, lo, hi) {
   // pick a random element, swap with the rightmost and
   // use it as pivot
   swap(a, Math.floor(Math.random() * (hi - lo)) + lo, hi);
@@ -59,7 +59,7 @@ var partition = function (a, lo, hi) {
   var dividerPosition = lo;
 
   for (var i = lo; i < hi; i++) {
-    if (a[i] < a[pivot]) {
+    if (comparator.lessThan(a[i], a[pivot])) {
       swap(a, i, dividerPosition);
       dividerPosition++;
     }
@@ -77,4 +77,4 @@ var swap = function (array, x, y) {
   array[x] = tmp;
 };
 
-module.exports = quicksort;
+module.exports = quicksortInit;

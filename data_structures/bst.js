@@ -20,13 +20,18 @@
  * IN THE SOFTWARE.
  */
 'use strict';
+var Comparator = require('../util/comparator');
 
 /**
  * Binary Search Tree
  */
-function BST() {
+function BST(compareFn) {
   this.root = null;
   this._size = 0;
+  /**
+   * @var Comparator
+   */
+  this._comparator = new Comparator(compareFn);
 
   /**
    * Read-only property for the size of the tree
@@ -61,7 +66,7 @@ BST.prototype.insert = function (value, parent) {
     parent = this.root;
   }
 
-  var child = value < parent.value ? 'left' : 'right';
+  var child = this._comparator.lessThan(value, parent.value) ? 'left' : 'right';
   if (parent[child])
     this.insert(value, parent[child]);
   else {
@@ -84,9 +89,14 @@ BST.prototype._find = function (e, root) {
     else return false;
   }
 
-  if (e < root.value) return root.left && this._find(e, root.left);
-  if (e > root.value) return root.right && this._find(e, root.right);
-  return root;
+  if (root.value === e)
+    return root;
+
+  if (this._comparator.lessThan(e, root.value))
+    return root.left && this._find(e, root.left);
+
+  if (this._comparator.greaterThan(e, root.value))
+    return root.right && this._find(e, root.right);
 };
 
 /**

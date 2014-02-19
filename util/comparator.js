@@ -20,24 +20,43 @@
  * IN THE SOFTWARE.
  */
 'use strict';
-var Comparator = require('../../util/comparator');
 
 /**
- * Bubble sort algorithm O(n^2)
+ * Initialize the comparator object with a compare function
+ *
+ * If the function is not passed, it will use the default
+ * compare signs (<, > and ==)
+ *
+ * @param Function
  */
-var bubbleSort = function (a, comparatorFn) {
-  var comparator = new Comparator(comparatorFn);
-  for (var i = 0; i < a.length; i++) {
-    for (var j = i; j < a.length; j++) {
-      if (comparator.greaterThan(a[i], a[j])) {
-        var tmp = a[i];
-        a[i] = a[j];
-        a[j] = tmp;
-      }
-    }
+function Comparator(compareFn) {
+  if (compareFn) {
+    this.compare = compareFn;
   }
+}
 
-  return a;
+/**
+ * Default implementation for the compare function
+ */
+Comparator.prototype.compare = function (a, b) {
+  if (a == b) return 0;
+  return a < b ? -1 : 1;
 };
 
-module.exports = bubbleSort;
+Comparator.prototype.lessThan = function (a, b) {
+  return this.compare(a, b) < 0;
+};
+
+Comparator.prototype.lessThanOrEqual = function (a, b) {
+  return this.lessThan(a, b) || a == b;
+};
+
+Comparator.prototype.greaterThan = function (a, b) {
+  return this.compare(a, b) > 0;
+};
+
+Comparator.prototype.greaterThanOrEqual = function (a, b) {
+  return this.greaterThan(a, b) || a == b;
+};
+
+module.exports = Comparator;
