@@ -49,9 +49,9 @@ var quicksortInit = function (array, comparatorFn) {
  * @return Number the positon of the pivot
  */
 var partition = function (a, comparator, lo, hi) {
-  // pick the middle element, swap with the rightmost and
+  // pick a random element, swap with the rightmost and
   // use it as pivot
-  swap(a, ((hi - lo) >> 1) + lo, hi);
+  swap(a, Math.floor(Math.random() * (hi - lo)) + lo, hi);
   var pivot = hi;
 
   // dividerPosition keeps track of the position
