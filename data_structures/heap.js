@@ -116,18 +116,8 @@ MinHeap.prototype.heapify = function (a) {
  */
 function MaxHeap(compareFn) {
 
-  if (!compareFn) {
-    // Regular compare function, that will be
-    // inversed below
-    compareFn = function (a, b) {
-      if (a == b) return 0;
-      return a < b ? -1 : 1;
-    };
-  }
-
-  MinHeap.call(this, function (a, b) {
-    return -compareFn(a, b);
-  });
+  MinHeap.call(this, compareFn);
+  this._comparator.reverse();
 }
 
 MaxHeap.prototype = new MinHeap();

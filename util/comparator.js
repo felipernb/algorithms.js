@@ -48,7 +48,7 @@ Comparator.prototype.lessThan = function (a, b) {
 };
 
 Comparator.prototype.lessThanOrEqual = function (a, b) {
-  return this.lessThan(a, b) || a == b;
+  return this.lessThan(a, b) || this.equal(a, b);
 };
 
 Comparator.prototype.greaterThan = function (a, b) {
@@ -56,7 +56,24 @@ Comparator.prototype.greaterThan = function (a, b) {
 };
 
 Comparator.prototype.greaterThanOrEqual = function (a, b) {
-  return this.greaterThan(a, b) || a == b;
+  return this.greaterThan(a, b) || this.equal(a, b);
 };
+
+Comparator.prototype.equal = function (a, b) {
+  return this.compare(a, b) == 0;
+};
+
+/**
+ * Reverse the comparison function to use the opposite logic, e.g:
+ * this.compare(a, b) => 1
+ * this.reverse();
+ * this.compare(a, b) => -1
+ */
+Comparator.prototype.reverse = function () {
+  var originalCompareFn = this.compare;
+  this.compare = function (a, b) {
+    return originalCompareFn(b, a);
+  };
+}
 
 module.exports = Comparator;
