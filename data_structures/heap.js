@@ -53,9 +53,14 @@ MinHeap.prototype.insert = function (e) {
 
 MinHeap.prototype.extract = function () {
   var element = this._elements[1];
+
   // Get the one from the bottom in insert it on top
-  this._elements[1] = this._elements.pop();
-  this._siftDown();
+  // If this isn't already the last element
+  var last = this._elements.pop();
+  if (this.n) {
+    this._elements[1] = last;
+    this._siftDown();
+  }
 
   return element;
 };
@@ -79,9 +84,9 @@ MinHeap.prototype._siftUp = function () {
  * Sifts down the first element
  * O(lg n)
  */
-MinHeap.prototype._siftDown = function () {
-  var i, c;
-  for (i = 1; (c = i << 1) <= this.n; i = c) {
+MinHeap.prototype._siftDown = function (i) {
+  var c;
+  for (i = i || 1; (c = i << 1) <= this.n; i = c) {
     // checks which is the smaller child to compare with
     if (c + 1 <= this.n && this._comparator.lessThan(
           this._elements[c + 1], this._elements[c]))
@@ -94,6 +99,15 @@ MinHeap.prototype._siftDown = function () {
   }
 };
 
+MinHeap.prototype.heapify = function (a) {
+  this._elements = a;
+  this._elements.unshift(null);
+
+  for (var i = this.n >> 1; i > 0; i--) {
+    this._siftDown(i);
+  }
+};
+
 /**
  * Max Heap, keeps the highest element always on top
  *
@@ -101,22 +115,19 @@ MinHeap.prototype._siftDown = function () {
  * a reverse comparator;
  */
 function MaxHeap(compareFn) {
-  MinHeap.apply(this);
 
-  var maxHeapCompareFn;
-  if (compareFn) {
-    // Invert the function to reuse the code from MinHeap
-    maxHeapCompareFn = function (a, b) {
-      return -compareFn(a, b);
-    };
-  } else {
-    maxHeapCompareFn = function (a, b) {
+  if (!compareFn) {
+    // Regular compare function, that will be
+    // inversed below
+    compareFn = function (a, b) {
       if (a == b) return 0;
-      return a < b ? 1 : -1;
+      return a < b ? -1 : 1;
     };
   }
 
-  this._comparator = new Comparator(maxHeapCompareFn);
+  MinHeap.call(this, function (a, b) {
+    return -compareFn(a, b);
+  });
 }
 
 MaxHeap.prototype = new MinHeap();
