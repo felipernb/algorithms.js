@@ -2,7 +2,7 @@
  * Copyright (C) 2014 Felipe Ribeiro
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to
+ * of this software and associated documentation files (the "Software"], to
  * deal in the Software without restriction, including without limitation the
  * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
  * sell copies of the Software, and to permit persons to whom the Software is
@@ -21,31 +21,34 @@
  */
 'use strict';
 
-var MinHeap = require('./heap').MinHeap;
-
 /**
- * Extends the MinHeap with the only difference that
- * the heap operations are performed based on the priority of the element
- * and not on the element itself
+ * Adjacency list representation of a graph
+ * @param {bool} directed
  */
-function PriorityQueue() {
-  MinHeap.call(this, function (a, b) {
-    return a.priority < b.priority ? -1 : 1;
-  });
+function Graph(directed) {
+  this.directed = (directed === undefined ? true : !!directed);
+  this.adjList = {};
 }
 
-PriorityQueue.prototype = new MinHeap();
-
-PriorityQueue.prototype.insert = function (item, priority) {
-  MinHeap.prototype.insert.call(this, {
-    item: item,
-    priority: priority
-  });
+Graph.prototype.addVertex = function (v) {
+  this.adjList[v] = {};
 };
 
-PriorityQueue.prototype.extract = function () {
-  var min = MinHeap.prototype.extract.call(this);
-  return min && min.item;
+Graph.prototype.addEdge = function (a, b, w) {
+  // If no weight is assigned to the edge, 1 is the default
+  w = (w === undefined ? 1 : w);
+
+  if (!this.adjList[a]) this.addVertex(a);
+  if (!this.adjList[b]) this.addVertex(b);
+
+  // If there's already another edge with the same origin and destination
+  // sum with the current one
+  this.adjList[a][b] = (this.adjList[a][b] || 0) + w;
+
+  // If the graph is not directed add the edge in both directions
+  if (!this.directed) {
+    this.adjList[b][a] = (this.adjList[b][a] || 0) + w;
+  }
 };
 
-module.exports = PriorityQueue;
+module.exports = Graph;
