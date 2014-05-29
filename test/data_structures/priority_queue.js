@@ -55,6 +55,23 @@ describe('Min Priority Queue', function () {
 
     assert(q.isEmpty());
   });
+
+  it('can receive a dictionary with item => priority in construction', function () {
+    var q = new PriorityQueue({
+      a: 10,
+      b: 2091,
+      c: 4,
+      d: 1,
+      e: 5
+    });
+
+    assert(!q.isEmpty());
+    assert.equal(q.extract(), 'd');
+    assert.equal(q.extract(), 'c');
+    assert.equal(q.extract(), 'e');
+    assert.equal(q.extract(), 'a');
+    assert.equal(q.extract(), 'b');
+  });
 });
 
 

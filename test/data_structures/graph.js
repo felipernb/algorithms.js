@@ -106,4 +106,13 @@ describe('Graph - Adjacency list', function () {
     assert.equal(g.adjList.a.b, 10);
     assert.equal(g.adjList.b.a, 2);
   });
+
+  it('should have a list of vertices', function () {
+    var g = new Graph();
+    assert.deepEqual(g.vertices, []);
+    g.addVertex('a');
+    g.addVertex('b');
+    g.addVertex('c');
+    assert.deepEqual(g.vertices, ['a', 'b', 'c']);
+  });
 });

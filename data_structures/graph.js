@@ -28,9 +28,11 @@
 function Graph(directed) {
   this.directed = (directed === undefined ? true : !!directed);
   this.adjList = {};
+  this.vertices = [];
 }
 
 Graph.prototype.addVertex = function (v) {
+  this.vertices.push(v);
   this.adjList[v] = {};
 };
 

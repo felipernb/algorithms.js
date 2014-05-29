@@ -28,10 +28,15 @@ var MinHeap = require('./heap').MinHeap;
  * the heap operations are performed based on the priority of the element
  * and not on the element itself
  */
-function PriorityQueue() {
+function PriorityQueue(initialItems) {
   MinHeap.call(this, function (a, b) {
     return a.priority < b.priority ? -1 : 1;
   });
+  initialItems = initialItems || {};
+  for (var item in initialItems) {
+    if (initialItems.hasOwnProperty(item))
+      this.insert(item, initialItems[item]);
+  }
 }
 
 PriorityQueue.prototype = new MinHeap();
