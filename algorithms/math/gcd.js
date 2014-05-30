@@ -30,20 +30,17 @@
  *
  * @return Number
  */
-var gcd = function (a, b) {
+var gcdDivisionBased = function (a, b) {
   var tmp = a;
   a = Math.max(a, b);
   b = Math.min(tmp, b);
-  if (a % b === 0) return b;
-
   while (b !== 0) {
-    if (a > b) {
-      a -= b;
-    } else {
-      b -= a;
-    }
+    tmp = b;
+    b = a % b;
+    a = tmp;
   }
+
   return a;
 };
 
-module.exports = gcd;
+module.exports = gcdDivisionBased;
