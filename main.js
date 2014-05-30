@@ -23,7 +23,8 @@
 
 var lib = {
   Graph: {
-    topologicalSort: require('./algorithms/graph/topological_sort')
+    topologicalSort: require('./algorithms/graph/topological_sort'),
+    dijkstra: require('./algorithms/graph/dijkstra')
   },
   Math: {
     fibonacci: require('./algorithms/math/fibonacci'),
@@ -45,8 +46,10 @@ var lib = {
   },
   DataStructure: {
     BST: require('./data_structures/bst'),
+    Graph: require('./data_structures/graph'),
     Heap: require('./data_structures/heap'),
     LinkedList: require('./data_structures/linked_list'),
+    PriorityQueue: require('./data_structures/priority_queue'),
     Queue: require('./data_structures/queue'),
     Stack: require('./data_structures/stack')
   }
