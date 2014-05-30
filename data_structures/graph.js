@@ -53,4 +53,12 @@ Graph.prototype.addEdge = function (a, b, w) {
   }
 };
 
+Graph.prototype.neighbors = function (v) {
+  return Object.keys(this.adjList[v]);
+};
+
+Graph.prototype.edge = function (a, b) {
+  return this.adjList[a][b];
+};
+
 module.exports = Graph;

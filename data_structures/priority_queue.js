@@ -50,7 +50,7 @@ PriorityQueue.prototype.insert = function (item, priority) {
     priority: priority
   };
 
-  this._items[item] = o
+  this._items[item] = o;
   MinHeap.prototype.insert.call(this, o);
 };
 
