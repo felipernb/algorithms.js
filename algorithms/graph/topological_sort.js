@@ -26,23 +26,15 @@ var Stack = require('../../data_structures/stack');
 /**
  * Sorts the edges of the DAG topologically
  *
- * The graph should be represented with an adjacency list, that
- * can be expressed as:
  *  (node1) -> (node2) -> (node4)
  *     \-> (node3)^
- *
- * {
- *  "node1": ["node2", "node3"],
- *  "node2": ["node4"],
- *  "node3": ["node2"]
- *  ...
- * }
  *
  * Meaning that:
  * - "node2" and "node3" depend on "node1"
  * - "node4" depend on node2
  * - "node2" depend on "node3"
  *
+ * @param {Graph}
  * @return Stack
  */
 var topologicalSort = function (graph) {
@@ -56,20 +48,20 @@ var topologicalSort = function (graph) {
   */
   var dagDFS = function (node) {
     if (firstHit[node]) return;
-    var neighbours = graph[node];
+    var neighbors = graph.neighbors(node);
     firstHit[node] = ++time;
-    for (var i = 0; i < neighbours.length; i++) {
-      dagDFS(neighbours[i]);
+    for (var i = 0; i < neighbors.length; i++) {
+      dagDFS(neighbors[i]);
     }
     secondHit[node] = ++time;
     stack.push(node);
   };
 
-  for (var node in graph) {
-    if (graph.hasOwnProperty(node) && !secondHit[node]) {
+  graph.vertices.forEach(function (node) {
+    if (!secondHit[node]) {
       dagDFS(node);
     }
-  }
+  });
 
   return stack;
 };

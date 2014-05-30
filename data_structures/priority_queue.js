@@ -36,10 +36,10 @@ function PriorityQueue(initialItems) {
   this._items = {};
 
   initialItems = initialItems || {};
-  for (var item in initialItems) {
-    if (initialItems.hasOwnProperty(item))
-      this.insert(item, initialItems[item]);
-  }
+  var self = this;
+  Object.keys(initialItems).forEach(function (item) {
+    self.insert(item, initialItems[item]);
+  });
 }
 
 PriorityQueue.prototype = new MinHeap();
