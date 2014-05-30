@@ -32,6 +32,9 @@ function PriorityQueue(initialItems) {
   MinHeap.call(this, function (a, b) {
     return a.priority < b.priority ? -1 : 1;
   });
+
+  this._items = {};
+
   initialItems = initialItems || {};
   for (var item in initialItems) {
     if (initialItems.hasOwnProperty(item))
@@ -42,15 +45,23 @@ function PriorityQueue(initialItems) {
 PriorityQueue.prototype = new MinHeap();
 
 PriorityQueue.prototype.insert = function (item, priority) {
-  MinHeap.prototype.insert.call(this, {
+  var o = {
     item: item,
     priority: priority
-  });
+  };
+
+  this._items[item] = o
+  MinHeap.prototype.insert.call(this, o);
 };
 
 PriorityQueue.prototype.extract = function () {
   var min = MinHeap.prototype.extract.call(this);
   return min && min.item;
+};
+
+PriorityQueue.prototype.changePriority = function (item, priority) {
+  this._items[item].priority = priority;
+  this.heapify();
 };
 
 module.exports = PriorityQueue;

@@ -72,6 +72,26 @@ describe('Min Priority Queue', function () {
     assert.equal(q.extract(), 'a');
     assert.equal(q.extract(), 'b');
   });
+
+  it('should be possible to change the priority of an item', function () {
+    var q = new PriorityQueue({
+      a: 10,
+      b: 2091,
+      c: 4,
+      d: 1,
+      e: 5
+    });
+
+    assert(!q.isEmpty());
+
+    q.changePriority('b', 0);
+    assert.equal(q.extract(), 'b');
+    assert.equal(q.extract(), 'd');
+    assert.equal(q.extract(), 'c');
+    assert.equal(q.extract(), 'e');
+    assert.equal(q.extract(), 'a');
+
+  });
 });
 
 

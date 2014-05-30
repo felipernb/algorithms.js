@@ -100,8 +100,10 @@ MinHeap.prototype._siftDown = function (i) {
 };
 
 MinHeap.prototype.heapify = function (a) {
-  this._elements = a;
-  this._elements.unshift(null);
+  if (a) {
+    this._elements = a;
+    this._elements.unshift(null);
+  }
 
   for (var i = this.n >> 1; i > 0; i--) {
     this._siftDown(i);
