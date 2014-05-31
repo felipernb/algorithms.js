@@ -47,7 +47,9 @@ function dijkstra(graph, s) {
   var currNode;
   while (!q.isEmpty()) {
     currNode = q.extract();
-    graph.neighbors(currNode).forEach(function (v) {
+    var neighbors = graph.neighbors(currNode);
+    for (var i = 0; i < neighbors.length; i++) {
+      var v = neighbors[i];
       // relaxation
       var newDistance = distance[currNode] + graph.edge(currNode, v);
       if (newDistance < distance[v]) {
@@ -55,7 +57,7 @@ function dijkstra(graph, s) {
         previous[v] = currNode;
         q.changePriority(v, distance[v]);
       }
-    });
+    }
   }
   return {
     distance: distance,

@@ -1,6 +1,6 @@
 {
   "name": "algorithms",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Traditional computer science algorithms and data structures implemented in JavaScript",
   "directories": {
     "test": "test"
@@ -8,18 +8,14 @@
   "main": "main.js",
   "dependencies": {},
   "devDependencies": {
-    "coveralls": "*",
-    "istanbul": "*",
-    "mocha": "*"
+    "coveralls": "^2.10.0",
+    "istanbul": "^0.2.10",
+    "jshint": "^2.5.1",
+    "mocha": "^1.20.0"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/felipernb/algorithms.js"
-  },
-  "scripts": {
-    "test": "mocha -R spec --recursive test",
-    "coverage": "istanbul cover ./node_modules/.bin/_mocha -- -R spec --recursive test",
-    "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },
   "keywords": [
     "computer science",

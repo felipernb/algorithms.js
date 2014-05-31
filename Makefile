@@ -1,4 +1,4 @@
-all: jshint test coverage
+all: jshint coverage
 
 setup:
 	npm install
