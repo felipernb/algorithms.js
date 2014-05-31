@@ -21,17 +21,17 @@
  */
 'use strict';
 
-var karp_rabin = require('../../../algorithms/string/karp_rabin'),
+var karpRabin = require('../../../algorithms/string/karp_rabin'),
 	assert = require('assert');
 
 describe('Karp-Rabin', function () {
   it('should verify if a string is contained in another string',
     function () {
-      assert.equal(karp_rabin('', ''), true);
-      assert.equal(karp_rabin('a', 'b'), false);
-      assert.equal(karp_rabin('b', 'a'), false);
+      assert.equal(karpRabin('', ''), true);
+      assert.equal(karpRabin('a', 'b'), false);
+      assert.equal(karpRabin('b', 'a'), false);
       
       // ' tes' is contained in 'super test'
-      assert.equal(karp_rabin('super test', ' tes'), true);
+      assert.equal(karpRabin('super test', ' tes'), true);
     });
 });

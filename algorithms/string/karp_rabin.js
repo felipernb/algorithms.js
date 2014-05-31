@@ -44,16 +44,16 @@ var base = 997;
 var karpRabin = function (a, b) {
 	var aLength = a.length;
 	var bLength = b.length;
-	var hashValue = hashFunction(b);
+	var rs = hashFunction(b);
 	var newString = [];
 	
 	for (var i = 0; i < bLength; i++) {
 		newString.push(a.charAt(i));
 	}
 	
-	var newStringHashValue = hashFunction(newString.join(''));
+	var rt = hashFunction(newString.join(''));
 	
-	if (hashValue === newStringHashValue && checkEquality(b, newString.join(''))) {
+	if (rs === rt && checkEquality(b, newString.join(''))) {
 		return true;
 	}
 	else {
@@ -61,11 +61,16 @@ var karpRabin = function (a, b) {
 			var previousCharacter = newString[0];
 			var nextCharacter = a.charAt(i);
 			
-			newStringHashValue = reHash(b.length, newStringHashValue, previousCharacter, nextCharacter);
+			rt = reHash(
+				bLength,
+				rt,
+				previousCharacter,
+				nextCharacter
+			);
 			newString.shift();
 			newString.push(nextCharacter);
 			
-			if (hashValue === newStringHashValue && checkEquality(b, newString.join(''))) {
+			if (rs === rt && checkEquality(b, newString.join(''))) {
 				return true;
 			}
 		}
