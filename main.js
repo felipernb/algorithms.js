@@ -42,7 +42,8 @@ var lib = {
     quicksort: require('./algorithms/sorting/quicksort')
   },
   String: {
-    editDistance: require('./algorithms/string/edit_distance')
+    editDistance: require('./algorithms/string/edit_distance'),
+    karpRabin: require('./algorithms/string/karp_rabin')
   },
   DataStructure: {
     BST: require('./data_structures/bst'),
