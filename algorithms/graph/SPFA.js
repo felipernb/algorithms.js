@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2014 Felipe Ribeiro
+ * Copyright (C) 2014 Shu Ding
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
