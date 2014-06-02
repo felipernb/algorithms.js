@@ -30,7 +30,8 @@ var lib = {
   Math: {
     fibonacci: require('./algorithms/math/fibonacci'),
     fisherYates: require('./algorithms/math/fisher_yates'),
-    gcd: require('./algorithms/math/gcd')
+    gcd: require('./algorithms/math/gcd'),
+    extendedEuclidean: require('./algorithms/math/extended_euclidean')
   },
   Search: {
     bfs: require('./algorithms/searching/bfs'),
