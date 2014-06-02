@@ -24,7 +24,8 @@
 var lib = {
   Graph: {
     topologicalSort: require('./algorithms/graph/topological_sort'),
-    dijkstra: require('./algorithms/graph/dijkstra')
+    dijkstra: require('./algorithms/graph/dijkstra'),
+    bellmanFord: require('./algorithms/graph/bellman_ford')
   },
   Math: {
     fibonacci: require('./algorithms/math/fibonacci'),
