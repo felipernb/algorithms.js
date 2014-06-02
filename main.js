@@ -24,12 +24,15 @@
 var lib = {
   Graph: {
     topologicalSort: require('./algorithms/graph/topological_sort'),
-    dijkstra: require('./algorithms/graph/dijkstra')
+    dijkstra: require('./algorithms/graph/dijkstra'),
+    SPFA: require('./algorithms/graph/SPFA'),
+    bellmanFord: require('./algorithms/graph/bellman_ford')
   },
   Math: {
     fibonacci: require('./algorithms/math/fibonacci'),
     fisherYates: require('./algorithms/math/fisher_yates'),
-    gcd: require('./algorithms/math/gcd')
+    gcd: require('./algorithms/math/gcd'),
+    extendedEuclidean: require('./algorithms/math/extended_euclidean')
   },
   Search: {
     bfs: require('./algorithms/searching/bfs'),
@@ -43,7 +46,8 @@ var lib = {
     quicksort: require('./algorithms/sorting/quicksort')
   },
   String: {
-    editDistance: require('./algorithms/string/edit_distance')
+    editDistance: require('./algorithms/string/edit_distance'),
+    karpRabin: require('./algorithms/string/karp_rabin')
   },
   DataStructure: {
     BST: require('./data_structures/bst'),

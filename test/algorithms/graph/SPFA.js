@@ -2,7 +2,7 @@
  * Copyright (C) 2014 Felipe Ribeiro
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to
+ * of this software and associated documentation files (the "Software"], to
  * deal in the Software without restriction, including without limitation the
  * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
  * sell copies of the Software, and to permit persons to whom the Software is
@@ -20,29 +20,30 @@
  * IN THE SOFTWARE.
  */
 'use strict';
-var Comparator = require('../../util/comparator');
 
-/**
- * Bubble sort algorithm O(n^2)
- */
-var bubbleSort = function(a, comparatorFn) {
-  var comparator = new Comparator(comparatorFn),
-    n = a.length,
-    bound = n - 1;
-  for (var i = 0; i < n - 1; i++) {
-    var newbound = 0;
-    for (var j = 0; j < bound; j++) {
-      if (comparator.greaterThan(a[j], a[j + 1])) {
-        var tmp = a[j];
-        a[j] = a[j + 1];
-        a[j + 1] = tmp;
-        newbound = j;
-      }
-    }
-    bound = newbound;
-  }
+var SPFA = require('../../../algorithms/graph/SPFA'),
+    Graph = require('../../../data_structures/graph'),
+    assert = require('assert');
 
-  return a;
-};
+describe('SPFA Algorithm', function () {
+  it('should return the shortest paths to all nodes from a given origin',
+    function () {
+      var g = new Graph();
+      g.addEdge('a', 'b', 5);
+      g.addEdge('a', 'c', 10);
+      g.addEdge('b', 'c', 2);
+      g.addEdge('b', 'd', 20);
+      g.addEdge('c', 'd', 1);
+      g.addEdge('d', 'a', 10);
 
-module.exports = bubbleSort;
+      var shortestPath = SPFA(g, 'a');
+      assert.equal(shortestPath.distance.b, 5);
+      assert.equal(shortestPath.previous.b, 'a');
+
+      assert.equal(shortestPath.distance.c, 7);
+      assert.equal(shortestPath.previous.c, 'b');
+
+      assert.equal(shortestPath.distance.d, 8);
+      assert.equal(shortestPath.previous.d, 'c');
+    });
+});

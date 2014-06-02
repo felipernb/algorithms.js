@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2014 Felipe Ribeiro
+ * Copyright (C) 2014 Shu Ding
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -20,29 +20,22 @@
  * IN THE SOFTWARE.
  */
 'use strict';
-var Comparator = require('../../util/comparator');
 
-/**
- * Bubble sort algorithm O(n^2)
- */
-var bubbleSort = function(a, comparatorFn) {
-  var comparator = new Comparator(comparatorFn),
-    n = a.length,
-    bound = n - 1;
-  for (var i = 0; i < n - 1; i++) {
-    var newbound = 0;
-    for (var j = 0; j < bound; j++) {
-      if (comparator.greaterThan(a[j], a[j + 1])) {
-        var tmp = a[j];
-        a[j] = a[j + 1];
-        a[j + 1] = tmp;
-        newbound = j;
-      }
-    }
-    bound = newbound;
-  }
+var extEuclid = require('../../../algorithms/math/extended_euclidean'),
+    assert = require('assert');
 
-  return a;
-};
+describe('extEuclid', function () {
+  it('should calculate the solve to Bézout\'s identity', function () {
+    var solve = extEuclid(1, 0);
+    assert.equal(solve.x, 1);
+    assert.equal(solve.y, 0);
 
-module.exports = bubbleSort;
+    solve = extEuclid(25, 35);
+    assert.equal(solve.x, 3);
+    assert.equal(solve.y, -2);
+
+    solve = extEuclid(-55, 22);
+    assert.equal(solve.x, 1);
+    assert.equal(solve.y, 3);
+  });
+});

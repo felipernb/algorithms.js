@@ -60,7 +60,7 @@ Comparator.prototype.greaterThanOrEqual = function (a, b) {
 };
 
 Comparator.prototype.equal = function (a, b) {
-  return this.compare(a, b) == 0;
+  return this.compare(a, b) === 0;
 };
 
 /**
@@ -74,6 +74,6 @@ Comparator.prototype.reverse = function () {
   this.compare = function (a, b) {
     return originalCompareFn(b, a);
   };
-}
+};
 
 module.exports = Comparator;

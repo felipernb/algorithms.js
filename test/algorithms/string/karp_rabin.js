@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2014 Felipe Ribeiro
+ * Copyright (C) 2014 Tayllan Búrigo
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -20,29 +20,18 @@
  * IN THE SOFTWARE.
  */
 'use strict';
-var Comparator = require('../../util/comparator');
 
-/**
- * Bubble sort algorithm O(n^2)
- */
-var bubbleSort = function(a, comparatorFn) {
-  var comparator = new Comparator(comparatorFn),
-    n = a.length,
-    bound = n - 1;
-  for (var i = 0; i < n - 1; i++) {
-    var newbound = 0;
-    for (var j = 0; j < bound; j++) {
-      if (comparator.greaterThan(a[j], a[j + 1])) {
-        var tmp = a[j];
-        a[j] = a[j + 1];
-        a[j + 1] = tmp;
-        newbound = j;
-      }
-    }
-    bound = newbound;
-  }
+var karpRabin = require('../../../algorithms/string/karp_rabin'),
+	assert = require('assert');
 
-  return a;
-};
-
-module.exports = bubbleSort;
+describe('Karp-Rabin', function () {
+  it('should verify if a string is contained in another string',
+    function () {
+      assert.equal(karpRabin('', ''), true);
+      assert.equal(karpRabin('a', 'b'), false);
+      assert.equal(karpRabin('b', 'a'), false);
+      
+      // ' tes' is contained in 'super test'
+      assert.equal(karpRabin('super test', ' tes'), true);
+    });
+});

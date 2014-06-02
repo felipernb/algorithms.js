@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2014 Felipe Ribeiro
+ * Copyright (C) 2014 Shu Ding
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -19,30 +19,44 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  */
+
 'use strict';
-var Comparator = require('../../util/comparator');
 
 /**
- * Bubble sort algorithm O(n^2)
+ * Extended Euclidean algorithm to calculate the solve of 
+ *   ax + by = gcd(a, b)
+ * gcd(a, b) is the greatest common divisor of integers a and b.
+ *
+ * @param Number
+ * @param Number
+ *
+ * @return {Number, Number}
  */
-var bubbleSort = function(a, comparatorFn) {
-  var comparator = new Comparator(comparatorFn),
-    n = a.length,
-    bound = n - 1;
-  for (var i = 0; i < n - 1; i++) {
-    var newbound = 0;
-    for (var j = 0; j < bound; j++) {
-      if (comparator.greaterThan(a[j], a[j + 1])) {
-        var tmp = a[j];
-        a[j] = a[j + 1];
-        a[j + 1] = tmp;
-        newbound = j;
-      }
-    }
-    bound = newbound;
-  }
+var extEuclid = function (a, b) {
+    var s = 0, oldS = 1;
+    var t = 1, oldT = 0;
+    var r = b, oldR = a;
+    var quotient, temp;
+    while (r !== 0) {
+        quotient = Math.floor(oldR / r);
 
-  return a;
+        temp = r;
+        r = oldR - quotient * r;
+        oldR = temp;
+
+        temp = s;
+        s = oldS - quotient * s;
+        oldS = temp;
+
+        temp = t;
+        t = oldT - quotient * t;
+        oldT = temp;
+    }
+
+    return {
+        x: oldS,
+        y: oldT
+    };
 };
 
-module.exports = bubbleSort;
+module.exports = extEuclid;
