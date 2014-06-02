@@ -20,7 +20,6 @@
  * IN THE SOFTWARE.
  */
 'use strict';
-var Comparator = require('../../util/comparator');
 var HeapStructure = require('../../data_structures/heap');
 
 /**
@@ -29,8 +28,6 @@ var HeapStructure = require('../../data_structures/heap');
  * empty. The time complexity of the algorithm is O(n.lg n)
  */
 var heapsortInit = function (array, comparatorFn) {
-
-  var comparator = new Comparator(comparatorFn);
 
   var minHeap = new HeapStructure.MinHeap(comparatorFn);
   minHeap.heapify(array);

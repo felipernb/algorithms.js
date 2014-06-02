@@ -21,18 +21,18 @@
  */
 'use strict';
 
-var heap_sort = require('../../../algorithms/sorting/heap_sort'),
+var heapSort = require('../../../algorithms/sorting/heap_sort'),
     assert = require('assert');
 
 describe('Heap Sort', function () {
   it('should sort the given array', function () {
-    assert.deepEqual(heap_sort([]), []);
-    assert.deepEqual(heap_sort([1]), [1]);
-    assert.deepEqual(heap_sort([2, 1]), [1, 2]);
-    assert.deepEqual(heap_sort([3, 1, 2]), [1, 2, 3]);
-    assert.deepEqual(heap_sort([1, 2, 3, 4, 5, 6]), [1, 2, 3, 4, 5, 6]);
-    assert.deepEqual(heap_sort([6, 5, 4, 3, 2, 1]), [1, 2, 3, 4, 5, 6]);
-    assert.deepEqual(heap_sort([1, 295, 3, 6, 8, 10, 10, 20, 0, 5]),
+    assert.deepEqual(heapSort([]), []);
+    assert.deepEqual(heapSort([1]), [1]);
+    assert.deepEqual(heapSort([2, 1]), [1, 2]);
+    assert.deepEqual(heapSort([3, 1, 2]), [1, 2, 3]);
+    assert.deepEqual(heapSort([1, 2, 3, 4, 5, 6]), [1, 2, 3, 4, 5, 6]);
+    assert.deepEqual(heapSort([6, 5, 4, 3, 2, 1]), [1, 2, 3, 4, 5, 6]);
+    assert.deepEqual(heapSort([1, 295, 3, 6, 8, 10, 10, 20, 0, 5]),
       [0, 1, 3, 5, 6, 8, 10, 10, 20, 295]);
   });
 
@@ -41,20 +41,20 @@ describe('Heap Sort', function () {
       if (a.length === b.length) return 0;
       return a.length < b.length ? -1 : 1;
     };
-    assert.deepEqual(heap_sort([], compare), []);
-    assert.deepEqual(heap_sort(['apple'], compare), ['apple']);
-    assert.deepEqual(heap_sort(['apple', 'banana'], compare),
+    assert.deepEqual(heapSort([], compare), []);
+    assert.deepEqual(heapSort(['apple'], compare), ['apple']);
+    assert.deepEqual(heapSort(['apple', 'banana'], compare),
       ['apple', 'banana']);
-    assert.deepEqual(heap_sort(['apple', 'banana', 'car'], compare),
+    assert.deepEqual(heapSort(['apple', 'banana', 'car'], compare),
       ['car', 'apple', 'banana']);
-    assert.deepEqual(heap_sort(['apple', 'banana', 'car', 'z'], compare),
+    assert.deepEqual(heapSort(['apple', 'banana', 'car', 'z'], compare),
       ['z', 'car', 'apple', 'banana']);
 
     var reverseSort = function (a, b) {
       if (a == b) return 0;
       return a < b ? 1: -1;
     };
-    assert.deepEqual(heap_sort([1, 295, 3, 6, 8, 10, 10, 20, 0, 5],
+    assert.deepEqual(heapSort([1, 295, 3, 6, 8, 10, 10, 20, 0, 5],
         reverseSort),
       [295, 20, 10, 10, 8, 6, 5, 3, 1, 0]);
   });
