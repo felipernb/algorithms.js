@@ -1,0 +1,46 @@
+CHANGELOG
+=========
+
+0.2.0 (2014-06-01)
+* Graphs
+** Shortest Path Faster Algorithm (#34)
+** Bellman-Ford Shortest Path (#36)
+
+* Math
+** Extended Euclidean Algorithm (#37)
+
+* Strings
+** Karp-Rabin String Matching (#35)
+
+
+0.1.0 (2014-05-30)
+* Sorting
+** Bubble Sort
+** Quicksort
+** Merge sort
+
+* Graphs
+** Dijkstra
+** Topological Sort
+
+* Math
+** Fibonacci
+** Fisher-Yates
+** Euclidean GCD
+
+* Search
+** Binary Search
+** Breadth first search (for BSTs)
+** Depth first search (for BSTs)
+
+* String
+** Levenshtein edit distance
+
+* Data Structures
+** Binary Search Tree
+** Graph
+** Heap
+** Linked list
+** Priority Queue
+** Queue
+** Stack
