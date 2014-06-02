@@ -32,7 +32,8 @@ var lib = {
     fibonacci: require('./algorithms/math/fibonacci'),
     fisherYates: require('./algorithms/math/fisher_yates'),
     gcd: require('./algorithms/math/gcd'),
-    extendedEuclidean: require('./algorithms/math/extended_euclidean')
+    extendedEuclidean: require('./algorithms/math/extended_euclidean'),
+    newtonSqrt: require('./algorithms/math/newton_sqrt')
   },
   Search: {
     bfs: require('./algorithms/searching/bfs'),
