@@ -76,7 +76,7 @@ describe('Insertion Sort', function () {
 			this.age = age;
 		};
 
-		var compareAgesOfGuys = function(g1, g2) {
+		var compareAgeOfGuys = function(g1, g2) {
 			if (g1.age === g2.age) {
 				return 0;
 			}
@@ -89,7 +89,7 @@ describe('Insertion Sort', function () {
 			g4 = new Guy(20);
 
 		assert.deepEqual(
-			insertionSort([g1, g2, g3, g4], compareAgesOfGuys), [g3, g4, g1, g2]
+			insertionSort([g1, g2, g3, g4], compareAgeOfGuys), [g3, g4, g1, g2]
 		);
 	});
 });
