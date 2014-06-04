@@ -137,8 +137,11 @@ LinkedList.prototype.del = function (index) {
   if (index >= this.length || index < 0) {
     throw new Error('Index out of bounds');
   }
-  var node = this.getNode(index);
+  
+  this.delNode(this.getNode(index));
+};
 
+LinkedList.prototype.delNode = function (node) {
   if (node === this.tail) {
     // node is the last element
     this.tail = node.prev;
