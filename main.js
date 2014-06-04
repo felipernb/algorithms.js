@@ -58,7 +58,8 @@ var lib = {
     LinkedList: require('./data_structures/linked_list'),
     PriorityQueue: require('./data_structures/priority_queue'),
     Queue: require('./data_structures/queue'),
-    Stack: require('./data_structures/stack')
+    Stack: require('./data_structures/stack'),
+    Set: require('./data_structures/set')
   }
 };
 
