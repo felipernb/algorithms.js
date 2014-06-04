@@ -1,6 +1,6 @@
 {
   "name": "algorithms",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Traditional computer science algorithms and data structures implemented in JavaScript",
   "directories": {
     "test": "test"

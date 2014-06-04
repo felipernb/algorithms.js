@@ -1,6 +1,18 @@
 CHANGELOG
 =========
 
+0.3.0 (2014-06-03)
+* Math
+** Square root by Newton's method
+
+* Data Structures
+** Hash table
+
+* Sorting
+** Insertion sort
+** Heap sort
+** Counting sort
+
 0.2.0 (2014-06-01)
 * Graphs
 ** Shortest Path Faster Algorithm (#34)
