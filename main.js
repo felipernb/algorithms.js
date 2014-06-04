@@ -71,6 +71,7 @@ var lib = {
     PriorityQueue: require('./data_structures/priority_queue'),
     Queue: require('./data_structures/queue'),
     Stack: require('./data_structures/stack'),
+    Set: require('./data_structures/set'),
     DisjointSetForest: require('./data_structures/disjoint_set_forest')
   }
 };
