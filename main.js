@@ -42,6 +42,7 @@ var lib = {
   },
   Sort: {
     bubbleSort: require('./algorithms/sorting/bubble_sort'),
+    countingSort: require('./algorithms/sorting/counting_sort'),
     heapSort: require('./algorithms/sorting/heap_sort'),
     mergeSort: require('./algorithms/sorting/merge_sort'),
     quicksort: require('./algorithms/sorting/quicksort')
