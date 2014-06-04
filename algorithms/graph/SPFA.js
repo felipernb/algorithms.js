@@ -43,15 +43,15 @@ function SPFA(graph, s) {
   graph.vertices.forEach(function (v) {
     if (v !== s) {
       distance[v] = Infinity;
-	  isInQue[v] = false;
+      isInQue[v] = false;
     }
   });
-  
+
   var currNode;
   while (head != tail) {
-	currNode = queue[head++];
-	isInQue[currNode] = false;
-	var neighbors = graph.neighbors(currNode);
+    currNode = queue[head++];
+    isInQue[currNode] = false;
+    var neighbors = graph.neighbors(currNode);
     for (var i = 0; i < neighbors.length; i++) {
       var v = neighbors[i];
       // relaxation
@@ -60,13 +60,13 @@ function SPFA(graph, s) {
         distance[v] = newDistance;
         previous[v] = currNode;
         if (!isInQue[v]){
-	      queue[tail++] = v;
-	      isInQue[v] = true;
-	    }
+          queue[tail++] = v;
+          isInQue[v] = true;
+        }
       }
     }
   }
-  
+
   return {
     distance: distance,
     previous: previous
