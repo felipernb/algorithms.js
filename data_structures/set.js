@@ -33,7 +33,7 @@ var Set = function() {
    for(var i = 0; i < toAdd.length; i++) {
       this.add(toAdd[i]);
    }
-}
+};
 
 Set.prototype.add = function() {
    for(var i = 0; i < arguments.length; i++) {
@@ -42,7 +42,7 @@ Set.prototype.add = function() {
       }
    }
    return this;
-}
+};
 
 Set.prototype.remove = function() {
    for(var i = 0; i < arguments.length; i++) {
@@ -50,7 +50,7 @@ Set.prototype.remove = function() {
          this.elts.splice(this.elts.indexOf(arguments[i]),1);
    }
    return this;
-}
+};
 
 Set.prototype.contains = function(elt) {
    for(var i = 0; i < this.elts.length; i++) {
@@ -59,7 +59,7 @@ Set.prototype.contains = function(elt) {
       }
    }
    return false;
-}
+};
 
 Set.prototype.intersect = function(other) {
    var newSet = new Set();
@@ -68,18 +68,20 @@ Set.prototype.intersect = function(other) {
          newSet.add(this.elts[i]);
    }
    return newSet;
-}
+};
 
 Set.prototype.union = function(other) {
    var newSet = new Set();
    
-   for(var i = 0; i < this.elts.length; i++)
+   for(var i = 0; i < this.elts.length; i++) {
       newSet.add(this.elts[i]);
-   for(var i = 0; i < other.elts.length; i++)
-      newSet.add(other.elts[i]);
+   }
+   for(var j = 0; j < other.elts.length; j++) {
+      newSet.add(other.elts[j]);
+   }
 
    return newSet;
-}
+};
 
 Set.prototype.subset = function(other) {
    for(var i = 0; i < this.elts.length; i++) {
@@ -88,7 +90,7 @@ Set.prototype.subset = function(other) {
       }
    }
    return true;
-}
+};
 
 Set.prototype.minus = function(other) {
    var newSet = new Set();
@@ -98,18 +100,18 @@ Set.prototype.minus = function(other) {
       }
    }
    return newSet;
-}
+};
 
 Set.prototype.symDiff = function(other) {
    return (this.minus(other)).union(other.minus(this));
-}
+};
 
 Set.prototype.size = function() {
    return this.elts.length;
-}
+};
 
 Set.prototype.equals = function(other) {
    return this.subset(other) && other.subset(this);
-}
+};
 
 module.exports = Set;
