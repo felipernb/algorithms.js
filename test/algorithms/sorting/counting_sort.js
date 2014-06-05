@@ -49,7 +49,7 @@ var array = [
 ];
 
 describe('Counting Sort', function () {
-  it('should sort the given array', function() {
+  it('should sort the given array', function () {
     array = countingSort(array);
 
     // Asserts that the array is truly sorted

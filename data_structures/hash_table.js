@@ -85,7 +85,6 @@ HashTable.prototype.del = function (key) {
   var node;
 
   if ((node = this._findInList(this._table[i], key))) {
-
     this._table[i].delNode(node);
     this._items--;
   }

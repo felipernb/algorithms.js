@@ -10,8 +10,7 @@
   "devDependencies": {
     "coveralls": "^2.10.0",
     "istanbul": "^0.2.10",
-    "jshint": "^2.5.1",
-    "jscs": "^1.4.5",
+    "jshint": "~2.4.4",
     "mocha": "^1.20.0"
   },
   "repository": {

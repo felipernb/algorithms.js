@@ -73,7 +73,7 @@ LinkedList.prototype.add = function (n, index) {
     var prevNode,
         nextNode;
 
-    if (index  === 0) {
+    if (index === 0) {
       // Insert in the beginning
       nextNode = this.head;
       this.head = node;
