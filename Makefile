@@ -1,10 +1,15 @@
-all: jshint coverage
+.PHONY: setup
+
+all: jshint jscs coverage
 
 setup:
 	npm install
 
 jshint: setup
 	jshint algorithms data_structures test util
+
+jscs: setup
+	jscs --reporter=inline algorithms data_structures test util
 
 test: setup
 	mocha -R spec --recursive test

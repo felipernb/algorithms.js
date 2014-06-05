@@ -1,0 +1,12 @@
+{
+  "validateIndentation":2,
+  // "indent": 2,
+  "disallowMixedSpacesAndTabs":true,
+  // "smarttabs":false,
+  "maximumLineLength":80,
+  // "maxlen": 80,
+  "disallowTrailingWhitespace": true,
+  // "trailing": true,
+  "requireCurlyBraces": []
+  // "curly": false,
+}
