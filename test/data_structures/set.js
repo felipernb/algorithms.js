@@ -47,7 +47,7 @@ describe('Set', function () {
      assert.deepEqual(s.elts, [2]);
   });
 
-  it('should do nothing if an element that doesn\'t exist is removed', function() {
+  it('should do nothing xist is removed', function() {
     var s = new Set(1,2,3);
     s.remove(4);
     assert.deepEqual(s.elts, [1,2,3]);
