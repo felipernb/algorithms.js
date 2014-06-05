@@ -55,7 +55,7 @@ HashTable.prototype.get = function (key) {
   var i = this._position(key);
   var node;
   if ((node = this._findInList(this._table[i], key))) {
-      return node.value.v;
+    return node.value.v;
   }
 };
 
@@ -86,8 +86,8 @@ HashTable.prototype.del = function (key) {
 
   if ((node = this._findInList(this._table[i], key))) {
 
-      this._table[i].delNode(node);
-      this._items--;
+    this._table[i].delNode(node);
+    this._items--;
   }
 };
 

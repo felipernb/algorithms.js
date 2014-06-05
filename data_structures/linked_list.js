@@ -137,7 +137,7 @@ LinkedList.prototype.del = function (index) {
   if (index >= this.length || index < 0) {
     throw new Error('Index out of bounds');
   }
-  
+
   this.delNode(this.getNode(index));
 };
 
