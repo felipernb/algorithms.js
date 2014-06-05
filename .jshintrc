@@ -4,6 +4,7 @@
   "camelcase": true,
   "immed": true,
   "indent": 2,
+  "smarttabs":false,
   "newcap": true,
   "noempty": true,
   "quotmark": "single",
