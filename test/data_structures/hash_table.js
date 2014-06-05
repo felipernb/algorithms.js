@@ -25,7 +25,7 @@ var HashTable = require('../../data_structures/hash_table'),
     assert = require('assert');
 
 describe('Hash Table', function () {
-  it('should calculate hashes using the same algorithm as '+
+  it('should calculate hashes using the same algorithm as ' +
     'Java\'s String.hashCode', function () {
       var h = new HashTable();
       assert.equal(h.hash('The quick brown fox jumps over the lazy dog'),
@@ -51,7 +51,7 @@ describe('Hash Table', function () {
         'WGD)s;Zs<8K6(K_kVko"mV82Pcl)0Rx}jfq3VBm:MOX/gLfSPvLx~%(3jHh5gG2e' +
         'JaQ|nW}ekR_W5Ldv`@j^hd%Wiw6moGekrS>k7gRR|dd?7Pi:`0; r_wq=-F-e(iY';
       assert.equal(h.hash(longString), -998071508);
-  });
+    });
 
   it('should initialize the table with the given capacity',
     function () {
@@ -60,7 +60,7 @@ describe('Hash Table', function () {
 
       h = new HashTable(2);
       assert.equal(h.capacity, 2);
-  });
+    });
 
   it('should allow putting and getting elements from the table', function () {
     var h = new HashTable(16);

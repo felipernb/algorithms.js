@@ -53,7 +53,7 @@ describe('GCD', function () {
       assert.equal(gcdb(7, 49), 7);
       assert.equal(gcdb(7, 5), 1);
       assert.equal(gcdb(35, 49), 7);
-  });
+    });
 });
 
 

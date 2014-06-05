@@ -44,7 +44,7 @@ var sqrt = function (n, tolerance, maxIterations) {
     square = x * x;
     if (square < n) lowerBound = x;
     else upperBound = x;
-  } while (Math.abs(square - n) > tolerance  && i < maxIterations);
+  } while (Math.abs(square - n) > tolerance && i < maxIterations);
 
   // Checks if the number is a perfect square to return the exact root
   var roundX = Math.round(x);

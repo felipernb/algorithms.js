@@ -73,7 +73,7 @@ LinkedList.prototype.add = function (n, index) {
     var prevNode,
         nextNode;
 
-    if (index  === 0) {
+    if (index === 0) {
       // Insert in the beginning
       nextNode = this.head;
       this.head = node;
@@ -137,7 +137,7 @@ LinkedList.prototype.del = function (index) {
   if (index >= this.length || index < 0) {
     throw new Error('Index out of bounds');
   }
-  
+
   this.delNode(this.getNode(index));
 };
 

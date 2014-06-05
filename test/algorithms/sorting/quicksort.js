@@ -52,7 +52,7 @@ describe('QuickSort', function () {
 
     var reverseSort = function (a, b) {
       if (a == b) return 0;
-      return a < b ? 1: -1;
+      return a < b ? 1 : -1;
     };
     assert.deepEqual(quicksort([1, 295, 3, 6, 8, 10, 10, 20, 0, 5],
         reverseSort),
