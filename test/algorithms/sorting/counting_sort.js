@@ -50,12 +50,12 @@ var array = [
 
 describe('Counting Sort', function () {
   it('should sort the given array', function () {
-      array = countingSort(array);
+    array = countingSort(array);
 
-      // Asserts that the array is truly sorted
-      assert.deepEqual(array.indexOf(firstObject), 0);
-      assert.deepEqual(array.indexOf(secondObject), 4);
-      assert.deepEqual(array.indexOf(thirdObject), 3);
-      assert.deepEqual(array.indexOf({key: 99}), -1);
+    // Asserts that the array is truly sorted
+    assert.deepEqual(array.indexOf(firstObject), 0);
+    assert.deepEqual(array.indexOf(secondObject), 4);
+    assert.deepEqual(array.indexOf(thirdObject), 3);
+    assert.deepEqual(array.indexOf({key: 99}), -1);
   });
 });
