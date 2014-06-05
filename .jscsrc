@@ -1,12 +1,23 @@
 {
   "validateIndentation":2,
-  // "indent": 2,
+  // JSHint: "indent": 2,
   "disallowMixedSpacesAndTabs":true,
-  // "smarttabs":false,
+  // JSHint: "smarttabs":false,
   "maximumLineLength":80,
-  // "maxlen": 80,
+  // JSHint: "maxlen": 80,
   "disallowTrailingWhitespace": true,
-  // "trailing": true,
-  "requireCurlyBraces": []
-  // "curly": false,
+  // JSHint: "trailing": true,
+  "requireCurlyBraces": [],
+  // JSHint: "curly": false,
+  "requireSpacesInConditionalExpression": true,
+  "requireSpacesInNamedFunctionExpression": {
+    "beforeOpeningCurlyBrace": true
+  },
+  "disallowSpacesInNamedFunctionExpression": {
+    "beforeOpeningRoundBrace": true
+  },
+  "requireSpacesInAnonymousFunctionExpression": {
+    "beforeOpeningCurlyBrace": true,
+    "beforeOpeningRoundBrace": true
+  }
 }

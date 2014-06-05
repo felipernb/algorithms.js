@@ -45,7 +45,7 @@ describe('Knuth-Morris-Pratt', function () {
         'org/wiki/Knuth-Morris-Pratt_algorithm';
       var pattern = 'https://en.wikipedia.org/wiki/Knuth-Morris-Pratt_al' +
         'gorithm';
-			
+
       assert.equal(knuthMorrisPratt(text, pattern), 915);
 
       pattern = '(https://en.wikipedia.org/wiki/Knuth-Morris-Pratt_algorithm';
