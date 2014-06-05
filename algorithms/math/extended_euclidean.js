@@ -23,7 +23,7 @@
 'use strict';
 
 /**
- * Extended Euclidean algorithm to calculate the solve of 
+ * Extended Euclidean algorithm to calculate the solve of
  *   ax + by = gcd(a, b)
  * gcd(a, b) is the greatest common divisor of integers a and b.
  *

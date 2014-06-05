@@ -25,10 +25,10 @@ var Comparator = require('../../util/comparator');
 /**
  * Insertion sort algorithm O(n + d)
  */
-var insertionSort = function(vector, comparatorFn) {
+var insertionSort = function (vector, comparatorFn) {
   var comparator = new Comparator(comparatorFn);
 
-  for (var i=1, len=vector.length; i<len; i++) {
+  for (var i = 1, len = vector.length; i < len; i++) {
     var aux = vector[i],
       j = i;
 

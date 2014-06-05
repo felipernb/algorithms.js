@@ -25,7 +25,7 @@ var HashTable = require('../../data_structures/hash_table'),
     assert = require('assert');
 
 describe('Hash Table', function () {
-  it('should calculate hashes using the same algorithm as '+
+  it('should calculate hashes using the same algorithm as ' +
     'Java\'s String.hashCode', function () {
       var h = new HashTable();
       assert.equal(h.hash('The quick brown fox jumps over the lazy dog'),

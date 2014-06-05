@@ -27,22 +27,22 @@
  * If the pattern exists inside the text, it will be returned
  * the index of the begining of the pattern in the text,
  * otherwise it will be returned the length of the text
- * 
+ *
  * Asymptotic Complexity: O(text.length)
- * 
+ *
  * @param {Array} of Numbers, Strings or Characters
  * 	or {Strig}
  * @param {Array} of Numbers, Strings or Characters
  * 	or {Strig}
  * @return {Number}
  */
-var knuthMorrisPratt = function(text, pattern) {
+var knuthMorrisPratt = function (text, pattern) {
   var textLength = text.length;
   var patternLength = pattern.length;
   var m = 0;
   var i = 0;
   var table = buildTable(pattern);
-	
+
   while (m + i < textLength) {
     if (pattern[i] === text[m + i]) {
       if (i === patternLength - 1) {
@@ -61,29 +61,29 @@ var knuthMorrisPratt = function(text, pattern) {
       }
     }
   }
-	
+
   return textLength;
 };
 
 /**
  * Builds the dinamic table of the given pattern
  * to record how the pattern can match it self
- * 
+ *
  * Asymptotic Complexity: O(pattern.length)
- * 
+ *
  * @param {Array} of Numbers, Strings or Characters
  * 	or {Strig}
  * @return {Array} of Integers
  */
-var buildTable = function(pattern) {
+var buildTable = function (pattern) {
   var length = pattern.length;
   var table = [];
   var position = 2;
   var cnd = 0;
-	
+
   table[0] = -1;
   table[1] = 0;
-	
+
   while (position < length) {
     if (pattern[position - 1] === pattern[cnd]) {
       ++cnd;
@@ -98,7 +98,7 @@ var buildTable = function(pattern) {
       ++position;
     }
   }
-	
+
   return table;
 };
 
