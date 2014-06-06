@@ -28,6 +28,7 @@ var lib = {
     SPFA: require('./algorithms/graph/SPFA'),
     bellmanFord: require('./algorithms/graph/bellman_ford'),
     eulerPath: require('./algorithms/graph/euler_path'),
+    depthFirstSearch: require('./algorithms/graph/depth_first_search')
   },
   Math: {
     fibonacci: require('./algorithms/math/fibonacci'),
@@ -47,7 +48,8 @@ var lib = {
     heapSort: require('./algorithms/sorting/heap_sort'),
     mergeSort: require('./algorithms/sorting/merge_sort'),
     quicksort: require('./algorithms/sorting/quicksort'),
-    selectionSort: require('./algorithms/sorting/selection_sort')
+    selectionSort: require('./algorithms/sorting/selection_sort'),
+    radixSort: require('./algorithms/sorting/radix_sort')
   },
   String: {
     editDistance: require('./algorithms/string/edit_distance'),
