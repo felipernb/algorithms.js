@@ -67,9 +67,9 @@ BST.prototype.insert = function (value, parent) {
   }
 
   var child = this._comparator.lessThan(value, parent.value) ? 'left' : 'right';
-  if (parent[child])
+  if (parent[child]) {
     this.insert(value, parent[child]);
-  else {
+  } else {
     parent[child] = new Node(value, parent);
     this._size++;
   }

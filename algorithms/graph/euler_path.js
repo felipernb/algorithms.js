@@ -32,21 +32,21 @@ var Graph = require('../../data_structures/graph');
  * @param {Graph} Graph, must be connected and contain at least one vertex.
  * @return Object
  */
-var eulerEndpoints = function(graph) {
+var eulerEndpoints = function (graph) {
   var rank = {};
   //     start     ->  rank = +1
   // middle points ->  rank =  0
   //    finish     ->  rank = -1
 
   // Initialize ranks to be outdegrees of vertices.
-  graph.vertices.forEach(function(vertex) {
+  graph.vertices.forEach(function (vertex) {
     rank[vertex] = graph.neighbors(vertex).length;
   });
 
   if (graph.directed) {
     // rank = outdegree - indegree
-    graph.vertices.forEach(function(vertex) {
-      graph.neighbors(vertex).forEach(function(neighbor) {
+    graph.vertices.forEach(function (vertex) {
+      graph.neighbors(vertex).forEach(function (neighbor) {
         rank[neighbor] -= 1;
       });
     });
@@ -54,7 +54,7 @@ var eulerEndpoints = function(graph) {
   else {
     // Compute ranks from vertex degree parity values.
     var startChosen = false;
-    graph.vertices.forEach(function(vertex) {
+    graph.vertices.forEach(function (vertex) {
       rank[vertex] %= 2;
       if (rank[vertex]) {
         if (startChosen) {
@@ -67,7 +67,7 @@ var eulerEndpoints = function(graph) {
 
   var start, finish;
 
-  graph.vertices.forEach(function(vertex) {
+  graph.vertices.forEach(function (vertex) {
     if (rank[vertex] == 1) {
       if (start !== undefined) {
         throw new Error('Duplicate start vertex.');
@@ -104,7 +104,7 @@ var eulerEndpoints = function(graph) {
  * @param {Graph}
  * @return Array
  */
-var eulerPath = function(graph) {
+var eulerPath = function (graph) {
   if (!graph.vertices.length) {
     return [];
   }
@@ -116,7 +116,7 @@ var eulerPath = function(graph) {
   graph.vertices.forEach(seen.addVertex.bind(seen));
 
   (function dfs(vertex) {
-    graph.neighbors(vertex).forEach(function(neighbor) {
+    graph.neighbors(vertex).forEach(function (neighbor) {
       if (!seen.edge(vertex, neighbor)) {
         seen.addEdge(vertex, neighbor);
         dfs(neighbor);
@@ -125,7 +125,7 @@ var eulerPath = function(graph) {
     });
   }(endpoints.start));
 
-  graph.vertices.forEach(function(vertex) {
+  graph.vertices.forEach(function (vertex) {
     if (seen.neighbors(vertex).length < graph.neighbors(vertex).length) {
       throw new Error('There is no euler path for a disconnected graph.');
     }
