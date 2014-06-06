@@ -33,64 +33,64 @@ var Graph = require('../../data_structures/graph');
  * @return Object
  */
 var eulerEndpoints = function(graph) {
-    var rank = {};
-    //     start     ->  rank = +1
-    // middle points ->  rank =  0
-    //    finish     ->  rank = -1
+  var rank = {};
+  //     start     ->  rank = +1
+  // middle points ->  rank =  0
+  //    finish     ->  rank = -1
 
-    // Initialize ranks to be outdegrees of vertices.
+  // Initialize ranks to be outdegrees of vertices.
+  graph.vertices.forEach(function(vertex) {
+    rank[vertex] = graph.neighbors(vertex).length;
+  });
+
+  if (graph.directed) {
+    // rank = outdegree - indegree
     graph.vertices.forEach(function(vertex) {
-        rank[vertex] = graph.neighbors(vertex).length;
+      graph.neighbors(vertex).forEach(function(neighbor) {
+        rank[neighbor] -= 1;
+      });
     });
-
-    if (graph.directed) {
-        // rank = outdegree - indegree
-        graph.vertices.forEach(function(vertex) {
-            graph.neighbors(vertex).forEach(function(neighbor) {
-                rank[neighbor] -= 1;
-            });
-        });
-    }
-    else {
-        // Compute ranks from vertex degree parity values.
-        var startChosen = false;
-        graph.vertices.forEach(function(vertex) {
-            rank[vertex] %= 2;
-            if (rank[vertex]) {
-                if (startChosen) {
-                    rank[vertex] = -1;
-                }
-                startChosen = true;
-            }
-        });
-    }
-
-    var start, finish;
-
+  }
+  else {
+    // Compute ranks from vertex degree parity values.
+    var startChosen = false;
     graph.vertices.forEach(function(vertex) {
-        if (rank[vertex] == 1) {
-            if (start !== undefined) {
-                throw new Error('Duplicate start vertex.');
-            }
-            start = vertex;
+      rank[vertex] %= 2;
+      if (rank[vertex]) {
+        if (startChosen) {
+          rank[vertex] = -1;
         }
-        else if (rank[vertex] == -1) {
-            if (finish !== undefined) {
-                throw new Error('Duplicate finish vertex.');
-            }
-            finish = vertex;
-        }
-        else if (rank[vertex]) {
-            throw new Error('Unexpected vertex degree for ' + vertex);
-        }
+        startChosen = true;
+      }
     });
+  }
 
-    if (start === undefined && finish === undefined) {
-        start = finish = graph.vertices[0];
+  var start, finish;
+
+  graph.vertices.forEach(function(vertex) {
+    if (rank[vertex] == 1) {
+      if (start !== undefined) {
+        throw new Error('Duplicate start vertex.');
+      }
+      start = vertex;
     }
+    else if (rank[vertex] == -1) {
+      if (finish !== undefined) {
+        throw new Error('Duplicate finish vertex.');
+      }
+      finish = vertex;
+    }
+    else if (rank[vertex]) {
+      throw new Error('Unexpected vertex degree for ' + vertex);
+    }
+  });
 
-    return {start: start,
-            finish: finish};
+  if (start === undefined && finish === undefined) {
+    start = finish = graph.vertices[0];
+  }
+
+  return {start: start,
+          finish: finish};
 };
 
 
@@ -105,32 +105,32 @@ var eulerEndpoints = function(graph) {
  * @return Array
  */
 var eulerPath = function(graph) {
-    if (!graph.vertices.length) {
-        return [];
-    }
+  if (!graph.vertices.length) {
+    return [];
+  }
 
-    var endpoints = eulerEndpoints(graph);
-    var route = [endpoints.finish];
+  var endpoints = eulerEndpoints(graph);
+  var route = [endpoints.finish];
 
-    var seen = new Graph(graph.directed);
-    graph.vertices.forEach(seen.addVertex.bind(seen));
+  var seen = new Graph(graph.directed);
+  graph.vertices.forEach(seen.addVertex.bind(seen));
 
-    (function dfs(vertex) {
-        graph.neighbors(vertex).forEach(function(neighbor) {
-            if (!seen.edge(vertex, neighbor)) {
-                seen.addEdge(vertex, neighbor);
-                dfs(neighbor);
-                route.push(vertex);
-            }
-        });
-    }(endpoints.start));
-
-    graph.vertices.forEach(function(vertex) {
-        if (seen.neighbors(vertex).length < graph.neighbors(vertex).length) {
-            throw new Error('There is no euler path for a disconnected graph.');
-        }
+  (function dfs(vertex) {
+    graph.neighbors(vertex).forEach(function(neighbor) {
+      if (!seen.edge(vertex, neighbor)) {
+        seen.addEdge(vertex, neighbor);
+        dfs(neighbor);
+        route.push(vertex);
+      }
     });
-    return route.reverse();
+  }(endpoints.start));
+
+  graph.vertices.forEach(function(vertex) {
+    if (seen.neighbors(vertex).length < graph.neighbors(vertex).length) {
+      throw new Error('There is no euler path for a disconnected graph.');
+    }
+  });
+  return route.reverse();
 };
 
 
