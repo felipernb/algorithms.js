@@ -43,6 +43,7 @@ function HashTable(initialCapacity) {
  * (The hash value of the empty string is zero.)
  */
 HashTable.prototype.hash = function (s) {
+  if (typeof s !== 'string') s = JSON.stringify(s);
   var hash = 0;
   for (var i = 0; i < s.length; i++) {
     hash = ((hash << 5) - hash) + s.charCodeAt(i);

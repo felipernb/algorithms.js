@@ -129,5 +129,15 @@ describe('Hash Table', function () {
     h.del('foo');
     assert.equal(h.get('foo'), undefined);
   });
+
+  it('should allow non-string keys', function () {
+    var h = new HashTable();
+    h.put(10, 5);
+    assert.equal(h.get(10), 5);
+
+    var o = {a: 'foo', b: 'bar'};
+    h.put(o, 'foo');
+    assert.equal(h.get(o), 'foo');
+  });
 });
 
