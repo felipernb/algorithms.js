@@ -35,7 +35,7 @@ describe('Selection Sort', function () {
     assert.deepEqual(selectionSort([1, 295, 3, 6, 8, 10, 10, 20, 0, 5]),
       [0, 1, 3, 5, 6, 8, 10, 10, 20, 295]);
     assert.deepEqual(selectionSort(['a', 'A', 'b', 'Z']), ['A', 'Z', 'a', 'b']);
-    assert.deepEqual(selectionSort(['The', 'special', 'one']), ['one', 'special', 'the']);
+    assert.deepEqual(selectionSort(['hi', 'everybody']), ['everybody', 'hi']);
 
   });
 
