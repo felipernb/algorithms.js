@@ -26,10 +26,10 @@ var Comparator = require('../../util/comparator');
  * Bubble sort algorithm O(n^2)
  */
 var bubbleSort = function(a, comparatorFn) {
-  var comparator = new Comparator(comparatorFn),
-    n = a.length;
-    check = 0;
-    bound = n - 1;
+  var comparator = new Comparator(comparatorFn);
+  var n = a.length;
+  var check = 0;
+  var bound = n - 1;
   for (var i = 0; i < n - 1; i++) {
     var newbound = 0;
     for (var j = 0; j < bound; j++) {
@@ -42,8 +42,8 @@ var bubbleSort = function(a, comparatorFn) {
       }
     }
     bound = newbound;
-    if (0 == check)
-	    return a;
+    if (0 === check)
+      return a;
   }
 
   return a;
