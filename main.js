@@ -46,7 +46,8 @@ var lib = {
     countingSort: require('./algorithms/sorting/counting_sort'),
     heapSort: require('./algorithms/sorting/heap_sort'),
     mergeSort: require('./algorithms/sorting/merge_sort'),
-    quicksort: require('./algorithms/sorting/quicksort')
+    quicksort: require('./algorithms/sorting/quicksort'),
+    selectionSort: require('./algorithms/sorting/selection_sort')
   },
   String: {
     editDistance: require('./algorithms/string/edit_distance'),
