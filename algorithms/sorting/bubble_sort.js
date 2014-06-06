@@ -29,7 +29,7 @@ var bubbleSort = function (a, comparatorFn) {
   var comparator = new Comparator(comparatorFn);
   var n = a.length;
   var bound = n - 1;
-  var check = 0;
+  var check = false;
   for (var i = 0; i < n - 1; i++) {
     var newbound = 0;
     for (var j = 0; j < bound; j++) {
@@ -38,10 +38,10 @@ var bubbleSort = function (a, comparatorFn) {
         a[j] = a[j + 1];
         a[j + 1] = tmp;
         newbound = j;
-        check = 1;
+        check = true;
       }
     }
-    if (0 === check)
+    if (!check)
       return a;
     bound = newbound;
   }
