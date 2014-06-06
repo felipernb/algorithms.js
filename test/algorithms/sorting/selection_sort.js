@@ -20,25 +20,24 @@
  * IN THE SOFTWARE.
  */
 'use strict';
-/**
- * Selection sort algorithm O(n^2)
- */
-var selectionSort = function(a) {
-  var n = a.length;
-  for (var i = 0; i < n - 1; i++){
-    var min = i;
-    for (var j = i + 1; j < n; j++){
-      if(a[min] > a[j])
-        min = j;
-    }
-    if (min != i){
-      var tmp = a[i];
-      a[i] = a[min];
-      a[min] = tmp;
-    }
-  }
 
-  return a;
-};
+var selectionSort = require('../../../algorithms/sorting/selection_sort'),
+    assert = require('assert');
 
-module.exports = selectionSort;
+describe('Selection Sort', function () {
+  it('should sort the given array', function () {
+    assert.deepEqual(selectionSort([]), []);
+    assert.deepEqual(selectionSort([1]), [1]);
+    assert.deepEqual(selectionSort([2, 1]), [1, 2]);
+    assert.deepEqual(selectionSort([3, 1, 2]), [1, 2, 3]);
+    assert.deepEqual(selectionSort([1, 2, 3, 4, 5, 6]), [1, 2, 3, 4, 5, 6]);
+    assert.deepEqual(selectionSort([6, 5, 4, 3, 2, 1]), [1, 2, 3, 4, 5, 6]);
+    assert.deepEqual(selectionSort([1, 295, 3, 6, 8, 10, 10, 20, 0, 5]),
+      [0, 1, 3, 5, 6, 8, 10, 10, 20, 295]);
+    assert.deepEqual(selectionSort(['a','A','B','c','z','Z']), ['A','B','Z','a','c','z']);
+    assert.deepEqual(selectionSort(['real','madrid','the','best','club','in','the','world']),
+      ['best','club','in','madrid','real','the','the','world']);
+
+  });
+
+});
