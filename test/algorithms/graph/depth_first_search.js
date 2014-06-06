@@ -45,7 +45,8 @@ describe('Depth First Search Algorithm', function () {
       assert.equal(finishingTimes.two, 1);
       assert.equal(finishingTimes.three, 0);
       assert.equal(finishingTimes.four, 2);
-  });
+    }
+  );
 
   it('should visit all the nodes in the graph',
     function () {
@@ -57,6 +58,7 @@ describe('Depth First Search Algorithm', function () {
       assert.equal(finishingTimes.four, 2);
       assert.equal(finishingTimes.five, 5);
       assert.equal(finishingTimes.six, 4);
-  });
+    }
+  );
 });
 
