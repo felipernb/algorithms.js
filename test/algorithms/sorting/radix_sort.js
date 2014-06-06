@@ -57,7 +57,7 @@ var array = [
 ];
 
 describe('Radix Sort', function () {
-  it('should sort the given array', function() {
+  it('should sort the given array', function () {
     array = radixSort(array);
 
     // Asserts that the array is truly sorted

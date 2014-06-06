@@ -32,7 +32,7 @@
  * @param Array
  * @return Array
  */
-var radixSort = function(array) {
+var radixSort = function (array) {
   var max = maximumKey(array);
   var digitsMax = amountOfDigits(max);
 
@@ -57,7 +57,7 @@ var radixSort = function(array) {
  * @param Array
  * @return Array
  */
-var auxiliaryCountingSort = function(array, mod) {
+var auxiliaryCountingSort = function (array, mod) {
   var length = array.length;
   var bucket = [];
 
@@ -92,7 +92,7 @@ var auxiliaryCountingSort = function(array, mod) {
  * @return Integer if array non-empty
  *         Undefined otherwise
  */
-var maximumKey = function(array) {
+var maximumKey = function (array) {
   var length = array.length;
 
   if (length > 0) {
@@ -120,7 +120,7 @@ var maximumKey = function(array) {
  * @param Number
  * @return Number
  */
-var amountOfDigits = function(number) {
+var amountOfDigits = function (number) {
   if (number === 0) {
     return 1;
   }
