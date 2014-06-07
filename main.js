@@ -54,7 +54,8 @@ var lib = {
   String: {
     editDistance: require('./algorithms/string/edit_distance'),
     karpRabin: require('./algorithms/string/karp_rabin'),
-    knuthMorrisPratt: require('./algorithms/string/knuth_morris_pratt')
+    knuthMorrisPratt: require('./algorithms/string/knuth_morris_pratt'),
+    huffman: require('./algorithms/string/huffman'),
   },
   DataStructure: {
     BST: require('./data_structures/bst'),
