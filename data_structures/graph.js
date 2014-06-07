@@ -32,7 +32,7 @@ function Graph(directed) {
 }
 
 Graph.prototype.addVertex = function (v) {
-  this.vertices.push(v);
+  this.vertices.push('' + v);
   this.adjList[v] = {};
 };
 
