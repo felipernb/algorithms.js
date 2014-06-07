@@ -35,7 +35,8 @@ var lib = {
     fisherYates: require('./algorithms/math/fisher_yates'),
     gcd: require('./algorithms/math/gcd'),
     extendedEuclidean: require('./algorithms/math/extended_euclidean'),
-    newtonSqrt: require('./algorithms/math/newton_sqrt')
+    newtonSqrt: require('./algorithms/math/newton_sqrt'),
+    reservoirSampling: require('./algorithms/math/reservoir_sampling'),
   },
   Search: {
     bfs: require('./algorithms/searching/bfs'),
