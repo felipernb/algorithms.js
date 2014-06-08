@@ -32,6 +32,11 @@
  * Iterative power set calculation
  */
 var powerSetIterative = function (array) {
+
+  if(array.length == 0) {
+    return [];
+  }
+
   var powerSet = [];
   var cache = [];
 
@@ -64,7 +69,10 @@ var powerSetIterative = function (array) {
  * Recursive power set calculation
  */
 var powerSetRecursive = function (array) {
-  if(array.length == 1) {
+  if(array.length == 0) {
+    return [];
+  }
+  else if(array.length == 1) {
     return [ [], [ array[0] ] ];
   }
   else {
