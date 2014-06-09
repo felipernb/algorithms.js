@@ -59,8 +59,8 @@ LinkedList.prototype.isEmpty = function () {
 /**
  * Adds the element to the end of the list or to the desired index
  *
- * @param misc
- * @param Number
+ * @param { Object } n
+ * @param { Number } index
  */
 LinkedList.prototype.add = function (n, index) {
   if (index > this.length || index < 0) {
@@ -102,7 +102,7 @@ LinkedList.prototype.add = function (n, index) {
 /**
  * Return the value associated to the Node on the given index
  *
- * @param Number
+ * @param { Number } index
  * @return misc
  */
 LinkedList.prototype.get = function (index) {
@@ -112,7 +112,7 @@ LinkedList.prototype.get = function (index) {
 /**
  * O(n) get
  *
- * @param Number
+ * @param { Number } index
  * @return Node
  */
 LinkedList.prototype.getNode = function (index) {
@@ -131,7 +131,7 @@ LinkedList.prototype.getNode = function (index) {
 /**
  * Delete the element in the indexth position
  *
- * @param Number
+ * @param { Number } index
  */
 LinkedList.prototype.del = function (index) {
   if (index >= this.length || index < 0) {

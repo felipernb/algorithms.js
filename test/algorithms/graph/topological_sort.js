@@ -59,7 +59,9 @@ describe('Topological Sort', function () {
       var stack = topologicalSort(graph);
       var a = [];
       while (!stack.isEmpty()) a.push(stack.pop());
-      assert.deepEqual(a, ['underwear', 'pants', 'socks', 'shoes',
-        'watch', 'shirt', 'tie', 'belt', 'jacket']);
+      assert.deepEqual(a, [
+        'underwear', 'pants', 'socks', 'shoes',
+        'watch', 'shirt', 'tie', 'belt', 'jacket'
+      ]);
     });
 });
