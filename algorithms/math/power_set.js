@@ -33,7 +33,7 @@
  */
 var powerSetIterative = function (array) {
 
-  if(array.length == 0) {
+  if(array.length === 0) {
     return [];
   }
 
@@ -44,22 +44,21 @@ var powerSetIterative = function (array) {
     cache[i] = true;
   }
 
-  for(var i = 0; i < Math.pow(2, array.length); i++) {
+  for(i = 0; i < Math.pow(2, array.length); i++) {
 
     powerSet.push([]);
 
     for(var j = 0; j < array.length; j++) {
-      if(i % Math.pow(2, j) == 0)
-      {
+
+      if(i % Math.pow(2, j) === 0) {
         cache[j] = !cache[j];
       }
-    }
 
-    array.forEach(function(elem, index) {
-      if(cache[index]) {
-        powerSet[i].push(elem);
+      if(cache[j]) {
+        powerSet[i].push(array[j]);
       }
-    });
+
+    }
   }
   
   return powerSet;
@@ -69,7 +68,7 @@ var powerSetIterative = function (array) {
  * Recursive power set calculation
  */
 var powerSetRecursive = function (array) {
-  if(array.length == 0) {
+  if(array.length === 0) {
     return [];
   }
   else if(array.length == 1) {
@@ -81,7 +80,7 @@ var powerSetRecursive = function (array) {
 
     array.splice(0, 1);
 
-    powerSetRecursive(array).forEach(function(elem, index) {
+    powerSetRecursive(array).forEach(function(elem) {
        powerSet.push(elem);
        var withFirstElem = [ firstElem ];
        withFirstElem.push.apply(withFirstElem, elem);
