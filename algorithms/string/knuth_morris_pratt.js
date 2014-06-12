@@ -30,9 +30,9 @@
  *
  * Asymptotic Complexity: O(text.length)
  *
- * @param {Array} of Numbers, Strings or Characters
+ * @param {Array} text of Numbers, Strings or Characters
  *     or {String}
- * @param {Array} of Numbers, Strings or Characters
+ * @param {Array} pattern of Numbers, Strings or Characters
  *     or {String}
  * @return {Number}
  */
@@ -71,7 +71,7 @@ var knuthMorrisPratt = function (text, pattern) {
  *
  * Asymptotic Complexity: O(pattern.length)
  *
- * @param {Array} of Numbers, Strings or Characters
+ * @param {Array} pattern of Numbers, Strings or Characters
  *     or {String}
  * @return {Array} of Integers
  */

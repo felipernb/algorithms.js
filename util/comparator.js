@@ -27,7 +27,7 @@
  * If the function is not passed, it will use the default
  * compare signs (<, > and ==)
  *
- * @param Function
+ * @param { Function } compareFn
  */
 function Comparator(compareFn) {
   if (compareFn) {
