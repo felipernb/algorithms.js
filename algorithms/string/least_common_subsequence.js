@@ -21,7 +21,7 @@
  */
 
 /**
- * Iterative and recursive implementations of power set
+ * Implementation of least common subsequence
  *
  * @author Joshua Curl <curljosh@msu.edu>
  */
@@ -29,69 +29,57 @@
 'use strict';
 
 /**
- * Iterative power set calculation
+ * Implementation via dynamic programming
  */
-var powerSetIterative = function (array) {
-
-  if(array.length === 0) {
-    return [];
-  }
-
-  var powerSet = [];
+var leastCommonSubsequence = function (s1, s2) {
+  // Multidimensional array for dynamic programming algorithm
   var cache = [];
 
-  for(var i = 0; i < array.length; i++) {
-    cache[i] = true;
+  // First column and row are initialized with zeroes
+  for(var i = 0; i < s1.length + 1; i++) {
+    cache[i] = [];
+    cache[i][0] = 0;
+  }
+  for(var i = 0; i < s2.length + 1; i++) {
+    cache[0][i] = 0;
   }
 
-  for(i = 0; i < Math.pow(2, array.length); i++) {
-
-    powerSet.push([]);
-
-    for(var j = 0; j < array.length; j++) {
-
-      if(i % Math.pow(2, j) === 0) {
-        cache[j] = !cache[j];
+  // Fill in the cache
+  for(var i = 1; i < s1.length + 1; i++) {
+    for(var j = 1; j < s2.length + 1; j++) {
+      if(s1[i - 1] == s2[j - 1]) {
+        var new_value = cache[i - 1][j - 1] + 1;
+        cache[i][j] = new_value;
       }
-
-      if(cache[j]) {
-        powerSet[i].push(array[j]);
+      else {
+        cache[i][j] = Math.max(cache[i][j - 1], cache[i - 1][j]);
       }
-
     }
   }
-  
-  return powerSet;
-};
 
-/**
- * Recursive power set calculation
- */
-var powerSetRecursive = function (array) {
-  if(array.length === 0) {
-    return [];
+  // Build LCS from cache
+  i = s1.length;
+  j = s2.length;
+  var lcs = '';
+
+  while(cache[i][j] !== 0) {
+    if(s1[i - 1] === s2[j - 1]){
+      lcs += s1[i - 1];
+      i--;
+      j--;
+    }
+    else {
+      if(cache[i - 1][j] > cache[i][j - 1]) {
+        i--;
+      }
+      else {
+        j--;
+      }
+    }
   }
-  else if(array.length == 1) {
-    return [ [], [ array[0] ] ];
-  }
-  else {
-    var powerSet = [];
-    var firstElem = array[0];
 
-    array.splice(0, 1);
+  // LCS is built in reverse, return reversed string
+  return lcs.split('').reverse().join('');
+}
 
-    powerSetRecursive(array).forEach(function(elem) {
-       powerSet.push(elem);
-       var withFirstElem = [ firstElem ];
-       withFirstElem.push.apply(withFirstElem, elem);
-       powerSet.push(withFirstElem);
-    });
-
-    return powerSet;
-  }
-};
-
-// Use powerSetIterative as the default implementation
-var powerSet = powerSetIterative;
-powerSet.recursive = powerSetRecursive;
-module.exports = powerSet;
+module.exports = leastCommonSubsequence;
