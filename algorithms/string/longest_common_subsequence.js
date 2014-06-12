@@ -21,7 +21,7 @@
  */
 
 /**
- * Implementation of least common subsequence
+ * Implementation of longest common subsequence
  *
  * @author Joshua Curl <curljosh@msu.edu>
  */
@@ -31,7 +31,7 @@
 /**
  * Implementation via dynamic programming
  */
-var leastCommonSubsequence = function (s1, s2) {
+var longestCommonSubsequence = function (s1, s2) {
   // Multidimensional array for dynamic programming algorithm
   var cache = [];
 
@@ -82,4 +82,4 @@ var leastCommonSubsequence = function (s1, s2) {
   return lcs.split('').reverse().join('');
 }
 
-module.exports = leastCommonSubsequence;
+module.exports = longestCommonSubsequence;
