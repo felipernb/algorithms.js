@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2014 Bruno Roberto Búrigo
+ * Copyright (C) 2014 Nitin Saroha
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -20,27 +20,25 @@
  * IN THE SOFTWARE.
  */
 'use strict';
-var Comparator = require('../../util/comparator');
-
 /**
- * Insertion sort algorithm O(n + d)
+ * Selection sort algorithm O(n^2)
  */
-var insertionSort = function (vector, comparatorFn) {
-  var comparator = new Comparator(comparatorFn);
-
-  for (var i = 1, len = vector.length; i < len; i++) {
-    var aux = vector[i],
-      j = i;
-
-    while (j > 0 && comparator.lessThan(aux, vector[j - 1])) {
-      vector[j] = vector[j - 1];
-      j--;
+var selectionSort = function (a) {
+  var n = a.length;
+  for (var i = 0; i < n - 1; i++) {
+    var min = i;
+    for (var j = i + 1; j < n; j++) {
+      if (a[min] > a[j])
+        min = j;
     }
-
-    vector[j] = aux;
+    if (min != i) {
+      var tmp = a[i];
+      a[i] = a[min];
+      a[min] = tmp;
+    }
   }
 
-  return vector;
+  return a;
 };
 
-module.exports = insertionSort;
+module.exports = selectionSort;

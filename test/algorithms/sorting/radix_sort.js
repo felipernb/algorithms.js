@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2014 Felipe Ribeiro
+ * Copyright (C) 2014 Tayllan Búrigo
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"], to
@@ -21,44 +21,50 @@
  */
 'use strict';
 
-/**
- * Adjacency list representation of a graph
- * @param {bool} directed
- */
-function Graph(directed) {
-  this.directed = (directed === undefined ? true : !!directed);
-  this.adjList = {};
-  this.vertices = [];
-}
+var radixSort = require('../../../algorithms/sorting/radix_sort'),
+    assert = require('assert');
 
-Graph.prototype.addVertex = function (v) {
-  this.vertices.push('' + v);
-  this.adjList[v] = {};
+var firstObject = {
+  someProperty: 'The',
+  key: 88541234132
 };
 
-Graph.prototype.addEdge = function (a, b, w) {
-  // If no weight is assigned to the edge, 1 is the default
-  w = (w === undefined ? 1 : w);
-
-  if (!this.adjList[a]) this.addVertex(a);
-  if (!this.adjList[b]) this.addVertex(b);
-
-  // If there's already another edge with the same origin and destination
-  // sum with the current one
-  this.adjList[a][b] = (this.adjList[a][b] || 0) + w;
-
-  // If the graph is not directed add the edge in both directions
-  if (!this.directed) {
-    this.adjList[b][a] = (this.adjList[b][a] || 0) + w;
-  }
+var secondObject = {
+  someProperty: 'winter',
+  key: 90071992540992
 };
 
-Graph.prototype.neighbors = function (v) {
-  return Object.keys(this.adjList[v]);
+var thirdObject = {
+  someProperty: 'is',
+  key: 0
 };
 
-Graph.prototype.edge = function (a, b) {
-  return this.adjList[a][b];
+var fourthObject = {
+  someProperty: 'coming',
+  key: 65234567,
+  anotherProperty: '!'
 };
 
-module.exports = Graph;
+var array = [
+  thirdObject,
+  fourthObject,
+  firstObject,
+  secondObject,
+  secondObject,
+  firstObject,
+  firstObject,
+  fourthObject
+];
+
+describe('Radix Sort', function () {
+  it('should sort the given array', function () {
+    array = radixSort(array);
+
+    // Asserts that the array is truly sorted
+    assert.deepEqual(array.indexOf(thirdObject), 0);
+    assert.deepEqual(array.indexOf(fourthObject), 1);
+    assert.deepEqual(array.indexOf(firstObject), 3);
+    assert.deepEqual(array.indexOf(secondObject), 6);
+    assert.deepEqual(array.indexOf({key: 99}), -1);
+  });
+});

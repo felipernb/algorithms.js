@@ -32,10 +32,10 @@
 function SPFA(graph, s) {
   var distance = {};
   var previous = {};
-  var queue    = {};
-  var isInQue  = {};
-  var head     = 0;
-  var tail     = 1;
+  var queue = {};
+  var isInQue = {};
+  var head = 0;
+  var tail = 1;
   // initialize
   distance[s] = 0;
   queue[0] = s;
@@ -59,7 +59,7 @@ function SPFA(graph, s) {
       if (newDistance < distance[v]) {
         distance[v] = newDistance;
         previous[v] = currNode;
-        if (!isInQue[v]){
+        if (!isInQue[v]) {
           queue[tail++] = v;
           isInQue[v] = true;
         }

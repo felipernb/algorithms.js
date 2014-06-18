@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2014 Bruno Roberto Búrigo
+ * Copyright (C) 2014 Eugene Sharygin
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -20,27 +20,28 @@
  * IN THE SOFTWARE.
  */
 'use strict';
-var Comparator = require('../../util/comparator');
+
 
 /**
- * Insertion sort algorithm O(n + d)
+ * Sample random elements from the array using reservoir algorithm.
+ *
+ * @param {Array} array
+ * @param {number} sampleSize
+ * @return {Array}
  */
-var insertionSort = function (vector, comparatorFn) {
-  var comparator = new Comparator(comparatorFn);
-
-  for (var i = 1, len = vector.length; i < len; i++) {
-    var aux = vector[i],
-      j = i;
-
-    while (j > 0 && comparator.lessThan(aux, vector[j - 1])) {
-      vector[j] = vector[j - 1];
-      j--;
-    }
-
-    vector[j] = aux;
+var reservoirSampling = function (array, sampleSize) {
+  if (sampleSize > array.length) {
+    throw new Error('Sample size exceeds the total number of elements.');
   }
-
-  return vector;
+  var reservoir = array.slice(0, sampleSize);
+  for (var i = sampleSize; i < array.length; ++i) {
+    var j = Math.floor(Math.random() * (i + 1));
+    if (j < sampleSize) {
+      reservoir[j] = array[i];
+    }
+  }
+  return reservoir;
 };
 
-module.exports = insertionSort;
+
+module.exports = reservoirSampling;

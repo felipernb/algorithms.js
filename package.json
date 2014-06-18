@@ -1,6 +1,6 @@
 {
   "name": "algorithms",
-  "version": "0.2.0",
+  "version": "0.4.0",
   "description": "Traditional computer science algorithms and data structures implemented in JavaScript",
   "directories": {
     "test": "test"
@@ -10,7 +10,8 @@
   "devDependencies": {
     "coveralls": "^2.10.0",
     "istanbul": "^0.2.10",
-    "jshint": "^2.5.1",
+    "jshint": "~2.4.4",
+    "jscs": "1.4.5",
     "mocha": "^1.20.0"
   },
   "repository": {

@@ -26,14 +26,17 @@ var lib = {
     topologicalSort: require('./algorithms/graph/topological_sort'),
     dijkstra: require('./algorithms/graph/dijkstra'),
     SPFA: require('./algorithms/graph/SPFA'),
-    bellmanFord: require('./algorithms/graph/bellman_ford')
+    bellmanFord: require('./algorithms/graph/bellman_ford'),
+    eulerPath: require('./algorithms/graph/euler_path'),
+    depthFirstSearch: require('./algorithms/graph/depth_first_search')
   },
   Math: {
     fibonacci: require('./algorithms/math/fibonacci'),
     fisherYates: require('./algorithms/math/fisher_yates'),
     gcd: require('./algorithms/math/gcd'),
     extendedEuclidean: require('./algorithms/math/extended_euclidean'),
-    newtonSqrt: require('./algorithms/math/newton_sqrt')
+    newtonSqrt: require('./algorithms/math/newton_sqrt'),
+    reservoirSampling: require('./algorithms/math/reservoir_sampling'),
   },
   Search: {
     bfs: require('./algorithms/searching/bfs'),
@@ -45,15 +48,20 @@ var lib = {
     countingSort: require('./algorithms/sorting/counting_sort'),
     heapSort: require('./algorithms/sorting/heap_sort'),
     mergeSort: require('./algorithms/sorting/merge_sort'),
-    quicksort: require('./algorithms/sorting/quicksort')
+    quicksort: require('./algorithms/sorting/quicksort'),
+    selectionSort: require('./algorithms/sorting/selection_sort'),
+    radixSort: require('./algorithms/sorting/radix_sort')
   },
   String: {
     editDistance: require('./algorithms/string/edit_distance'),
-    karpRabin: require('./algorithms/string/karp_rabin')
+    karpRabin: require('./algorithms/string/karp_rabin'),
+    knuthMorrisPratt: require('./algorithms/string/knuth_morris_pratt'),
+    huffman: require('./algorithms/string/huffman'),
   },
   DataStructure: {
     BST: require('./data_structures/bst'),
     Graph: require('./data_structures/graph'),
+    HashTable: require('./data_structures/hash_table'),
     Heap: require('./data_structures/heap'),
     LinkedList: require('./data_structures/linked_list'),
     PriorityQueue: require('./data_structures/priority_queue'),
