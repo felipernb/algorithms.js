@@ -21,7 +21,7 @@
  */
 'use strict';
 
-var HashTable = require("./hash_table");
+var HashTable = require('./hash_table');
 
 /**
  * Typical representation of a mathematical set
@@ -51,7 +51,7 @@ Set.prototype.remove = function() {
 };
 
 Set.prototype.contains = function(elt) {
-   return this.elts.get(elt) != undefined;
+   return this.elts.get(elt) !== undefined;
 };
 
 Set.prototype.size = function() {
