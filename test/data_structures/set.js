@@ -22,6 +22,7 @@
 'use strict';
 
 var Set = require('../../data_structures/set'),
+    HashTable = require("../../data_structures/hash_table"),
     assert = require('assert');
 
 describe('Set', function () {
@@ -32,80 +33,48 @@ describe('Set', function () {
 
   it('should add all initial arguments', function () {
     var s = new Set(1,2,3);
-    assert.deepEqual(s.elts, [1,2,3]);
+    var ht = new HashTable(3);
+    ht.put(1, {});
+    ht.put(2,{});
+    ht.put(3,{});
+    assert.deepEqual(s.elts, ht);
   });
 
   it('should add all arguments', function () {
     var s = new Set(1,2,3);
     s.add(4,5,6);
-    assert.deepEqual(s.elts, [1,2,3,4,5,6]);
+    var ht = new HashTable(3);
+    ht.put(1, {});
+    ht.put(2, {});
+    ht.put(3,{});
+    ht.put(4,{});
+    ht.put(5,{});
+    ht.put(6,{});
+
+    assert.deepEqual(s.elts, ht);
   });
 
   it('should remove all arguments', function() {
-     var s = new Set(1,2,3);
-     s.remove(1,3);
-     assert.deepEqual(s.elts, [2]);
+    var s = new Set(1,2,3);
+    s.remove(1,3);
+    assert.equal(s.contains(1), false);
+    assert.equal(s.contains(3), false);
   });
 
   it('should do nothing xist is removed', function() {
     var s = new Set(1,2,3);
     s.remove(4);
-    assert.deepEqual(s.elts, [1,2,3]);
+    var ht = new HashTable(3);
+    ht.put(1, {});
+    ht.put(2,{});
+    ht.put(3,{});
+    assert.deepEqual(s.elts, ht);
   });
 
   it('should only contain its elements', function() {
     var s = new Set(1,2,3);
     assert.equal(s.contains(1), true);
     assert.equal(s.contains(4), false);
-  });
-
-  it('should check subsets', function() {
-    var s = new Set();
-    var t = new Set(1,2,3);
-    assert.equal(s.subset(s), true);
-    assert.equal(s.subset(t), true);
-    assert.equal(t.subset(s), false);
-    assert.equal(t.subset(t), true);
-  });
-
-  it('should union', function() {
-    var s = new Set(1,2,3);
-    var t = new Set(3,4,5);
-    assert.deepEqual(s.union(t).elts,[1,2,3,4,5]);
-  });
-
-  it('should intersect', function() {
-    var s = new Set(1,2,3);
-    var t = new Set(3,4,5);
-    assert.deepEqual(s.intersect(t).elts,[3]);
-  });
-
-  it('should subtract other sets', function() {
-    var s = new Set(1,2,3);
-    var t = new Set(3,4,5);
-    assert.deepEqual(s.minus(t).elts,[1,2]);
-    assert.deepEqual(t.minus(s).elts,[4,5]);
-  });
-
-  it('should get symmetric difference', function() {
-    var s = new Set(1,2,3);
-    var t = new Set(3,4,5);
-    assert.deepEqual(s.symDiff(t).elts,[1,2,4,5]);
-    assert.deepEqual(t.symDiff(s).elts,[4,5,1,2]);
-  });
-
-  it('should check equality', function() {
-    var s = new Set();
-    var t = new Set();
-    assert.equal(s.equals(s), true);
-    assert.equal(s.equals(t), true);
-    assert.equal(t.equals(s), true);
-    s.add(1,2,3);
-    t.add(1,2,3);
-    assert.equal(s.equals(s), true);
-    assert.equal(s.equals(t), true);
-    t.remove(2,3);
-    assert.equal(s.equals(t), false);
   });
 });
 
