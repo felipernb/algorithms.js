@@ -22,7 +22,7 @@
 'use strict';
 
 var Set = require('../../data_structures/set'),
-    HashTable = require("../../data_structures/hash_table"),
+    HashTable = require('../../data_structures/hash_table'),
     assert = require('assert');
 
 describe('Set', function () {
