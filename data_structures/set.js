@@ -21,97 +21,41 @@
  */
 'use strict';
 
+var HashTable = require("./hash_table");
+
 /**
  * Typical representation of a mathematical set
  * No restriction on element types
  *   i.e. set.add(1,'a', "b", { "foo" : "bar" })
  */
 var Set = function() {
-   this.elts = [];
+   this.elts = new HashTable(arguments.length);
 
-   var toAdd = arguments || [];
-   for(var i = 0; i < toAdd.length; i++) {
-      this.add(toAdd[i]);
+   for(var i = 0; i < arguments.length; i++) {
+      this.add(arguments[i]);
    }
 };
 
 Set.prototype.add = function() {
    for(var i = 0; i < arguments.length; i++) {
-      if(!this.contains(arguments[i])) {
-         this.elts.push(arguments[i]);
-      }
+      this.elts.put(arguments[i], {});
    }
    return this;
 };
 
 Set.prototype.remove = function() {
    for(var i = 0; i < arguments.length; i++) {
-      if(this.contains(arguments[i]))
-         this.elts.splice(this.elts.indexOf(arguments[i]),1);
+      this.elts.del(arguments[i]);
    }
    return this;
 };
 
 Set.prototype.contains = function(elt) {
-   for(var i = 0; i < this.elts.length; i++) {
-      if(this.elts[i] === elt) {
-         return true;
-      }
-   }
-   return false;
-};
-
-Set.prototype.intersect = function(other) {
-   var newSet = new Set();
-   for(var i = 0; i < this.elts.length; i++){
-      if(other.contains(this.elts[i]))
-         newSet.add(this.elts[i]);
-   }
-   return newSet;
-};
-
-Set.prototype.union = function(other) {
-   var newSet = new Set();
-   
-   for(var i = 0; i < this.elts.length; i++) {
-      newSet.add(this.elts[i]);
-   }
-   for(var j = 0; j < other.elts.length; j++) {
-      newSet.add(other.elts[j]);
-   }
-
-   return newSet;
-};
-
-Set.prototype.subset = function(other) {
-   for(var i = 0; i < this.elts.length; i++) {
-      if(!other.contains(this.elts[i])) {
-         return false;
-      }
-   }
-   return true;
-};
-
-Set.prototype.minus = function(other) {
-   var newSet = new Set();
-   for(var i = 0; i < this.elts.length; i++){
-      if(!other.contains(this.elts[i])){
-         newSet.add(this.elts[i]);
-      }
-   }
-   return newSet;
-};
-
-Set.prototype.symDiff = function(other) {
-   return (this.minus(other)).union(other.minus(this));
+   return this.elts.get(elt) != undefined;
 };
 
 Set.prototype.size = function() {
-   return this.elts.length;
-};
-
-Set.prototype.equals = function(other) {
-   return this.subset(other) && other.subset(this);
+   return this.elts._items;
 };
 
 module.exports = Set;
