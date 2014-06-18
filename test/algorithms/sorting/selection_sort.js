@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2014 Bruno Roberto Búrigo
+ * Copyright (C) 2014 Nitin Saroha
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -20,27 +20,23 @@
  * IN THE SOFTWARE.
  */
 'use strict';
-var Comparator = require('../../util/comparator');
 
-/**
- * Insertion sort algorithm O(n + d)
- */
-var insertionSort = function (vector, comparatorFn) {
-  var comparator = new Comparator(comparatorFn);
+var selectionSort = require('../../../algorithms/sorting/selection_sort'),
+    assert = require('assert');
 
-  for (var i = 1, len = vector.length; i < len; i++) {
-    var aux = vector[i],
-      j = i;
+describe('Selection Sort', function () {
+  it('should sort the given array', function () {
+    assert.deepEqual(selectionSort([]), []);
+    assert.deepEqual(selectionSort([1]), [1]);
+    assert.deepEqual(selectionSort([2, 1]), [1, 2]);
+    assert.deepEqual(selectionSort([3, 1, 2]), [1, 2, 3]);
+    assert.deepEqual(selectionSort([1, 2, 3, 4, 5, 6]), [1, 2, 3, 4, 5, 6]);
+    assert.deepEqual(selectionSort([6, 5, 4, 3, 2, 1]), [1, 2, 3, 4, 5, 6]);
+    assert.deepEqual(selectionSort([1, 295, 3, 6, 8, 10, 10, 20, 0, 5]),
+      [0, 1, 3, 5, 6, 8, 10, 10, 20, 295]);
+    assert.deepEqual(selectionSort(['a', 'A', 'b', 'Z']), ['A', 'Z', 'a', 'b']);
+    assert.deepEqual(selectionSort(['hi', 'everybody']), ['everybody', 'hi']);
 
-    while (j > 0 && comparator.lessThan(aux, vector[j - 1])) {
-      vector[j] = vector[j - 1];
-      j--;
-    }
+  });
 
-    vector[j] = aux;
-  }
-
-  return vector;
-};
-
-module.exports = insertionSort;
+});

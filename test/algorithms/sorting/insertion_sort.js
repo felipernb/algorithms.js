@@ -72,11 +72,11 @@ describe('Insertion Sort', function () {
       [295, 20, 10, 10, 8, 6, 5, 3, 1, 0]
     );
 
-    var Guy = function(age) {
+    var Guy = function (age) {
       this.age = age;
     };
 
-    var compareAgeOfGuys = function(g1, g2) {
+    var compareAgeOfGuys = function (g1, g2) {
       if (g1.age === g2.age) {
         return 0;
       }

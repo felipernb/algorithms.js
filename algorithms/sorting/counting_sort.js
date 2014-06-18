@@ -32,7 +32,7 @@
  * @param Array
  * @return Array
  */
-var countingSort = function(array) {
+var countingSort = function (array) {
   var max = maximumKey(array);
   var auxiliaryArray = [];
   var length = array.length;
@@ -71,7 +71,7 @@ var countingSort = function(array) {
  * @param Array
  * @return Integer
  */
-var maximumKey = function(array) {
+var maximumKey = function (array) {
   var max = array[0].key;
   var length = array.length;
 

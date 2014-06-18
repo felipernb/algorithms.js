@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2014 Bruno Roberto Búrigo
+ * Copyright (C) 2014 Eugene Sharygin
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -20,27 +20,36 @@
  * IN THE SOFTWARE.
  */
 'use strict';
-var Comparator = require('../../util/comparator');
 
-/**
- * Insertion sort algorithm O(n + d)
- */
-var insertionSort = function (vector, comparatorFn) {
-  var comparator = new Comparator(comparatorFn);
 
-  for (var i = 1, len = vector.length; i < len; i++) {
-    var aux = vector[i],
-      j = i;
+var reservoirSampling = require('../../../algorithms/math/reservoir_sampling'),
+    assert = require('assert');
 
-    while (j > 0 && comparator.lessThan(aux, vector[j - 1])) {
-      vector[j] = vector[j - 1];
-      j--;
-    }
 
-    vector[j] = aux;
-  }
+describe('Reservoir Sampling', function () {
+  var array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-  return vector;
-};
+  it('should sample K distinct values from the array', function () {
+    var sample = reservoirSampling(array, 5);
+    assert.equal(sample.length, 5);
+    var seen = {};
+    array.forEach(function (value) {
+      assert(!seen[value]);
+      assert(array.indexOf(value) >= 0);
+      seen[value] = true;
+    });
+  });
 
-module.exports = insertionSort;
+  it('should work in corner cases', function () {
+    assert.deepEqual(reservoirSampling(array, 0), []);
+    assert.deepEqual(reservoirSampling([], 0), []);
+    var fullSample = reservoirSampling(array, array.length);
+    assert.deepEqual(fullSample.sort(), array);
+  });
+
+  it('should raise an error if asked for too many elements', function () {
+    assert.throws(function () {
+      reservoirSampling(array, array.length + 1);
+    });
+  });
+});

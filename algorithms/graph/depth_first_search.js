@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2014 Felipe Ribeiro
+ * Copyright (C) 2014 Tayllan Búrigo
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"], to
@@ -21,44 +21,53 @@
  */
 'use strict';
 
+var time = 0,
+    visitedNodes = {},
+    finishingTimes = {};
+    
 /**
- * Adjacency list representation of a graph
- * @param {bool} directed
+ * Depth First Search for all the vertices in the graph
+ * Worst Case Complexity: O(V * E)
+ * 
+ * @param {Object}
+ * @return {Object} representing the order in which the
+ *    vertices are visited
  */
-function Graph(directed) {
-  this.directed = (directed === undefined ? true : !!directed);
-  this.adjList = {};
-  this.vertices = [];
-}
+var dfsAdjacencyListStart = function (graph) {
+  graph.vertices.forEach(function (v) {
+    if (visitedNodes[v] !== true) {
+      dfsAdjacencyList(graph, v);
+    }
+  });
 
-Graph.prototype.addVertex = function (v) {
-  this.vertices.push('' + v);
-  this.adjList[v] = {};
+  return finishingTimes;
 };
 
-Graph.prototype.addEdge = function (a, b, w) {
-  // If no weight is assigned to the edge, 1 is the default
-  w = (w === undefined ? 1 : w);
+/**
+ * Depth First Search for the vertices reachable from 'startNode'
+ * Worst Case Complexity: O(V * E)
+ * 
+ * @param {Object}
+ * @param {Object}
+ * @return {Object}
+ */
+var dfsAdjacencyList = function (graph, startNode) {
+  visitedNodes[startNode] = true;
 
-  if (!this.adjList[a]) this.addVertex(a);
-  if (!this.adjList[b]) this.addVertex(b);
+  graph.neighbors(startNode).forEach(function (v) {
+    if (visitedNodes[v] !== true) {
+      dfsAdjacencyList(graph, v);
+    }
+  });
 
-  // If there's already another edge with the same origin and destination
-  // sum with the current one
-  this.adjList[a][b] = (this.adjList[a][b] || 0) + w;
+  finishingTimes[startNode] = time++;
 
-  // If the graph is not directed add the edge in both directions
-  if (!this.directed) {
-    this.adjList[b][a] = (this.adjList[b][a] || 0) + w;
-  }
+  return finishingTimes;
 };
 
-Graph.prototype.neighbors = function (v) {
-  return Object.keys(this.adjList[v]);
+var depthFirstSearch = {
+  dfsAdjacencyList: dfsAdjacencyList,
+  dfsAdjacencyListStart: dfsAdjacencyListStart
 };
 
-Graph.prototype.edge = function (a, b) {
-  return this.adjList[a][b];
-};
-
-module.exports = Graph;
+module.exports = depthFirstSearch;
