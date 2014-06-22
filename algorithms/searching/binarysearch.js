@@ -37,13 +37,13 @@ var binarySearch = function (sortedArray, element) {
 
   while (end >= init) {
     var m = ((end - init) >> 1) + init;
-    if (sortedArray[m] === element) return true;
+    if (sortedArray[m] === element) return m;
 
     if (sortedArray[m] < element) init = m + 1;
     else end = m - 1;
   }
 
-  return false;
+  return -1;
 };
 
 module.exports = binarySearch;
