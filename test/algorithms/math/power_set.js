@@ -26,8 +26,8 @@ var powerSet = require('../../../algorithms/math/power_set'),
 
 function testArrayEqual(a, b) {
   var arrayEqual = true;
-  a.forEach(function(elem, index) {
-    if(a[index] != b[index]) {
+  a.forEach(function (elem, index) {
+    if (a[index] != b[index]) {
       arrayEqual = false;
     }
   });
@@ -36,8 +36,8 @@ function testArrayEqual(a, b) {
 
 function testArrayInArray(a, b) {
   var arrayInArray = false;
-  b.forEach(function(array) {
-    if(testArrayEqual(a, array)) {
+  b.forEach(function (array) {
+    if (testArrayEqual(a, array)) {
       arrayInArray = true;
     }
   });
