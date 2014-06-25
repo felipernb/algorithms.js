@@ -28,6 +28,8 @@
 
 'use strict';
 
+var power = require('./fast_power');
+
 /**
   * Regular fibonacci implementation following the definition:
   * Fib(0) = 0
@@ -91,8 +93,42 @@ var fibDirect = function (number) {
   return Math.floor(Math.pow(phi, number) / Math.sqrt(5) + 0.5);
 };
 
+/**
+  * Implementation based on matrix exponentiation.
+  * O(log(n)) in time, O(1) in space
+  *
+  * @author Eugene Sharygin
+  * @param Number
+  * @return Number
+  */
+var fibLogarithmic = function (number) {
+  // Transforms [f_1, f_0] to [f_2, f_1] and so on.
+  var nextFib = [[1, 1], [1, 0]];
+
+  var zeroRow = [0, 0];
+  var matrixMultiply = function (matrix1, matrix2) {
+    return matrix1.map(function (factors) {
+      return matrix2.reduce(function (sum, row, i) {
+        return sum.map(function (a, j) {
+          return a + factors[i] * row[j];
+        });
+      }, zeroRow);
+    });
+  };
+
+  var transform = power(nextFib, number, matrixMultiply, [[1, 0], [0, 1]]);
+  var initialState = [0, 1];
+  var finalState = transform.map(function (factors) {
+    return factors.reduce(function (sum, factor, index) {
+      return sum + factor * initialState[index];
+    }, 0);
+  });
+  return finalState[0];
+};
+
 // Use fibLinear as the default implementation
 fibLinear.exponential = fibExponential;
 fibLinear.withMemoization = fibWithMemoization;
 fibLinear.direct = fibDirect;
+fibLinear.logarithmic = fibLogarithmic;
 module.exports = fibLinear;
