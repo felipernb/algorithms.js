@@ -78,7 +78,21 @@ var fibWithMemoization = (function () {
   return fib;
 })();
 
+/**
+  * Implementation using Binet's formula with the rounding trick.
+  * O(1) in time, O(1) in space
+  *
+  * @author Eugene Sharygin
+  * @param Number
+  * @return Number
+  */
+var fibDirect = function (number) {
+  var phi = (1 + Math.sqrt(5)) / 2;
+  return Math.floor(Math.pow(phi, number) / Math.sqrt(5) + 0.5);
+};
+
 // Use fibLinear as the default implementation
 fibLinear.exponential = fibExponential;
 fibLinear.withMemoization = fibWithMemoization;
+fibLinear.direct = fibDirect;
 module.exports = fibLinear;
