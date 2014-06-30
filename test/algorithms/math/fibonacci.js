@@ -58,5 +58,11 @@ describe('Fibonacci', function () {
       testFibonacciSequence(fib.withMemoization);
     });
   });
+
+  describe('#direct()', function () {
+    it('should return the right value for fibonacci sequence', function () {
+      testFibonacciSequence(fib.direct);
+    });
+  });
 });
 
