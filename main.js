@@ -38,6 +38,7 @@ var lib = {
     newtonSqrt: require('./algorithms/math/newton_sqrt'),
     reservoirSampling: require('./algorithms/math/reservoir_sampling'),
     fastPower: require('./algorithms/math/fast_power'),
+    nextPermutation: require('./algorithms/math/next_permutation')
   },
   Search: {
     bfs: require('./algorithms/searching/bfs'),
@@ -51,7 +52,8 @@ var lib = {
     mergeSort: require('./algorithms/sorting/merge_sort'),
     quicksort: require('./algorithms/sorting/quicksort'),
     selectionSort: require('./algorithms/sorting/selection_sort'),
-    radixSort: require('./algorithms/sorting/radix_sort')
+    radixSort: require('./algorithms/sorting/radix_sort'),
+    insertionSort: require('./algorithms/sorting/insertion_sort')
   },
   String: {
     levenshtein: require('./algorithms/string/levenshtein'),
@@ -69,7 +71,7 @@ var lib = {
     PriorityQueue: require('./data_structures/priority_queue'),
     Queue: require('./data_structures/queue'),
     Stack: require('./data_structures/stack'),
-    DisjointSetForest: require('./data_structures/disjoint_set_forest'),
+    DisjointSetForest: require('./data_structures/disjoint_set_forest')
   }
 };
 
