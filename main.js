@@ -57,6 +57,7 @@ var lib = {
     karpRabin: require('./algorithms/string/karp_rabin'),
     knuthMorrisPratt: require('./algorithms/string/knuth_morris_pratt'),
     huffman: require('./algorithms/string/huffman'),
+    hamming: require('./algorithms/string/hamming')
   },
   DataStructure: {
     BST: require('./data_structures/bst'),
