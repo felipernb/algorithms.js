@@ -37,6 +37,7 @@ var lib = {
     extendedEuclidean: require('./algorithms/math/extended_euclidean'),
     newtonSqrt: require('./algorithms/math/newton_sqrt'),
     reservoirSampling: require('./algorithms/math/reservoir_sampling'),
+    fastPower: require('./algorithms/math/fast_power'),
   },
   Search: {
     bfs: require('./algorithms/searching/bfs'),
