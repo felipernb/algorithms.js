@@ -57,6 +57,7 @@ describe('Hash Table', function () {
     function () {
       var h = new HashTable();
       assert.equal(h.capacity, 64); // default initial capacity;
+      assert.equal(h.size, 0);
 
       h = new HashTable(2);
       assert.equal(h.capacity, 2);
@@ -66,10 +67,14 @@ describe('Hash Table', function () {
     var h = new HashTable(16);
     var a = {a: 'foo', b: 'bar'};
     h.put('foo', a);
+
+    assert.equal(h.size, 1);
     assert.strictEqual(h.get('foo'), a);
 
     var b = {a: 'bar', b: 'baz'};
     h.put('bar', b);
+
+    assert.equal(h.size, 2);
     assert.strictEqual(h.get('bar'), b);
   });
 

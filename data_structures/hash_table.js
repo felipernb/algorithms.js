@@ -32,6 +32,12 @@ function HashTable(initialCapacity) {
       return this._table.length;
     }
   });
+
+  Object.defineProperty(this, 'size', {
+    get: function () {
+      return this._items;
+    }
+  });
 }
 
 /**
