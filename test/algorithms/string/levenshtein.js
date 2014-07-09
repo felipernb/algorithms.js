@@ -21,7 +21,7 @@
  */
 'use strict';
 
-var levenshtein = require('../../../algorithms/string/edit_distance'),
+var levenshtein = require('../../../algorithms/string/levenshtein'),
     assert = require('assert');
 
 describe('Levenshtein', function () {

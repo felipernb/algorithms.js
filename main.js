@@ -54,7 +54,7 @@ var lib = {
     radixSort: require('./algorithms/sorting/radix_sort')
   },
   String: {
-    editDistance: require('./algorithms/string/edit_distance'),
+    levenshtein: require('./algorithms/string/levenshtein'),
     karpRabin: require('./algorithms/string/karp_rabin'),
     knuthMorrisPratt: require('./algorithms/string/knuth_morris_pratt'),
     huffman: require('./algorithms/string/huffman'),
