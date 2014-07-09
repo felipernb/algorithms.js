@@ -28,34 +28,33 @@ var HashTable = require('./hash_table');
  * No restriction on element types
  *   i.e. set.add(1,'a', "b", { "foo" : "bar" })
  */
-var Set = function() {
-   this.elts = new HashTable(arguments.length);
+var HashSet = function () {
+  this._elements = new HashTable(arguments.length);
+  this.add.apply(this, arguments);
 
-   for(var i = 0; i < arguments.length; i++) {
-      this.add(arguments[i]);
-   }
+  Object.defineProperty(this, 'size', {
+    get: function () {
+      return this._elements.size;
+    }
+  });
 };
 
-Set.prototype.add = function() {
-   for(var i = 0; i < arguments.length; i++) {
-      this.elts.put(arguments[i], {});
-   }
-   return this;
+HashSet.prototype.add = function () {
+  for (var i = 0; i < arguments.length; i++) {
+    this._elements.put(arguments[i], true);
+  }
+  return this;
 };
 
-Set.prototype.remove = function() {
-   for(var i = 0; i < arguments.length; i++) {
-      this.elts.del(arguments[i]);
-   }
-   return this;
+HashSet.prototype.remove = function () {
+  for (var i = 0; i < arguments.length; i++) {
+    this._elements.del(arguments[i]);
+  }
+  return this;
 };
 
-Set.prototype.contains = function(elt) {
-   return this.elts.get(elt) !== undefined;
+HashSet.prototype.contains = function (e) {
+  return this._elements.get(e) !== undefined;
 };
 
-Set.prototype.size = function() {
-   return this.elts._items;
-};
-
-module.exports = Set;
+module.exports = HashSet;

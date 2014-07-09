@@ -21,60 +21,62 @@
  */
 'use strict';
 
-var Set = require('../../data_structures/set'),
-    HashTable = require('../../data_structures/hash_table'),
+var HashSet = require('../../data_structures/set'),
     assert = require('assert');
 
-describe('Set', function () {
+describe('HashSet', function () {
   it('should start empty', function () {
-    var s = new Set();
-    assert.equal(s.size(), 0);
+    var s = new HashSet();
+    assert.equal(s.size, 0);
   });
 
   it('should add all initial arguments', function () {
-    var s = new Set(1,2,3);
-    var ht = new HashTable(3);
-    ht.put(1, {});
-    ht.put(2,{});
-    ht.put(3,{});
-    assert.deepEqual(s.elts, ht);
+    var s = new HashSet(1, 2, 3);
+    assert.equal(s.size, 3);
+    assert(s.contains(1));
+    assert(s.contains(2));
+    assert(s.contains(3));
+
   });
 
   it('should add all arguments', function () {
-    var s = new Set(1,2,3);
-    s.add(4,5,6);
-    var ht = new HashTable(3);
-    ht.put(1, {});
-    ht.put(2, {});
-    ht.put(3,{});
-    ht.put(4,{});
-    ht.put(5,{});
-    ht.put(6,{});
-
-    assert.deepEqual(s.elts, ht);
+    var s = new HashSet(1, 2, 3);
+    assert.equal(s.size, 3);
+    s.add(4, 5, 6);
+    assert.equal(s.size, 6);
+    assert(s.contains(1));
+    assert(s.contains(2));
+    assert(s.contains(3));
+    assert(s.contains(4));
+    assert(s.contains(5));
+    assert(s.contains(6));
   });
 
-  it('should remove all arguments', function() {
-    var s = new Set(1,2,3);
-    s.remove(1,3);
-    assert.equal(s.contains(1), false);
-    assert.equal(s.contains(3), false);
+  it('should remove all arguments', function () {
+    var s = new HashSet(1, 2, 3);
+    assert.equal(s.size, 3);
+    s.remove(1, 3);
+    assert.equal(s.size, 1);
+    assert(!s.contains(1));
+    assert(!s.contains(3));
+    assert(s.contains(2));
   });
 
-  it('should do nothing xist is removed', function() {
-    var s = new Set(1,2,3);
-    s.remove(4);
-    var ht = new HashTable(3);
-    ht.put(1, {});
-    ht.put(2,{});
-    ht.put(3,{});
-    assert.deepEqual(s.elts, ht);
-  });
+  it('should do nothing when trying to remove an element that doesn\'t exist',
+    function () {
+      var s = new HashSet(1, 2, 3);
+      assert.equal(s.size, 3);
+      s.remove(4);
+      assert.equal(s.size, 3);
+      assert(s.contains(1));
+      assert(s.contains(2));
+      assert(s.contains(3));
+    });
 
-  it('should only contain its elements', function() {
-    var s = new Set(1,2,3);
-    assert.equal(s.contains(1), true);
-    assert.equal(s.contains(4), false);
+  it('should only contain its elements', function () {
+    var s = new HashSet(1, 2, 3);
+    assert(s.contains(1));
+    assert(!s.contains(4));
   });
 });
 
