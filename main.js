@@ -37,6 +37,7 @@ var lib = {
     extendedEuclidean: require('./algorithms/math/extended_euclidean'),
     newtonSqrt: require('./algorithms/math/newton_sqrt'),
     reservoirSampling: require('./algorithms/math/reservoir_sampling'),
+    nextPermutation: require('./algorithms/math/next_permutation'),
   },
   Search: {
     bfs: require('./algorithms/searching/bfs'),
@@ -50,7 +51,8 @@ var lib = {
     mergeSort: require('./algorithms/sorting/merge_sort'),
     quicksort: require('./algorithms/sorting/quicksort'),
     selectionSort: require('./algorithms/sorting/selection_sort'),
-    radixSort: require('./algorithms/sorting/radix_sort')
+    radixSort: require('./algorithms/sorting/radix_sort'),
+    insertionSort: require('./algorithms/sorting/insertion_sort'),
   },
   String: {
     editDistance: require('./algorithms/string/edit_distance'),
