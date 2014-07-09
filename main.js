@@ -38,7 +38,8 @@ var lib = {
     newtonSqrt: require('./algorithms/math/newton_sqrt'),
     reservoirSampling: require('./algorithms/math/reservoir_sampling'),
     fastPower: require('./algorithms/math/fast_power'),
-    nextPermutation: require('./algorithms/math/next_permutation')
+    nextPermutation: require('./algorithms/math/next_permutation'),
+    powerSet: require('./algorithms/math/power_set')
   },
   Search: {
     bfs: require('./algorithms/searching/bfs'),
@@ -60,7 +61,9 @@ var lib = {
     karpRabin: require('./algorithms/string/karp_rabin'),
     knuthMorrisPratt: require('./algorithms/string/knuth_morris_pratt'),
     huffman: require('./algorithms/string/huffman'),
-    hamming: require('./algorithms/string/hamming')
+    hamming: require('./algorithms/string/hamming'),
+    longestCommonSubsequence: require(
+      './algorithms/string/longest_common_subsequence')
   },
   DataStructure: {
     BST: require('./data_structures/bst'),

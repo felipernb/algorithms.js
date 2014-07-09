@@ -60,7 +60,7 @@ var powerSetIterative = function (array) {
 
     }
   }
-  
+
   return powerSet;
 };
 
