@@ -21,17 +21,25 @@
  */
 'use strict';
 
-var karpRabin = require('../../../algorithms/string/karp_rabin'),
+var rabinKarp = require('../../../algorithms/string/rabin_karp'),
     assert = require('assert');
+
+var rabinKarpEqualsToIndexOf = function (a, b) {
+  assert.equal(rabinKarp(a, b), a.indexOf(b));
+};
 
 describe('Karp-Rabin', function () {
   it('should verify if a string is contained in another string',
     function () {
-      assert.equal(karpRabin('', ''), true);
-      assert.equal(karpRabin('a', 'b'), false);
-      assert.equal(karpRabin('b', 'a'), false);
+      rabinKarpEqualsToIndexOf('', '');
+      rabinKarpEqualsToIndexOf('a', 'b');
+      rabinKarpEqualsToIndexOf('b', 'a');
 
-      // ' tes' is contained in 'super test'
-      assert.equal(karpRabin('super test', ' tes'), true);
+      rabinKarpEqualsToIndexOf('super test', 's');
+      rabinKarpEqualsToIndexOf('super test', 'super');
+      rabinKarpEqualsToIndexOf('super test', 'super test');
+      rabinKarpEqualsToIndexOf('super test', 'test');
+      rabinKarpEqualsToIndexOf('super test', ' tes');
+      rabinKarpEqualsToIndexOf('super test x', 'x');
     });
 });

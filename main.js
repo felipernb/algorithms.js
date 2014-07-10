@@ -58,7 +58,7 @@ var lib = {
   },
   String: {
     levenshtein: require('./algorithms/string/levenshtein'),
-    karpRabin: require('./algorithms/string/karp_rabin'),
+    rabinKarp: require('./algorithms/string/rabin_karp'),
     knuthMorrisPratt: require('./algorithms/string/knuth_morris_pratt'),
     huffman: require('./algorithms/string/huffman'),
     hamming: require('./algorithms/string/hamming'),
