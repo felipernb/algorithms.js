@@ -39,7 +39,7 @@ var base = 997;
  *
  * @param String
  * @param String
- * @return Boolean
+ * @return Integer
  */
 var rabinKarp = function (s, pattern) {
   if (pattern.length === 0) return 0;
