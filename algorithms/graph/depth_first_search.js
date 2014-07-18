@@ -24,11 +24,11 @@
 var time = 0,
     visitedNodes = {},
     finishingTimes = {};
-    
+
 /**
  * Depth First Search for all the vertices in the graph
- * Worst Case Complexity: O(V * E)
- * 
+ * Worst Case Complexity: O(V + E)
+ *
  * @param {Object}
  * @return {Object} representing the order in which the
  *    vertices are visited
@@ -45,8 +45,8 @@ var dfsAdjacencyListStart = function (graph) {
 
 /**
  * Depth First Search for the vertices reachable from 'startNode'
- * Worst Case Complexity: O(V * E)
- * 
+ * Worst Case Complexity: O(V + E)
+ *
  * @param {Object}
  * @param {Object}
  * @return {Object}
