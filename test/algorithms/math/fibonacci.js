@@ -64,5 +64,11 @@ describe('Fibonacci', function () {
       testFibonacciSequence(fib.direct);
     });
   });
+
+  describe('#logarithmic()', function () {
+    it('should return the right value for fibonacci sequence', function () {
+      testFibonacciSequence(fib.logarithmic);
+    });
+  });
 });
 
