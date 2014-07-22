@@ -34,7 +34,7 @@ graph.addEdge('three', 'one');
 graph.addEdge('five', 'six');
 
 describe('Depth First Search Algorithm', function () {
-  it('should visit only the nodes reachable from the node {one} (inclusive)',
+  it('should visit only the nodes reachable from the start node (inclusive)',
     function () {
       var finishingTimes = depthFirstSearch.dfsAdjacencyList(graph, 'one');
 
@@ -45,6 +45,11 @@ describe('Depth First Search Algorithm', function () {
       assert.equal(finishingTimes.two, 1);
       assert.equal(finishingTimes.three, 0);
       assert.equal(finishingTimes.four, 2);
+
+      // Finishing times for different calls shouldn't interfere.
+      finishingTimes = depthFirstSearch.dfsAdjacencyList(graph, 'five');
+      assert.equal(finishingTimes.six, 0);
+      assert.equal(finishingTimes.five, 1);
     }
   );
 

@@ -21,48 +21,58 @@
  */
 'use strict';
 
-var time = 0,
-    visitedNodes = {},
-    finishingTimes = {};
-    
+var newDfsState = function () {
+  return {
+    time: 0,
+    visitedNodes: {},
+    finishingTimes: {}
+  };
+};
+
 /**
  * Depth First Search for all the vertices in the graph
- * Worst Case Complexity: O(V * E)
- * 
+ * Worst Case Complexity: O(V + E)
+ *
  * @param {Object}
  * @return {Object} representing the order in which the
  *    vertices are visited
  */
 var dfsAdjacencyListStart = function (graph) {
+  var dfsState = newDfsState();
+
   graph.vertices.forEach(function (v) {
-    if (visitedNodes[v] !== true) {
-      dfsAdjacencyList(graph, v);
+    if (dfsState.visitedNodes[v] !== true) {
+      dfsInternalLoop(graph, v, dfsState);
     }
   });
 
-  return finishingTimes;
+  return dfsState.finishingTimes;
+};
+
+var dfsInternalLoop = function (graph, startNode, dfsState) {
+  dfsState.visitedNodes[startNode] = true;
+
+  graph.neighbors(startNode).forEach(function (v) {
+    if (dfsState.visitedNodes[v] !== true) {
+      dfsInternalLoop(graph, v, dfsState);
+    }
+  });
+
+  dfsState.finishingTimes[startNode] = dfsState.time++;
 };
 
 /**
  * Depth First Search for the vertices reachable from 'startNode'
- * Worst Case Complexity: O(V * E)
- * 
+ * Worst Case Complexity: O(V + E)
+ *
  * @param {Object}
  * @param {Object}
  * @return {Object}
  */
 var dfsAdjacencyList = function (graph, startNode) {
-  visitedNodes[startNode] = true;
-
-  graph.neighbors(startNode).forEach(function (v) {
-    if (visitedNodes[v] !== true) {
-      dfsAdjacencyList(graph, v);
-    }
-  });
-
-  finishingTimes[startNode] = time++;
-
-  return finishingTimes;
+  var dfsState = newDfsState();
+  dfsInternalLoop(graph, startNode, dfsState);
+  return dfsState.finishingTimes;
 };
 
 var depthFirstSearch = {
