@@ -28,7 +28,8 @@ var lib = {
     SPFA: require('./algorithms/graph/SPFA'),
     bellmanFord: require('./algorithms/graph/bellman_ford'),
     eulerPath: require('./algorithms/graph/euler_path'),
-    depthFirstSearch: require('./algorithms/graph/depth_first_search')
+    depthFirstSearch: require('./algorithms/graph/depth_first_search'),
+    kruskal: require('./algorithms/graph/kruskal'),
   },
   Math: {
     fibonacci: require('./algorithms/math/fibonacci'),
