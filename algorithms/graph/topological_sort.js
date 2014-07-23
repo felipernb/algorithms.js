@@ -21,7 +21,8 @@
  */
 'use strict';
 
-var Stack = require('../../data_structures/stack');
+var Stack = require('../../data_structures/stack'),
+    depthFirstSearch = require('../../algorithms/graph/depth_first_search');
 
 /**
  * Sorts the edges of the DAG topologically
@@ -40,26 +41,21 @@ var Stack = require('../../data_structures/stack');
 var topologicalSort = function (graph) {
   var stack = new Stack();
   var firstHit = {};
-  var secondHit = {};
   var time = 0;
 
-  /**
-  * Depth first search for a directed acyclic graph (DAG)
-  */
-  var dagDFS = function (node) {
-    if (firstHit[node]) return;
-    var neighbors = graph.neighbors(node);
-    firstHit[node] = ++time;
-    for (var i = 0; i < neighbors.length; i++) {
-      dagDFS(neighbors[i]);
-    }
-    secondHit[node] = ++time;
-    stack.push(node);
-  };
-
   graph.vertices.forEach(function (node) {
-    if (!secondHit[node]) {
-      dagDFS(node);
+    if (!firstHit[node]) {
+      depthFirstSearch(graph, node, {
+        allowTraversal: function (node, neighbor) {
+          return !firstHit[neighbor];
+        },
+        enterVertex: function (node) {
+          firstHit[node] = ++time;
+        },
+        leaveVertex: function (node) {
+          stack.push(node);
+        }
+      });
     }
   });
 

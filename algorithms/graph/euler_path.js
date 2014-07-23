@@ -22,7 +22,8 @@
 'use strict';
 
 
-var Graph = require('../../data_structures/graph');
+var Graph = require('../../data_structures/graph'),
+    depthFirstSearch = require('../../algorithms/graph/depth_first_search');
 
 
 /** Examine a graph and compute pair of end vertices of the existing Euler path.
@@ -115,15 +116,17 @@ var eulerPath = function (graph) {
   var seen = new Graph(graph.directed);
   graph.vertices.forEach(seen.addVertex.bind(seen));
 
-  (function dfs(vertex) {
-    graph.neighbors(vertex).forEach(function (neighbor) {
-      if (!seen.edge(vertex, neighbor)) {
-        seen.addEdge(vertex, neighbor);
-        dfs(neighbor);
-        route.push(vertex);
-      }
-    });
-  }(endpoints.start));
+  depthFirstSearch(graph, endpoints.start, {
+    allowTraversal: function (vertex, neighbor) {
+      return !seen.edge(vertex, neighbor);
+    },
+    beforeTraversal: function (vertex, neighbor) {
+      seen.addEdge(vertex, neighbor);
+    },
+    afterTraversal: function (vertex) {
+      route.push(vertex);
+    }
+  });
 
   graph.vertices.forEach(function (vertex) {
     if (seen.neighbors(vertex).length < graph.neighbors(vertex).length) {

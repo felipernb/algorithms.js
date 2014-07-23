@@ -23,6 +23,7 @@
 
 var kruskal = require('../../../algorithms/graph/kruskal'),
     Graph = require('../../../data_structures/graph'),
+    depthFirstSearch = require('../../../algorithms/graph/depth_first_search'),
     assert = require('assert');
 
 
@@ -33,11 +34,12 @@ var kruskal = require('../../../algorithms/graph/kruskal'),
 var numberOfConnectedComponents = function (graph) {
   assert(!graph.directed);
   var seen = {};
-  var coverComponent = function dfs(start) {
-    if (!seen[start]) {
-      seen[start] = true;
-      graph.neighbors(start).forEach(dfs);
-    }
+  var coverComponent = function (origin) {
+    depthFirstSearch(graph, origin, {
+      enterVertex: function (vertex) {
+        seen[vertex] = true;
+      }
+    });
   };
   return graph.vertices.reduce(function (count, vertex) {
     if (seen[vertex]) {
