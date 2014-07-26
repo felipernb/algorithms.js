@@ -57,7 +57,7 @@ var normalizeCallbacks = function (callbacks, seenVertices) {
 
 /**
  * Run Depth-First Search from a start vertex.
- * Worst-case complexity: O(V + E).
+ * Complexity (default implementation): O(V + E).
  *
  * @param {Graph} graph
  * @param {*} startVertex
