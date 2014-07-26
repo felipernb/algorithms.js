@@ -10,6 +10,7 @@ var lib = {
     depthFirstSearch: require('./algorithms/graph/depth_first_search'),
     kruskal: require('./algorithms/graph/kruskal'),
     breadthFirstSearch: require('./algorithms/graph/breadth_first_search'),
+    bfsShortestPath: require('./algorithms/graph/bfs_shortest_path'),
   },
   Math: {
     fibonacci: require('./algorithms/math/fibonacci'),
