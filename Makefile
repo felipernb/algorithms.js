@@ -1,10 +1,15 @@
-all: jshint coverage
+.PHONY: setup
+
+all: jshint eslint coverage
 
 setup:
 	npm install
 
 jshint: setup
 	jshint algorithms data_structures test util
+
+eslint: setup
+	eslint -f compact algorithms data_structures test util
 
 test: setup
 	mocha -R spec --recursive test
