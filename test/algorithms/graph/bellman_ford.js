@@ -23,6 +23,8 @@ describe('Bellman-Ford Algorithm', function () {
     assert.equal(shortestPaths.distance.a, 0);
     assert.equal(shortestPaths.distance.d, -2);
     assert.equal(shortestPaths.distance.e, 1);
+    assert.equal(shortestPaths.previous.d, 'e');
+    assert.equal(shortestPaths.previous.e, 'b');
 
     // It'll cause a Negative-Weighted Cycle.
     graph.addEdge('c', 'a', -9);
