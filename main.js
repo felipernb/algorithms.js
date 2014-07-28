@@ -9,6 +9,7 @@ var lib = {
     eulerPath: require('./algorithms/graph/euler_path'),
     depthFirstSearch: require('./algorithms/graph/depth_first_search'),
     kruskal: require('./algorithms/graph/kruskal'),
+    breadthFirstSearch: require('./algorithms/graph/breadth_first_search'),
   },
   Math: {
     fibonacci: require('./algorithms/math/fibonacci'),
