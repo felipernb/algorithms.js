@@ -124,4 +124,12 @@ describe('Graph - Adjacency list', function () {
     assert.equal(g.edge('a', 'c'), 5);
     assert.equal(g.edge('c', 'd'), 2);
   });
+
+  it('should not "inherit" edges from Object.prototype', function () {
+    var g = new Graph();
+    g.addEdge('a', 'b');
+
+    assert.ifError(g.edge('a', 'constructor'));
+    assert.throws(g.edge.bind(g, 'valueOf', 'call'));
+  });
 });

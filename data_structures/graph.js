@@ -6,13 +6,13 @@
  */
 function Graph(directed) {
   this.directed = (directed === undefined ? true : !!directed);
-  this.adjList = {};
+  this.adjList = Object.create(null);
   this.vertices = [];
 }
 
 Graph.prototype.addVertex = function (v) {
   this.vertices.push('' + v);
-  this.adjList[v] = {};
+  this.adjList[v] = Object.create(null);
 };
 
 Graph.prototype.addEdge = function (a, b, w) {
