@@ -15,6 +15,7 @@
  */
 var bellmanFord = function (graph, startNode) {
   var minDistance = {};
+  var previousVertex = {};
   var edges = [];
   var adjacencyListSize = 0;
 
@@ -45,6 +46,7 @@ var bellmanFord = function (graph, startNode) {
 
       if (sourceDistance < targetDistance) {
         minDistance[edges[j].target] = sourceDistance;
+        previousVertex[edges[j].target] = edges[j].source;
       }
     }
   }
@@ -63,7 +65,8 @@ var bellmanFord = function (graph, startNode) {
   }
 
   return {
-    distance: minDistance
+    distance: minDistance,
+    previous: previousVertex
   };
 };
 
