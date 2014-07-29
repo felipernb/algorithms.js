@@ -13,16 +13,19 @@ function SPFA(graph, s) {
   var previous = {};
   var queue = {};
   var isInQue = {};
+  var cnt = {};
   var head = 0;
   var tail = 1;
   // initialize
   distance[s] = 0;
   queue[0] = s;
   isInQue[s] = true;
+  cnt[s] = 1;
   graph.vertices.forEach(function (v) {
     if (v !== s) {
       distance[v] = Infinity;
       isInQue[v] = false;
+      cnt[v] = 0;
     }
   });
 
@@ -41,6 +44,12 @@ function SPFA(graph, s) {
         if (!isInQue[v]) {
           queue[tail++] = v;
           isInQue[v] = true;
+          cnt[v]++;
+          if(cnt[v] > graph.vertices.length)
+            // indicates negative-weighted cycle
+            return {
+              distance: {}
+            };
         }
       }
     }

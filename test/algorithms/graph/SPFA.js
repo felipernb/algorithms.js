@@ -7,22 +7,31 @@ var SPFA = require('../../../algorithms/graph/SPFA'),
 describe('SPFA Algorithm', function () {
   it('should return the shortest paths to all nodes from a given origin',
     function () {
-      var g = new Graph();
-      g.addEdge('a', 'b', 5);
-      g.addEdge('a', 'c', 10);
-      g.addEdge('b', 'c', 2);
-      g.addEdge('b', 'd', 20);
-      g.addEdge('c', 'd', 1);
-      g.addEdge('d', 'a', 10);
+      var graph = new Graph(true);
 
-      var shortestPath = SPFA(g, 'a');
-      assert.equal(shortestPath.distance.b, 5);
-      assert.equal(shortestPath.previous.b, 'a');
+      graph.addEdge('a', 'b', -1);
+      graph.addEdge('a', 'c', 4);
+      graph.addEdge('b', 'c', 3);
+      graph.addEdge('b', 'd', 2);
+      graph.addEdge('b', 'e', 2);
+      graph.addEdge('d', 'b', 1);
+      graph.addEdge('e', 'd', -3);
+      graph.addEdge('d', 'c', 5);
 
-      assert.equal(shortestPath.distance.c, 7);
-      assert.equal(shortestPath.previous.c, 'b');
+      var shortestPaths = SPFA(graph, 'a');
 
-      assert.equal(shortestPath.distance.d, 8);
-      assert.equal(shortestPath.previous.d, 'c');
+      assert.equal(shortestPaths.distance.a, 0);
+      assert.equal(shortestPaths.distance.d, -2);
+      assert.equal(shortestPaths.distance.e, 1);
+      assert.equal(shortestPaths.previous.d, 'e');
+      assert.equal(shortestPaths.previous.e, 'b');
+
+      // It'll cause a Negative-Weighted Cycle.
+      graph.addEdge('c', 'a', -9);
+
+      shortestPaths = SPFA(graph, 'a');
+
+      // The 'distance' object is empty
+      assert.equal(shortestPaths.distance.a, undefined);
     });
 });
