@@ -45,7 +45,7 @@ function SPFA(graph, s) {
           queue[tail++] = v;
           isInQue[v] = true;
           cnt[v]++;
-          if(cnt[v] > graph.vertices.length)
+          if (cnt[v] > graph.vertices.length)
             // indicates negative-weighted cycle
             return {
               distance: {}
