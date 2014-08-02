@@ -33,9 +33,13 @@ PriorityQueue.prototype.insert = function (item, priority) {
   MinHeap.prototype.insert.call(this, o);
 };
 
-PriorityQueue.prototype.extract = function () {
+PriorityQueue.prototype.extract = function (withPriority) {
   var min = MinHeap.prototype.extract.call(this);
-  return min && min.item;
+  return withPriority ? min : min && min.item;
+};
+
+PriorityQueue.prototype.priority = function (item) {
+  return this._items[item].priority;
 };
 
 PriorityQueue.prototype.changePriority = function (item, priority) {

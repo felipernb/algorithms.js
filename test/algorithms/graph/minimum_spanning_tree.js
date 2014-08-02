@@ -1,6 +1,7 @@
 'use strict';
 
 var kruskal = require('../../../algorithms/graph/kruskal'),
+    prim = require('../../../algorithms/graph/prim'),
     Graph = require('../../../data_structures/graph'),
     depthFirstSearch = require('../../../algorithms/graph/depth_first_search'),
     assert = require('assert');
@@ -179,4 +180,5 @@ var testMstAlgorithm = function (mst) {
 
 describe('Minimum Spanning Tree', function () {
   describe('#Kruskal\'s Algorithm', testMstAlgorithm.bind(null, kruskal));
+  describe('#Prim\'s Algorithm', testMstAlgorithm.bind(null, prim));
 });
