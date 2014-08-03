@@ -11,6 +11,7 @@ var lib = {
     kruskal: require('./algorithms/graph/kruskal'),
     breadthFirstSearch: require('./algorithms/graph/breadth_first_search'),
     bfsShortestPath: require('./algorithms/graph/bfs_shortest_path'),
+    prim: require('./algorithms/graph/prim'),
   },
   Math: {
     fibonacci: require('./algorithms/math/fibonacci'),
