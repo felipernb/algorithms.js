@@ -12,6 +12,7 @@ var lib = {
     breadthFirstSearch: require('./algorithms/graph/breadth_first_search'),
     bfsShortestPath: require('./algorithms/graph/bfs_shortest_path'),
     prim: require('./algorithms/graph/prim'),
+    floydWarshall: require('./algorithms/graph/floyd_warshall'),
   },
   Math: {
     fibonacci: require('./algorithms/math/fibonacci'),
