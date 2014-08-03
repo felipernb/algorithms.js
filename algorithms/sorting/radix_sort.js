@@ -13,7 +13,8 @@
  */
 var radixSort = function (array) {
   var max = maximumKey(array);
-  var digitsMax = amountOfDigits(max);
+  var digitsMax = (max === 0 ? 1 :
+    1 + Math.floor(Math.log(max) / Math.log(10))); // log base 10
 
   for (var i = 0; i < digitsMax; i++) {
     array = auxiliaryCountingSort(array, i);
@@ -71,55 +72,14 @@ var auxiliaryCountingSort = function (array, mod) {
  * @return Integer if array non-empty
  *         Undefined otherwise
  */
-var maximumKey = function (array) {
-  var length = array.length;
-
-  if (length > 0) {
-    var max = array[0].key;
-
-    for (var i = 1; i < length; i++) {
-      if (array[i].key > max) {
-        max = array[i].key;
-      }
+var maximumKey = function (a) {
+  var max;
+  for (var i = 1; i < a.length; i++) {
+    if (max === undefined || a[i].key > max) {
+      max = a[i].key;
     }
-
-    return max;
   }
-  else {
-    return undefined;
-  }
-};
-
-/**
- * Returns the amount of digits contained in a number
- * 
- * Asymptotic Complexity: O(d), where 'd' represents the
- * amount of digits in the number
- * 
- * @param Number
- * @return Number
- */
-var amountOfDigits = function (number) {
-  if (number === 0) {
-    return 1;
-  }
-  else {
-    var counter = 0;
-
-    // For positive numbers
-    while (parseInt(number) > 0) {
-      number /= 10;
-      ++counter;
-    }
-
-    // For negative numbers
-    while (parseInt(number) < 0) {
-      number /= 10;
-      ++counter;
-    }
-
-    return counter;
-  }
+  return max;
 };
 
 module.exports = radixSort;
