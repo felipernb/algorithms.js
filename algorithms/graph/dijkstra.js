@@ -24,19 +24,17 @@ function dijkstra(graph, s) {
   });
 
   var currNode;
+  var relax = function (v) {
+    var newDistance = distance[currNode] + graph.edge(currNode, v);
+    if (newDistance < distance[v]) {
+      distance[v] = newDistance;
+      previous[v] = currNode;
+      q.changePriority(v, distance[v]);
+    }
+  };
   while (!q.isEmpty()) {
     currNode = q.extract();
-    var neighbors = graph.neighbors(currNode);
-    for (var i = 0; i < neighbors.length; i++) {
-      var v = neighbors[i];
-      // relaxation
-      var newDistance = distance[currNode] + graph.edge(currNode, v);
-      if (newDistance < distance[v]) {
-        distance[v] = newDistance;
-        previous[v] = currNode;
-        q.changePriority(v, distance[v]);
-      }
-    }
+    graph.neighbors(currNode).forEach(relax);
   }
   return {
     distance: distance,

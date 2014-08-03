@@ -8,14 +8,15 @@ var MinHeap = require('./heap').MinHeap;
  * and not on the element itself
  */
 function PriorityQueue(initialItems) {
+
+  var self = this;
   MinHeap.call(this, function (a, b) {
-    return a.priority < b.priority ? -1 : 1;
+    return self._priority[a] < self._priority[b] ? -1 : 1;
   });
 
-  this._items = {};
+  this._priority = {};
 
   initialItems = initialItems || {};
-  var self = this;
   Object.keys(initialItems).forEach(function (item) {
     self.insert(item, initialItems[item]);
   });
@@ -24,26 +25,26 @@ function PriorityQueue(initialItems) {
 PriorityQueue.prototype = new MinHeap();
 
 PriorityQueue.prototype.insert = function (item, priority) {
-  var o = {
-    item: item,
-    priority: priority
-  };
-
-  this._items[item] = o;
-  MinHeap.prototype.insert.call(this, o);
+  if (this._priority[item] !== undefined) {
+    return this.changePriority(item, priority);
+  }
+  this._priority[item] = priority;
+  MinHeap.prototype.insert.call(this, item);
 };
 
 PriorityQueue.prototype.extract = function (withPriority) {
   var min = MinHeap.prototype.extract.call(this);
-  return withPriority ? min : min && min.item;
+  return withPriority ?
+    min && {item: min, priority: this._priority[min]} :
+    min;
 };
 
 PriorityQueue.prototype.priority = function (item) {
-  return this._items[item].priority;
+  return this._priority[item];
 };
 
 PriorityQueue.prototype.changePriority = function (item, priority) {
-  this._items[item].priority = priority;
+  this._priority[item] = priority;
   this.heapify();
 };
 
