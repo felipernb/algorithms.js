@@ -5,7 +5,7 @@ var huffman = require('../../../algorithms/string/huffman'),
 
 
 describe('Huffman', function () {
-  var messages = ['', 'a', 'b', 'hello', 'test', 'awwawwweeeqqq',
+  var messages = ['', 'a', 'b', 'hello', 'test', 'aaaabbbccddef',
                   'The seething sea ceaseth and thus' +
                   ' the seething sea sufficeth us.',
                   'Shep Schwab shopped at Scott\'s Schnapps shop;' +
@@ -34,6 +34,7 @@ describe('Huffman', function () {
 
   it('should raise an error if it fails to decode', function () {
     var badArgs = [[{}, '0'],
+                   [{}, [0]],
                    [{a: '0', b: '10', c: '11'}, '001']];
     badArgs.forEach(function (args) {
       assert.throws(function () {

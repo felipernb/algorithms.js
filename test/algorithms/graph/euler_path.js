@@ -129,24 +129,32 @@ describe('Euler Path', function () {
 
   it('should raise an error if there is no Euler path', function () {
     var graph = graphFromEdges(false, [[0, 1], [2, 3]]);
-    assert.throws(eulerPath.bind(graph));
+    assert.throws(eulerPath.bind(null, graph));
+
     graph = graphFromEdges(false, [
       [0, 1],
       [0, 2],
       [0, 3]
     ]);
-    assert.throws(eulerPath.bind(graph));
+    assert.throws(eulerPath.bind(null, graph));
+
     graph = graphFromEdges(true, [[0, 1], [0, 2]]);
-    assert.throws(eulerPath.bind(graph));
+    assert.throws(eulerPath.bind(null, graph));
+
     graph = graphFromEdges(true, [[1, 0], [2, 0]]);
-    assert.throws(eulerPath.bind(graph));
+    assert.throws(eulerPath.bind(null, graph));
+
     graph = graphFromEdges(true, [
       [0, 1],
-      [1, 2],
       [2, 3],
-      [3, 0],
-      [3, 1]
+      [3, 2]
     ]);
-    assert.throws(eulerPath.bind(graph));
+    assert.throws(eulerPath.bind(null, graph));
+
+    graph = graphFromEdges(true, [
+      [0, 1],
+      [2, 3]
+    ]);
+    assert.throws(eulerPath.bind(null, graph));
   });
 });
