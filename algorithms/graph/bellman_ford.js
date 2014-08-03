@@ -39,29 +39,33 @@ var bellmanFord = function (graph, startNode) {
   var sourceDistance;
   var targetDistance;
 
-  for (var i = 0; i < adjacencyListSize - 1; i++) {
+  var iteration;
+  for (iteration = 0; iteration < adjacencyListSize; ++iteration) {
+    var somethingChanged = false;
+
     for (var j = 0; j < edgesSize; j++) {
       sourceDistance = minDistance[edges[j].source] + edges[j].weight;
       targetDistance = minDistance[edges[j].target];
 
       if (sourceDistance < targetDistance) {
+        somethingChanged = true;
         minDistance[edges[j].target] = sourceDistance;
         previousVertex[edges[j].target] = edges[j].source;
       }
     }
+
+    if (!somethingChanged) {
+      // Early stop.
+      break;
+    }
   }
 
-  for (i = 0; i < edgesSize; i++) {
-    sourceDistance = minDistance[edges[i].source] + edges[i].weight;
-    targetDistance = minDistance[edges[i].target];
-
-    if (sourceDistance < targetDistance) {
-
-      // Empty 'distance' object indicates Negative-Weighted Cycle
-      return {
-        distance: {}
-      };
-    }
+  // If the loop did not break early, then there is a negative-weighted cycle.
+  if (iteration == adjacencyListSize) {
+    // Empty 'distance' object indicates Negative-Weighted Cycle
+    return {
+      distance: {}
+    };
   }
 
   return {
