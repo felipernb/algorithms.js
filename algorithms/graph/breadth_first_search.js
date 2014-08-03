@@ -19,7 +19,7 @@ var Queue = require('../../data_structures/queue');
  * Fill in missing callbacks.
  *
  * @param {Callbacks} callbacks
- * @param {Array} [seenVertices] - Vertices already discovered,
+ * @param {Array} seenVertices - Vertices already discovered,
  *   used by default allowTraversal implementation.
  * @return {Callbacks} The same object or new one (if null passed).
  */
@@ -27,7 +27,7 @@ var normalizeCallbacks = function (callbacks, seenVertices) {
   callbacks = callbacks || {};
 
   callbacks.allowTraversal = callbacks.allowTraversal || (function () {
-    var seen = (seenVertices || []).reduce(function (seen, vertex) {
+    var seen = seenVertices.reduce(function (seen, vertex) {
       seen[vertex] = true;
       return seen;
     }, {});

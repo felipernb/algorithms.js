@@ -1,5 +1,7 @@
 'use strict';
 
+var assert = require('assert');
+
 
 var huffman = {};
 
@@ -23,12 +25,9 @@ var compress = function (string) {
   var currentBlock = 0, currentBlockSize = 0;
 
   string.split('').forEach(function (char) {
-    if (char == '0' || char == '1') {
-      currentBlock = (currentBlock << 1) | char;
-    }
-    else {
-      throw new Error('String must be binary (only 0s and 1s allowed).');
-    }
+    assert(char == '0' || char == '1',
+           'String must be binary (only 0s and 1s allowed).');
+    currentBlock = (currentBlock << 1) | char;
     currentBlockSize += 1;
 
     if (currentBlockSize == MAX_BLOCK_SIZE) {

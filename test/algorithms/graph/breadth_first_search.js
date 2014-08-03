@@ -23,6 +23,8 @@ describe('Breadth-First Search', function () {
     var lastEntered = null;
     var traversed = 0;
 
+    breadthFirstSearch(graph, 1);
+
     breadthFirstSearch(graph, 1, {
       enterVertex: function (vertex) {
         enter.push(vertex);

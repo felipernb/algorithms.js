@@ -18,6 +18,8 @@ describe('Depth First Search Algorithm', function () {
       var enter = [], leave = [];
       var numEdgeTails = 0, numEdgeHeads = 0;
 
+      depthFirstSearch(graph, 'one');
+
       var dfsCallbacks = {
         enterVertex: [].push.bind(enter),
         leaveVertex: [].push.bind(leave),
