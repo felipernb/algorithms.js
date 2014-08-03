@@ -11,7 +11,7 @@ function PriorityQueue(initialItems) {
 
   var self = this;
   MinHeap.call(this, function (a, b) {
-    return self._priority[a] < self._priority[b] ? -1 : 1;
+    return self.priority(a) < self.priority(b) ? -1 : 1;
   });
 
   this._priority = {};

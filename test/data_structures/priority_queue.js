@@ -75,8 +75,35 @@ describe('Min Priority Queue', function () {
     assert.equal(q.extract(), 'e');
     assert.equal(q.extract(), 'c');
     assert.equal(q.extract(), 'd');
-
+    assert(q.isEmpty());
   });
+
+  it('should just update the priority when trying to insert an element that ' +
+      ' already exists', function () {
+    var q = new PriorityQueue({
+      a: 10,
+      b: 2091,
+      c: 4,
+      d: 1,
+      e: 5
+    });
+
+    assert(!q.isEmpty());
+
+    q.insert('b', 0);
+    q.insert('a', 1);
+    q.insert('c', 50);
+    q.insert('d', 1000);
+    q.insert('e', 2);
+
+    assert.equal(q.extract(), 'b');
+    assert.equal(q.extract(), 'a');
+    assert.equal(q.extract(), 'e');
+    assert.equal(q.extract(), 'c');
+    assert.equal(q.extract(), 'd');
+    assert(q.isEmpty());
+  });
+
 });
 
 
