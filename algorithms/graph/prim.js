@@ -25,7 +25,14 @@ var prim = function (graph) {
     q.insert(vertex, Infinity);
   });
 
-  /* jshint loopfunc: true */
+  var relax = function (neighbor) {
+    var weight = graph.edge(vertex, neighbor);
+    if (weight < q.priority(neighbor)) {
+      q.changePriority(neighbor, weight);
+      parent[neighbor] = vertex;
+    }
+  };
+
   while (!q.isEmpty()) {
     var top = q.extract(true);
     var vertex = top.item,
@@ -38,14 +45,7 @@ var prim = function (graph) {
       mst.addVertex(vertex);
     }
 
-    // Relax.
-    graph.neighbors(vertex).forEach(function (neighbor) {
-      var weight = graph.edge(vertex, neighbor);
-      if (weight < q.priority(neighbor)) {
-        q.changePriority(neighbor, weight);
-        parent[neighbor] = vertex;
-      }
-    });
+    graph.neighbors(vertex).forEach(relax);
   }
 
   return mst;

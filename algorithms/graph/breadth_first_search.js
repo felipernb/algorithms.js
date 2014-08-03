@@ -65,19 +65,18 @@ var breadthFirstSearch = function (graph, startVertex, callbacks) {
   vertexQueue.push(startVertex);
   callbacks = normalizeCallbacks(callbacks, [startVertex]);
 
-  /* jshint loopfunc: true */
+  var vertex;
+  var enqueue = function (neighbor) {
+    if (callbacks.allowTraversal(vertex, neighbor)) {
+      callbacks.onTraversal(vertex, neighbor);
+      vertexQueue.push(neighbor);
+    }
+  };
+
   while (!vertexQueue.isEmpty()) {
-    var vertex = vertexQueue.pop();
-
+    vertex = vertexQueue.pop();
     callbacks.enterVertex(vertex);
-
-    graph.neighbors(vertex).forEach(function (neighbor) {
-      if (callbacks.allowTraversal(vertex, neighbor)) {
-        callbacks.onTraversal(vertex, neighbor);
-        vertexQueue.push(neighbor);
-      }
-    });
-
+    graph.neighbors(vertex).forEach(enqueue);
     callbacks.leaveVertex(vertex);
   }
 };
