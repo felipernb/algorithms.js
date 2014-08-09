@@ -38,7 +38,8 @@ var lib = {
     quicksort: require('./algorithms/sorting/quicksort'),
     selectionSort: require('./algorithms/sorting/selection_sort'),
     radixSort: require('./algorithms/sorting/radix_sort'),
-    insertionSort: require('./algorithms/sorting/insertion_sort')
+    insertionSort: require('./algorithms/sorting/insertion_sort'),
+    shellsort: require('./algorithms/sorting/shell_sort')
   },
   String: {
     levenshtein: require('./algorithms/string/levenshtein'),
