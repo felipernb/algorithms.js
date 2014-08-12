@@ -53,6 +53,18 @@ describe('Min Heap', function () {
 
     assert(h.isEmpty());
   });
+
+  it('should implement map correctly', function () {
+    var h = new heap.MinHeap();
+    h.heapify([1, 2, 3]);
+
+    var total = 0;
+    h.map(function (elem) {
+      total += elem;
+    });
+
+    assert.equal(total, 6);
+  });
 });
 
 describe('Max Heap', function () {
