@@ -36,4 +36,8 @@ HashSet.prototype.contains = function (e) {
   return this._elements.get(e) !== undefined;
 };
 
+HashSet.prototype.map = function (fn) {
+  this._elements.map(fn);
+};
+
 module.exports = HashSet;
