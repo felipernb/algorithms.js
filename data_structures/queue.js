@@ -46,4 +46,8 @@ Queue.prototype.peek = function () {
   return this._elements.get(0);
 };
 
+Queue.prototype.map = function (fn) {
+  this._elements.map(fn);
+};
+
 module.exports = Queue;
