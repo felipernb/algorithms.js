@@ -123,5 +123,19 @@ describe('Hash Table', function () {
     h.put(o, 'foo');
     assert.equal(h.get(o), 'foo');
   });
+
+  it('should implement map correctly', function () {
+    var h = new HashTable();
+    h.put(1, true);
+    h.put(2, true);
+    h.put(3, true);
+
+    var total = 0;
+    h.map(function (elem) {
+      total += elem;
+    });
+
+    assert.equal(total, 6);
+  });
 });
 
