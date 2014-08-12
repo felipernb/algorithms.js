@@ -35,6 +35,20 @@ describe('Queue', function () {
       q.pop();
       assert.equal(q.peek(), 2);
     });
+
+  it('should implement map correctly', function () {
+    var q = new Queue();
+    q.push(1);
+    q.push(2);
+    q.push(3);
+
+    var total = 0;
+    q.map(function (elem) {
+      total += elem;
+    });
+
+    assert.equal(total, 6);
+  });
 });
 
 
