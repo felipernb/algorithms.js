@@ -89,6 +89,10 @@ MinHeap.prototype.heapify = function (a) {
   }
 };
 
+MinHeap.prototype.map = function (fn) {
+  this._elements.map(fn);
+};
+
 /**
  * Max Heap, keeps the highest element always on top
  *
