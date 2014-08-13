@@ -104,12 +104,12 @@ HashTable.prototype._increaseCapacity = function () {
 
 HashTable.prototype.map = function (fn) {
   var applyFunction = function (linkedList) {
-    linkedList.map( function (elem) {
+    linkedList.map(function (elem) {
       fn(elem.k);
     });
   };
 
-  for(var i = 0; i < this._table.length; i++) {
+  for (var i = 0; i < this._table.length; i++) {
     if (this._table[i]) {
       applyFunction(this._table[i]);
     }
