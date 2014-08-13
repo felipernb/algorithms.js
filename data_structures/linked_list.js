@@ -140,7 +140,7 @@ LinkedList.prototype.delNode = function (node) {
 /**
  * Performs the fn function with each element in the list
  */
-LinkedList.prototype.map = function (fn) {
+LinkedList.prototype.forEach = function (fn) {
   var node = this.head;
   while (node) {
     fn(node.value);

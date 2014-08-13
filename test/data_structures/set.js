@@ -58,12 +58,12 @@ describe('HashSet', function () {
     assert(!s.contains(4));
   });
 
-  it('should implement map correctly', function () {
+  it('should implement forEach correctly', function () {
     var s = new HashSet();
     s.add(1, 2, 3);
 
     var total = 0;
-    s.map(function (elem) {
+    s.forEach(function (elem) {
       total += elem;
     });
 

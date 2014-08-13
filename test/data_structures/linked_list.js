@@ -133,7 +133,7 @@ describe('LinkedList', function () {
     assert.equal(l.length, 0);
   });
 
-  it('should perform a function to all elements with map', function () {
+  it('should perform a function to all elements with forEach', function () {
     var l = new LinkedList();
     l.add(5);
     l.add(1);
@@ -142,7 +142,7 @@ describe('LinkedList', function () {
     l.add(1000);
 
     var a = [];
-    l.map(function (e) {
+    l.forEach(function (e) {
       a.push(e);
     });
 

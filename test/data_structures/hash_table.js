@@ -124,14 +124,14 @@ describe('Hash Table', function () {
     assert.equal(h.get(o), 'foo');
   });
 
-  it('should implement map correctly', function () {
+  it('should implement forEach correctly', function () {
     var h = new HashTable();
     h.put(1, true);
     h.put(2, true);
     h.put(3, true);
 
     var total = 0;
-    h.map(function (elem) {
+    h.forEach(function (elem) {
       total += elem;
     });
 

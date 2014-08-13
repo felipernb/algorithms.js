@@ -89,8 +89,8 @@ MinHeap.prototype.heapify = function (a) {
   }
 };
 
-MinHeap.prototype.map = function (fn) {
-  this._elements.map(fn);
+MinHeap.prototype.forEach = function (fn) {
+  this._elements.forEach(fn);
 };
 
 /**

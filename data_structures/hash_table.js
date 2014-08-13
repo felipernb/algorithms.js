@@ -102,9 +102,9 @@ HashTable.prototype._increaseCapacity = function () {
   }
 };
 
-HashTable.prototype.map = function (fn) {
+HashTable.prototype.forEach = function (fn) {
   var applyFunction = function (linkedList) {
-    linkedList.map(function (elem) {
+    linkedList.forEach(function (elem) {
       fn(elem.k);
     });
   };

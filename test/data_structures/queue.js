@@ -36,14 +36,14 @@ describe('Queue', function () {
       assert.equal(q.peek(), 2);
     });
 
-  it('should implement map correctly', function () {
+  it('should implement forEach correctly', function () {
     var q = new Queue();
     q.push(1);
     q.push(2);
     q.push(3);
 
     var total = 0;
-    q.map(function (elem) {
+    q.forEach(function (elem) {
       total += elem;
     });
 
