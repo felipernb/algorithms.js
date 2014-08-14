@@ -58,7 +58,7 @@ describe('HashSet', function () {
     assert(!s.contains(4));
   });
 
-  it('should implement forEach correctly', function () {
+  it('should perform a function to all elements with forEach', function () {
     var s = new HashSet();
     s.add(1, 2, 3);
 

@@ -36,7 +36,7 @@ describe('Queue', function () {
       assert.equal(q.peek(), 2);
     });
 
-  it('should implement forEach correctly', function () {
+  it('should perform a function to all elements with forEach', function () {
     var q = new Queue();
     q.push(1);
     q.push(2);

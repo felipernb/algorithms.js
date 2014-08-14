@@ -53,8 +53,8 @@ describe('Min Heap', function () {
 
     assert(h.isEmpty());
   });
-
-  it('should iterate from smallest to largest', function () {
+  it('should perform a function to all elements from smallest to largest' + 
+     ' with forEach', function () {
     var h = new heap.MinHeap();
     h.heapify([3, 10, 1000, 0, 2, 1]);
 
@@ -118,7 +118,8 @@ describe('Max Heap', function () {
     assert(h.isEmpty());
   });
 
-  it('should iterate from largest to smallest', function () {
+  it('should perform a function to all elements from largest to smallest' + 
+     ' with forEach', function () {
     var h = new heap.MaxHeap();
     h.heapify([3, 10, 1000, 0, 2, 1]);
 

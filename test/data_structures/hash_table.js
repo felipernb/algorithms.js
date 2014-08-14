@@ -124,7 +124,7 @@ describe('Hash Table', function () {
     assert.equal(h.get(o), 'foo');
   });
 
-  it('should implement forEach correctly', function () {
+  it('should perform a function to all keys with forEach', function () {
     var h = new HashTable();
     h.put(1, true);
     h.put(2, true);
