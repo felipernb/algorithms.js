@@ -90,7 +90,15 @@ MinHeap.prototype.heapify = function (a) {
 };
 
 MinHeap.prototype.forEach = function (fn) {
-  this._elements.forEach(fn);
+  var elementsCopy = JSON.parse(JSON.stringify(this._elements));
+
+  var element = this.extract();
+  while (typeof element !== 'undefined') {
+    fn(element);
+    element = this.extract();
+  }
+
+  this._elements = elementsCopy;
 };
 
 /**
