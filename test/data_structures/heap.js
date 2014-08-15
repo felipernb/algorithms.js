@@ -53,6 +53,19 @@ describe('Min Heap', function () {
 
     assert(h.isEmpty());
   });
+
+  it('should perform a function to all elements from smallest to largest' +
+     ' with forEach', function () {
+    var h = new heap.MinHeap();
+    h.heapify([3, 10, 1000, 0, 2, 1]);
+
+    var output = [];
+    h.forEach(function (n) {
+      output.push(n);
+    });
+
+    assert.deepEqual(output, [0, 1, 2, 3, 10, 1000]);
+  });
 });
 
 describe('Max Heap', function () {
@@ -104,5 +117,18 @@ describe('Max Heap', function () {
     assert.equal(h.extract(), 0);
 
     assert(h.isEmpty());
+  });
+
+  it('should perform a function to all elements from largest to smallest' +
+     ' with forEach', function () {
+    var h = new heap.MaxHeap();
+    h.heapify([3, 10, 1000, 0, 2, 1]);
+
+    var output = [];
+    h.forEach(function (n) {
+      output.push(n);
+    });
+
+    assert.deepEqual(output, [1000, 10, 3, 2, 1, 0]);
   });
 });

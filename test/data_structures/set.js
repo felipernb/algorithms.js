@@ -57,6 +57,18 @@ describe('HashSet', function () {
     assert(s.contains(1));
     assert(!s.contains(4));
   });
+
+  it('should perform a function to all elements with forEach', function () {
+    var s = new HashSet();
+    s.add(1, 2, 3);
+
+    var total = 0;
+    s.forEach(function (elem) {
+      total += elem;
+    });
+
+    assert.equal(total, 6);
+  });
 });
 
 
