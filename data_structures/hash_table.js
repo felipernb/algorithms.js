@@ -105,7 +105,7 @@ HashTable.prototype._increaseCapacity = function () {
 HashTable.prototype.forEach = function (fn) {
   var applyFunction = function (linkedList) {
     linkedList.forEach(function (elem) {
-      fn(elem.k);
+      fn(elem.k, elem.v);
     });
   };
 

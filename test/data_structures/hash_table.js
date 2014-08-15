@@ -126,16 +126,19 @@ describe('Hash Table', function () {
 
   it('should perform a function to all keys with forEach', function () {
     var h = new HashTable();
-    h.put(1, true);
-    h.put(2, true);
-    h.put(3, true);
+    h.put(1, 10);
+    h.put(2, 20);
+    h.put(3, 30);
 
-    var total = 0;
-    h.forEach(function (elem) {
-      total += elem;
+    var totalKeys = 0;
+    var totalValues = 0;
+    h.forEach(function (k, v) {
+      totalKeys += k;
+      totalValues += v;
     });
 
-    assert.equal(total, 6);
+    assert.equal(totalKeys, 6);
+    assert.equal(totalValues, 60);
   });
 });
 
