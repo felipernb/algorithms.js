@@ -90,16 +90,18 @@ MinHeap.prototype.heapify = function (a) {
 };
 
 MinHeap.prototype.forEach = function (fn) {
+  // A copy is necessary in order to perform extract(),
+  // get the items in sorted order and then restore the original
+  // this._elements array
   var elementsCopy = [];
+  var i;
 
-  for (var i = 0; i < this._elements.length; i++) {
+  for (i = 0; i < this._elements.length; i++) {
     elementsCopy.push(this._elements[i]);
   }
 
-  var element = this.extract();
-  while (typeof element !== 'undefined') {
-    fn(element);
-    element = this.extract();
+  for (i = this.n; i > 0; i--) {
+    fn(this.extract());
   }
 
   this._elements = elementsCopy;
