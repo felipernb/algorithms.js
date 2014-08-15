@@ -1,5 +1,21 @@
 CHANGELOG
 =========
+0.6.0 (2014-08-15)
+* Browser bundle
+* Data Structures
+ * forEach in Hash Table, Set, Heap and Queue
+ * Set
+* String
+ * Longest common subsequence
+* Math
+ * Logarithmic time Fibonacci
+* Graph
+ * Kruskal's MST
+ * Prim's MST
+ * DFS
+ * BFS
+ * Floyd-Warshall
+
 0.5.0 (2014-07-09)
 * Math
  * Fast Power
