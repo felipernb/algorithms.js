@@ -65,6 +65,9 @@ describe('Min Heap', function () {
     });
 
     assert.deepEqual(output, [0, 1, 2, 3, 10, 1000]);
+
+    // Make sure nothing was really removed
+    assert.equal(h.n, 6);
   });
 });
 
