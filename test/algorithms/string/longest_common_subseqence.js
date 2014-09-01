@@ -2,11 +2,12 @@
 
 var directory = '../../../algorithms/string/';
 var filename = 'longest_common_subsequence';
-var longestCommonSubsequence = require([directory, filename].join('')),
+var longestCommonSubsequence = require(directory + filename),
     assert = require('assert');
 
 describe('Longest common subsequence', function () {
-  it('should return the proper longest common subsequence', function () {
+  it('should return the longest common subsequence of ' +
+    'two strings', function () {
     assert.equal('', longestCommonSubsequence('', ''));
     assert.equal('', longestCommonSubsequence('', 'aaa'));
     assert.equal('', longestCommonSubsequence('aaa', ''));
