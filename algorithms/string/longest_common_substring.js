@@ -60,13 +60,12 @@ var longestCommonSubstring = function (s1, s2) {
   var lcs = '';
 
   while (cache[i][j] !== 0) {
-    lcs += s1[i - 1];
+    lcs = s1[i - 1] + lcs;
     i--;
     j--;
   }
 
-  // LCS is built in reverse, return reversed string
-  return lcs.split('').reverse().join('');
+  return lcs;
 };
 
 module.exports = longestCommonSubstring;

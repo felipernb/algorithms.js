@@ -43,7 +43,7 @@ var longestCommonSubsequence = function (s1, s2) {
 
   while (cache[i][j] !== 0) {
     if (s1[i - 1] === s2[j - 1]) {
-      lcs += s1[i - 1];
+      lcs = s1[i - 1] + lcs;
       i--;
       j--;
     }
@@ -57,8 +57,7 @@ var longestCommonSubsequence = function (s1, s2) {
     }
   }
 
-  // LCS is built in reverse, return reversed string
-  return lcs.split('').reverse().join('');
+  return lcs;
 };
 
 module.exports = longestCommonSubsequence;
