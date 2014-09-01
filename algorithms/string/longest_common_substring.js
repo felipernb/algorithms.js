@@ -50,6 +50,10 @@ var longestCommonSubstring = function (s1, s2) {
     }
   }
 
+  if (!commonSubstringFound) {
+    return '';
+  }
+
   // Build LCS from cache
   i = lcsPosition.i;
   j = lcsPosition.j;
