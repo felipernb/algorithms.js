@@ -36,12 +36,12 @@ var longestCommonSubstring = function (s1, s2) {
           if (cache[i][j] > cache[lcsPosition.i][lcsPosition.j]) {
             lcsPosition.i = i;
             lcsPosition.j = j;
-            commonSubstringFound = true;
           }
         }
         else {
           lcsPosition.i = i;
           lcsPosition.j = j;
+          commonSubstringFound = true;
         }
       }
       else {
