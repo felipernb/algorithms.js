@@ -28,8 +28,7 @@ var longestCommonSubsequence = function (s1, s2) {
   for (i = 1; i < s1.length + 1; i++) {
     for (j = 1; j < s2.length + 1; j++) {
       if (s1[i - 1] == s2[j - 1]) {
-        var newValue = cache[i - 1][j - 1] + 1;
-        cache[i][j] = newValue;
+        cache[i][j] = cache[i - 1][j - 1] + 1;
       }
       else {
         cache[i][j] = Math.max(cache[i][j - 1], cache[i - 1][j]);
