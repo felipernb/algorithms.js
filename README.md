@@ -10,5 +10,11 @@
 
 Classic algorithms and data structures implemented in JavaScript, you know... FOR SCIENCE.
 
+### Installing
+```
+npm install --save algorithms
+```
+
 ### [Documentation](https://github.com/felipernb/algorithms.js/wiki)
+
 
