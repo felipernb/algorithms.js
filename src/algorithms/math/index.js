@@ -10,5 +10,6 @@ module.exports = {
   reservoirSampling: require('./reservoir_sampling'),
   fastPower: require('./fast_power'),
   nextPermutation: require('./next_permutation'),
-  powerSet: require('./power_set')
+  powerSet: require('./power_set'),
+  shannonEntropy: require('./shannon_entropy')
 };
