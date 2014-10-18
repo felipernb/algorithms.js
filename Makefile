@@ -6,7 +6,7 @@ setup:
 jshint: setup
 	jshint src
 
-test: setup
+test: jshint
 	mocha -R spec --recursive src/test
 
 coverage: setup
