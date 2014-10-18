@@ -1,4 +1,4 @@
-all: jshint browser_bundle coverage
+all: jshint coverage
 
 setup:
 	npm install
