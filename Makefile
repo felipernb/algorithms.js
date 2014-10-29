@@ -3,6 +3,19 @@ all: jshint coverage
 setup:
 	npm install
 
+dist: all
+	rm -rf _build
+	mkdir _build
+	cp -r src/* _build
+	cp package.json _build
+	cp LICENSE _build
+	cp AUTHORS _build
+	cp README.md _build
+	cp CHANGELOG _build
+
+release: dist
+	cd _build; npm publish
+
 jshint: setup
 	jshint src
 
