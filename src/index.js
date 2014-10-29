@@ -4,7 +4,7 @@ var lib = {
   DataStructure: require('./data_structures'),
   Graph: require('./graph'),
   Math: require('./math'),
-  Search: require('./searching'),
+  Search: require('./search'),
   Sorting: require('./sorting'),
   String: require('./string')
 };
