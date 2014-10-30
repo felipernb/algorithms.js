@@ -50,9 +50,9 @@ require('algorithms').Graph;
 * eulerPath
 * depthFirstSearch
 * breadthFirstSearch
-* bfsShortestPath
 
 ##### Shortest path
+* bfsShortestPath
 * dijkstra
 * SPFA (Shortest Path Faster Algorithm)
 * bellmanFord
