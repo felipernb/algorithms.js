@@ -1,7 +1,5 @@
 /**
  * Implementation of longest common substring
- *
- * @author Joshua Curl <curljosh@msu.edu>
  */
 
 'use strict';

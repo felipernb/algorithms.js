@@ -60,7 +60,6 @@ var fibWithMemoization = (function () {
   * Implementation using Binet's formula with the rounding trick.
   * O(1) in time, O(1) in space
   *
-  * @author Eugene Sharygin
   * @param Number
   * @return Number
   */
@@ -73,7 +72,6 @@ var fibDirect = function (number) {
   * Implementation based on matrix exponentiation.
   * O(log(n)) in time, O(1) in space
   *
-  * @author Eugene Sharygin
   * @param Number
   * @return Number
   */

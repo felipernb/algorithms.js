@@ -1,7 +1,5 @@
 /**
  * Iterative and recursive implementations of power set
- *
- * @author Joshua Curl <curljosh@msu.edu>
  */
 
 'use strict';

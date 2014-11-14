@@ -1,7 +1,5 @@
 /**
  * Implementation of longest common subsequence
- *
- * @author Joshua Curl <curljosh@msu.edu>
  */
 
 'use strict';
