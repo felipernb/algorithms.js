@@ -129,5 +129,6 @@ require('algorithms').String;
  * decode
 * hamming
 * longestCommonSubsequence
+* longestCommonSubstring
 
 

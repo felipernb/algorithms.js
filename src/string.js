@@ -8,5 +8,7 @@ module.exports = {
   huffman: require('./algorithms/string/huffman'),
   hamming: require('./algorithms/string/hamming'),
   longestCommonSubsequence: require(
-    './algorithms/string/longest_common_subsequence')
+    './algorithms/string/longest_common_subsequence'),
+  longestCommonSubstring: require(
+      './algorithms/string/longest_common_substring')
 };

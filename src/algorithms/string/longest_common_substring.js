@@ -11,58 +11,36 @@
  */
 var longestCommonSubstring = function (s1, s2) {
   // Multidimensional array for dynamic programming algorithm
-  var cache = [];
+  var cache = new Array(s1.length + 1);
 
   var i, j;
 
-  // First column and row are initialized with zeroes
-  for (i = 0; i < s1.length + 1; i++) {
-    cache[i] = [];
-    cache[i][0] = 0;
-  }
-  for (i = 0; i < s2.length + 1; i++) {
-    cache[0][i] = 0;
+  for (i = 0; i <= s1.length + 1; i++) {
+    cache[i] = new Int32Array(s2.length + 1);
   }
 
   var lcsPosition = {};
-  var commonSubstringFound = false;
+  var lcsLength = 0;
 
   // Fill in the cache
-  for (i = 1; i < s1.length + 1; i++) {
-    for (j = 1; j < s2.length + 1; j++) {
+  for (i = 1; i <= s1.length; i++) {
+    for (j = 1; j <= s2.length; j++) {
       if (s1[i - 1] == s2[j - 1]) {
         cache[i][j] = cache[i - 1][j - 1] + 1;
-        if (commonSubstringFound) {
-          if (cache[i][j] > cache[lcsPosition.i][lcsPosition.j]) {
-            lcsPosition.i = i;
-            lcsPosition.j = j;
-          }
-        }
-        else {
+        if (cache[i][j] > lcsLength) {
           lcsPosition.i = i;
           lcsPosition.j = j;
-          commonSubstringFound = true;
+          lcsLength = cache[i][j];
         }
-      }
-      else {
+      } else {
         cache[i][j] = 0;
       }
     }
   }
 
-  if (!commonSubstringFound) {
-    return '';
-  }
-
-  // Build LCS from cache
-  i = lcsPosition.i;
-  j = lcsPosition.j;
   var lcs = '';
-
-  while (cache[i][j] !== 0) {
-    lcs = s1[i - 1] + lcs;
-    i--;
-    j--;
+  if (lcsLength) {
+    lcs = s1.substring(lcsPosition.i - lcsLength, lcsPosition.i);
   }
 
   return lcs;
