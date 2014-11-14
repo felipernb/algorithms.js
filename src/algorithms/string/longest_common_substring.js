@@ -1,5 +1,5 @@
 /**
- * Implementation of longest common subsequence
+ * Implementation of longest common substring
  *
  * @author Joshua Curl <curljosh@msu.edu>
  */
@@ -9,7 +9,7 @@
 /**
  * Implementation via dynamic programming
  */
-var longestCommonSubsequence = function (s1, s2) {
+var longestCommonSubstring = function (s1, s2) {
   // Multidimensional array for dynamic programming algorithm
   var cache = [];
 
@@ -24,40 +24,48 @@ var longestCommonSubsequence = function (s1, s2) {
     cache[0][i] = 0;
   }
 
+  var lcsPosition = {};
+  var commonSubstringFound = false;
+
   // Fill in the cache
   for (i = 1; i < s1.length + 1; i++) {
     for (j = 1; j < s2.length + 1; j++) {
       if (s1[i - 1] == s2[j - 1]) {
         cache[i][j] = cache[i - 1][j - 1] + 1;
+        if (commonSubstringFound) {
+          if (cache[i][j] > cache[lcsPosition.i][lcsPosition.j]) {
+            lcsPosition.i = i;
+            lcsPosition.j = j;
+          }
+        }
+        else {
+          lcsPosition.i = i;
+          lcsPosition.j = j;
+          commonSubstringFound = true;
+        }
       }
       else {
-        cache[i][j] = Math.max(cache[i][j - 1], cache[i - 1][j]);
+        cache[i][j] = 0;
       }
     }
   }
 
+  if (!commonSubstringFound) {
+    return '';
+  }
+
   // Build LCS from cache
-  i = s1.length;
-  j = s2.length;
+  i = lcsPosition.i;
+  j = lcsPosition.j;
   var lcs = '';
 
   while (cache[i][j] !== 0) {
-    if (s1[i - 1] === s2[j - 1]) {
-      lcs = s1[i - 1] + lcs;
-      i--;
-      j--;
-    }
-    else {
-      if (cache[i - 1][j] > cache[i][j - 1]) {
-        i--;
-      }
-      else {
-        j--;
-      }
-    }
+    lcs = s1[i - 1] + lcs;
+    i--;
+    j--;
   }
 
   return lcs;
 };
 
-module.exports = longestCommonSubsequence;
+module.exports = longestCommonSubstring;
