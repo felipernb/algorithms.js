@@ -1,6 +1,6 @@
 'use strict';
 
-var Stack = require('../../data_structures/stack'),
+var Stack = require('../../data_structure/stack'),
     depthFirstSearch = require('../../algorithms/graph/depth_first_search');
 
 /**

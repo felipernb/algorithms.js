@@ -20,7 +20,7 @@ npm install --save algorithms
 #### Data Structures
 
 ```javascript
-require('algorithms/data_structures');
+require('algorithms/data_structure');
 // or
 require('algorithms').DataStructure;
 ```

@@ -1,6 +1,6 @@
 'use strict';
 
-var Queue = require('../../data_structures/queue');
+var Queue = require('../../data_structure/queue');
 
 
 /**
