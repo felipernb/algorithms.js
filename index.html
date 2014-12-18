@@ -3,55 +3,52 @@
   <head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
-
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
 
     <title>algorithms.js by felipernb</title>
   </head>
 
   <body>
+
     <header>
-      <div class="inner">
+      <div class="container">
         <h1>algorithms.js</h1>
         <h2>Traditional Computer Science algorithms and data structures implemented in JavaScript</h2>
-        <a href="https://github.com/felipernb/algorithms.js" class="button"><small>View project on</small> GitHub</a>
+
+        <section id="downloads">
+          <a href="https://github.com/felipernb/algorithms.js/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/felipernb/algorithms.js/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/felipernb/algorithms.js" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
       </div>
     </header>
 
-    <div id="content-wrapper">
-      <div class="inner clearfix">
-        <section id="main-content">
-          <h1>
-<a id="algorithmsjs" class="anchor" href="#algorithmsjs" aria-hidden="true"><span class="octicon octicon-link"></span></a>algorithms.js</h1>
-
-<p><a href="https://travis-ci.org/felipernb/algorithms.js"><img src="https://travis-ci.org/felipernb/algorithms.js.png?branch=master" alt="Build Status"></a>
+    <div class="container">
+      <section id="main_content">
+        <p><a href="https://travis-ci.org/felipernb/algorithms.js"><img src="https://travis-ci.org/felipernb/algorithms.js.png?branch=master" alt="Build Status"></a>
 <a href="https://coveralls.io/r/felipernb/algorithms.js?branch=master"><img src="https://coveralls.io/repos/felipernb/algorithms.js/badge.png?branch=master" alt="Coverage Status"></a></p>
 
 <p><img src="http://www.quickmeme.com/img/8d/8d30a19413145512ad5a05c46ec0da545df5ed79e113fcf076dc03c7514eb631.jpg" alt=""></p>
 
-<h2>
-<a id="atwoods-law-applied-to-cs101" class="anchor" href="#atwoods-law-applied-to-cs101" aria-hidden="true"><span class="octicon octicon-link"></span></a>Atwood's Law applied to CS101.</h2>
+<h1>
+<a id="atwoods-law-applied-to-cs101" class="anchor" href="#atwoods-law-applied-to-cs101" aria-hidden="true"><span class="octicon octicon-link"></span></a>Atwood's Law applied to CS101.</h1>
 
 <p>Classic algorithms and data structures implemented in JavaScript, you know... FOR SCIENCE.</p>
 
-<h3>
-<a id="installing" class="anchor" href="#installing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installing</h3>
+<h2>
+<a id="installing" class="anchor" href="#installing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installing</h2>
 
 <pre><code>npm install --save algorithms
 </code></pre>
 
-<h3>
-<a id="contents" class="anchor" href="#contents" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contents</h3>
+<h2>
+<a id="contents" class="anchor" href="#contents" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contents</h2>
 
-<h4>
-<a id="data-structures" class="anchor" href="#data-structures" aria-hidden="true"><span class="octicon octicon-link"></span></a>Data Structures</h4>
+<h3>
+<a id="data-structures" class="anchor" href="#data-structures" aria-hidden="true"><span class="octicon octicon-link"></span></a>Data Structures</h3>
 
 <div class="highlight highlight-javascript"><pre><span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>algorithms/data_structure<span class="pl-pds">'</span></span>);
 <span class="pl-c">// or</span>
@@ -76,8 +73,8 @@
 <li>DisjointSetForest</li>
 </ul>
 
-<h4>
-<a id="graph-algorithms" class="anchor" href="#graph-algorithms" aria-hidden="true"><span class="octicon octicon-link"></span></a>Graph algorithms</h4>
+<h3>
+<a id="graph-algorithms" class="anchor" href="#graph-algorithms" aria-hidden="true"><span class="octicon octicon-link"></span></a>Graph algorithms</h3>
 
 <div class="highlight highlight-javascript"><pre><span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>algorithms/graph<span class="pl-pds">'</span></span>);
 <span class="pl-c">// or</span>
@@ -90,8 +87,8 @@
 <li>breadthFirstSearch</li>
 </ul>
 
-<h5>
-<a id="shortest-path" class="anchor" href="#shortest-path" aria-hidden="true"><span class="octicon octicon-link"></span></a>Shortest path</h5>
+<h4>
+<a id="shortest-path" class="anchor" href="#shortest-path" aria-hidden="true"><span class="octicon octicon-link"></span></a>Shortest path</h4>
 
 <ul>
 <li>bfsShortestPath</li>
@@ -101,16 +98,16 @@
 <li>floydWarshall</li>
 </ul>
 
-<h5>
-<a id="minimum-spanning-tree" class="anchor" href="#minimum-spanning-tree" aria-hidden="true"><span class="octicon octicon-link"></span></a>Minimum spanning tree</h5>
+<h4>
+<a id="minimum-spanning-tree" class="anchor" href="#minimum-spanning-tree" aria-hidden="true"><span class="octicon octicon-link"></span></a>Minimum spanning tree</h4>
 
 <ul>
 <li>prim</li>
 <li>kruskal</li>
 </ul>
 
-<h4>
-<a id="math-algorithms" class="anchor" href="#math-algorithms" aria-hidden="true"><span class="octicon octicon-link"></span></a>Math algorithms</h4>
+<h3>
+<a id="math-algorithms" class="anchor" href="#math-algorithms" aria-hidden="true"><span class="octicon octicon-link"></span></a>Math algorithms</h3>
 
 <div class="highlight highlight-javascript"><pre><span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>algorithms/math<span class="pl-pds">'</span></span>);
 <span class="pl-c">// or</span>
@@ -129,8 +126,8 @@
 <li>shannonEntropy</li>
 </ul>
 
-<h4>
-<a id="search-algorithms" class="anchor" href="#search-algorithms" aria-hidden="true"><span class="octicon octicon-link"></span></a>Search algorithms</h4>
+<h3>
+<a id="search-algorithms" class="anchor" href="#search-algorithms" aria-hidden="true"><span class="octicon octicon-link"></span></a>Search algorithms</h3>
 
 <div class="highlight highlight-javascript"><pre><span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>algorithms/search<span class="pl-pds">'</span></span>);
 <span class="pl-c">// or</span>
@@ -149,8 +146,8 @@
 </li>
 </ul>
 
-<h4>
-<a id="sorting-algorithms" class="anchor" href="#sorting-algorithms" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sorting algorithms</h4>
+<h3>
+<a id="sorting-algorithms" class="anchor" href="#sorting-algorithms" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sorting algorithms</h3>
 
 <div class="highlight highlight-javascript"><pre><span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>algorithms/sorting<span class="pl-pds">'</span></span>);
 <span class="pl-c">// or</span>
@@ -167,8 +164,8 @@
 <li>shellSort</li>
 </ul>
 
-<h4>
-<a id="string-algorithms" class="anchor" href="#string-algorithms" aria-hidden="true"><span class="octicon octicon-link"></span></a>String algorithms</h4>
+<h3>
+<a id="string-algorithms" class="anchor" href="#string-algorithms" aria-hidden="true"><span class="octicon octicon-link"></span></a>String algorithms</h3>
 
 <div class="highlight highlight-javascript"><pre><span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>algorithms/string<span class="pl-pds">'</span></span>);
 <span class="pl-c">// or</span>
@@ -189,26 +186,10 @@
 <li>longestCommonSubsequence</li>
 <li>longestCommonSubstring</li>
 </ul>
-        </section>
-
-        <aside id="sidebar">
-          <a href="https://github.com/felipernb/algorithms.js/zipball/master" class="button">
-            <small>Download</small>
-            .zip file
-          </a>
-          <a href="https://github.com/felipernb/algorithms.js/tarball/master" class="button">
-            <small>Download</small>
-            .tar.gz file
-          </a>
-
-          <p class="repo-owner"><a href="https://github.com/felipernb/algorithms.js"></a> is maintained by <a href="https://github.com/felipernb">felipernb</a>.</p>
-
-          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
-        </aside>
-      </div>
+      </section>
     </div>
 
-            <script type="text/javascript">
+              <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
           </script>
