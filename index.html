@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
 
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -21,26 +21,174 @@
       <div class="inner">
         <h1>algorithms.js</h1>
         <h2>Traditional Computer Science algorithms and data structures implemented in JavaScript</h2>
-        <a href="https://github.com/felipernb/algorithms.js" class="button"><small>View project on</small>GitHub</a>
+        <a href="https://github.com/felipernb/algorithms.js" class="button"><small>View project on</small> GitHub</a>
       </div>
     </header>
 
     <div id="content-wrapper">
       <div class="inner clearfix">
         <section id="main-content">
-          <p><a href="https://travis-ci.org/felipernb/algorithms.js"><img src="https://travis-ci.org/felipernb/algorithms.js.png?branch=master" alt="Build Status"></a>
+          <h1>
+<a id="algorithmsjs" class="anchor" href="#algorithmsjs" aria-hidden="true"><span class="octicon octicon-link"></span></a>algorithms.js</h1>
+
+<p><a href="https://travis-ci.org/felipernb/algorithms.js"><img src="https://travis-ci.org/felipernb/algorithms.js.png?branch=master" alt="Build Status"></a>
 <a href="https://coveralls.io/r/felipernb/algorithms.js?branch=master"><img src="https://coveralls.io/repos/felipernb/algorithms.js/badge.png?branch=master" alt="Coverage Status"></a></p>
 
+<p><img src="http://www.quickmeme.com/img/8d/8d30a19413145512ad5a05c46ec0da545df5ed79e113fcf076dc03c7514eb631.jpg" alt=""></p>
+
 <h2>
-<a name="atwoods-law-applied-to-cs101" class="anchor" href="#atwoods-law-applied-to-cs101"><span class="octicon octicon-link"></span></a>Atwood's Law applied to CS101.</h2>
+<a id="atwoods-law-applied-to-cs101" class="anchor" href="#atwoods-law-applied-to-cs101" aria-hidden="true"><span class="octicon octicon-link"></span></a>Atwood's Law applied to CS101.</h2>
 
 <p>Classic algorithms and data structures implemented in JavaScript, you know... FOR SCIENCE.</p>
 
 <h3>
-<a name="documentation" class="anchor" href="#documentation"><span class="octicon octicon-link"></span></a><a href="https://github.com/felipernb/algorithms.js/wiki">Documentation</a>
-</h3>
+<a id="installing" class="anchor" href="#installing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installing</h3>
 
-<p><img src="http://www.quickmeme.com/img/8d/8d30a19413145512ad5a05c46ec0da545df5ed79e113fcf076dc03c7514eb631.jpg" alt=""></p>
+<pre><code>npm install --save algorithms
+</code></pre>
+
+<h3>
+<a id="contents" class="anchor" href="#contents" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contents</h3>
+
+<h4>
+<a id="data-structures" class="anchor" href="#data-structures" aria-hidden="true"><span class="octicon octicon-link"></span></a>Data Structures</h4>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>algorithms/data_structure<span class="pl-pds">'</span></span>);
+<span class="pl-c">// or</span>
+<span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>algorithms<span class="pl-pds">'</span></span>).DataStructure;</pre></div>
+
+<ul>
+<li>BST</li>
+<li>Graph</li>
+<li>HashTable</li>
+<li>Heap
+
+<ul>
+<li>MinHeap</li>
+<li>MaxHeap</li>
+</ul>
+</li>
+<li>LinkedList</li>
+<li>PriorityQueue</li>
+<li>Queue</li>
+<li>Stack</li>
+<li>Set (HashSet)</li>
+<li>DisjointSetForest</li>
+</ul>
+
+<h4>
+<a id="graph-algorithms" class="anchor" href="#graph-algorithms" aria-hidden="true"><span class="octicon octicon-link"></span></a>Graph algorithms</h4>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>algorithms/graph<span class="pl-pds">'</span></span>);
+<span class="pl-c">// or</span>
+<span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>algorithms<span class="pl-pds">'</span></span>).Graph;</pre></div>
+
+<ul>
+<li>topologicalSort</li>
+<li>eulerPath</li>
+<li>depthFirstSearch</li>
+<li>breadthFirstSearch</li>
+</ul>
+
+<h5>
+<a id="shortest-path" class="anchor" href="#shortest-path" aria-hidden="true"><span class="octicon octicon-link"></span></a>Shortest path</h5>
+
+<ul>
+<li>bfsShortestPath</li>
+<li>dijkstra</li>
+<li>SPFA (Shortest Path Faster Algorithm)</li>
+<li>bellmanFord</li>
+<li>floydWarshall</li>
+</ul>
+
+<h5>
+<a id="minimum-spanning-tree" class="anchor" href="#minimum-spanning-tree" aria-hidden="true"><span class="octicon octicon-link"></span></a>Minimum spanning tree</h5>
+
+<ul>
+<li>prim</li>
+<li>kruskal</li>
+</ul>
+
+<h4>
+<a id="math-algorithms" class="anchor" href="#math-algorithms" aria-hidden="true"><span class="octicon octicon-link"></span></a>Math algorithms</h4>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>algorithms/math<span class="pl-pds">'</span></span>);
+<span class="pl-c">// or</span>
+<span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>algorithms<span class="pl-pds">'</span></span>).<span class="pl-s3">Math</span>;</pre></div>
+
+<ul>
+<li>fibonacci</li>
+<li>fisherYates</li>
+<li>gcd (Greatest common divisor)</li>
+<li>extendedEuclidean</li>
+<li>newtonSqrt</li>
+<li>reservoirSampling</li>
+<li>fastPower</li>
+<li>nextPermutation</li>
+<li>powerSet</li>
+<li>shannonEntropy</li>
+</ul>
+
+<h4>
+<a id="search-algorithms" class="anchor" href="#search-algorithms" aria-hidden="true"><span class="octicon octicon-link"></span></a>Search algorithms</h4>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>algorithms/search<span class="pl-pds">'</span></span>);
+<span class="pl-c">// or</span>
+<span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>algorithms<span class="pl-pds">'</span></span>).Search;</pre></div>
+
+<ul>
+<li>bfs (breadth-first search for binary trees)</li>
+<li>binarySearch</li>
+<li>dfs (depth-first search for binary trees)
+
+<ul>
+<li>inOrder (default)</li>
+<li>preOrder</li>
+<li>postOrder</li>
+</ul>
+</li>
+</ul>
+
+<h4>
+<a id="sorting-algorithms" class="anchor" href="#sorting-algorithms" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sorting algorithms</h4>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>algorithms/sorting<span class="pl-pds">'</span></span>);
+<span class="pl-c">// or</span>
+<span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>algorithms<span class="pl-pds">'</span></span>).Sorting;</pre></div>
+
+<ul>
+<li>bubbleSort</li>
+<li>countingSort</li>
+<li>heapSort</li>
+<li>quicksort</li>
+<li>selectionSort</li>
+<li>radixSort</li>
+<li>insertionSort</li>
+<li>shellSort</li>
+</ul>
+
+<h4>
+<a id="string-algorithms" class="anchor" href="#string-algorithms" aria-hidden="true"><span class="octicon octicon-link"></span></a>String algorithms</h4>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>algorithms/string<span class="pl-pds">'</span></span>);
+<span class="pl-c">// or</span>
+<span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>algorithms<span class="pl-pds">'</span></span>).<span class="pl-s3">String</span>;</pre></div>
+
+<ul>
+<li>levenshtein</li>
+<li>rabinKarp</li>
+<li>knuthMorrisPratt</li>
+<li>huffman
+
+<ul>
+<li>encode</li>
+<li>decode</li>
+</ul>
+</li>
+<li>hamming</li>
+<li>longestCommonSubsequence</li>
+<li>longestCommonSubstring</li>
+</ul>
         </section>
 
         <aside id="sidebar">
