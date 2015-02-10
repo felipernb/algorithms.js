@@ -2,7 +2,7 @@
 
 var root = require('../../../'),
     bellmanFord = root.Graph.bellmanFord,
-    Graph = root.DataStructure.Graph,
+    Graph = root.DataStructures.Graph,
     assert = require('assert');
 
 describe('Bellman-Ford Algorithm', function () {

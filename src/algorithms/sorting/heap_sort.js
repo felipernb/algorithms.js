@@ -1,5 +1,5 @@
 'use strict';
-var MinHeap = require('../../data_structure/heap').MinHeap;
+var MinHeap = require('../../data_structures/heap').MinHeap;
 
 /**
  * Heap sort first creates a valid heap data structure. Next it

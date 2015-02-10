@@ -2,7 +2,7 @@
 
 var root = require('../../../'),
     depthFirstSearch = root.Graph.depthFirstSearch,
-    Graph = root.DataStructure.Graph,
+    Graph = root.DataStructures.Graph,
     assert = require('assert');
 
 describe('Depth First Search Algorithm', function () {

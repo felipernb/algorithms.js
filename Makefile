@@ -13,9 +13,6 @@ dist: all
 	cp README.md _build
 	cp CHANGELOG _build
 
-release: dist
-	cd _build; npm publish
-
 jshint: setup
 	jshint src
 

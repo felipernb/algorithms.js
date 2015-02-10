@@ -1,6 +1,6 @@
 'use strict';
 
-var HashTable = require('../..').DataStructure.HashTable,
+var HashTable = require('../..').DataStructures.HashTable,
     assert = require('assert');
 
 describe('Hash Table', function () {

@@ -1,7 +1,7 @@
 'use strict';
 
-var PriorityQueue = require('../../data_structure/priority_queue'),
-    Graph = require('../../data_structure/graph');
+var PriorityQueue = require('../../data_structures/priority_queue'),
+    Graph = require('../../data_structures/graph');
 
 
 /**

@@ -1,5 +1,5 @@
 'use strict';
-var Queue = require('../../data_structure/queue.js');
+var Queue = require('../../data_structures/queue.js');
 
 /**
  * Breadth-first search for binary trees

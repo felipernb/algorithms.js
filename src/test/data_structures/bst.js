@@ -1,7 +1,7 @@
 'use strict';
 
 var root = require('../..'),
-    BST = root.DataStructure.BST,
+    BST = root.DataStructures.BST,
     bfs = root.Search.bfs,
     assert = require('assert');
 

@@ -1,6 +1,6 @@
 'use strict';
 
-var PriorityQueue = require('../..').DataStructure.PriorityQueue,
+var PriorityQueue = require('../..').DataStructures.PriorityQueue,
     assert = require('assert');
 
 describe('Min Priority Queue', function () {

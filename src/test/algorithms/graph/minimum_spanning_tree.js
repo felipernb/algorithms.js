@@ -4,7 +4,7 @@ var root = require('../../../'),
     kruskal = root.Graph.kruskal,
     prim = root.Graph.prim,
     depthFirstSearch = root.Graph.depthFirstSearch,
-    Graph = root.DataStructure.Graph,
+    Graph = root.DataStructures.Graph,
     assert = require('assert');
 
 

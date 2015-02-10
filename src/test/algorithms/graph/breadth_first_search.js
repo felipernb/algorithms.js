@@ -2,7 +2,7 @@
 
 var root = require('../../../'),
     breadthFirstSearch = root.Graph.breadthFirstSearch,
-    Graph = root.DataStructure.Graph,
+    Graph = root.DataStructures.Graph,
     assert = require('assert');
 
 

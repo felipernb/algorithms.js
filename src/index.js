@@ -1,7 +1,7 @@
 'use strict';
 
 var lib = {
-  DataStructure: require('./data_structure'),
+  DataStructures: require('./data_structures'),
   Graph: require('./graph'),
   Math: require('./math'),
   Search: require('./search'),

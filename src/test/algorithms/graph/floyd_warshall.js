@@ -2,7 +2,7 @@
 
 var root = require('../../../'),
     floydWarshall = root.Graph.floydWarshall,
-    Graph = root.DataStructure.Graph,
+    Graph = root.DataStructures.Graph,
     assert = require('assert');
 
 

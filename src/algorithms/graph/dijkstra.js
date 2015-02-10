@@ -1,6 +1,6 @@
 'use strict';
 
-var PriorityQueue = require('../../data_structure/priority_queue');
+var PriorityQueue = require('../../data_structures/priority_queue');
 
 /**
  * Calculates the shortest paths in a graph to every node from the node s

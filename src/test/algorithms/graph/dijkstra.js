@@ -2,7 +2,7 @@
 
 var root = require('../../../'),
     dijkstra = root.Graph.dijkstra,
-    Graph = root.DataStructure.Graph,
+    Graph = root.DataStructures.Graph,
     assert = require('assert');
 
 describe('Dijkstra Algorithm', function () {

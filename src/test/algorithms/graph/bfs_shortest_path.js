@@ -2,7 +2,7 @@
 
 var root = require('../../../'),
     bfsShortestPath = root.Graph.bfsShortestPath,
-    Graph = root.DataStructure.Graph,
+    Graph = root.DataStructures.Graph,
     assert = require('assert');
 
 

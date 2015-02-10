@@ -1,6 +1,6 @@
 'use strict';
 
-var heap = require('../..').DataStructure.Heap,
+var heap = require('../..').DataStructures.Heap,
     assert = require('assert');
 
 describe('Min Heap', function () {

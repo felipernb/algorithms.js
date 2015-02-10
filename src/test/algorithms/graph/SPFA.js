@@ -2,7 +2,7 @@
 
 var root = require('../../../'),
     SPFA = root.Graph.SPFA,
-    Graph = root.DataStructure.Graph,
+    Graph = root.DataStructures.Graph,
     assert = require('assert');
 
 describe('SPFA Algorithm', function () {

@@ -1,6 +1,6 @@
 'use strict';
 
-var Queue = require('../..').DataStructure.Queue,
+var Queue = require('../..').DataStructures.Queue,
     assert = require('assert');
 
 describe('Queue', function () {

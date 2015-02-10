@@ -2,7 +2,7 @@
 
 var root = require('../../../'),
     topologicalSort = root.Graph.topologicalSort,
-    Graph = root.DataStructure.Graph,
+    Graph = root.DataStructures.Graph,
     assert = require('assert');
 
 describe('Topological Sort', function () {

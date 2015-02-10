@@ -1,7 +1,7 @@
 'use strict';
 
 
-var Graph = require('../../data_structure/graph'),
+var Graph = require('../../data_structures/graph'),
     depthFirstSearch = require('../../algorithms/graph/depth_first_search');
 
 

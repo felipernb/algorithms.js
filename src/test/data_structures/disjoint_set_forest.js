@@ -1,6 +1,6 @@
 'use strict';
 
-var DisjointSetForest = require('../..').DataStructure.DisjointSetForest,
+var DisjointSetForest = require('../..').DataStructures.DisjointSetForest,
     assert = require('assert');
 
 
