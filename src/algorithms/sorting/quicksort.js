@@ -14,12 +14,12 @@ var quicksortInit = function (array, comparatorFn) {
       var p = partition(array, comparator, lo, hi);
       //Chooses only the smallest partition to use recursion on and
       //tail-optimize the other. This guarantees O(log n) space in worst case.
-      if (p-lo < hi-p) {
+      if (p - lo < hi - p) {
         quicksort(array, lo, p - 1);
-        lo = p+1;
+        lo = p + 1;
       } else {
         quicksort(array, p + 1, hi);
-        hi = p-1;
+        hi = p - 1;
       }
     }
 
