@@ -11,5 +11,6 @@ module.exports = {
   Queue: require('./data_structures/queue'),
   Stack: require('./data_structures/stack'),
   Set: require('./data_structures/set'),
-  DisjointSetForest: require('./data_structures/disjoint_set_forest')
+  DisjointSetForest: require('./data_structures/disjoint_set_forest'),
+  FenwickTree: require('./data_structures/fenwick_tree')
 };
