@@ -40,6 +40,7 @@ require('algorithms').DataStructures;
 * Stack
 * Set (HashSet)
 * DisjointSetForest
+* FenwickTree
 
 #### Graph algorithms
 
