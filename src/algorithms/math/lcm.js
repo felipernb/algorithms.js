@@ -10,7 +10,7 @@ var gcd = require('./gcd.js');
  *
  * @return Number
  */
-var lcmDivisionBased = function(a, b) {
+var lcmDivisionBased = function (a, b) {
   return (a * b) / gcd(a, b);
 };
 
@@ -22,7 +22,7 @@ var lcmDivisionBased = function(a, b) {
  *
  * @return Number
  */
-var lcmBinaryIterative = function(a, b) {
+var lcmBinaryIterative = function (a, b) {
   return (a * b) / gcd.binary(a, b);
 };
 
