@@ -30,7 +30,7 @@ module.exports = {
       ['z', 'car', 'apple', 'banana']);
 
     var reverseSort = function (a, b) {
-      if (a == b) return 0;
+      if (a === b) return 0;
       return a < b ? 1 : -1;
     };
     assert.deepEqual(sortFn([1, 295, 3, 6, 8, 10, 10, 20, 0, 5],

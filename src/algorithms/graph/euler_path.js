@@ -48,12 +48,12 @@ var eulerEndpoints = function (graph) {
   var start, finish, v;
 
   graph.vertices.forEach(function (vertex) {
-    if (rank[vertex] == 1) {
+    if (rank[vertex] === 1) {
       if (start) {
         throw new Error('Duplicate start vertex.');
       }
       start = vertex;
-    } else if (rank[vertex] == -1) {
+    } else if (rank[vertex] === -1) {
       if (finish) {
         throw new Error('Duplicate finish vertex.');
       }

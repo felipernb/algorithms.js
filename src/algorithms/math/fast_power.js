@@ -22,7 +22,7 @@ var fastPower = function (base, power, mul, identity) {
     mul = multiplicationOperator;
     identity = 1;
   }
-  if (power < 0 || Math.floor(power) != power) {
+  if (power < 0 || Math.floor(power) !== power) {
     throw new Error('Power must be a positive integer or zero.');
   }
 

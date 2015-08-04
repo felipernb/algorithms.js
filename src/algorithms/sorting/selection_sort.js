@@ -13,7 +13,7 @@ var selectionSort = function (a, comparatorFn) {
         min = j;
       }
     }
-    if (min != i) {
+    if (min !== i) {
       var tmp = a[i];
       a[i] = a[min];
       a[min] = tmp;

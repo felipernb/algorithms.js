@@ -40,8 +40,9 @@ var radixSort = function (array) {
 var auxiliaryCountingSort = function (array, mod) {
   var length = array.length;
   var bucket = [];
+  var i;
 
-  for (var i = 0; i < 10; i++) {
+  for (i = 0; i < 10; i++) {
     bucket[i] = [];
   }
 

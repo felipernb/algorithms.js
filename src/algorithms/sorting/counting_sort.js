@@ -15,8 +15,9 @@ var countingSort = function (array) {
   var max = maximumKey(array);
   var auxiliaryArray = [];
   var length = array.length;
+  var i;
 
-  for (var i = 0; i < length; i++) {
+  for (i = 0; i < length; i++) {
     var position = array[i].key;
 
     if (auxiliaryArray[position] === undefined) {

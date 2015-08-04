@@ -1,7 +1,7 @@
 'use strict';
 
 var root = require('../../../'),
-    SPFA = root.Graph.SPFA,
+    spfa = root.Graph.SPFA,
     Graph = root.DataStructures.Graph,
     assert = require('assert');
 
@@ -19,7 +19,7 @@ describe('SPFA Algorithm', function () {
       graph.addEdge('e', 'd', -3);
       graph.addEdge('d', 'c', 5);
 
-      var shortestPaths = SPFA(graph, 'a');
+      var shortestPaths = spfa(graph, 'a');
 
       assert.equal(shortestPaths.distance.a, 0);
       assert.equal(shortestPaths.distance.d, -2);
@@ -30,7 +30,7 @@ describe('SPFA Algorithm', function () {
       // It'll cause a Negative-Weighted Cycle.
       graph.addEdge('c', 'a', -9);
 
-      shortestPaths = SPFA(graph, 'a');
+      shortestPaths = spfa(graph, 'a');
 
       // The 'distance' object is empty
       assert.equal(shortestPaths.distance.a, undefined);

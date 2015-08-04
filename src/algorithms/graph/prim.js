@@ -25,7 +25,7 @@ var prim = function (graph) {
     q.insert(vertex, Infinity);
   });
 
-  var relax = function (neighbor) {
+  var relax = function (vertex, neighbor) {
     var weight = graph.edge(vertex, neighbor);
     if (weight < q.priority(neighbor)) {
       q.changePriority(neighbor, weight);
@@ -45,7 +45,7 @@ var prim = function (graph) {
       mst.addVertex(vertex);
     }
 
-    graph.neighbors(vertex).forEach(relax);
+    graph.neighbors(vertex).forEach(relax.bind(null, vertex));
   }
 
   return mst;

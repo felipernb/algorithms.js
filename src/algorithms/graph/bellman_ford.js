@@ -61,7 +61,7 @@ var bellmanFord = function (graph, startNode) {
   }
 
   // If the loop did not break early, then there is a negative-weighted cycle.
-  if (iteration == adjacencyListSize) {
+  if (iteration === adjacencyListSize) {
     // Empty 'distance' object indicates Negative-Weighted Cycle
     return {
       distance: {}

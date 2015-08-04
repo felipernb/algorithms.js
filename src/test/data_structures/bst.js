@@ -170,7 +170,7 @@ describe('Binary Search Tree', function () {
 
 describe('Binary Search Tree with custom comparator', function () {
   var strLenCompare = function (a, b) {
-    if (a.length == b.length) return 0;
+    if (a.length === b.length) return 0;
     return a.length < b.length ? -1 : 1;
   };
 
