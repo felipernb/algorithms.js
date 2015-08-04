@@ -41,7 +41,7 @@ var normalizeCallbacks = function (callbacks, seenVertices) {
       }
       return false;
     };
-  }());
+  })();
 
   var noop = function () {};
   callbacks.beforeTraversal = callbacks.beforeTraversal || noop;

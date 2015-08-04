@@ -45,7 +45,7 @@ describe('Minimum Spanning Tree', function () {
    * @return {boolean}
    */
   var isForest = function (graph, connectivity) {
-    if (graph.directed || numberOfConnectedComponents(graph) != connectivity) {
+    if (graph.directed || numberOfConnectedComponents(graph) !== connectivity) {
       return false;
     }
     var numberOfEdges = 0;
@@ -57,7 +57,7 @@ describe('Minimum Spanning Tree', function () {
           }
         });
     });
-    return graph.vertices.size == numberOfEdges + connectivity;
+    return graph.vertices.size === numberOfEdges + connectivity;
   };
 
 

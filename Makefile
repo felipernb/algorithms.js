@@ -1,4 +1,4 @@
-all: jshint coverage
+all: lint coverage
 
 setup:
 	npm install
@@ -13,10 +13,10 @@ dist: all
 	cp README.md _build
 	cp CHANGELOG _build
 
-jshint: setup
-	jshint src
+lint: setup
+	eslint src
 
-test: jshint
+test: lint
 	mocha -R spec --recursive src/test
 
 coverage: setup

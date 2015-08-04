@@ -8,7 +8,7 @@
  * @param {string} start the starting node
  *
  */
-function SPFA(graph, s) {
+function spfa(graph, s) {
   var distance = {};
   var previous = {};
   var queue = {};
@@ -30,7 +30,7 @@ function SPFA(graph, s) {
   });
 
   var currNode;
-  while (head != tail) {
+  while (head !== tail) {
     currNode = queue[head++];
     isInQue[currNode] = false;
     var neighbors = graph.neighbors(currNode);
@@ -61,4 +61,4 @@ function SPFA(graph, s) {
   };
 }
 
-module.exports = SPFA;
+module.exports = spfa;

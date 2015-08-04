@@ -7,7 +7,7 @@ var math = require('../../..').Math,
 function testArrayEqual(a, b) {
   var arrayEqual = true;
   a.forEach(function (elem, index) {
-    if (a[index] != b[index]) {
+    if (a[index] !== b[index]) {
       arrayEqual = false;
     }
   });

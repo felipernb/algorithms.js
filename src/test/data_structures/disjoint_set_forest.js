@@ -60,7 +60,7 @@ describe('Disjoint Set Forest', function () {
     var forest = new DisjointSetForest();
     var assertInside = function (value, set) {
       return set.some(function (element) {
-        return element == value;
+        return element === value;
       });
     };
     assert.equal(forest.root(0), 0);

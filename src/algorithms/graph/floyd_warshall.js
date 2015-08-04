@@ -72,7 +72,7 @@ var floydWarshall = function (graph) {
 
     var path = [src];
 
-    if (src != dest) {
+    if (src !== dest) {
       (function pushInOrder(src, dest) {
         if (middleVertex[src][dest] === undefined) {
           path.push(dest);
@@ -81,7 +81,7 @@ var floydWarshall = function (graph) {
           pushInOrder(src, middle);
           pushInOrder(middle, dest);
         }
-      }(src, dest));
+      })(src, dest);
     }
 
     return path;

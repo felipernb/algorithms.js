@@ -26,7 +26,7 @@ var compress = function (string) {
     currentBlock = (currentBlock << 1) | char;
     currentBlockSize += 1;
 
-    if (currentBlockSize == MAX_BLOCK_SIZE) {
+    if (currentBlockSize === MAX_BLOCK_SIZE) {
       blocks.push(currentBlock);
       currentBlock = currentBlockSize = 0;
     }
@@ -54,7 +54,7 @@ var decompress = function (array) {
   if (!array.length) {
     return '';
   }
-  else if (array.length == 1) {
+  else if (array.length === 1) {
     throw new Error('Compressed array must be either empty ' +
                     'or at least 2 blocks big.');
   }
@@ -145,7 +145,7 @@ huffman.encode = function (string, compressed) {
       unroll(a);
       unroll(b);
     }
-  }(root));
+  })(root);
 
   var encoding = letters.reduce(function (acc, letter) {
     acc[letter.char] = letter.code.split('').reverse().join('');

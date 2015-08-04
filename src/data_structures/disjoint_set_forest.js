@@ -35,7 +35,7 @@ DisjointSetForest.prototype.sameSubset = function (element) {
   var root = this.root(element);
   return [].slice.call(arguments, 1).every(function (element) {
     this._introduce(element);
-    return this.root(element) == root;
+    return this.root(element) === root;
   }.bind(this));
 };
 
@@ -51,7 +51,7 @@ DisjointSetForest.prototype.sameSubset = function (element) {
  */
 DisjointSetForest.prototype.root = function (element) {
   this._introduce(element);
-  if (this._parents[element] != element) {
+  if (this._parents[element] !== element) {
     this._parents[element] = this.root(this._parents[element]);
   }
   return this._parents[element];
@@ -94,10 +94,10 @@ DisjointSetForest.prototype.merge = function merge(element1, element2) {
     this._parents[root1] = root2;
     this._sizes[root2] += this._sizes[root1];
   }
-  else if (root1 != root2) {
+  else if (root1 !== root2) {
     this._parents[root2] = root1;
     this._sizes[root1] += this._sizes[root2];
-    if (this._ranks[root1] == this._ranks[root2]) {
+    if (this._ranks[root1] === this._ranks[root2]) {
       this._ranks[root1] += 1;
     }
   }

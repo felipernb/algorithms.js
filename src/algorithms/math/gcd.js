@@ -43,9 +43,10 @@ var gcdBinaryIterative = function (a, b) {
     return a;
   }
 
+  var shift;
   // Let shift = log(K), where K is the greatest power of 2
   // dividing both a and b
-  for (var shift = 0; ((a | b) & 1) === 0; ++shift) {
+  for (shift = 0; ((a | b) & 1) === 0; ++shift) {
     a >>= 1;
     b >>= 1;
   }

@@ -15,8 +15,9 @@ var powerSetIterative = function (array) {
 
   var powerSet = [];
   var cache = [];
+  var i;
 
-  for (var i = 0; i < array.length; i++) {
+  for (i = 0; i < array.length; i++) {
     cache[i] = true;
   }
 
@@ -46,11 +47,9 @@ var powerSetIterative = function (array) {
 var powerSetRecursive = function (array) {
   if (array.length === 0) {
     return [];
-  }
-  else if (array.length == 1) {
+  } else if (array.length === 1) {
     return [ [], [ array[0] ] ];
-  }
-  else {
+  } else {
     var powerSet = [];
     var firstElem = array[0];
 
