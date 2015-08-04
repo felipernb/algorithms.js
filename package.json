@@ -2,16 +2,22 @@
   "name": "algorithms",
   "version": "0.9.0",
   "description": "Traditional computer science algorithms and data structures implemented in JavaScript",
-  "directories": {
-    "test": "test"
-  },
   "main": "./index.js",
+  "scripts": {
+    "lint": "eslint src/",
+    "test": "mocha -R spec --recursive src/test"
+  },
+  "pre-commit": [
+    "lint",
+    "test"
+  ],
   "dependencies": {},
   "devDependencies": {
     "coveralls": "^2.11.3",
     "eslint": "^1.0.0",
     "istanbul": "^0.3.17",
-    "mocha": "^2.2.5"
+    "mocha": "^2.2.5",
+    "pre-commit": "^1.1.1"
   },
   "repository": {
     "type": "git",

@@ -14,10 +14,10 @@ dist: all
 	cp CHANGELOG _build
 
 lint: setup
-	eslint src
+	npm run lint
 
 test: lint
-	mocha -R spec --recursive src/test
+	npm test
 
 coverage: setup
 	istanbul cover ./node_modules/.bin/_mocha -- -R spec --recursive src/test
