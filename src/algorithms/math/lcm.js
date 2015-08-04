@@ -11,7 +11,12 @@ var gcd = require('./gcd.js');
  * @return Number
  */
 var lcmDivisionBased = function (a, b) {
-  return (a * b) / gcd(a, b);
+  if (a === 0 || b === 0) {
+    return 0;
+  }
+  a = Math.abs(a);
+  b = Math.abs(b);
+  return a / gcd(a, b) * b;
 };
 
 /**
@@ -23,7 +28,12 @@ var lcmDivisionBased = function (a, b) {
  * @return Number
  */
 var lcmBinaryIterative = function (a, b) {
-  return (a * b) / gcd.binary(a, b);
+  if (a === 0 || b === 0) {
+    return 0;
+  }
+  a = Math.abs(a);
+  b = Math.abs(b);
+  return a / gcd.binary(a, b) * b;
 };
 
 lcmDivisionBased.binary = lcmBinaryIterative;
