@@ -78,6 +78,7 @@ require('algorithms').Math;
 * fisherYates
 * gcd (Greatest common divisor)
 * extendedEuclidean
+* lcm (Least common multiple)
 * newtonSqrt
 * reservoirSampling
 * fastPower
