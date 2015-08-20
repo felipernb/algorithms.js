@@ -2,6 +2,7 @@
 
 // Data Structures
 module.exports = {
+  AVLTree: require('./data_structures/avl_tree'),
   BST: require('./data_structures/bst'),
   Graph: require('./data_structures/graph'),
   HashTable: require('./data_structures/hash_table'),
