@@ -23,6 +23,7 @@
       2,
       "last"
     ],
+    "consistent-return": 0,
     "curly": [
       0,
       "all"
@@ -74,13 +75,24 @@
     "no-unused-vars": 2,
     "no-use-before-define": 0,
     "no-with": 2,
+    "space-after-keywords": [
+      2,
+      "always"
+    ],
+    "space-before-function-paren": [
+      2,
+      {
+        "anonymous": "always",
+        "named": "never"
+      }
+    ],
     "quotes": [
       2,
       "single"
     ],
     "semi": [
-      0,
-      "never"
+      2,
+      "always"
     ],
     "valid-typeof": 2,
     "wrap-iife": [
