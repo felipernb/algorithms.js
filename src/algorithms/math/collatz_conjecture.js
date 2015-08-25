@@ -14,7 +14,7 @@ function calculateCollatzConjecture(number) {
   if (number in cache) return cache[number];
   if (number % 2 === 0) return cache[number] = number >> 1;
 
-  cache[number] = number * 3 + 1;
+  return cache[number] = number * 3 + 1;
 }
 
 /**
