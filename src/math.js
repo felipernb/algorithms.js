@@ -8,6 +8,7 @@ module.exports = {
   extendedEuclidean: require('./algorithms/math/extended_euclidean'),
   lcm: require('./algorithms/math/lcm'),
   newtonSqrt: require('./algorithms/math/newton_sqrt'),
+  primalityTests: require('./algorithms/math/primality_tests'),
   reservoirSampling: require('./algorithms/math/reservoir_sampling'),
   fastPower: require('./algorithms/math/fast_power'),
   nextPermutation: require('./algorithms/math/next_permutation'),
