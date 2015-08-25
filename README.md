@@ -29,18 +29,18 @@ require('algorithms').DataStructures;
 ```
 
 * BST
+* DisjointSetForest
+* FenwickTree
 * Graph
 * HashTable
 * Heap
- * MinHeap
  * MaxHeap
+ * MinHeap
 * LinkedList
 * PriorityQueue
 * Queue
-* Stack
 * Set (HashSet)
-* DisjointSetForest
-* FenwickTree
+* Stack
 
 #### Graph algorithms
 
@@ -50,17 +50,17 @@ require('algorithms/graph');
 require('algorithms').Graph;
 ```
 
-* topologicalSort
-* eulerPath
-* depthFirstSearch
 * breadthFirstSearch
+* depthFirstSearch
+* eulerPath
+* topologicalSort
 
 ##### Shortest path
+* bellmanFord
 * bfsShortestPath
 * dijkstra
-* SPFA (Shortest Path Faster Algorithm)
-* bellmanFord
 * floydWarshall
+* SPFA (Shortest Path Faster Algorithm)
 
 ##### Minimum spanning tree
 * prim
@@ -73,17 +73,17 @@ require('algorithms/math');
 // or
 require('algorithms').Math;
 ```
-
+* collatzConjecture
+* extendedEuclidean
+* fastPower
 * fibonacci
 * fisherYates
 * gcd (Greatest common divisor)
-* extendedEuclidean
 * lcm (Least common multiple)
 * newtonSqrt
-* reservoirSampling
-* fastPower
 * nextPermutation
 * powerSet
+* reservoirSampling
 * shannonEntropy
 
 #### Search algorithms
@@ -98,8 +98,8 @@ require('algorithms').Search;
 * binarySearch
 * dfs (depth-first search for binary trees)
  * inOrder (default)
- * preOrder
  * postOrder
+ * preOrder
 
 #### Sorting algorithms
 
@@ -112,10 +112,10 @@ require('algorithms').Sorting;
 * bubbleSort
 * countingSort
 * heapSort
-* quicksort
-* selectionSort
-* radixSort
 * insertionSort
+* quicksort
+* radixSort
+* selectionSort
 * shellSort
 
 #### String algorithms
@@ -126,14 +126,12 @@ require('algorithms/string');
 require('algorithms').String;
 ```
 
-* levenshtein
-* rabinKarp
-* knuthMorrisPratt
-* huffman
- * encode
- * decode
 * hamming
+* huffman
+ * decode
+ * encode
+* knuthMorrisPratt
+* levenshtein
 * longestCommonSubsequence
 * longestCommonSubstring
-
-
+* rabinKarp
