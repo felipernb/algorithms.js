@@ -12,5 +12,6 @@ module.exports = {
   fastPower: require('./algorithms/math/fast_power'),
   nextPermutation: require('./algorithms/math/next_permutation'),
   powerSet: require('./algorithms/math/power_set'),
-  shannonEntropy: require('./algorithms/math/shannon_entropy')
+  shannonEntropy: require('./algorithms/math/shannon_entropy'),
+  collatzConjecture: require('./algorithms/math/collatz_conjecture'),
 };
