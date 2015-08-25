@@ -39,7 +39,8 @@ var naiveTest = function (n) {
 * @return Boolean
 */
 var trialDivisionTest = function (n) {
-  for (var i = 2; i * i <= n; ++i) {
+  var sqrt = Math.sqrt(n);
+  for (var i = 2; i <= sqrt; ++i) {
     if (n % i === 0) {
       return false;
     }
@@ -47,7 +48,7 @@ var trialDivisionTest = function (n) {
   return true;
 };
 
-var obj = {};
-obj.naiveTest = genericPrimalityTest.bind(null, naiveTest);
-obj.trialDivisionTest = genericPrimalityTest.bind(null, trialDivisionTest);
-module.exports = obj;
+module.exports = {
+  naiveTest: genericPrimalityTest.bind(null, naiveTest),
+  trialDivisionTest: genericPrimalityTest.bind(null, trialDivisionTest)
+};
