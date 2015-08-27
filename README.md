@@ -79,6 +79,7 @@ require('algorithms').Math;
 * fibonacci
 * fisherYates
 * gcd (Greatest common divisor)
+* greatestDifference
 * lcm (Least common multiple)
 * newtonSqrt
 * nextPermutation
