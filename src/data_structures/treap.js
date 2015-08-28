@@ -10,14 +10,14 @@ function Node(value, left, right) {
   this.key = Math.random();
 }
 
-Node.prototype.resize = function() {
+Node.prototype.resize = function () {
   return this.size = this.children[0].size + this.children[1].size + 1;
 };
 
 /**
  * Zigzag rotate of tree nodes
  */
-Node.prototype.rotate = function(side) {
+Node.prototype.rotate = function (side) {
   var temp = this.children[side];
 
   // Rotate
@@ -52,13 +52,13 @@ function Treap() {
  *   }
  * just like `*node` usage in C/C++.
  */
-Treap.prototype._insert = function(nodeRef, value) {
-  if (nodeRef.node == this.nil) {
+Treap.prototype._insert = function (nodeRef, value) {
+  if (nodeRef.node === this.nil) {
     nodeRef.node = new Node(value, this.nil, this.nil);
     return;
   }
 
-  if (nodeRef.node.value == value) {
+  if (nodeRef.node.value === value) {
     // Duplicated
     return;
   }
@@ -79,12 +79,12 @@ Treap.prototype._insert = function(nodeRef, value) {
   }
 };
 
-Treap.prototype._find = function(nodeRef, value) {
-  if (nodeRef.node == this.nil) {
+Treap.prototype._find = function (nodeRef, value) {
+  if (nodeRef.node === this.nil) {
     // Empty tree
     return false;
   }
-  if (nodeRef.node.value == value) {
+  if (nodeRef.node.value === value) {
     // Found!
     return true;
   }
@@ -97,8 +97,8 @@ Treap.prototype._find = function(nodeRef, value) {
   return this._find(newNodeRef, value);
 };
 
-Treap.prototype._minimum = function(nodeRef) {
-  if (nodeRef.node == this.nil) {
+Treap.prototype._minimum = function (nodeRef) {
+  if (nodeRef.node === this.nil) {
     // Empty tree, returns Infinity
     return Infinity;
   }
@@ -109,8 +109,8 @@ Treap.prototype._minimum = function(nodeRef) {
   return Math.min(nodeRef.node.value, this._minimum(newNodeRef));
 };
 
-Treap.prototype._maximum = function(nodeRef) {
-  if (nodeRef.node == this.nil) {
+Treap.prototype._maximum = function (nodeRef) {
+  if (nodeRef.node === this.nil) {
     // Empty tree, returns -Infinity
     return -Infinity;
   }
@@ -121,14 +121,18 @@ Treap.prototype._maximum = function(nodeRef) {
   return Math.max(nodeRef.node.value, this._maximum(newNodeRef));
 };
 
-Treap.prototype._remove = function(nodeRef, value) {
-  if (nodeRef.node == this.nil) {
+Treap.prototype._remove = function (nodeRef, value) {
+  if (nodeRef.node === this.nil) {
     // Empty node, value not found
     return;
   }
 
-  if (nodeRef.node.value == value) {
-    if (nodeRef.node.children[0] == this.nil && nodeRef.node.children[1] == this.nil) {
+  var side;
+  var newNodeRef;
+
+  if (nodeRef.node.value === value) {
+    if (nodeRef.node.children[0] === this.nil &&
+        nodeRef.node.children[1] === this.nil) {
       // Leaf node, set to nil
       nodeRef.node = this.nil;
       return;
@@ -137,17 +141,17 @@ Treap.prototype._remove = function(nodeRef, value) {
      * Rotate up the child which has a smaller key
      * notice nil node has the biggest key, it will always stay behind
      */
-    var side = ~~(nodeRef.node.children[0].key > nodeRef.node.children[1].key);
+    side = ~~(nodeRef.node.children[0].key > nodeRef.node.children[1].key);
     nodeRef.node = nodeRef.node.rotate(side);
 
-    var newNodeRef = {
+    newNodeRef = {
       node: nodeRef.node.children[1 - side]
     };
     this._remove(newNodeRef, value);
     nodeRef.node.children[1 - side] = newNodeRef.node;
   } else {
-    var side = ~~(value > nodeRef.node.value);
-    var newNodeRef = {
+    side = ~~(value > nodeRef.node.value);
+    newNodeRef = {
       node: nodeRef.node.children[side]
     };
     this._remove(newNodeRef, value);
@@ -157,7 +161,7 @@ Treap.prototype._remove = function(nodeRef, value) {
   nodeRef.node.resize();
 };
 
-Treap.prototype.insert = function(value) {
+Treap.prototype.insert = function (value) {
   var rootRef = {
     node: this.root
   };
@@ -167,25 +171,25 @@ Treap.prototype.insert = function(value) {
   this.root = rootRef.node;
 };
 
-Treap.prototype.find = function(value) {
+Treap.prototype.find = function (value) {
   return this._find({
     node: this.root
   }, value);
 };
 
-Treap.prototype.minimum = function() {
+Treap.prototype.minimum = function () {
   return this._minimum({
     node: this.root
   });
 };
 
-Treap.prototype.maximum = function() {
+Treap.prototype.maximum = function () {
   return this._maximum({
     node: this.root
   });
 };
 
-Treap.prototype.remove = function(value) {
+Treap.prototype.remove = function (value) {
   var rootRef = {
     node: this.root
   };
@@ -193,6 +197,6 @@ Treap.prototype.remove = function(value) {
 
   // Reset root from reference
   this.root = rootRef.node;
-}
+};
 
 module.exports = Treap;
