@@ -1,18 +1,23 @@
 {
   "name": "algorithms",
-  "version": "0.5.0",
+  "version": "0.9.1",
   "description": "Traditional computer science algorithms and data structures implemented in JavaScript",
-  "directories": {
-    "test": "test"
+  "main": "./index.js",
+  "scripts": {
+    "lint": "eslint src/",
+    "test": "mocha -R spec --recursive src/test"
   },
-  "main": "main.js",
+  "pre-commit": [
+    "lint",
+    "test"
+  ],
   "dependencies": {},
   "devDependencies": {
-    "coveralls": "^2.10.0",
-    "istanbul": "^0.2.10",
-    "jshint": "~2.4.4",
-    "jscs": "1.4.5",
-    "mocha": "^1.20.0"
+    "coveralls": "^2.11.3",
+    "eslint": "^1.0.0",
+    "istanbul": "^0.3.17",
+    "mocha": "^2.2.5",
+    "pre-commit": "^1.1.1"
   },
   "repository": {
     "type": "git",
@@ -38,7 +43,9 @@
     "BrunoRB <brunorb8@hotmail.com>",
     "geakstr <geakstr@me.com>",
     "Matt R. Wilson <matt.wilson@warbyparker.com>",
-    "Gaurav Mittal <gaurav.mittal@students.iiit.ac.in>"
+    "Gaurav Mittal <gaurav.mittal@students.iiit.ac.in>",
+    "Juan Lopes <me@juanlopes.net>",
+    "Evandro Eisinger <evandroeisinger@gmail.com>"
   ],
   "license": "MIT",
   "bugs": {

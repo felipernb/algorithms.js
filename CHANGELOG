@@ -1,5 +1,37 @@
 CHANGELOG
 =========
+0.8.0 (2014-10-29)
+* Modular package, lets you require specific modules:
+ * require('algorithms/data_structures')
+ * require('algorithms/sorting')
+ * require('algorithms/search')
+ * require('algorithms/graph')
+ * require('algorithms/math')
+ * require('algorithms/string')
+
+0.7.1 (2014-10-18)
+* Added Shannon Entropy to Math namespace
+
+0.7.0 (2014-10-12)
+* Module Sort is now "Sorting"
+* And some backward compatible refactoring
+
+0.6.0 (2014-08-15)
+* Browser bundle
+* Data Structures
+ * forEach in Hash Table, Set, Heap and Queue
+ * Set
+* String
+ * Longest common subsequence
+* Math
+ * Logarithmic time Fibonacci
+* Graph
+ * Kruskal's MST
+ * Prim's MST
+ * DFS
+ * BFS
+ * Floyd-Warshall
+
 0.5.0 (2014-07-09)
 * Math
  * Fast Power
