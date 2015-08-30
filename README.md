@@ -117,6 +117,7 @@ require('algorithms').Sorting;
 * radixSort
 * selectionSort
 * shellSort
+* shortBubbleSort
 
 #### String algorithms
 
