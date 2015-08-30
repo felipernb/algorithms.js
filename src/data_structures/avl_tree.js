@@ -23,33 +23,31 @@ function Node(value, left, right, parent, height) {
  * property of all his children.
  */
 AVLTree.prototype.getNodeHeight = function (node) {
+  var height = 1;
   if (node.left !== null && node.right !== null) {
-    var height = Math.max(node.left.height, node.right.height);
-    height += 1;
-    return height;
+    height = Math.max(node.left.height, node.right.height) + 1;
   } else if (node.left !== null) {
-    return node.left.height + 1;
+    height = node.left.height + 1;
   } else if (node.right !== null) {
-    return node.right.height + 1;
-  } else {
-    return 1;
+    height = node.right.height + 1;
   }
+  return height;
 };
 
 /**
  * Verifies if the given node is balanced.
  */
 AVLTree.prototype.isNodeBalanced = function (node) {
+  var isBalanced = true;
+
   if (node.left !== null && node.right !== null) {
-    return (Math.abs(node.left.height - node.right.height) <= 1);
+    isBalanced = (Math.abs(node.left.height - node.right.height) <= 1);
+  } else if (node.right !== null && node.left === null) {
+    isBalanced = node.right.height < 2;
+  } else if (node.left !== null && node.right === null) {
+    isBalanced = node.left.height < 2;
   }
-  if (node.right !== null && node.left === null) {
-    return node.right.height < 2;
-  }
-  if (node.left !== null && node.right === null) {
-    return node.left.height < 2;
-  }
-  return true;
+  return isBalanced;
 };
 
 /**
@@ -58,8 +56,7 @@ AVLTree.prototype.isNodeBalanced = function (node) {
  */
 AVLTree.prototype.getNodesToRestructureAfterRemove = function (traveledNodes) {
   // z is last traveled node - imbalance found at z
-  var zIndex = traveledNodes.length;
-  zIndex -= 1;
+  var zIndex = traveledNodes.length - 1;
   var z = traveledNodes[zIndex];
 
   // y should be child of z with larger height
@@ -99,15 +96,13 @@ AVLTree.prototype.getNodesToRestructureAfterRemove = function (traveledNodes) {
  */
 AVLTree.prototype.getNodesToRestructureAfterInsert = function (traveledNodes) {
   // z is last traveled node - imbalance found at z
-  var zIndex = traveledNodes.length;
-  zIndex -= 1;
+  var zIndex = traveledNodes.length - 1;
   var z = traveledNodes[zIndex];
 
   // y should be child of z with larger height
   // (must be ancestor of inserted node)
   // therefore, last traveled node is correct.
-  var yIndex = traveledNodes.length;
-  yIndex -= 2;
+  var yIndex = traveledNodes.length - 2;
   var y = traveledNodes[yIndex];
 
   // x should be tallest child of y
@@ -120,8 +115,7 @@ AVLTree.prototype.getNodesToRestructureAfterInsert = function (traveledNodes) {
     } else if (y.left.height < y.right.height) {
       x = y.right;
     } else if (y.left.height === y.right.height) {
-      var xIndex = traveledNodes.length;
-      xIndex -= 3;
+      var xIndex = traveledNodes.length - 3;
       x = traveledNodes[xIndex];
     }
   } else if (y.left !== null && y.right === null) {
@@ -349,11 +343,12 @@ AVLTree.prototype.postOrder = function (current, callback) {
   if (!current) {
     return;
   }
+
+  this.postOrder(current.left, callback);
+  this.postOrder(current.right, callback);
   if (typeof callback === 'function') {
     callback(current);
   }
-  this.postOrder(current.left, callback);
-  this.postOrder(current.right, callback);
 };
 
 /**
@@ -385,15 +380,16 @@ AVLTree.prototype._find = function (value, current) {
     return null;
   }
 
+  var node;
   if (current.value === value) {
-    return current;
+    node = current;
+  } else if (current.value > value) {
+    node = this._find(value, current.left);
+  } else if (current.value < value) {
+    node = this._find(value, current.right);
   }
-  if (current.value > value) {
-    return this._find(value, current.left);
-  }
-  if (current.value < value) {
-    return this._find(value, current.right);
-  }
+
+  return node;
 };
 
 /**
@@ -433,19 +429,17 @@ AVLTree.prototype.remove = function (value) {
     node.value = min.value;
     min.value = temp;
     return this.remove(min);
+  } else if (node.left) {
+    this.replaceChild(node.parent, node, node.left);
+    this.keepHeightBalance(node.left, true);
+  } else if (node.right) {
+    this.replaceChild(node.parent, node, node.right);
+    this.keepHeightBalance(node.right, true);
   } else {
-    if (node.left) {
-      this.replaceChild(node.parent, node, node.left);
-      this.keepHeightBalance(node.left, true);
-    } else if (node.right) {
-      this.replaceChild(node.parent, node, node.right);
-      this.keepHeightBalance(node.right, true);
-    } else {
-      this.replaceChild(node.parent, node, null);
-      this.keepHeightBalance(node.parent, true);
-    }
-    return true;
+    this.replaceChild(node.parent, node, null);
+    this.keepHeightBalance(node.parent, true);
   }
+  return true;
 };
 
 /**
