@@ -20,7 +20,7 @@ function shortBubbleSort(array, comparatorFn) {
      * If the current value if greater than the next:
      * - set current value to next value;
      * - and set next value to current value;
-     * - then reset iterator counter to scan for values to be sorted.
+     * - then reset iterator counter to rescan for values to be sorted.
      */
 
     if (comparator.greaterThan(current, next)) {
