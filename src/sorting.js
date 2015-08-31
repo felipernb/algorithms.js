@@ -3,6 +3,7 @@
 // Sorting algorithms
 module.exports = {
   bubbleSort: require('./algorithms/sorting/bubble_sort'),
+  shortBubbleSort: require('./algorithms/sorting/short_bubble_sort'),
   countingSort: require('./algorithms/sorting/counting_sort'),
   heapSort: require('./algorithms/sorting/heap_sort'),
   mergeSort: require('./algorithms/sorting/merge_sort'),
