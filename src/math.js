@@ -15,4 +15,5 @@ module.exports = {
   powerSet: require('./algorithms/math/power_set'),
   shannonEntropy: require('./algorithms/math/shannon_entropy'),
   collatzConjecture: require('./algorithms/math/collatz_conjecture'),
+  greatestDifference: require('./algorithms/math/greatest_difference')
 };
