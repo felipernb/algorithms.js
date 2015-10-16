@@ -7,11 +7,19 @@ function Node(value, left, right) {
   this.value = value;
   this.children = [left, right];
   this.size = 1;
+  this.height = 1;
   this.key = Math.random();
 }
 
+/**
+ * Computer the number of childnodes
+ */
 Node.prototype.resize = function () {
-  return this.size = this.children[0].size + this.children[1].size + 1;
+  this.size = (this.children[0] ? this.children[0].size : 0) 
+            + (this.children[1] ? this.children[1].size : 0) + 1;
+  this.height = Math.max(this.children[0] ? this.children[0].height : 0,
+  						 this.children[1] ? this.children[1].height : 0) + 1;
+  return this;
 };
 
 /**
@@ -34,169 +42,114 @@ Node.prototype.rotate = function (side) {
  * Treap
  */
 function Treap() {
-  /**
-   * nil: virtual node represent 'null'
-   * It's very convenient to avoid special judges in rotate operations.
-   */
-  this.nil = new Node(0, 0, 0);
-  this.nil.size = 0;
-  this.nil.key = 1;
-
-  this.root = this.nil;
+  this.root = null;
 }
 
 /**
- * Using an object to pass reference of Node,
- *   nodeRef = {
- *     node: node
- *   }
- * just like `*node` usage in C/C++.
+ * Insert new value into the subtree of `node`
  */
-Treap.prototype._insert = function (nodeRef, value) {
-  if (nodeRef.node === this.nil) {
-    nodeRef.node = new Node(value, this.nil, this.nil);
-    return;
+Treap.prototype._insert = function (node, value) {
+  if (node === null) {
+    return new Node(value, null, null);
   }
 
-  if (nodeRef.node.value === value) {
-    // Duplicated
-    return;
-  }
+  // Passing to childnodes and update
+  var side = ~~(value > node.value);
+  node.children[side] = this._insert(node.children[side], value);
 
-  // Pass to childnodes
-  var side = ~~(value > nodeRef.node.value);
-  var newNodeRef = {
-    node: nodeRef.node.children[side]
-  };
-  this._insert(newNodeRef, value);
-  nodeRef.node.children[side] = newNodeRef.node;
-
-  // Keep balance
-  if (newNodeRef.node.key < nodeRef.node.key) {
-    nodeRef.node = nodeRef.node.rotate(side);
+  // Keep it balance
+  if (node.children[side].key < node.key) {
+	return node.rotate(side);
   } else {
-    nodeRef.node.resize();
+	return node.resize();
   }
 };
 
-Treap.prototype._find = function (nodeRef, value) {
-  if (nodeRef.node === this.nil) {
+Treap.prototype._find = function (node, value) {
+  if (node === null) {
     // Empty tree
     return false;
   }
-  if (nodeRef.node.value === value) {
+  if (node.value === value) {
     // Found!
     return true;
   }
 
   // Search within childnodes
-  var side = ~~(value > nodeRef.node.value);
-  var newNodeRef = {
-    node: nodeRef.node.children[side]
-  };
-  return this._find(newNodeRef, value);
+  var side = ~~(value > node.value);
+  return this._find(node.children[side], value);
 };
 
-Treap.prototype._minimum = function (nodeRef) {
-  if (nodeRef.node === this.nil) {
+Treap.prototype._minimum = function (node) {
+  if (node === null) {
     // Empty tree, returns Infinity
     return Infinity;
   }
 
-  var newNodeRef = {
-    node: nodeRef.node.children[0] // Left child
-  };
-  return Math.min(nodeRef.node.value, this._minimum(newNodeRef));
+  return Math.min(node.value, this._minimum(node.children[0]));
 };
 
-Treap.prototype._maximum = function (nodeRef) {
-  if (nodeRef.node === this.nil) {
+Treap.prototype._maximum = function (node) {
+  if (node === null) {
     // Empty tree, returns -Infinity
     return -Infinity;
   }
 
-  var newNodeRef = {
-    node: nodeRef.node.children[1] // Right child
-  };
-  return Math.max(nodeRef.node.value, this._maximum(newNodeRef));
+  return Math.max(node.value, this._maximum(node.children[1]));
 };
 
-Treap.prototype._remove = function (nodeRef, value) {
-  if (nodeRef.node === this.nil) {
+Treap.prototype._remove = function (node, value) {
+  if (node === null) {
     // Empty node, value not found
-    return;
+    return null;
   }
 
   var side;
-  var newNodeRef;
 
-  if (nodeRef.node.value === value) {
-    if (nodeRef.node.children[0] === this.nil &&
-        nodeRef.node.children[1] === this.nil) {
-      // Leaf node, set to nil
-      nodeRef.node = this.nil;
-      return;
+  if (node.value === value) {
+    if (node.children[0] === null && node.children[1] === null) {
+      // It's a leaf, set to null
+      return null;
     }
-    /**
-     * Rotate up the child which has a smaller key
-     * notice nil node has the biggest key, it will always stay behind
-     */
-    side = ~~(nodeRef.node.children[0].key > nodeRef.node.children[1].key);
-    nodeRef.node = nodeRef.node.rotate(side);
 
-    newNodeRef = {
-      node: nodeRef.node.children[1 - side]
-    };
-    this._remove(newNodeRef, value);
-    nodeRef.node.children[1 - side] = newNodeRef.node;
+	// Rotate to a subtree and remove it
+	side = (node.children[0] === null ? 1 : 0);
+	node = node.rotate(side);
+  	node.children[1 - side] = this._remove(node.children[1 - side], value);
+  	return node.resize();
   } else {
-    side = ~~(value > nodeRef.node.value);
-    newNodeRef = {
-      node: nodeRef.node.children[side]
-    };
-    this._remove(newNodeRef, value);
-    nodeRef.node.children[side] = newNodeRef.node;
+    side = ~~(value > node.value);
+    node.children[side] = this._remove(node.children[side], value);
+  	return node.resize();
   }
-
-  nodeRef.node.resize();
 };
 
 Treap.prototype.insert = function (value) {
-  var rootRef = {
-    node: this.root
-  };
-  this._insert(rootRef, value);
-
-  // Reset root from reference
-  this.root = rootRef.node;
+  this.root = this._insert(this.root, value);
 };
 
 Treap.prototype.find = function (value) {
-  return this._find({
-    node: this.root
-  }, value);
+  return this._find(this.root, value);
 };
 
 Treap.prototype.minimum = function () {
-  return this._minimum({
-    node: this.root
-  });
+  return this._minimum(this.root);
 };
 
 Treap.prototype.maximum = function () {
-  return this._maximum({
-    node: this.root
-  });
+  return this._maximum(this.root);
 };
 
 Treap.prototype.remove = function (value) {
-  var rootRef = {
-    node: this.root
-  };
-  this._remove(rootRef, value);
+  this.root = this._remove(this.root, value);
+};
 
-  // Reset root from reference
-  this.root = rootRef.node;
+Treap.prototype.size = function () {
+  return this.root ? this.root.size : 0;
+};
+
+Treap.prototype.height = function () {
+  return this.root ? this.root.height : 0;
 };
 
 module.exports = Treap;
