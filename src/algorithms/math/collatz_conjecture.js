@@ -30,7 +30,7 @@ function generateCollatzConjecture(number) {
   do {
     number = calculateCollatzConjecture(number);
     collatzConjecture.push(number);
-  } while (number !== 1)
+  } while (number !== 1);
 
   return collatzConjecture;
 }
