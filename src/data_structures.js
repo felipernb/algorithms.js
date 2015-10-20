@@ -4,6 +4,7 @@
 module.exports = {
   AVLTree: require('./data_structures/avl_tree'),
   BST: require('./data_structures/bst'),
+  Treap: require('./data_structures/treap'),
   Graph: require('./data_structures/graph'),
   HashTable: require('./data_structures/hash_table'),
   Heap: require('./data_structures/heap'),
