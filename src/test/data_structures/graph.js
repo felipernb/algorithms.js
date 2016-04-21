@@ -1,7 +1,7 @@
 'use strict';
 
 var Graph = require('../..').DataStructures.Graph,
-    assert = require('assert');
+  assert = require('assert');
 
 describe('Graph - Adjacency list', function () {
   it('should be directed by default', function () {

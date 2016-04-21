@@ -15,7 +15,7 @@ function Node(value, left, right) {
  * Computer the number of childnodes
  */
 Node.prototype.resize = function () {
-  this.size = (this.children[0] ? this.children[0].size : 0) 
+  this.size = (this.children[0] ? this.children[0].size : 0)
             + (this.children[1] ? this.children[1].size : 0) + 1;
   this.height = Math.max(this.children[0] ? this.children[0].height : 0,
   						 this.children[1] ? this.children[1].height : 0) + 1;
@@ -59,10 +59,9 @@ Treap.prototype._insert = function (node, value) {
 
   // Keep it balance
   if (node.children[side].key < node.key) {
-	return node.rotate(side);
-  } else {
-	return node.resize();
+    return node.rotate(side);
   }
+  return node.resize();
 };
 
 Treap.prototype._find = function (node, value) {
@@ -113,14 +112,14 @@ Treap.prototype._remove = function (node, value) {
     }
 
 	// Rotate to a subtree and remove it
-	side = (node.children[0] === null ? 1 : 0);
-	node = node.rotate(side);
-  	node.children[1 - side] = this._remove(node.children[1 - side], value);
-  	return node.resize();
+	        side = (node.children[0] === null ? 1 : 0);
+	        node = node.rotate(side);
+  	    node.children[1 - side] = this._remove(node.children[1 - side], value);
+  	    return node.resize();
   } else {
     side = ~~(value > node.value);
     node.children[side] = this._remove(node.children[side], value);
-  	return node.resize();
+  	    return node.resize();
   }
 };
 

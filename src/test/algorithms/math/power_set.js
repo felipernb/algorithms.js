@@ -1,8 +1,8 @@
 'use strict';
 
 var math = require('../../..').Math,
-    powerSet = math.powerSet,
-    assert = require('assert');
+  powerSet = math.powerSet,
+  assert = require('assert');
 
 function testArrayEqual(a, b) {
   var arrayEqual = true;

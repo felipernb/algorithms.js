@@ -1,7 +1,7 @@
 'use strict';
 
 var HashSet = require('../..').DataStructures.Set,
-    assert = require('assert');
+  assert = require('assert');
 
 describe('HashSet', function () {
   it('should start empty', function () {

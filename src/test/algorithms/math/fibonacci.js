@@ -1,8 +1,8 @@
 'use strict';
 
 var math = require('../../..').Math,
-    fib = math.fibonacci,
-    assert = require('assert');
+  fib = math.fibonacci,
+  assert = require('assert');
 
 var testFibonacciSequence = function (fib) {
   assert.equal(0, fib(0));

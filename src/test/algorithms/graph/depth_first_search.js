@@ -1,9 +1,9 @@
 'use strict';
 
 var root = require('../../../'),
-    depthFirstSearch = root.Graph.depthFirstSearch,
-    Graph = root.DataStructures.Graph,
-    assert = require('assert');
+  depthFirstSearch = root.Graph.depthFirstSearch,
+  Graph = root.DataStructures.Graph,
+  assert = require('assert');
 
 describe('Depth First Search Algorithm', function () {
 

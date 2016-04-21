@@ -1,7 +1,7 @@
 'use strict';
 
 var binarySearch = require('../../..').Search.binarySearch,
-    assert = require('assert');
+  assert = require('assert');
 
 describe('Binary Search', function () {
   it('should find elements in the sorted array', function () {

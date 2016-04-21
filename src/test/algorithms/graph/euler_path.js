@@ -2,9 +2,9 @@
 
 
 var root = require('../../../'),
-    eulerPath = root.Graph.eulerPath,
-    Graph = root.DataStructures.Graph,
-    assert = require('assert');
+  eulerPath = root.Graph.eulerPath,
+  Graph = root.DataStructures.Graph,
+  assert = require('assert');
 
 
 describe('Euler Path', function () {

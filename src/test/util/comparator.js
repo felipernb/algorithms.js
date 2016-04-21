@@ -1,7 +1,7 @@
 'use strict';
 
 var Comparator = require('../../util/comparator'),
-    assert = require('assert');
+  assert = require('assert');
 
 describe('Comparator', function () {
   it('Should use a default arithmetic comparison if no function is passed',

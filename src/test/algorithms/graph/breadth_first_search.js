@@ -1,9 +1,9 @@
 'use strict';
 
 var root = require('../../../'),
-    breadthFirstSearch = root.Graph.breadthFirstSearch,
-    Graph = root.DataStructures.Graph,
-    assert = require('assert');
+  breadthFirstSearch = root.Graph.breadthFirstSearch,
+  Graph = root.DataStructures.Graph,
+  assert = require('assert');
 
 
 describe('Breadth-First Search', function () {

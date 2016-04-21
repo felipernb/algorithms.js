@@ -1,7 +1,7 @@
 'use strict';
 
 var quicksort = require('../../..').Sorting.quicksort,
-    sortingTestsHelper = require('./sorting_tests_helper');
+  sortingTestsHelper = require('./sorting_tests_helper');
 
 describe('QuickSort', function () {
   it('should sort the given array', function () {

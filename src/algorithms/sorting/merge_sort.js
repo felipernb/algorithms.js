@@ -22,8 +22,8 @@ var mergeSortInit = function (a, compareFn) {
 
 var merge = function (a, b, comparator) {
   var i = 0,
-      j = 0,
-      result = [];
+    j = 0,
+    result = [];
 
   while (i < a.length && j < b.length) {
     result.push(comparator.lessThan(a[i], b[j]) ? a[i++] : b[j++]);

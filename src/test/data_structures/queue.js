@@ -1,7 +1,7 @@
 'use strict';
 
 var Queue = require('../..').DataStructures.Queue,
-    assert = require('assert');
+  assert = require('assert');
 
 describe('Queue', function () {
   it('should start empty', function () {
@@ -25,16 +25,16 @@ describe('Queue', function () {
 
   it('should allow me to peek at the first element in' +
     ' line without popping it', function () {
-      var q = new Queue();
-      assert.throws(function () { q.peek(); }, Error); //Empty list
-      q.push(1);
-      q.push(2);
-      q.push(3);
-      assert.equal(q.peek(), 1);
-      assert.equal(q.peek(), 1);
-      q.pop();
-      assert.equal(q.peek(), 2);
-    });
+    var q = new Queue();
+    assert.throws(function () { q.peek(); }, Error); // Empty list
+    q.push(1);
+    q.push(2);
+    q.push(3);
+    assert.equal(q.peek(), 1);
+    assert.equal(q.peek(), 1);
+    q.pop();
+    assert.equal(q.peek(), 2);
+  });
 
   it('should perform a function to all elements with forEach', function () {
     var q = new Queue();

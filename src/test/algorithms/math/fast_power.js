@@ -1,8 +1,8 @@
 'use strict';
 
 var math = require('../../..').Math,
-    power = math.fastPower,
-    assert = require('assert');
+  power = math.fastPower,
+  assert = require('assert');
 
 
 var assertApproximatelyEqual = function (a, b, eps) {
@@ -55,10 +55,10 @@ describe('Fast Power', function () {
      function () {
         // It is not clear how to handle these cases
         // when custom multiplication is also supplied.
-        assert.throws(power.bind(null, 7, -2));
-        assert.throws(power.bind(null, 5, -1));
-        assert.throws(power.bind(null, Math.PI, Math.E));
-      });
+       assert.throws(power.bind(null, 7, -2));
+       assert.throws(power.bind(null, 5, -1));
+       assert.throws(power.bind(null, Math.PI, Math.E));
+     });
 
   it('should accept custom multiplication functions', function () {
     // Math.pow is basically useless here.
@@ -78,7 +78,7 @@ describe('Fast Power', function () {
 
   it('should raise an error if the power is zero but no identity value given' +
      ' (custom multiplication)', function () {
-        assert.throws(power.bind(null, 0, 0, multiplyModulo(5)));
-        assert.throws(power.bind(null, 'a', 0, abcMultiply));
-      });
+    assert.throws(power.bind(null, 0, 0, multiplyModulo(5)));
+    assert.throws(power.bind(null, 'a', 0, abcMultiply));
+  });
 });

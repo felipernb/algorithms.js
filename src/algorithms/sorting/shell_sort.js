@@ -11,7 +11,7 @@ var shellSort = function (array, comparatorFn) {
     i = 0, j = 0, temp = 0;
 
   while (gap >= 1) {
-    for (i = begin + gap;i <= end;i += 1) {
+    for (i = begin + gap; i <= end; i += 1) {
       temp = array[i];
       j = i - gap;
       while (j >= begin && comparator.greaterThan(array[j], temp)) {

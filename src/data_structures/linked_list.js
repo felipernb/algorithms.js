@@ -50,7 +50,7 @@ LinkedList.prototype.add = function (n, index) {
 
   if (index !== undefined && index < this.length) {
     var prevNode,
-        nextNode;
+      nextNode;
 
     if (index === 0) {
       // Insert in the beginning

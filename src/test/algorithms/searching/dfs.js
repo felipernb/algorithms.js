@@ -1,9 +1,9 @@
 'use strict';
 
 var root = require('../../..'),
-    BST = root.DataStructures.BST,
-    dfs = root.Search.dfs,
-    assert = require('assert');
+  BST = root.DataStructures.BST,
+  dfs = root.Search.dfs,
+  assert = require('assert');
 
 describe('Depth First Search', function () {
   var bst = new BST();

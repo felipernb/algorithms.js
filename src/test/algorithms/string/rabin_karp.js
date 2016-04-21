@@ -1,7 +1,7 @@
 'use strict';
 
 var rabinKarp = require('../../..').String.rabinKarp,
-    assert = require('assert');
+  assert = require('assert');
 
 var rabinKarpEqualsToIndexOf = function (a, b) {
   assert.equal(rabinKarp(a, b), a.indexOf(b));

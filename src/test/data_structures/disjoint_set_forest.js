@@ -1,22 +1,22 @@
 'use strict';
 
 var DisjointSetForest = require('../..').DataStructures.DisjointSetForest,
-    assert = require('assert');
+  assert = require('assert');
 
 
 describe('Disjoint Set Forest', function () {
   it('should decide if two elements belong to the same subset or not',
      function () {
-        var forest = new DisjointSetForest();
-        assert(!forest.sameSubset(1, 2));
-        forest.merge(1, 2);
-        assert(forest.sameSubset(1, 2));
-        forest.merge(3, 4);
-        assert(!forest.sameSubset(2, 4));
-        forest.merge(1, 3);
-        assert(forest.sameSubset(1, 2, 3, 4));
-        assert(!forest.sameSubset(1, 5));
-      });
+       var forest = new DisjointSetForest();
+       assert(!forest.sameSubset(1, 2));
+       forest.merge(1, 2);
+       assert(forest.sameSubset(1, 2));
+       forest.merge(3, 4);
+       assert(!forest.sameSubset(2, 4));
+       forest.merge(1, 3);
+       assert(forest.sameSubset(1, 2, 3, 4));
+       assert(!forest.sameSubset(1, 5));
+     });
 
   it('should maintain subset sizes', function () {
     var forest = new DisjointSetForest();

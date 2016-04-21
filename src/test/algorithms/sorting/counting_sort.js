@@ -1,7 +1,7 @@
 'use strict';
 
 var countingSort = require('../../..').Sorting.countingSort,
-    assert = require('assert');
+  assert = require('assert');
 
 var firstObject = {
   someProperty: 'The',

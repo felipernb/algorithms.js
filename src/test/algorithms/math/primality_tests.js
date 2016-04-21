@@ -1,9 +1,9 @@
 'use strict';
 
 var root = require('../../..'),
-    primalityTests = root.Math.primalityTests,
-    assert = require('assert'),
-    s = 'should correctly determine whether a number is prime';
+  primalityTests = root.Math.primalityTests,
+  assert = require('assert'),
+  s = 'should correctly determine whether a number is prime';
 
 describe('Primality Tests', function () {
   describe('#naiveTest()', function () {

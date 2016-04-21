@@ -1,8 +1,8 @@
 'use strict';
 
 var math = require('../../..').Math,
-    fisherYates = math.fisherYates,
-    assert = require('assert');
+  fisherYates = math.fisherYates,
+  assert = require('assert');
 
 describe('Fisher-Yates', function () {
   it('should shuffle the elements in the array in-place', function () {

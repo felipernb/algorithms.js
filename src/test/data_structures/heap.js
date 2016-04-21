@@ -1,7 +1,7 @@
 'use strict';
 
 var heap = require('../..').DataStructures.Heap,
-    assert = require('assert');
+  assert = require('assert');
 
 describe('Min Heap', function () {
   it('should always return the lowest element', function () {

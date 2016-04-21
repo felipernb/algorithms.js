@@ -1,7 +1,7 @@
 'use strict';
 
 var hamming = require('../../..').String.hamming,
-    assert = require('assert');
+  assert = require('assert');
 
 
 describe('Hamming distance', function () {
@@ -13,12 +13,12 @@ describe('Hamming distance', function () {
 
   it('should return the correct the correct distances', function () {
     var inputs = [
-      { a: 'karolin', b: 'kathrin', expected: 3 },
-      { a: 'karolin', b: 'kerstin', expected: 3 },
-      { a: '1011101', b: '1001001', expected: 2 },
-      { a: '2173896', b: '2233796', expected: 3 },
-      { a: '1111111111', b: '0000000000', expected: 10 },
-      { a: '', b: '', expected: 0}
+      {a: 'karolin', b: 'kathrin', expected: 3},
+      {a: 'karolin', b: 'kerstin', expected: 3},
+      {a: '1011101', b: '1001001', expected: 2},
+      {a: '2173896', b: '2233796', expected: 3},
+      {a: '1111111111', b: '0000000000', expected: 10},
+      {a: '', b: '', expected: 0}
     ];
 
     inputs.forEach(function (val) {

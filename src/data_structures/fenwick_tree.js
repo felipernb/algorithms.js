@@ -24,7 +24,7 @@
  */
 function FenwickTree(length) {
   this._elements = new Array(length + 1);
-  for (var i = 0; i < this._elements.length ; i++)
+  for (var i = 0; i < this._elements.length; i++)
     this._elements[i] = 0;
 }
 
@@ -48,7 +48,7 @@ FenwickTree.prototype.adjust = function (index, value) {
 
     Note: (index&-index) finds the rightmost bit in index.
   */
-  for (; index < this._elements.length ; index += (index&-index))
+  for (; index < this._elements.length; index += (index & -index))
     this._elements[index] += value;
 };
 
@@ -72,7 +72,7 @@ FenwickTree.prototype.prefixSum = function (index) {
   */
 
   var sum = 0;
-  for (; index > 0 ; index -= (index&-index))
+  for (; index > 0; index -= (index & -index))
     sum += this._elements[index];
   return sum;
 };

@@ -1,7 +1,7 @@
 'use strict';
 
 var PriorityQueue = require('../../data_structures/priority_queue'),
-    Graph = require('../../data_structures/graph');
+  Graph = require('../../data_structures/graph');
 
 
 /**
@@ -36,7 +36,7 @@ var prim = function (graph) {
   while (!q.isEmpty()) {
     var top = q.extract(true);
     var vertex = top.item,
-        weight = top.priority;
+      weight = top.priority;
 
     if (parent[vertex]) {
       mst.addEdge(parent[vertex], vertex, weight);

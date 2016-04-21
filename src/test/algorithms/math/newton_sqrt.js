@@ -1,8 +1,8 @@
 'use strict';
 
 var math = require('../../..').Math,
-    newtonSqrt = math.newtonSqrt,
-    assert = require('assert');
+  newtonSqrt = math.newtonSqrt,
+  assert = require('assert');
 
 describe('Newton square root', function () {
   it('should calculate the exact root of square numbers', function () {

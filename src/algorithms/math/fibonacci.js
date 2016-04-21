@@ -27,8 +27,8 @@ var fibExponential = function (n) {
   */
 var fibLinear = function (n) {
   var fibNMinus2 = 0,
-      fibNMinus1 = 1,
-      fib = n;
+    fibNMinus1 = 1,
+    fib = n;
   for (var i = 1; i < n; i++) {
     fib = fibNMinus1 + fibNMinus2;
     fibNMinus2 = fibNMinus1;
