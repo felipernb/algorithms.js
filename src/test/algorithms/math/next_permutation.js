@@ -1,9 +1,9 @@
 'use strict';
 
 var math = require('../../..').Math,
-    nextPermutation = math.nextPermutation,
-    Comparator = require('../../../util/comparator'),
-    assert = require('assert');
+  nextPermutation = math.nextPermutation,
+  Comparator = require('../../../util/comparator'),
+  assert = require('assert');
 
 
 var range = function (begin, end) {
@@ -48,15 +48,15 @@ describe('Next Permutation', function () {
 
   it('should generate all N! permutations if the elements are distinct',
      function () {
-        [4, 5, 6].forEach(function (size) {
-          var count = 0;
-          var perm = range(size);
-          do {
+       [4, 5, 6].forEach(function (size) {
+         var count = 0;
+         var perm = range(size);
+         do {
             count += 1;
           } while (nextPermutation(perm));
-          assert.equal(count, factorial(size));
-        });
-      });
+         assert.equal(count, factorial(size));
+       });
+     });
 
   it('should support custom compare functions', function () {
     var reverseComparator = new Comparator();

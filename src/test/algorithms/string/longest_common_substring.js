@@ -3,7 +3,7 @@
 var directory = '../../../algorithms/string/';
 var filename = 'longest_common_substring';
 var longestCommonSubstring = require(directory + filename),
-    assert = require('assert');
+  assert = require('assert');
 
 describe('Longest common substring', function () {
   it('should return the longest common substring of two strings', function () {

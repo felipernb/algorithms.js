@@ -1,9 +1,9 @@
 'use strict';
 
 var root = require('../../../'),
-    floydWarshall = root.Graph.floydWarshall,
-    Graph = root.DataStructures.Graph,
-    assert = require('assert');
+  floydWarshall = root.Graph.floydWarshall,
+  Graph = root.DataStructures.Graph,
+  assert = require('assert');
 
 
 describe('Floyd-Warshall Algorithm', function () {

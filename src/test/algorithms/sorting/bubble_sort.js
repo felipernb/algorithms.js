@@ -1,7 +1,7 @@
 'use strict';
 
 var bubbleSort = require('../../..').Sorting.bubbleSort,
-    sortingTestsHelper = require('./sorting_tests_helper');
+  sortingTestsHelper = require('./sorting_tests_helper');
 
 describe('Bubble Sort', function () {
   it('should sort the given array', function () {

@@ -1,11 +1,11 @@
 'use strict';
 
 var root = require('../../../'),
-    kruskal = root.Graph.kruskal,
-    prim = root.Graph.prim,
-    depthFirstSearch = root.Graph.depthFirstSearch,
-    Graph = root.DataStructures.Graph,
-    assert = require('assert');
+  kruskal = root.Graph.kruskal,
+  prim = root.Graph.prim,
+  depthFirstSearch = root.Graph.depthFirstSearch,
+  Graph = root.DataStructures.Graph,
+  assert = require('assert');
 
 
 describe('Minimum Spanning Tree', function () {
@@ -162,29 +162,29 @@ describe('Minimum Spanning Tree', function () {
 
     it('should find a minimum spaning forest if the graph is not connected',
        function () {
-          var graph = new Graph(false);
-          graph.addVertex(1);
-          graph.addVertex(2);
-          graph.addVertex(3);
-          assert(isMinimumSpanningForest(mst(graph), graph, null, 3));
+         var graph = new Graph(false);
+         graph.addVertex(1);
+         graph.addVertex(2);
+         graph.addVertex(3);
+         assert(isMinimumSpanningForest(mst(graph), graph, null, 3));
 
-          graph.addEdge(1, 2, 2);
-          assert(isMinimumSpanningForest(mst(graph), graph, 2, 2));
+         graph.addEdge(1, 2, 2);
+         assert(isMinimumSpanningForest(mst(graph), graph, 2, 2));
 
-          graph.addEdge(1, 3, 1);
-          graph.addEdge(2, 3, -1);
-          assert(isMinimumSpanningForest(mst(graph), graph, 0, 1));
+         graph.addEdge(1, 3, 1);
+         graph.addEdge(2, 3, -1);
+         assert(isMinimumSpanningForest(mst(graph), graph, 0, 1));
 
-          graph.addVertex(4);
-          assert(isMinimumSpanningForest(mst(graph), graph, 0, 2));
+         graph.addVertex(4);
+         assert(isMinimumSpanningForest(mst(graph), graph, 0, 2));
 
-          graph.addEdge(5, 6, 1);
-          assert(isMinimumSpanningForest(mst(graph), graph, 1, 3));
+         graph.addEdge(5, 6, 1);
+         assert(isMinimumSpanningForest(mst(graph), graph, 1, 3));
 
-          graph.addEdge(5, 4, -100);
-          graph.addEdge(6, 4, -100);
-          assert(isMinimumSpanningForest(mst(graph), graph, -200, 2));
-        });
+         graph.addEdge(5, 4, -100);
+         graph.addEdge(6, 4, -100);
+         assert(isMinimumSpanningForest(mst(graph), graph, -200, 2));
+       });
 
     it('should throw an error if the graph is directed', function () {
       var directedGraph = new Graph(true);

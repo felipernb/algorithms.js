@@ -1,7 +1,7 @@
 'use strict';
 
 var FenwickTree = require('../..').DataStructures.FenwickTree,
-    assert = require('assert');
+  assert = require('assert');
 
 describe('FenwickTree', function () {
   it('should allow prefix queries', function () {

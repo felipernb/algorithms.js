@@ -1,8 +1,8 @@
 'use strict';
 
 var root = require('../..'),
-    AVLTree = root.DataStructures.AVLTree,
-    assert = require('assert');
+  AVLTree = root.DataStructures.AVLTree,
+  assert = require('assert');
 
 describe('AVL Tree', function () {
   it('should start with null root', function () {
@@ -195,7 +195,7 @@ describe('AVL Tree', function () {
     assert.equal(avlTree.root.right.right.value, 200);
   });
 
-  it('should return the parents before the children when '+
+  it('should return the parents before the children when ' +
       'traversing in preorder', function () {
     var avlTree = new AVLTree();
 
@@ -224,7 +224,7 @@ describe('AVL Tree', function () {
     assert.deepEqual(expectedPreOrder, preOrder);
   });
 
-  it('should return the children before the parents when '+
+  it('should return the children before the parents when ' +
       'traversing in postorder', function () {
     var avlTree = new AVLTree();
 
@@ -272,4 +272,4 @@ describe('AVL Tree', function () {
       assert.equal(a[i], b[i]);
     }
   });
- });
+});

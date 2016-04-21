@@ -1,8 +1,8 @@
 'use strict';
 
 var math = require('../../..').Math,
-    collatzConjecture = math.collatzConjecture,
-    assert = require('assert');
+  collatzConjecture = math.collatzConjecture,
+  assert = require('assert');
 
 describe('Collatz Conjecture', function () {
   it('should return odd numbers divided by two', function () {

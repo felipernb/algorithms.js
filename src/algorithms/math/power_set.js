@@ -48,7 +48,7 @@ var powerSetRecursive = function (array) {
   if (array.length === 0) {
     return [];
   } else if (array.length === 1) {
-    return [ [], [ array[0] ] ];
+    return [[], [array[0]]];
   } else {
     var powerSet = [];
     var firstElem = array[0];
@@ -57,7 +57,7 @@ var powerSetRecursive = function (array) {
 
     powerSetRecursive(array).forEach(function (elem) {
       powerSet.push(elem);
-      var withFirstElem = [ firstElem ];
+      var withFirstElem = [firstElem];
       withFirstElem.push.apply(withFirstElem, elem);
       powerSet.push(withFirstElem);
     });

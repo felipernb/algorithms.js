@@ -1,9 +1,9 @@
 'use strict';
 
 var root = require('../../../'),
-    spfa = root.Graph.SPFA,
-    Graph = root.DataStructures.Graph,
-    assert = require('assert');
+  spfa = root.Graph.SPFA,
+  Graph = root.DataStructures.Graph,
+  assert = require('assert');
 
 describe('SPFA Algorithm', function () {
   it('should return the shortest paths to all nodes from a given origin',

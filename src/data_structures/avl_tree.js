@@ -200,7 +200,7 @@ AVLTree.prototype.rightRight = function (x, y, z) {
  * Left-left rotation pattern.
  */
 AVLTree.prototype.leftLeft = function (x, y, z) {
-  //pass z parent to y and move y's right to z's left
+  // pass z parent to y and move y's right to z's left
   if (z.parent !== null) {
     var orientation = (z.parent.left === z) ? 'left' : 'right';
     z.parent[orientation] = y;
@@ -214,7 +214,7 @@ AVLTree.prototype.leftLeft = function (x, y, z) {
   if (z.left !== null) {
     z.left.parent = z;
   }
-  //fix y right child
+  // fix y right child
   y.right = z;
   z.parent = y;
 
@@ -228,7 +228,7 @@ AVLTree.prototype.leftLeft = function (x, y, z) {
  * Right-left rotation pattern.
  */
 AVLTree.prototype.rightLeft = function (x, y, z) {
-  //pass z parent to x
+  // pass z parent to x
   if (z.parent !== null) {
     var orientation = (z.parent.left === z) ? 'left' : 'right';
     z.parent[orientation] = x;
@@ -264,7 +264,7 @@ AVLTree.prototype.rightLeft = function (x, y, z) {
  * Left-right rotation pattern.
  */
 AVLTree.prototype.leftRight = function (x, y, z) {
-  //pass z parent to x
+  // pass z parent to x
   if (z.parent !== null) {
     var orientation = (z.parent.left === z) ? 'left' : 'right';
     z.parent[orientation] = x;

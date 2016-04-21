@@ -1,7 +1,7 @@
 'use strict';
 
 var DisjointSetForest = require('../../data_structures/disjoint_set_forest'),
-    Graph = require('../../data_structures/graph');
+  Graph = require('../../data_structures/graph');
 
 
 /**

@@ -1,8 +1,8 @@
 'use strict';
 
 var math = require('../../..').Math,
-    reservoirSampling = math.reservoirSampling,
-    assert = require('assert');
+  reservoirSampling = math.reservoirSampling,
+  assert = require('assert');
 
 
 describe('Reservoir Sampling', function () {

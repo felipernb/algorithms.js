@@ -1,18 +1,18 @@
 'use strict';
 
 var HashTable = require('../..').DataStructures.HashTable,
-    assert = require('assert');
+  assert = require('assert');
 
 describe('Hash Table', function () {
   it('should calculate hashes using the same algorithm as ' +
     'Java\'s String.hashCode', function () {
-      var h = new HashTable();
-      assert.equal(h.hash('The quick brown fox jumps over the lazy dog'),
+    var h = new HashTable();
+    assert.equal(h.hash('The quick brown fox jumps over the lazy dog'),
         -609428141);
-      assert.equal(h.hash('Testing the hashCode function'), 1538083358);
-      assert.equal(h.hash(''), 0);
-      assert.equal(h.hash('a'), 97);
-      var longString =
+    assert.equal(h.hash('Testing the hashCode function'), 1538083358);
+    assert.equal(h.hash(''), 0);
+    assert.equal(h.hash('a'), 97);
+    var longString =
         'k"hg3q#+~/l2Eljan;DB x.P<pX[!C`/Nr6w~YIPz;X3z<]b6nDvda|ToZM+a%D#' +
         ':PE@z[bl$/PRT7m76}FV=UW/3SPkkdRkuC~9TKgMg.^#n)iiq{AZ?}+pv;>%-:iA' +
         '/b/hG($8-SZcZX871&;fDEWthw.b5agzov],X00--O:mcQ$JFi-4uIo"D:(r(yvs' +
@@ -29,8 +29,8 @@ describe('Hash Table', function () {
         'fE$O[YV8X3PV6TR(*Ed4|y[8tG~K=[MxgLI%yx]16Kg3YSHE{2^1TOAnf`EsKWm,' +
         'WGD)s;Zs<8K6(K_kVko"mV82Pcl)0Rx}jfq3VBm:MOX/gLfSPvLx~%(3jHh5gG2e' +
         'JaQ|nW}ekR_W5Ldv`@j^hd%Wiw6moGekrS>k7gRR|dd?7Pi:`0; r_wq=-F-e(iY';
-      assert.equal(h.hash(longString), -998071508);
-    });
+    assert.equal(h.hash(longString), -998071508);
+  });
 
   it('should initialize the table with the given capacity',
     function () {

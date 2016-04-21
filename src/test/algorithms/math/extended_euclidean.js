@@ -1,8 +1,8 @@
 'use strict';
 
 var math = require('../../..').Math,
-    extEuclid = math.extendedEuclidean,
-    assert = require('assert');
+  extEuclid = math.extendedEuclidean,
+  assert = require('assert');
 
 describe('extEuclid', function () {
   it('should calculate the solve to Bézout\'s identity', function () {

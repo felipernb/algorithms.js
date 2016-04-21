@@ -1,7 +1,7 @@
 'use strict';
 
 var knuthMorrisPratt = require('../../..').String.knuthMorrisPratt,
-    assert = require('assert');
+  assert = require('assert');
 
 describe('Knuth-Morris-Pratt', function () {
   it('should verify if a pattern is contained in some text (or array)',

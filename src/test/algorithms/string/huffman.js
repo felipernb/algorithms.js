@@ -1,7 +1,7 @@
 'use strict';
 
 var huffman = require('../../..').String.huffman,
-    assert = require('assert');
+  assert = require('assert');
 
 
 describe('Huffman', function () {

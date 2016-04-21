@@ -1,7 +1,7 @@
 'use strict';
 
 var insertionSort = require('../../..').Sorting.insertionSort,
-    sortingTestsHelper = require('./sorting_tests_helper');
+  sortingTestsHelper = require('./sorting_tests_helper');
 
 describe('Insertion Sort', function () {
   it('should sort the given array', function () {

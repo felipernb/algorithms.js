@@ -1,7 +1,7 @@
 'use strict';
 
 var PriorityQueue = require('../..').DataStructures.PriorityQueue,
-    assert = require('assert');
+  assert = require('assert');
 
 describe('Min Priority Queue', function () {
   it('should always return the element with the lowest priority', function () {

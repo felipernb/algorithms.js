@@ -7,6 +7,18 @@
     "lint": "eslint src/",
     "test": "mocha -R spec --recursive src/test"
   },
+  "eslintConfig": {
+    "extends": "google",
+    "rules": {
+      "space-before-function-paren": [
+        "error",
+        {
+          "anonymous": "always",
+          "named": "never"
+        }
+      ]
+    }
+  },
   "pre-commit": [
     "lint",
     "test"
@@ -14,7 +26,8 @@
   "dependencies": {},
   "devDependencies": {
     "coveralls": "^2.11.4",
-    "eslint": "^1.7.2",
+    "eslint": "^2.8.0",
+    "eslint-config-google": "^0.5.0",
     "istanbul": "^0.4.0",
     "mocha": "^2.3.3",
     "pre-commit": "^1.1.2"

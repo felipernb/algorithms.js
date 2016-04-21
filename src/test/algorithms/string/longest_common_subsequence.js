@@ -3,7 +3,7 @@
 var directory = '../../../algorithms/string/';
 var filename = 'longest_common_subsequence';
 var longestCommonSubsequence = require(directory + filename),
-    assert = require('assert');
+  assert = require('assert');
 
 describe('Longest common subsequence', function () {
   it('should return the longest common subsequence of ' +

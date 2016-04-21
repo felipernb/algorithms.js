@@ -2,7 +2,7 @@
 
 
 var Graph = require('../../data_structures/graph'),
-    depthFirstSearch = require('../../algorithms/graph/depth_first_search');
+  depthFirstSearch = require('../../algorithms/graph/depth_first_search');
 
 
 /** Examine a graph and compute pair of end vertices of the existing Euler path.

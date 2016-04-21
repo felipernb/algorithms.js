@@ -1,9 +1,9 @@
 'use strict';
 
 var root = require('../../../'),
-    bellmanFord = root.Graph.bellmanFord,
-    Graph = root.DataStructures.Graph,
-    assert = require('assert');
+  bellmanFord = root.Graph.bellmanFord,
+  Graph = root.DataStructures.Graph,
+  assert = require('assert');
 
 describe('Bellman-Ford Algorithm', function () {
   it('should return the shortest paths to all nodes from a given origin',
