@@ -13,8 +13,7 @@
     "beforeEach": false,
     "after": false,
     "afterEach": false,
-    "system": false,
-    "phantom": false
+    "Int32Array": false
   },
   "rules": {
     "block-scoped-var": 2,
@@ -75,10 +74,7 @@
     "no-unused-vars": 2,
     "no-use-before-define": 0,
     "no-with": 2,
-    "space-after-keywords": [
-      2,
-      "always"
-    ],
+    "keyword-spacing": 2,
     "space-before-function-paren": [
       2,
       {
