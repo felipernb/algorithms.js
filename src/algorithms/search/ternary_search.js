@@ -7,10 +7,7 @@
   */
 
 var ternarySearch = function (fn, left, right, precision) {
-  while (true) {
-    if (Math.abs(right - left) < precision)
-      return (left + right) / 2;
-
+  while (Math.abs(right - left) > precision) {
     var leftThird = left + (right - left) / 3,
         rightThird = right - (right - left) / 3;
 
@@ -18,6 +15,7 @@ var ternarySearch = function (fn, left, right, precision) {
       left = leftThird; else
       right = rightThird;
   }
+  return (left + right) / 2;
 };
 
 module.exports = ternarySearch;
