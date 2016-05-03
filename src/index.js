@@ -6,7 +6,8 @@ var lib = {
   Math: require('./math'),
   Search: require('./search'),
   Sorting: require('./sorting'),
-  String: require('./string')
+  String: require('./string'),
+  Geometry: require('./geometry')
 };
 
 module.exports = lib;

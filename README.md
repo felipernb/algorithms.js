@@ -137,3 +137,11 @@ require('algorithms').String;
 * longestCommonSubsequence
 * longestCommonSubstring
 * rabinKarp
+
+#### Computational Geometry
+```javascript
+require('algorithms/geometry');
+// or
+require('algorithms').Geometry;
+```
+* inPolygon
