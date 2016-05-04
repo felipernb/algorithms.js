@@ -1,7 +1,7 @@
 # algorithms.js
 
-[![Build Status](https://travis-ci.org/felipernb/algorithms.js.png?branch=master)](https://travis-ci.org/felipernb/algorithms.js)
-[![Coverage Status](https://coveralls.io/repos/felipernb/algorithms.js/badge.png?branch=master)](https://coveralls.io/r/felipernb/algorithms.js?branch=master)
+[![Build Status](https://travis-ci.org/felipernb/algorithms.js.svg?branch=master)](https://travis-ci.org/felipernb/algorithms.js)
+[![Coverage Status](https://coveralls.io/repos/github/felipernb/algorithms.js/badge.svg?branch=master)](https://coveralls.io/github/felipernb/algorithms.js?branch=master)
 [![Dependency Status](https://david-dm.org/felipernb/algorithms.js.svg)](https://david-dm.org/felipernb/algorithms.js)
 [![devDependency Status](https://david-dm.org/felipernb/algorithms.js/dev-status.svg)](https://david-dm.org/felipernb/algorithms.js#info=devDependencies)
 [![Inline docs](http://inch-ci.org/github/felipernb/algorithms.js.svg?branch=master)](http://inch-ci.org/github/felipernb/algorithms.js)
