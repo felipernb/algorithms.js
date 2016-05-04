@@ -2,5 +2,5 @@
 
 // Geometry algorithms
 module.exports = {
-    bezierCurve: require('./algorithms/geometry/bezier_curve')
+  BezierCurve: require('./algorithms/geometry/bezier_curve')
 };

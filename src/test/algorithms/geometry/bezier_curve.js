@@ -1,7 +1,7 @@
 'use strict';
 
 var root = require('../../../'),
-    BezierCurve = root.Geometry.bezierCurve,
+    BezierCurve = root.Geometry.BezierCurve,
     assert = require('assert');
 
 // Testing with http://pomax.github.io/bezierjs/

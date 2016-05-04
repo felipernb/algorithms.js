@@ -42,6 +42,16 @@ require('algorithms').DataStructures;
 * Set (HashSet)
 * Stack
 
+#### Geometry algorithms
+
+```javascript
+require('algorithms/geometry');
+// or
+require('algorithms').Geometry;
+```
+
+* BezierCurve
+
 #### Graph algorithms
 
 ```javascript
