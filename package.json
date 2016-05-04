@@ -1,6 +1,6 @@
 {
   "name": "algorithms",
-  "version": "0.9.1",
+  "version": "0.10.0",
   "description": "Traditional computer science algorithms and data structures implemented in JavaScript",
   "main": "./index.js",
   "scripts": {
