@@ -2,7 +2,6 @@
 
 var breadthFirstSearch = require('./breadth_first_search');
 
-
 /**
  * Shortest-path algorithm based on Breadth-First Search.
  * Works solely on graphs with equal edge weights (but works fast).
@@ -13,12 +12,13 @@ var breadthFirstSearch = require('./breadth_first_search');
  * @return {{distance: Object.<string, number>,
  *           previous: Object.<string, string>}}
  */
-var bfsShortestPath = function (graph, source) {
-  var distance = {}, previous = {};
+var bfsShortestPath = function(graph, source) {
+  var distance = {};
+  var previous = {};
   distance[source] = 0;
 
   breadthFirstSearch(graph, source, {
-    onTraversal: function (vertex, neighbor) {
+    onTraversal: function(vertex, neighbor) {
       distance[neighbor] = distance[vertex] + 1;
       previous[neighbor] = vertex;
     }
@@ -29,6 +29,5 @@ var bfsShortestPath = function (graph, source) {
     previous: previous
   };
 };
-
 
 module.exports = bfsShortestPath;

@@ -8,7 +8,7 @@
  */
 'use strict';
 
-var hamming = function (a, b) {
+var hamming = function(a, b) {
   if (a.length !== b.length) {
     throw new Error('Strings must be equal in length');
   }

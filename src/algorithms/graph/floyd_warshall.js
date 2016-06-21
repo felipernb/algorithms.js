@@ -1,6 +1,5 @@
 'use strict';
 
-
 /**
  * Floyd-Warshall algorithm.
  * Compute all-pairs shortest paths (a path for each pair of vertices).
@@ -9,19 +8,18 @@
  * @param {Graph} graph
  * @return {{distance, path}}
  */
-var floydWarshall = function (graph) {
-
+var floydWarshall = function(graph) {
   // Fill in the distances with initial values:
   //   - 0 if source == destination;
   //   - edge(source, destination) if there is a direct edge;
   //   - +inf otherwise.
   var distance = Object.create(null);
-  graph.vertices.forEach(function (src) {
+  graph.vertices.forEach(function(src) {
     distance[src] = Object.create(null);
-    graph.vertices.forEach(function (dest) {
+    graph.vertices.forEach(function(dest) {
       if (src === dest) {
         distance[src][dest] = 0;
-      } else if (graph.edge(src, dest) !== undefined) {
+      } else if (graph.edge(src, dest)) {
         distance[src][dest] = graph.edge(src, dest);
       } else {
         distance[src][dest] = Infinity;
@@ -32,13 +30,13 @@ var floydWarshall = function (graph) {
   // Internal vertex with the largest index along the shortest path.
   // Needed for path reconstruction.
   var middleVertex = Object.create(null);
-  graph.vertices.forEach(function (vertex) {
+  graph.vertices.forEach(function(vertex) {
     middleVertex[vertex] = Object.create(null);
   });
 
-  graph.vertices.forEach(function (middle) {
-    graph.vertices.forEach(function (src) {
-      graph.vertices.forEach(function (dest) {
+  graph.vertices.forEach(function(middle) {
+    graph.vertices.forEach(function(src) {
+      graph.vertices.forEach(function(dest) {
         var dist = distance[src][middle] + distance[middle][dest];
         if (dist < distance[src][dest]) {
           distance[src][dest] = dist;
@@ -49,7 +47,7 @@ var floydWarshall = function (graph) {
   });
 
   // Check for a negative-weighted cycle.
-  graph.vertices.forEach(function (vertex) {
+  graph.vertices.forEach(function(vertex) {
     if (distance[vertex][vertex] < 0) {
       // Negative-weighted cycle found.
       throw new Error('The graph contains a negative-weighted cycle!');
@@ -64,7 +62,7 @@ var floydWarshall = function (graph) {
    * @param {string} dest
    * @return {?string[]} Null if destination is unreachable.
    */
-  var path = function (src, dest) {
+  var path = function(src, dest) {
     if (!Number.isFinite(distance[src][dest])) {
       // dest unreachable.
       return null;
@@ -92,6 +90,5 @@ var floydWarshall = function (graph) {
     path: path
   };
 };
-
 
 module.exports = floydWarshall;

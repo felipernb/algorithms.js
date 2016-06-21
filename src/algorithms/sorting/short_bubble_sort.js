@@ -6,7 +6,6 @@ var Comparator = require('../../util/comparator');
  * short bubble sort algorithm
  * worst: O(n^2) best: O(n)
  */
-
 function shortBubbleSort(array, comparatorFn) {
   var comparator = new Comparator(comparatorFn);
   var length = array.length - 1;
@@ -14,7 +13,7 @@ function shortBubbleSort(array, comparatorFn) {
 
   for (i; i < length; i++) {
     var current = array[i];
-    var next = array[i+1];
+    var next = array[i + 1];
 
     /**
      * If the current value if greater than the next:
@@ -24,7 +23,7 @@ function shortBubbleSort(array, comparatorFn) {
      */
 
     if (comparator.greaterThan(current, next)) {
-      array[i+1] = current;
+      array[i + 1] = current;
       array[i] = next;
       i = -1;
     }

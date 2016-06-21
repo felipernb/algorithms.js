@@ -4,7 +4,7 @@ var Comparator = require('../../util/comparator');
 /**
  * Bubble sort algorithm O(n^2)
  */
-var bubbleSort = function (a, comparatorFn) {
+var bubbleSort = function(a, comparatorFn) {
   var comparator = new Comparator(comparatorFn);
   var n = a.length;
   var bound = n - 1;

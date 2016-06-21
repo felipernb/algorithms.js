@@ -1,8 +1,7 @@
 'use strict';
 
-var PriorityQueue = require('../../data_structures/priority_queue'),
-    Graph = require('../../data_structures/graph');
-
+var PriorityQueue = require('../../data_structures/priority_queue');
+var Graph = require('../../data_structures/graph');
 
 /**
  * Prim's minimum spanning tree (forest) algorithm.
@@ -12,7 +11,7 @@ var PriorityQueue = require('../../data_structures/priority_queue'),
  * @return {Graph} Minimum spanning tree or forest
  *   (depending on whether input graph is connected itself).
  */
-var prim = function (graph) {
+var prim = function(graph) {
   if (graph.directed) {
     throw new Error('Can\'t build MST of a directed graph.');
   }
@@ -21,11 +20,11 @@ var prim = function (graph) {
   var parent = Object.create(null);
 
   var q = new PriorityQueue();
-  graph.vertices.forEach(function (vertex) {
+  graph.vertices.forEach(function(vertex) {
     q.insert(vertex, Infinity);
   });
 
-  var relax = function (vertex, neighbor) {
+  var relax = function(vertex, neighbor) {
     var weight = graph.edge(vertex, neighbor);
     if (weight < q.priority(neighbor)) {
       q.changePriority(neighbor, weight);
@@ -35,13 +34,12 @@ var prim = function (graph) {
 
   while (!q.isEmpty()) {
     var top = q.extract(true);
-    var vertex = top.item,
-        weight = top.priority;
+    var vertex = top.item;
+    var weight = top.priority;
 
     if (parent[vertex]) {
       mst.addEdge(parent[vertex], vertex, weight);
-    }
-    else {
+    } else {
       mst.addVertex(vertex);
     }
 
@@ -50,6 +48,5 @@ var prim = function (graph) {
 
   return mst;
 };
-
 
 module.exports = prim;

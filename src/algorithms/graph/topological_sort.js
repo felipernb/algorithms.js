@@ -1,7 +1,7 @@
 'use strict';
 
-var Stack = require('../../data_structures/stack'),
-    depthFirstSearch = require('../../algorithms/graph/depth_first_search');
+var Stack = require('../../data_structures/stack');
+var depthFirstSearch = require('../../algorithms/graph/depth_first_search');
 
 /**
  * Sorts the edges of the DAG topologically
@@ -17,21 +17,21 @@ var Stack = require('../../data_structures/stack'),
  * @param {Graph}
  * @return Stack
  */
-var topologicalSort = function (graph) {
+var topologicalSort = function(graph) {
   var stack = new Stack();
   var firstHit = {};
   var time = 0;
 
-  graph.vertices.forEach(function (node) {
+  graph.vertices.forEach(function(node) {
     if (!firstHit[node]) {
       depthFirstSearch(graph, node, {
-        allowTraversal: function (node, neighbor) {
+        allowTraversal: function(node, neighbor) {
           return !firstHit[neighbor];
         },
-        enterVertex: function (node) {
+        enterVertex: function(node) {
           firstHit[node] = ++time;
         },
-        leaveVertex: function (node) {
+        leaveVertex: function(node) {
           stack.push(node);
         }
       });

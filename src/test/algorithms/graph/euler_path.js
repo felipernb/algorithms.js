@@ -1,39 +1,37 @@
 'use strict';
 
+var root = require('../../../');
+var eulerPath = root.Graph.eulerPath;
+var Graph = root.DataStructures.Graph;
+var assert = require('assert');
 
-var root = require('../../../'),
-    eulerPath = root.Graph.eulerPath,
-    Graph = root.DataStructures.Graph,
-    assert = require('assert');
-
-
-describe('Euler Path', function () {
-  var verifyEulerPath = function (graph, trail) {
+describe('Euler Path', function() {
+  var verifyEulerPath = function(graph, trail) {
     var visited = new Graph(graph.directed);
     graph.vertices.forEach(visited.addVertex.bind(visited));
 
-    trail.slice(1).reduce(function (previous, current) {
+    trail.slice(1).reduce(function(previous, current) {
       assert(graph.edge(previous, current));
       assert(!visited.edge(previous, current));
       visited.addEdge(previous, current);
       return current;
     }, trail[0]);
 
-    graph.vertices.forEach(function (vertex) {
+    graph.vertices.forEach(function(vertex) {
       assert.equal(graph.neighbors(vertex).length,
                    visited.neighbors(vertex).length);
     });
   };
 
-  var graphFromEdges = function (directed, edges) {
+  var graphFromEdges = function(directed, edges) {
     var graph = new Graph(directed);
-    edges.forEach(function (edge) {
+    edges.forEach(function(edge) {
       graph.addEdge(edge[0], edge[1]);
     });
     return graph;
   };
 
-  it('should compute Euler tour over the undirected graph', function () {
+  it('should compute Euler tour over the undirected graph', function() {
     var graph = graphFromEdges(false, [
       [1, 2],
       [1, 5],
@@ -56,7 +54,7 @@ describe('Euler Path', function () {
     assert.equal(trail[0], trail.slice(-1)[0]);
   });
 
-  it('should compute Euler walk over the undirected graph', function () {
+  it('should compute Euler walk over the undirected graph', function() {
     var graph = graphFromEdges(false, [
       [1, 2],
       [1, 5],
@@ -81,7 +79,7 @@ describe('Euler Path', function () {
     assert.equal(endpoints[1], 8);
   });
 
-  it('should compute Euler tour over the directed graph', function () {
+  it('should compute Euler tour over the directed graph', function() {
     var graph = graphFromEdges(true, [
       [0, 1],
       [1, 2],
@@ -99,7 +97,7 @@ describe('Euler Path', function () {
     assert.equal(trail[0], trail.slice(-1)[0]);
   });
 
-  it('should compute Euler walk over the directed graph', function () {
+  it('should compute Euler walk over the directed graph', function() {
     var graph = graphFromEdges(true, [
       [5, 0],
       [0, 2],
@@ -113,20 +111,20 @@ describe('Euler Path', function () {
     assert.deepEqual(trail, [5, 3, 1, 5, 0, 2, 4, 0]);
   });
 
-  it('should return single-vertex-trail for an isolated vertex', function () {
+  it('should return single-vertex-trail for an isolated vertex', function() {
     var graph = new Graph();
     graph.addVertex('loner');
     var trail = eulerPath(graph);
     assert.deepEqual(trail, ['loner']);
   });
 
-  it('should return empty trail for an empty graph', function () {
+  it('should return empty trail for an empty graph', function() {
     var graph = new Graph();
     var trail = eulerPath(graph);
     assert.deepEqual(trail, []);
   });
 
-  it('should raise an error if there is no Euler path', function () {
+  it('should raise an error if there is no Euler path', function() {
     var graph = graphFromEdges(false, [[0, 1], [2, 3]]);
     assert.throws(eulerPath.bind(null, graph));
 

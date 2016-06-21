@@ -1,17 +1,16 @@
 'use strict';
 
-var LinkedList = require('../..').DataStructures.LinkedList,
-    assert = require('assert');
+var LinkedList = require('../..').DataStructures.LinkedList;
+var assert = require('assert');
 
-describe('LinkedList', function () {
-
-  it('should start empty', function () {
+describe('LinkedList', function() {
+  it('should start empty', function() {
     var l = new LinkedList();
     assert(l.isEmpty());
     assert.equal(l.length, 0);
   });
 
-  it('should increment length when an item is added', function () {
+  it('should increment length when an item is added', function() {
     var l = new LinkedList();
     l.add(1);
     assert.equal(l.length, 1);
@@ -22,7 +21,7 @@ describe('LinkedList', function () {
   });
 
   it('should return the items from the positions they were inserted',
-    function () {
+    function() {
       var l = new LinkedList();
       l.add(1);
       l.add(2);
@@ -63,30 +62,30 @@ describe('LinkedList', function () {
     });
 
   it('should throw errors when trying to access indexes out of bounds',
-      function () {
+      function() {
         var l = new LinkedList();
-        assert.throws(function () { l.get(0); }, Error);
-        assert.throws(function () { l.get(1); }, Error);
-        assert.throws(function () { l.get(10); }, Error);
-        assert.throws(function () { l.add(10, 1); }, Error);
-        assert.throws(function () { l.add(10, 10); }, Error);
+        assert.throws(() => l.get(0), Error);
+        assert.throws(() => l.get(1), Error);
+        assert.throws(() => l.get(10), Error);
+        assert.throws(() => l.add(10, 1), Error);
+        assert.throws(() => l.add(10, 10), Error);
 
         l.add(1);
         l.add(2);
         // length = 2
-        assert.doesNotThrow(function () { l.get(0); });
-        assert.doesNotThrow(function () { l.get(1); });
-        assert.doesNotThrow(function () { l.add(3, 2); }); // length = 3
-        assert.doesNotThrow(function () { l.add(3, 0); }); // length =4
-        assert.doesNotThrow(function () { l.add(4, 1); }); // length = 5
-        assert.doesNotThrow(function () { l.add(5, 5); }); // length = 6
+        assert.doesNotThrow(() => l.get(0));
+        assert.doesNotThrow(() => l.get(1));
+        assert.doesNotThrow(() => l.add(3, 2)); // length = 3
+        assert.doesNotThrow(() => l.add(3, 0)); // length =4
+        assert.doesNotThrow(() => l.add(4, 1)); // length = 5
+        assert.doesNotThrow(() => l.add(5, 5)); // length = 6
 
-        assert.throws(function () { l.add(10, 10); }, Error);
-        assert.throws(function () { l.add(10, 7); }, Error);
-        assert.throws(function () { l.get(10); }, Error);
+        assert.throws(() => l.add(10, 10), Error);
+        assert.throws(() => l.add(10, 7), Error);
+        assert.throws(() => l.get(10), Error);
       });
 
-  it('should be able to delete elements', function () {
+  it('should be able to delete elements', function() {
     var l = new LinkedList();
 
     l.add(1);
@@ -106,7 +105,7 @@ describe('LinkedList', function () {
     l.del(7);
     assert.equal(l.length, 7);
     assert.equal(l.tail.value, 7);
-    assert.throws(function () { l.get(7); }, Error);
+    assert.throws(() => l.get(7), Error);
 
     l.del(0);
     assert.equal(l.length, 6);
@@ -133,7 +132,7 @@ describe('LinkedList', function () {
     assert.equal(l.length, 0);
   });
 
-  it('should perform a function to all elements with forEach', function () {
+  it('should perform a function to all elements with forEach', function() {
     var l = new LinkedList();
     l.add(5);
     l.add(1);
@@ -142,7 +141,7 @@ describe('LinkedList', function () {
     l.add(1000);
 
     var a = [];
-    l.forEach(function (e) {
+    l.forEach(function(e) {
       a.push(e);
     });
 
@@ -150,8 +149,8 @@ describe('LinkedList', function () {
   });
 
   it('should throw an error when trying to delete from an empty list',
-      function () {
+      function() {
         var l = new LinkedList();
-        assert.throws(function () { l.del(0); }, Error);
+        assert.throws(() => l.del(0), Error);
       });
 });

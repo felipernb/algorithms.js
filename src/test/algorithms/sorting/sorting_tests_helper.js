@@ -3,7 +3,7 @@
 var assert = require('assert');
 
 module.exports = {
-  testSort: function (sortFn) {
+  testSort: function(sortFn) {
     assert.deepEqual(sortFn([]), []);
     assert.deepEqual(sortFn([1]), [1]);
     assert.deepEqual(sortFn([2, 1]), [1, 2]);
@@ -15,8 +15,8 @@ module.exports = {
     assert.deepEqual(sortFn(['a', 'b', 'abc']), ['a', 'abc', 'b']);
   },
 
-  testSortWithComparisonFn: function (sortFn) {
-    var compare = function (a, b) {
+  testSortWithComparisonFn: function(sortFn) {
+    var compare = function(a, b) {
       if (a.length === b.length) return 0;
       return a.length < b.length ? -1 : 1;
     };
@@ -29,7 +29,7 @@ module.exports = {
     assert.deepEqual(sortFn(['apple', 'banana', 'car', 'z'], compare),
       ['z', 'car', 'apple', 'banana']);
 
-    var reverseSort = function (a, b) {
+    var reverseSort = function(a, b) {
       if (a === b) return 0;
       return a < b ? 1 : -1;
     };
@@ -38,5 +38,4 @@ module.exports = {
       [295, 20, 10, 10, 8, 6, 5, 3, 1, 0]);
   }
 };
-
 

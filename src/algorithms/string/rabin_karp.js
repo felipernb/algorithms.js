@@ -10,6 +10,22 @@
 var base = 997;
 
 /**
+ * Creates the hash representation of 'word'
+ *
+ * @param String
+ * @return Number
+ */
+var hash = function(word) {
+  var h = 0;
+
+  for (var i = 0; i < word.length; i++) {
+    h += word.charCodeAt(i) * Math.pow(base, word.length - i - 1);
+  }
+
+  return h;
+};
+
+/**
  * Calculates String Matching between two Strings
  * Returns true if String 'b' is contained in String 'a'
  *
@@ -20,7 +36,7 @@ var base = 997;
  * @param String
  * @return Integer
  */
-var rabinKarp = function (s, pattern) {
+var rabinKarp = function(s, pattern) {
   if (pattern.length === 0) return 0;
 
   var hashPattern = hash(pattern);
@@ -52,22 +68,6 @@ var rabinKarp = function (s, pattern) {
   }
 
   return -1;
-};
-
-/**
- * Creates the hash representation of 'word'
- *
- * @param String
- * @return Number
- */
-var hash = function (word) {
-  var h = 0;
-
-  for (var i = 0; i < word.length; i++) {
-    h += word.charCodeAt(i) * Math.pow(base, word.length - i - 1);
-  }
-
-  return h;
 };
 
 module.exports = rabinKarp;

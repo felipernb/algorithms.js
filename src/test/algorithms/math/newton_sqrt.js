@@ -1,11 +1,11 @@
 'use strict';
 
-var math = require('../../..').Math,
-    newtonSqrt = math.newtonSqrt,
-    assert = require('assert');
+var math = require('../../..').Math;
+var newtonSqrt = math.newtonSqrt;
+var assert = require('assert');
 
-describe('Newton square root', function () {
-  it('should calculate the exact root of square numbers', function () {
+describe('Newton square root', function() {
+  it('should calculate the exact root of square numbers', function() {
     assert.strictEqual(newtonSqrt(0), 0);
     assert.strictEqual(newtonSqrt(1), 1);
     assert.strictEqual(newtonSqrt(4), 2);
@@ -20,7 +20,7 @@ describe('Newton square root', function () {
   });
 
   it('should calculate an approximated root for every number',
-    function () {
+    function() {
       for (var i = 0; i < 1000; i++) {
         var newton = newtonSqrt(i);
         var nativeJS = Math.sqrt(i);
@@ -30,5 +30,4 @@ describe('Newton square root', function () {
           ' but got ' + newton + ' instead');
       }
     });
-
 });

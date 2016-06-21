@@ -1,10 +1,10 @@
 'use strict';
 
-var Graph = require('../..').DataStructures.Graph,
-    assert = require('assert');
+var Graph = require('../..').DataStructures.Graph;
+var assert = require('assert');
 
-describe('Graph - Adjacency list', function () {
-  it('should be directed by default', function () {
+describe('Graph - Adjacency list', function() {
+  it('should be directed by default', function() {
     var g = new Graph();
     assert(g.directed);
 
@@ -15,7 +15,7 @@ describe('Graph - Adjacency list', function () {
     assert(g.directed);
   });
 
-  it('should default weight 1 for edges', function () {
+  it('should default weight 1 for edges', function() {
     var g = new Graph();
     g.addVertex('a');
     g.addVertex('b');
@@ -24,7 +24,7 @@ describe('Graph - Adjacency list', function () {
   });
 
   it('should create the vertex if an edge is inserted and vertex doesnt exist',
-    function () {
+    function() {
       var g = new Graph();
       g.addEdge('a', 'b');
       assert.equal(g.vertices.size, 2);
@@ -32,7 +32,7 @@ describe('Graph - Adjacency list', function () {
       assert(g.vertices.contains('b'));
     });
 
-  it('should sum multiple edges between the same vertices', function () {
+  it('should sum multiple edges between the same vertices', function() {
     var g = new Graph();
     g.addEdge('a', 'b', 10);
     assert.equal(g.edge('a', 'b'), 10);
@@ -40,7 +40,7 @@ describe('Graph - Adjacency list', function () {
     assert.equal(g.edge('a', 'b'), 14);
   });
 
-  it('should have edges in both directions if undirected', function () {
+  it('should have edges in both directions if undirected', function() {
     var g = new Graph(false);
     g.addVertex('a');
     g.addVertex('b');
@@ -63,7 +63,7 @@ describe('Graph - Adjacency list', function () {
     assert.equal(g.edge('b', 'a'), 12);
   });
 
-  it('should respect direction of the edges in directed graphs', function () {
+  it('should respect direction of the edges in directed graphs', function() {
     var g = new Graph();
     g.addVertex('a');
     g.addVertex('b');
@@ -86,7 +86,7 @@ describe('Graph - Adjacency list', function () {
     assert.equal(g.edge('b', 'a'), 2);
   });
 
-  it('should have a list of vertices', function () {
+  it('should have a list of vertices', function() {
     var g = new Graph();
     assert.equal(g.vertices.size, 0);
     g.addVertex('a');
@@ -98,15 +98,15 @@ describe('Graph - Adjacency list', function () {
     assert(g.vertices.contains('c'));
   });
 
-  it('should not allow repeated vertices', function () {
+  it('should not allow repeated vertices', function() {
     var g = new Graph();
     g.addVertex('a');
-    assert.throws(function () {
+    assert.throws(function() {
       g.addVertex('a');
     });
   });
 
-  it('should return a list of neighbors of a vertex', function () {
+  it('should return a list of neighbors of a vertex', function() {
     var g = new Graph();
     g.addVertex('a');
     g.addVertex('b');
@@ -121,7 +121,7 @@ describe('Graph - Adjacency list', function () {
     assert.deepEqual(g.neighbors('c'), ['d']);
   });
 
-  it('should return the weight of the edge', function () {
+  it('should return the weight of the edge', function() {
     var g = new Graph();
     g.addVertex('a');
     g.addVertex('b');
@@ -136,7 +136,7 @@ describe('Graph - Adjacency list', function () {
     assert.equal(g.edge('c', 'd'), 2);
   });
 
-  it('should not "inherit" edges from Object.prototype', function () {
+  it('should not "inherit" edges from Object.prototype', function() {
     var g = new Graph();
     g.addEdge('a', 'b');
 

@@ -3,7 +3,7 @@ var Comparator = require('../../util/comparator');
 /**
  * Selection sort algorithm O(n^2)
  */
-var selectionSort = function (a, comparatorFn) {
+var selectionSort = function(a, comparatorFn) {
   var comparator = new Comparator(comparatorFn);
   var n = a.length;
   for (var i = 0; i < n - 1; i++) {

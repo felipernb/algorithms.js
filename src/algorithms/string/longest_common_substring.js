@@ -7,11 +7,12 @@
 /**
  * Implementation via dynamic programming
  */
-var longestCommonSubstring = function (s1, s2) {
+var longestCommonSubstring = function(s1, s2) {
   // Multidimensional array for dynamic programming algorithm
   var cache = new Array(s1.length + 1);
 
-  var i, j;
+  var i;
+  var j;
 
   for (i = 0; i <= s1.length + 1; i++) {
     cache[i] = new Int32Array(s2.length + 1);

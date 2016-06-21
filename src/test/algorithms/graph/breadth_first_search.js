@@ -1,15 +1,14 @@
 'use strict';
 
-var root = require('../../../'),
-    breadthFirstSearch = root.Graph.breadthFirstSearch,
-    Graph = root.DataStructures.Graph,
-    assert = require('assert');
+var root = require('../../../');
+var breadthFirstSearch = root.Graph.breadthFirstSearch;
+var Graph = root.DataStructures.Graph;
+var assert = require('assert');
 
-
-describe('Breadth-First Search', function () {
+describe('Breadth-First Search', function() {
   var graph;
 
-  before(function () {
+  before(function() {
     graph = new Graph();
     graph.addEdge(1, 2);
     graph.addEdge(1, 5);
@@ -22,23 +21,24 @@ describe('Breadth-First Search', function () {
     graph.addEdge('alpha', 'omega');
   });
 
-  it('should visit reachable vertices in a breadth-first manner', function () {
-    var enter = [], leave = [];
+  it('should visit reachable vertices in a breadth-first manner', function() {
+    var enter = [];
+    var leave = [];
     var lastEntered = null;
     var traversed = 0;
 
     breadthFirstSearch(graph, 1);
 
     breadthFirstSearch(graph, 1, {
-      enterVertex: function (vertex) {
+      enterVertex: function(vertex) {
         enter.push(vertex);
         lastEntered = vertex;
       },
-      leaveVertex: function (vertex) {
+      leaveVertex: function(vertex) {
         assert.equal(lastEntered, vertex);
         leave.push(vertex);
       },
-      onTraversal: function () {
+      onTraversal: function() {
         traversed += 1;
       }
     });
@@ -53,24 +53,23 @@ describe('Breadth-First Search', function () {
     assert.equal(enter[5], 3);
   });
 
-  it('should allow user-defined allowTraversal rules', function () {
+  it('should allow user-defined allowTraversal rules', function() {
     var seen = new Graph(graph.directed);
     graph.vertices.forEach(seen.addVertex.bind(seen));
-    var indegrees = {1: -1}, outdegrees = {};
+    var indegrees = {1: -1};
+    var outdegrees = {};
 
     // Edge-centric BFS.
     breadthFirstSearch(graph, 1, {
-      allowTraversal: function (vertex, neighbor) {
-        if (!seen.edge(vertex, neighbor)) {
+      allowTraversal: function(vertex, neighbor) {
+        var visited = seen.edge(vertex, neighbor);
+        if (!visited) {
           seen.addEdge(vertex, neighbor);
           outdegrees[vertex] = (outdegrees[vertex] || 0) + 1;
-          return true;
         }
-        else {
-          return false;
-        }
+        return !visited;
       },
-      enterVertex: function (vertex) {
+      enterVertex: function(vertex) {
         indegrees[vertex] = (indegrees[vertex] || 0) + 1;
         outdegrees[vertex] = outdegrees[vertex] || 0;
       }

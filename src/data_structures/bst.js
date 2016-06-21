@@ -16,7 +16,9 @@ function BST(compareFn) {
    * Read-only property for the size of the tree
    */
   Object.defineProperty(this, 'size', {
-    get: function () { return this._size; }.bind(this)
+    get: function() {
+      return this._size;
+    }.bind(this)
   });
 }
 
@@ -33,7 +35,7 @@ function Node(value, parent) {
 /**
  * Insert elements to the tree respecting the BST restrictions
  */
-BST.prototype.insert = function (value, parent) {
+BST.prototype.insert = function(value, parent) {
   // Set the root as the initial insertion point
   // if it has not been passed
   if (!parent) {
@@ -57,12 +59,11 @@ BST.prototype.insert = function (value, parent) {
 /**
  * Returns if a tree contains an element in O(lg n)
  */
-BST.prototype.contains = function (e) {
-  return !!this._find(e);
+BST.prototype.contains = function(e) {
+  return Boolean(this._find(e));
 };
 
-BST.prototype._find = function (e, root) {
-
+BST.prototype._find = function(e, root) {
   if (!root) {
     if (this.root) root = this.root;
     else return false;
@@ -81,7 +82,7 @@ BST.prototype._find = function (e, root) {
 /**
  * Substitute two nodes
  */
-BST.prototype._replaceNodeInParent = function (currNode, newNode) {
+BST.prototype._replaceNodeInParent = function(currNode, newNode) {
   var parent = currNode.parent;
   if (parent) {
     parent[currNode === parent.left ? 'left' : 'right'] = newNode;
@@ -95,7 +96,7 @@ BST.prototype._replaceNodeInParent = function (currNode, newNode) {
 /**
  * Find the minimum value in a tree
  */
-BST.prototype._findMin = function (root) {
+BST.prototype._findMin = function(root) {
   var minNode = root;
   while (minNode.left) {
     minNode = minNode.left;
@@ -106,7 +107,7 @@ BST.prototype._findMin = function (root) {
 /**
  * Remove an element from the BST
  */
-BST.prototype.remove = function (e) {
+BST.prototype.remove = function(e) {
   var node = this._find(e);
   if (!node) {
     throw new Error('Item not found in the tree');

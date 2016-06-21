@@ -1,14 +1,13 @@
 'use strict';
 
-var root = require('../../../'),
-    depthFirstSearch = root.Graph.depthFirstSearch,
-    Graph = root.DataStructures.Graph,
-    assert = require('assert');
+var root = require('../../../');
+var depthFirstSearch = root.Graph.depthFirstSearch;
+var Graph = root.DataStructures.Graph;
+var assert = require('assert');
 
-describe('Depth First Search Algorithm', function () {
-
+describe('Depth First Search Algorithm', function() {
   var graph;
-  before(function () {
+  before(function() {
     graph = new Graph(true);
     graph.addEdge('one', 'three');
     graph.addEdge('one', 'four');
@@ -19,19 +18,21 @@ describe('Depth First Search Algorithm', function () {
   });
 
   it('should visit only the nodes reachable from the start node (inclusive)',
-    function () {
-      var enter = [], leave = [];
-      var numEdgeTails = 0, numEdgeHeads = 0;
+    function() {
+      var enter = [];
+      var leave = [];
+      var numEdgeTails = 0;
+      var numEdgeHeads = 0;
 
       depthFirstSearch(graph, 'one');
 
       var dfsCallbacks = {
         enterVertex: [].push.bind(enter),
         leaveVertex: [].push.bind(leave),
-        beforeTraversal: function () {
+        beforeTraversal: function() {
           numEdgeHeads += 1;
         },
-        afterTraversal: function () {
+        afterTraversal: function() {
           numEdgeTails += 1;
         }
       };
@@ -52,17 +53,17 @@ describe('Depth First Search Algorithm', function () {
     }
   );
 
-  it('should allow user-defined allowTraversal rules', function () {
+  it('should allow user-defined allowTraversal rules', function() {
     var seen = new Graph(graph.directed);
     graph.vertices.forEach(seen.addVertex.bind(seen));
     var path = ['one'];
 
     // Edge-centric DFS.
     depthFirstSearch(graph, path[0], {
-      allowTraversal: function (vertex, neighbor) {
+      allowTraversal: function(vertex, neighbor) {
         return !seen.edge(vertex, neighbor);
       },
-      beforeTraversal: function (vertex, neighbor) {
+      beforeTraversal: function(vertex, neighbor) {
         seen.addEdge(vertex, neighbor);
         path.push(neighbor);
       }

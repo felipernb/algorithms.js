@@ -1,16 +1,16 @@
 'use strict';
 
-var root = require('../..'),
-  Treap = root.DataStructures.Treap,
-  assert = require('assert');
+var root = require('../..');
+var Treap = root.DataStructures.Treap;
+var assert = require('assert');
 
-describe('Treap', function () {
+describe('Treap', function() {
   var treap;
-  before(function () {
+  before(function() {
     treap = new Treap();
   });
 
-  it('should insert elements', function () {
+  it('should insert elements', function() {
     treap.insert(3);
     treap.insert(2);
     treap.insert(10);
@@ -23,7 +23,7 @@ describe('Treap', function () {
     assert.equal(treap.root.size, 8);
   });
 
-  it('should remove elements correctly', function () {
+  it('should remove elements correctly', function() {
     // Value that not exist
     treap.remove(200);
     assert.equal(treap.root.size, 8);
@@ -36,7 +36,7 @@ describe('Treap', function () {
     assert.equal(treap.root.size, 4);
   });
 
-  it('should insert and remove elements', function () {
+  it('should insert and remove elements', function() {
     // [-100, 2, 3, 10]
     treap.insert(200);
     // [-100, 2, 3, 10, 200]
@@ -54,7 +54,7 @@ describe('Treap', function () {
     assert.equal(treap.root.size, 5);
   });
 
-  it('should check if an element exists', function () {
+  it('should check if an element exists', function() {
     // [1, 2, 3, 10, 100]
     assert.equal(treap.find(1), true);
     assert.equal(treap.find(2), true);
@@ -67,7 +67,7 @@ describe('Treap', function () {
     assert.equal(treap.find(101), false);
   });
 
-  it('should get minimum element', function () {
+  it('should get minimum element', function() {
     // [1, 2, 3, 10, 100]
     assert.equal(treap.minimum(), 1);
     treap.remove(1);
@@ -81,7 +81,7 @@ describe('Treap', function () {
     assert.equal(treap.minimum(), 2);
   });
 
-  it('should get maximum element', function () {
+  it('should get maximum element', function() {
     // [2, 3, 10, 100]
     assert.equal(treap.maximum(), 100);
     treap.remove(100);
@@ -100,43 +100,43 @@ describe('Treap', function () {
     // [1]
     assert.equal(treap.maximum(), 1);
   });
-  
-  it('should handle dumplicated elements', function () {
-	treap.insert(1);
-	// [1, 1]
-	assert.equal(treap.size(), 2);
-	treap.insert(-1);
-	// [-1, 1, 1]
-	assert.equal(treap.size(), 3);
-	treap.remove(1);
-	// [-1, 1]
-	assert.equal(treap.size(), 2);
-	treap.insert(-1);
-	treap.insert(-1);
-	treap.insert(-1);
-	// [-1, -1, -1, -1, 1]
-	assert.equal(treap.size(), 5);
-	treap.remove(-1);
-	treap.remove(1);
-	treap.remove(-1);
-	treap.remove(-1);
-	treap.remove(-1);
-	assert.equal(treap.size(), 0);
+
+  it('should handle dumplicated elements', function() {
+    treap.insert(1);
+  // [1, 1]
+    assert.equal(treap.size(), 2);
+    treap.insert(-1);
+  // [-1, 1, 1]
+    assert.equal(treap.size(), 3);
+    treap.remove(1);
+  // [-1, 1]
+    assert.equal(treap.size(), 2);
+    treap.insert(-1);
+    treap.insert(-1);
+    treap.insert(-1);
+  // [-1, -1, -1, -1, 1]
+    assert.equal(treap.size(), 5);
+    treap.remove(-1);
+    treap.remove(1);
+    treap.remove(-1);
+    treap.remove(-1);
+    treap.remove(-1);
+    assert.equal(treap.size(), 0);
   });
 
-  it('should keep balance', function () {
-	// Insert 1023 elements randomly
-	for (var i = 0; i < 1023; ++i) {
-	  treap.insert(Math.random());
-	}
-	assert.equal(treap.size(), 1023);
-	// The averange height should be 23 (with an error of 5)
-	assert(Math.abs(treap.height() - 23) < 5);
+  it('should keep balance', function() {
+  // Insert 1023 elements randomly
+    for (var i = 0; i < 1023; ++i) {
+      treap.insert(Math.random());
+    }
+    assert.equal(treap.size(), 1023);
+  // The averange height should be 23 (with an error of 5)
+    assert(Math.abs(treap.height() - 23) < 5);
   });
 
-  it('should rotate correctly', function () {
-  	// Force clear the tree
-	treap.root = null;
+  it('should rotate correctly', function() {
+    // Force clear the tree
+    treap.root = null;
     treap.insert(1);
     // 1
     assert.equal(treap.height(), 1);
@@ -149,10 +149,10 @@ describe('Treap', function () {
      *  /
      * 1
      *
-	 */
+   */
     assert.equal(treap.height(), 2);
 
-	treap.root.key = 1;
+    treap.root.key = 1;
     treap.insert(3);
     /**
      *     3
@@ -161,7 +161,7 @@ describe('Treap', function () {
      *  /
      * 1
      *
-	 */
+   */
     assert.equal(treap.height(), 3);
     assert.equal(treap.root.value, 3);
 
@@ -171,7 +171,7 @@ describe('Treap', function () {
      *  / \
      * 1   3
      *
-	 */
+   */
     assert.equal(treap.height(), 2);
     assert.equal(treap.root.value, 2);
 
@@ -183,7 +183,7 @@ describe('Treap', function () {
      *    \
      *     3
      *
-	 */
+   */
     assert.equal(treap.height(), 3);
     assert.equal(treap.root.value, 1);
   });

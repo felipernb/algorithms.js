@@ -1,6 +1,27 @@
 'use strict';
 
 /**
+ * Finds the maximum key from an array of objects
+ *
+ * Asymptotic Complexity: O(array.length)
+ *
+ * @param Array
+ * @return Integer
+ */
+var maximumKey = function(array) {
+  var max = array[0].key;
+  var length = array.length;
+
+  for (var i = 1; i < length; i++) {
+    if (array[i].key > max) {
+      max = array[i].key;
+    }
+  }
+
+  return max;
+};
+
+/**
  * Sorts an array of objects according to their 'key' property
  * Every object inside the array MUST have the 'key' property with
  * a integer value.
@@ -11,7 +32,7 @@
  * @param Array
  * @return Array
  */
-var countingSort = function (array) {
+var countingSort = function(array) {
   var max = maximumKey(array);
   var auxiliaryArray = [];
   var length = array.length;
@@ -41,27 +62,6 @@ var countingSort = function (array) {
   }
 
   return array;
-};
-
-/**
- * Finds the maximum key from an array of objects
- *
- * Asymptotic Complexity: O(array.length)
- *
- * @param Array
- * @return Integer
- */
-var maximumKey = function (array) {
-  var max = array[0].key;
-  var length = array.length;
-
-  for (var i = 1; i < length; i++) {
-    if (array[i].key > max) {
-      max = array[i].key;
-    }
-  }
-
-  return max;
 };
 
 module.exports = countingSort;

@@ -1,11 +1,11 @@
 'use strict';
 
-var math = require('../../..').Math,
-    extEuclid = math.extendedEuclidean,
-    assert = require('assert');
+var math = require('../../..').Math;
+var extEuclid = math.extendedEuclidean;
+var assert = require('assert');
 
-describe('extEuclid', function () {
-  it('should calculate the solve to Bézout\'s identity', function () {
+describe('extEuclid', function() {
+  it('should calculate the solve to Bézout\'s identity', function() {
     var solve = extEuclid(1, 0);
     assert.equal(solve.x, 1);
     assert.equal(solve.y, 0);

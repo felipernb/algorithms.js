@@ -148,3 +148,7 @@ require('algorithms').String;
 * longestCommonSubsequence
 * longestCommonSubstring
 * rabinKarp
+
+### Contributing
+
+This project uses [Google JavaScript Style Guide](https://google.github.io/styleguide/javascriptguide.xml) which can be a bit strict, but is really helpful to have more readable and less error-prone code

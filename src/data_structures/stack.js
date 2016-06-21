@@ -19,7 +19,7 @@ Stack.prototype = new Queue();
 /**
  * Adds element to the top of the stack
  */
-Stack.prototype.push = function (e) {
+Stack.prototype.push = function(e) {
   this._elements.add(e, 0);
 };
 

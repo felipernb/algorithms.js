@@ -13,15 +13,13 @@ function DisjointSetForest() {
   this._sizes = {};
 }
 
-
-DisjointSetForest.prototype._introduce = function (element) {
+DisjointSetForest.prototype._introduce = function(element) {
   if (!(element in this._parents)) {
     this._parents[element] = element;
     this._ranks[element] = 0;
     this._sizes[element] = 1;
   }
 };
-
 
 /**
  * Check if the elements belong to the same subset.
@@ -30,15 +28,14 @@ DisjointSetForest.prototype._introduce = function (element) {
  * @param {...*} element
  * @return {boolean}
  */
-DisjointSetForest.prototype.sameSubset = function (element) {
+DisjointSetForest.prototype.sameSubset = function(element) {
   this._introduce(element);
   var root = this.root(element);
-  return [].slice.call(arguments, 1).every(function (element) {
+  return [].slice.call(arguments, 1).every(function(element) {
     this._introduce(element);
     return this.root(element) === root;
   }.bind(this));
 };
-
 
 /**
  * Return the root element which represents the given element's subset.
@@ -49,14 +46,13 @@ DisjointSetForest.prototype.sameSubset = function (element) {
  * @param {*} element
  * @return {*}
  */
-DisjointSetForest.prototype.root = function (element) {
+DisjointSetForest.prototype.root = function(element) {
   this._introduce(element);
   if (this._parents[element] !== element) {
     this._parents[element] = this.root(this._parents[element]);
   }
   return this._parents[element];
 };
-
 
 /**
  * Return the size of the given element's subset.
@@ -65,11 +61,10 @@ DisjointSetForest.prototype.root = function (element) {
  * @param {*} element
  * @return {number}
  */
-DisjointSetForest.prototype.size = function (element) {
+DisjointSetForest.prototype.size = function(element) {
   this._introduce(element);
   return this._sizes[this.root(element)];
 };
-
 
 /**
  * Merge subsets containing two (or more) given elements into one.
@@ -93,8 +88,7 @@ DisjointSetForest.prototype.merge = function merge(element1, element2) {
   if (this._ranks[root1] < this._ranks[root2]) {
     this._parents[root1] = root2;
     this._sizes[root2] += this._sizes[root1];
-  }
-  else if (root1 !== root2) {
+  } else if (root1 !== root2) {
     this._parents[root2] = root1;
     this._sizes[root1] += this._sizes[root2];
     if (this._ranks[root1] === this._ranks[root2]) {
@@ -103,6 +97,5 @@ DisjointSetForest.prototype.merge = function merge(element1, element2) {
   }
   return this;
 };
-
 
 module.exports = DisjointSetForest;

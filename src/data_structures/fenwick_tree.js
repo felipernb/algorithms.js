@@ -24,14 +24,14 @@
  */
 function FenwickTree(length) {
   this._elements = new Array(length + 1);
-  for (var i = 0; i < this._elements.length ; i++)
+  for (var i = 0; i < this._elements.length; i++)
     this._elements[i] = 0;
 }
 
 /**
  * Adds value to the array at specified index in O(log n)
  */
-FenwickTree.prototype.adjust = function (index, value) {
+FenwickTree.prototype.adjust = function(index, value) {
   /*
     This function goes up the tree adding the value to all parent nodes.
 
@@ -48,14 +48,14 @@ FenwickTree.prototype.adjust = function (index, value) {
 
     Note: (index&-index) finds the rightmost bit in index.
   */
-  for (; index < this._elements.length ; index += (index&-index))
+  for (; index < this._elements.length; index += (index & -index))
     this._elements[index] += value;
 };
 
 /**
 * Returns the sum of all values up to specified index in O(log n)
 */
-FenwickTree.prototype.prefixSum = function (index) {
+FenwickTree.prototype.prefixSum = function(index) {
   /*
     This function goes up the tree adding the required nodes to sum the prefix.
 
@@ -72,7 +72,7 @@ FenwickTree.prototype.prefixSum = function (index) {
   */
 
   var sum = 0;
-  for (; index > 0 ; index -= (index&-index))
+  for (; index > 0; index -= (index & -index))
     sum += this._elements[index];
   return sum;
 };
@@ -80,7 +80,7 @@ FenwickTree.prototype.prefixSum = function (index) {
 /**
 * Returns the sum of all values between two indexes in O(log n)
 */
-FenwickTree.prototype.rangeSum = function (fromIndex, toIndex) {
+FenwickTree.prototype.rangeSum = function(fromIndex, toIndex) {
   return this.prefixSum(toIndex) - this.prefixSum(fromIndex - 1);
 };
 

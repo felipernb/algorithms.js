@@ -8,7 +8,7 @@
  * @returns {number}
  */
 
-var greatestDifference = function (numbers) {
+var greatestDifference = function(numbers) {
   var index = 0;
   var largest = numbers[0];
   var length = numbers.length;

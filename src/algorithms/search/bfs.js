@@ -4,7 +4,7 @@ var Queue = require('../../data_structures/queue.js');
 /**
  * Breadth-first search for binary trees
  */
-var bfs = function (root, callback) {
+var bfs = function(root, callback) {
   var q = new Queue();
   q.push(root);
   var node;
