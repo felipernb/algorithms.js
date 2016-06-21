@@ -1,10 +1,10 @@
 'use strict';
 
-var math = require('../../..').Math,
-    fib = math.fibonacci,
-    assert = require('assert');
+var math = require('../../..').Math;
+var fib = math.fibonacci;
+var assert = require('assert');
 
-var testFibonacciSequence = function (fib) {
+var testFibonacciSequence = function(fib) {
   assert.equal(0, fib(0));
   assert.equal(1, fib(1));
   assert.equal(1, fib(2));
@@ -20,33 +20,33 @@ var testFibonacciSequence = function (fib) {
   assert.equal(144, fib(12));
 };
 
-describe('Fibonacci', function () {
-  describe('#exponential()', function () {
-    it('should return the right value for fibonacci sequence', function () {
+describe('Fibonacci', function() {
+  describe('#exponential()', function() {
+    it('should return the right value for fibonacci sequence', function() {
       testFibonacciSequence(fib.exponential);
     });
   });
 
-  describe('#linear()', function () {
-    it('should return the right value for fibonacci sequence', function () {
+  describe('#linear()', function() {
+    it('should return the right value for fibonacci sequence', function() {
       testFibonacciSequence(fib);
     });
   });
 
-  describe('#withMemoization()', function () {
-    it('should return the right value for fibonacci sequence', function () {
+  describe('#withMemoization()', function() {
+    it('should return the right value for fibonacci sequence', function() {
       testFibonacciSequence(fib.withMemoization);
     });
   });
 
-  describe('#direct()', function () {
-    it('should return the right value for fibonacci sequence', function () {
+  describe('#direct()', function() {
+    it('should return the right value for fibonacci sequence', function() {
       testFibonacciSequence(fib.direct);
     });
   });
 
-  describe('#logarithmic()', function () {
-    it('should return the right value for fibonacci sequence', function () {
+  describe('#logarithmic()', function() {
+    it('should return the right value for fibonacci sequence', function() {
       testFibonacciSequence(fib.logarithmic);
     });
   });

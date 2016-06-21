@@ -2,7 +2,6 @@
 
 var Comparator = require('../../util/comparator');
 
-
 /**
  * Narayana's algorithm computes the subsequent permutation
  *   in lexicographical order.
@@ -13,7 +12,7 @@ var Comparator = require('../../util/comparator');
  * @return {boolean} Boolean flag indicating whether the algorithm succeeded,
  *   true unless the input permutation is lexicographically the last one.
  */
-var nextPermutation = function (array, compareFn) {
+var nextPermutation = function(array, compareFn) {
   if (!array.length) {
     return false;
   }
@@ -46,6 +45,5 @@ var nextPermutation = function (array, compareFn) {
   }
   return true;
 };
-
 
 module.exports = nextPermutation;

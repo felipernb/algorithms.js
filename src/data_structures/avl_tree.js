@@ -22,7 +22,7 @@ function Node(value, left, right, parent, height) {
  * Calculates the height of a node based on height
  * property of all his children.
  */
-AVLTree.prototype.getNodeHeight = function (node) {
+AVLTree.prototype.getNodeHeight = function(node) {
   var height = 1;
   if (node.left !== null && node.right !== null) {
     height = Math.max(node.left.height, node.right.height) + 1;
@@ -37,7 +37,7 @@ AVLTree.prototype.getNodeHeight = function (node) {
 /**
  * Verifies if the given node is balanced.
  */
-AVLTree.prototype.isNodeBalanced = function (node) {
+AVLTree.prototype.isNodeBalanced = function(node) {
   var isBalanced = true;
 
   if (node.left !== null && node.right !== null) {
@@ -54,7 +54,7 @@ AVLTree.prototype.isNodeBalanced = function (node) {
  * When a removal happens, some nodes need to be
  * restructured. Gets and return these nodes.
  */
-AVLTree.prototype.getNodesToRestructureAfterRemove = function (traveledNodes) {
+AVLTree.prototype.getNodesToRestructureAfterRemove = function(traveledNodes) {
   // z is last traveled node - imbalance found at z
   var zIndex = traveledNodes.length - 1;
   var z = traveledNodes[zIndex];
@@ -94,7 +94,7 @@ AVLTree.prototype.getNodesToRestructureAfterRemove = function (traveledNodes) {
  * When a insertion happens, some nodes need to be
  * restructured. Gets and return these nodes.
  */
-AVLTree.prototype.getNodesToRestructureAfterInsert = function (traveledNodes) {
+AVLTree.prototype.getNodesToRestructureAfterInsert = function(traveledNodes) {
   // z is last traveled node - imbalance found at z
   var zIndex = traveledNodes.length - 1;
   var z = traveledNodes[zIndex];
@@ -130,7 +130,7 @@ AVLTree.prototype.getNodesToRestructureAfterInsert = function (traveledNodes) {
  * Keep the height balance property by walking to
  * root and checking for invalid heights.
  */
-AVLTree.prototype.keepHeightBalance = function (node, afterRemove) {
+AVLTree.prototype.keepHeightBalance = function(node, afterRemove) {
   var current = node;
   var traveledNodes = [];
   while (current !== null) {
@@ -150,7 +150,7 @@ AVLTree.prototype.keepHeightBalance = function (node, afterRemove) {
  * Identifies and calls the appropriate pattern
  * rotator.
  */
-AVLTree.prototype.restructure = function (nodesToRestructure) {
+AVLTree.prototype.restructure = function(nodesToRestructure) {
   var x = nodesToRestructure[0];
   var y = nodesToRestructure[1];
   var z = nodesToRestructure[2];
@@ -170,9 +170,9 @@ AVLTree.prototype.restructure = function (nodesToRestructure) {
 /**
  * Right-right rotation pattern.
  */
-AVLTree.prototype.rightRight = function (x, y, z) {
+AVLTree.prototype.rightRight = function(x, y, z) {
   // pass z parent to y and move y's left to z's right
-  if (z.parent !== null) {
+  if (z.parent) {
     var orientation = (z.parent.left === z) ? 'left' : 'right';
     z.parent[orientation] = y;
     y.parent = z.parent;
@@ -199,9 +199,9 @@ AVLTree.prototype.rightRight = function (x, y, z) {
 /**
  * Left-left rotation pattern.
  */
-AVLTree.prototype.leftLeft = function (x, y, z) {
-  //pass z parent to y and move y's right to z's left
-  if (z.parent !== null) {
+AVLTree.prototype.leftLeft = function(x, y, z) {
+  // pass z parent to y and move y's right to z's left
+  if (z.parent) {
     var orientation = (z.parent.left === z) ? 'left' : 'right';
     z.parent[orientation] = y;
     y.parent = z.parent;
@@ -214,7 +214,7 @@ AVLTree.prototype.leftLeft = function (x, y, z) {
   if (z.left !== null) {
     z.left.parent = z;
   }
-  //fix y right child
+  // fix y right child
   y.right = z;
   z.parent = y;
 
@@ -227,9 +227,9 @@ AVLTree.prototype.leftLeft = function (x, y, z) {
 /**
  * Right-left rotation pattern.
  */
-AVLTree.prototype.rightLeft = function (x, y, z) {
-  //pass z parent to x
-  if (z.parent !== null) {
+AVLTree.prototype.rightLeft = function(x, y, z) {
+  // pass z parent to x
+  if (z.parent) {
     var orientation = (z.parent.left === z) ? 'left' : 'right';
     z.parent[orientation] = x;
     x.parent = z.parent;
@@ -263,9 +263,9 @@ AVLTree.prototype.rightLeft = function (x, y, z) {
 /**
  * Left-right rotation pattern.
  */
-AVLTree.prototype.leftRight = function (x, y, z) {
-  //pass z parent to x
-  if (z.parent !== null) {
+AVLTree.prototype.leftRight = function(x, y, z) {
+  // pass z parent to x
+  if (z.parent) {
     var orientation = (z.parent.left === z) ? 'left' : 'right';
     z.parent[orientation] = x;
     x.parent = z.parent;
@@ -299,7 +299,7 @@ AVLTree.prototype.leftRight = function (x, y, z) {
 /**
  * Inserts a value as a Node of an AVL Tree.
  */
-AVLTree.prototype.insert = function (value, current) {
+AVLTree.prototype.insert = function(value, current) {
   if (this.root === null) {
     this.root = new Node(value, null, null, null, 1);
     this.keepHeightBalance(this.root);
@@ -314,18 +314,18 @@ AVLTree.prototype.insert = function (value, current) {
     insertKey = 'right';
   }
 
-  if (!current[insertKey]) {
+  if (current[insertKey]) {
+    this.insert(value, current[insertKey]);
+  } else {
     current[insertKey] = new Node(value, null, null, current);
     this.keepHeightBalance(current[insertKey], false);
-  } else {
-    this.insert(value, current[insertKey]);
   }
 };
 
 /**
  * In-order traversal from the given node.
  */
-AVLTree.prototype.inOrder = function (current, callback) {
+AVLTree.prototype.inOrder = function(current, callback) {
   if (!current) {
     return;
   }
@@ -339,7 +339,7 @@ AVLTree.prototype.inOrder = function (current, callback) {
 /**
  * Post-order traversal from the given node.
  */
-AVLTree.prototype.postOrder = function (current, callback) {
+AVLTree.prototype.postOrder = function(current, callback) {
   if (!current) {
     return;
   }
@@ -354,7 +354,7 @@ AVLTree.prototype.postOrder = function (current, callback) {
 /**
  * Pre-order traversal from the given node.
  */
-AVLTree.prototype.preOrder = function (current, callback) {
+AVLTree.prototype.preOrder = function(current, callback) {
   if (!current) {
     return;
   }
@@ -368,14 +368,14 @@ AVLTree.prototype.preOrder = function (current, callback) {
 /**
  * Finds a node by its value.
  */
-AVLTree.prototype.find = function (value) {
+AVLTree.prototype.find = function(value) {
   return this._find(value, this.root);
 };
 
 /**
  * Finds a node by its value in the given sub-tree.
  */
-AVLTree.prototype._find = function (value, current) {
+AVLTree.prototype._find = function(value, current) {
   if (!current) {
     return null;
   }
@@ -396,7 +396,7 @@ AVLTree.prototype._find = function (value, current) {
  * Replaces the given child with the new one,
  * for the given parent.
  */
-AVLTree.prototype.replaceChild = function (parent, oldChild, newChild) {
+AVLTree.prototype.replaceChild = function(parent, oldChild, newChild) {
   if (parent === null) {
     this.root = newChild;
     if (this.root !== null) {
@@ -417,7 +417,7 @@ AVLTree.prototype.replaceChild = function (parent, oldChild, newChild) {
 /**
  * Removes a node by its value.
  */
-AVLTree.prototype.remove = function (value) {
+AVLTree.prototype.remove = function(value) {
   var node = this.find(value);
   if (!node) {
     return false;
@@ -446,7 +446,7 @@ AVLTree.prototype.remove = function (value) {
  * Finds the node with minimum value in the given
  * sub-tree.
  */
-AVLTree.prototype._findMin = function (node, current) {
+AVLTree.prototype._findMin = function(node, current) {
   current = current || {
     value: Infinity
   };
@@ -463,7 +463,7 @@ AVLTree.prototype._findMin = function (node, current) {
  * Finds the node with maximum value in the given
  * sub-tree.
  */
-AVLTree.prototype._findMax = function (node, current) {
+AVLTree.prototype._findMax = function(node, current) {
   current = current || {
     value: -Infinity
   };
@@ -479,21 +479,21 @@ AVLTree.prototype._findMax = function (node, current) {
 /**
  * Finds the node with minimum value in the whole tree.
  */
-AVLTree.prototype.findMin = function () {
+AVLTree.prototype.findMin = function() {
   return this._findMin(this.root);
 };
 
 /**
  * Finds the node with maximum value in the whole tree.
  */
-AVLTree.prototype.findMax = function () {
+AVLTree.prototype.findMax = function() {
   return this._findMax(this.root);
 };
 
 /**
  * Verifies if the tree is balanced.
  */
-AVLTree.prototype.isTreeBalanced = function () {
+AVLTree.prototype.isTreeBalanced = function() {
   var current = this.root;
 
   if (!current) {
@@ -509,7 +509,7 @@ AVLTree.prototype.isTreeBalanced = function () {
  * Calculates the height of the tree based on height
  * property.
  */
-AVLTree.prototype.getTreeHeight = function () {
+AVLTree.prototype.getTreeHeight = function() {
   var current = this.root;
 
   if (!current) {

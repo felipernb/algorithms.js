@@ -1,11 +1,11 @@
 'use strict';
 
-var knuthMorrisPratt = require('../../..').String.knuthMorrisPratt,
-    assert = require('assert');
+var knuthMorrisPratt = require('../../..').String.knuthMorrisPratt;
+var assert = require('assert');
 
-describe('Knuth-Morris-Pratt', function () {
+describe('Knuth-Morris-Pratt', function() {
   it('should verify if a pattern is contained in some text (or array)',
-    function () {
+    function() {
       var text = 'A string matching algorithm wants to find the starting' +
         'index m in string S[] that matches the search word W[].The most' +
         ' straightforward algorithm is to look for a character match at ' +
@@ -30,7 +30,6 @@ describe('Knuth-Morris-Pratt', function () {
       pattern = '(https://en.wikipedia.org/wiki/Knuth-Morris-Pratt_algorithm';
 
       assert.equal(knuthMorrisPratt(text, pattern), text.length);
-
 
       var arrayText = [3, 4, 5, 6, 7, 8, 9, 8, 7, 6, 5, 4, 3, 4];
       var arrayPattern = [8, 9, 8];

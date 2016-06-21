@@ -7,7 +7,7 @@
  * @param Number tolerance - The error margin accepted (Default 1e-7)
  * @param Number maxIterations - The max number of iterations (Default 1e7)
  */
-var sqrt = function (n, tolerance, maxIterations) {
+var sqrt = function(n, tolerance, maxIterations) {
   tolerance = tolerance || 1e-7;
   maxIterations = maxIterations || 1e7;
 
@@ -15,7 +15,8 @@ var sqrt = function (n, tolerance, maxIterations) {
   var lowerBound = 0;
 
   var i = 0;
-  var square, x;
+  var square;
+  var x;
   do {
     i++;
     x = (upperBound - lowerBound) / 2 + lowerBound;

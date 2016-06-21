@@ -12,8 +12,8 @@ var gcd = require('./gcd.js');
  *
  * @return Number
  */
-var genericLCM = function (gcdFunction, a, b) {
-   if (a === 0 || b === 0) {
+var genericLCM = function(gcdFunction, a, b) {
+  if (a === 0 || b === 0) {
     return 0;
   }
   a = Math.abs(a);

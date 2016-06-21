@@ -1,12 +1,15 @@
 'use strict';
 
-var math = require('../../..').Math,
-    powerSet = math.powerSet,
-    assert = require('assert');
+var math = require('../../..').Math;
+var powerSet = math.powerSet;
+var assert = require('assert');
 
+/**
+ * Deep equal for arrays
+ */
 function testArrayEqual(a, b) {
   var arrayEqual = true;
-  a.forEach(function (elem, index) {
+  a.forEach(function(elem, index) {
     if (a[index] !== b[index]) {
       arrayEqual = false;
     }
@@ -14,9 +17,12 @@ function testArrayEqual(a, b) {
   return arrayEqual && a.length === b.length;
 }
 
+/**
+ * Tests if one array is an element of another
+ */
 function testArrayInArray(a, b) {
   var arrayInArray = false;
-  b.forEach(function (array) {
+  b.forEach(function(array) {
     if (testArrayEqual(a, array)) {
       arrayInArray = true;
     }
@@ -24,9 +30,9 @@ function testArrayInArray(a, b) {
   return arrayInArray;
 }
 
-describe('Power set', function () {
-  describe('#iterative()', function () {
-    it('should return the right elements of power set', function () {
+describe('Power set', function() {
+  describe('#iterative()', function() {
+    it('should return the right elements of power set', function() {
       var zeroElementTest = powerSet([]);
       assert(zeroElementTest.length === 0);
 
@@ -72,12 +78,11 @@ describe('Power set', function () {
       assert(testArrayInArray([1, 2, 3], fourElementTest));
       assert(testArrayInArray([0, 1, 2, 3], fourElementTest));
       assert(fourElementTest.length === 16);
-
     });
   });
 
-  describe('#recursive()', function () {
-    it('should return the right elements of power set', function () {
+  describe('#recursive()', function() {
+    it('should return the right elements of power set', function() {
       var zeroElementTest = powerSet.recursive([]);
       assert(zeroElementTest.length === 0);
 

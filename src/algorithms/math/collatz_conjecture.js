@@ -9,12 +9,13 @@ var cache = {1: 1};
  * @param Number
  * @return Number
  */
-
 function calculateCollatzConjecture(number) {
-  if (number in cache) return cache[number];
-  if (number % 2 === 0) return cache[number] = number >> 1;
+  if (!(number in cache)) {
+    if (number % 2 === 0) cache[number] = number >> 1;
+    else cache[number] = number * 3 + 1;
+  }
 
-  return cache[number] = number * 3 + 1;
+  return cache[number];
 }
 
 /**
@@ -23,7 +24,6 @@ function calculateCollatzConjecture(number) {
  * @param Number
  * @return Array
  */
-
 function generateCollatzConjecture(number) {
   var collatzConjecture = [];
 
@@ -38,5 +38,5 @@ function generateCollatzConjecture(number) {
 // export Collatz Conjecture methods
 module.exports = {
   generate: generateCollatzConjecture,
-  calculate: calculateCollatzConjecture,
+  calculate: calculateCollatzConjecture
 };

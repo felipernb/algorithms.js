@@ -1,13 +1,13 @@
 'use strict';
 
-var root = require('../../../'),
-    dijkstra = root.Graph.dijkstra,
-    Graph = root.DataStructures.Graph,
-    assert = require('assert');
+var root = require('../../../');
+var dijkstra = root.Graph.dijkstra;
+var Graph = root.DataStructures.Graph;
+var assert = require('assert');
 
-describe('Dijkstra Algorithm', function () {
+describe('Dijkstra Algorithm', function() {
   it('should return the shortest paths to all nodes from a given origin',
-    function () {
+    function() {
       var g = new Graph();
       g.addEdge('a', 'b', 5);
       g.addEdge('a', 'c', 10);

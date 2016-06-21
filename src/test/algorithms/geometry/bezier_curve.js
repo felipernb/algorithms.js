@@ -1,13 +1,13 @@
 'use strict';
 
-var root = require('../../../'),
-    BezierCurve = root.Geometry.BezierCurve,
-    assert = require('assert');
+var root = require('../../../');
+var BezierCurve = root.Geometry.BezierCurve;
+var assert = require('assert');
 
 // Testing with http://pomax.github.io/bezierjs/
 
-describe('Bézier-Curve Algorithm', function () {
-  it('should get a linear Bézier-curve', function () {
+describe('Bézier-Curve Algorithm', function() {
+  it('should get a linear Bézier-curve', function() {
     var b = new BezierCurve([{x: 0, y: 0}, {x: 10, y: 3}]);
 
     // Ends
@@ -21,7 +21,7 @@ describe('Bézier-Curve Algorithm', function () {
     assert.deepEqual(b.get(0.25), {x: 2.5, y: 0.75});
     assert.deepEqual(b.get(0.75), {x: 7.5, y: 2.25});
   });
-  it('should get a quadratic Bézier-curve', function () {
+  it('should get a quadratic Bézier-curve', function() {
     var b = new BezierCurve([{x: 150, y: 40},
                              {x: 80, y: 30},
                              {x: 105, y: 150}]);
@@ -29,7 +29,7 @@ describe('Bézier-Curve Algorithm', function () {
     assert.deepEqual(b.get(0.5), {x: 103.75, y: 62.5});
     assert.deepEqual(b.get(0.25), {x: 120.9375, y: 43.125});
   });
-  it('should get a cubic Bézier-curve', function () {
+  it('should get a cubic Bézier-curve', function() {
     var b = new BezierCurve([{x: 150, y: 40},
                              {x: 80, y: 30},
                              {x: 105, y: 150},

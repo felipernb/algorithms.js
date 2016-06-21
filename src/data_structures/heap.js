@@ -9,28 +9,28 @@ function MinHeap(compareFn) {
   this._comparator = new Comparator(compareFn);
 
   Object.defineProperty(this, 'n', {
-    get: function () {
+    get: function() {
       return this._elements.length - 1;
     }.bind(this)
   });
 }
 
-MinHeap.prototype._swap = function (a, b) {
+MinHeap.prototype._swap = function(a, b) {
   var tmp = this._elements[a];
   this._elements[a] = this._elements[b];
   this._elements[b] = tmp;
 };
 
-MinHeap.prototype.isEmpty = function () {
+MinHeap.prototype.isEmpty = function() {
   return this.n === 0;
 };
 
-MinHeap.prototype.insert = function (e) {
+MinHeap.prototype.insert = function(e) {
   this._elements.push(e);
   this._siftUp();
 };
 
-MinHeap.prototype.extract = function () {
+MinHeap.prototype.extract = function() {
   var element = this._elements[1];
 
   // Get the one from the bottom in insert it on top
@@ -48,8 +48,9 @@ MinHeap.prototype.extract = function () {
  * Sift up the last element
  * O(lg n)
  */
-MinHeap.prototype._siftUp = function () {
-  var i, parent;
+MinHeap.prototype._siftUp = function() {
+  var i;
+  var parent;
 
   for (i = this.n;
       i > 1 && (parent = i >> 1) && this._comparator.greaterThan(
@@ -63,7 +64,7 @@ MinHeap.prototype._siftUp = function () {
  * Sifts down the first element
  * O(lg n)
  */
-MinHeap.prototype._siftDown = function (i) {
+MinHeap.prototype._siftDown = function(i) {
   var c;
   for (i = i || 1; (c = i << 1) <= this.n; i = c) {
     // checks which is the smaller child to compare with
@@ -78,7 +79,7 @@ MinHeap.prototype._siftDown = function (i) {
   }
 };
 
-MinHeap.prototype.heapify = function (a) {
+MinHeap.prototype.heapify = function(a) {
   if (a) {
     this._elements = a;
     this._elements.unshift(null);
@@ -89,7 +90,7 @@ MinHeap.prototype.heapify = function (a) {
   }
 };
 
-MinHeap.prototype.forEach = function (fn) {
+MinHeap.prototype.forEach = function(fn) {
   // A copy is necessary in order to perform extract(),
   // get the items in sorted order and then restore the original
   // this._elements array
@@ -114,7 +115,6 @@ MinHeap.prototype.forEach = function (fn) {
  * a reverse comparator;
  */
 function MaxHeap(compareFn) {
-
   MinHeap.call(this, compareFn);
   this._comparator.reverse();
 }

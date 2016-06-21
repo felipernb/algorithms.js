@@ -2,18 +2,22 @@
 
 var LinkedList = require('./linked_list');
 
+/**
+ * HashTable constructor
+ * @param Number? initially allocated size
+ */
 function HashTable(initialCapacity) {
   this._table = new Array(initialCapacity || 64);
   this._items = 0;
 
   Object.defineProperty(this, 'capacity', {
-    get: function () {
+    get: function() {
       return this._table.length;
     }
   });
 
   Object.defineProperty(this, 'size', {
-    get: function () {
+    get: function() {
       return this._items;
     }
   });
@@ -27,7 +31,7 @@ function HashTable(initialCapacity) {
  * n is the length of the string, and ^ indicates exponentiation.
  * (The hash value of the empty string is zero.)
  */
-HashTable.prototype.hash = function (s) {
+HashTable.prototype.hash = function(s) {
   if (typeof s !== 'string') s = JSON.stringify(s);
   var hash = 0;
   for (var i = 0; i < s.length; i++) {
@@ -37,15 +41,16 @@ HashTable.prototype.hash = function (s) {
   return hash;
 };
 
-HashTable.prototype.get = function (key) {
+HashTable.prototype.get = function(key) {
   var i = this._position(key);
   var node;
   if ((node = this._findInList(this._table[i], key))) {
     return node.value.v;
   }
+  return undefined;
 };
 
-HashTable.prototype.put = function (key, value) {
+HashTable.prototype.put = function(key, value) {
   var i = this._position(key);
   if (!this._table[i]) {
     // Hashing with chaining
@@ -66,7 +71,7 @@ HashTable.prototype.put = function (key, value) {
   }
 };
 
-HashTable.prototype.del = function (key) {
+HashTable.prototype.del = function(key) {
   var i = this._position(key);
   var node;
 
@@ -76,11 +81,11 @@ HashTable.prototype.del = function (key) {
   }
 };
 
-HashTable.prototype._position = function (key) {
+HashTable.prototype._position = function(key) {
   return Math.abs(this.hash(key)) % this.capacity;
 };
 
-HashTable.prototype._findInList = function (list, key) {
+HashTable.prototype._findInList = function(list, key) {
   var node = list && list.head;
   while (node) {
     if (node.value.k === key) return node;
@@ -88,7 +93,7 @@ HashTable.prototype._findInList = function (list, key) {
   }
 };
 
-HashTable.prototype._increaseCapacity = function () {
+HashTable.prototype._increaseCapacity = function() {
   var oldTable = this._table;
   this._table = new Array(2 * this.capacity);
   this._items = 0;
@@ -102,9 +107,9 @@ HashTable.prototype._increaseCapacity = function () {
   }
 };
 
-HashTable.prototype.forEach = function (fn) {
-  var applyFunction = function (linkedList) {
-    linkedList.forEach(function (elem) {
+HashTable.prototype.forEach = function(fn) {
+  var applyFunction = function(linkedList) {
+    linkedList.forEach(function(elem) {
       fn(elem.k, elem.v);
     });
   };

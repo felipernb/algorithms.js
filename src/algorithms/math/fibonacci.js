@@ -15,7 +15,7 @@ var power = require('./fast_power');
   * @param Number
   * @return Number
   */
-var fibExponential = function (n) {
+var fibExponential = function(n) {
   return n < 2 ? n : fibExponential(n - 1) + fibExponential(n - 2);
 };
 
@@ -25,10 +25,10 @@ var fibExponential = function (n) {
   * @param Number
   * @return Number
   */
-var fibLinear = function (n) {
-  var fibNMinus2 = 0,
-      fibNMinus1 = 1,
-      fib = n;
+var fibLinear = function(n) {
+  var fibNMinus2 = 0;
+  var fibNMinus1 = 1;
+  var fib = n;
   for (var i = 1; i < n; i++) {
     fib = fibNMinus1 + fibNMinus2;
     fibNMinus2 = fibNMinus1;
@@ -43,10 +43,10 @@ var fibLinear = function (n) {
   * @param Number
   * @return Number
   */
-var fibWithMemoization = (function () {
+var fibWithMemoization = (function() {
   var cache = [0, 1];
 
-  var fib = function (n) {
+  var fib = function(n) {
     if (cache[n] === undefined) {
       cache[n] = fib(n - 1) + fib(n - 2);
     }
@@ -63,7 +63,7 @@ var fibWithMemoization = (function () {
   * @param Number
   * @return Number
   */
-var fibDirect = function (number) {
+var fibDirect = function(number) {
   var phi = (1 + Math.sqrt(5)) / 2;
   return Math.floor(Math.pow(phi, number) / Math.sqrt(5) + 0.5);
 };
@@ -75,11 +75,11 @@ var fibDirect = function (number) {
   * @param Number
   * @return Number
   */
-var fibLogarithmic = function (number) {
+var fibLogarithmic = function(number) {
   // Transforms [f_1, f_0] to [f_2, f_1] and so on.
   var nextFib = [[1, 1], [1, 0]];
 
-  var matrixMultiply = function (a, b) {
+  var matrixMultiply = function(a, b) {
     return [[a[0][0] * b[0][0] + a[0][1] * b[1][0],
              a[0][0] * b[0][1] + a[0][1] * b[1][1]],
             [a[1][0] * b[0][0] + a[1][1] * b[1][0],

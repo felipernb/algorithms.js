@@ -6,8 +6,7 @@ var MinHeap = require('../../data_structures/heap').MinHeap;
  * iteratively removes the smallest element of the heap until it's
  * empty. The time complexity of the algorithm is O(n.lg n)
  */
-var heapsort = function (array, comparatorFn) {
-
+var heapsort = function(array, comparatorFn) {
   var minHeap = new MinHeap(comparatorFn);
   minHeap.heapify(array);
 

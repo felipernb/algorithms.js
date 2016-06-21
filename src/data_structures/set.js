@@ -7,36 +7,36 @@ var HashTable = require('./hash_table');
  * No restriction on element types
  *   i.e. set.add(1,'a', "b", { "foo" : "bar" })
  */
-var HashSet = function () {
+var HashSet = function() {
   this._elements = new HashTable(arguments.length);
   this.add.apply(this, arguments);
 
   Object.defineProperty(this, 'size', {
-    get: function () {
+    get: function() {
       return this._elements.size;
     }
   });
 };
 
-HashSet.prototype.add = function () {
+HashSet.prototype.add = function() {
   for (var i = 0; i < arguments.length; i++) {
     this._elements.put(arguments[i], true);
   }
   return this;
 };
 
-HashSet.prototype.remove = function () {
+HashSet.prototype.remove = function() {
   for (var i = 0; i < arguments.length; i++) {
     this._elements.del(arguments[i]);
   }
   return this;
 };
 
-HashSet.prototype.contains = function (e) {
-  return this._elements.get(e) !== undefined;
+HashSet.prototype.contains = function(e) {
+  return typeof this._elements.get(e) !== 'undefined';
 };
 
-HashSet.prototype.forEach = function (fn) {
+HashSet.prototype.forEach = function(fn) {
   this._elements.forEach(fn);
 };
 

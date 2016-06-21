@@ -4,14 +4,13 @@
  * Doubly-linked list
  */
 function LinkedList() {
-
   this._length = 0;
   this.head = null;
   this.tail = null;
 
   // Read-only length property
   Object.defineProperty(this, 'length', {
-    get: function () {
+    get: function() {
       return this._length;
     }.bind(this)
   });
@@ -31,7 +30,7 @@ function Node(value) {
  *
  * @return Boolean
  */
-LinkedList.prototype.isEmpty = function () {
+LinkedList.prototype.isEmpty = function() {
   return this.length === 0;
 };
 
@@ -41,7 +40,7 @@ LinkedList.prototype.isEmpty = function () {
  * @param { Object } n
  * @param { Number } index
  */
-LinkedList.prototype.add = function (n, index) {
+LinkedList.prototype.add = function(n, index) {
   if (index > this.length || index < 0) {
     throw new Error('Index out of bounds');
   }
@@ -49,8 +48,8 @@ LinkedList.prototype.add = function (n, index) {
   var node = new Node(n);
 
   if (index !== undefined && index < this.length) {
-    var prevNode,
-        nextNode;
+    var prevNode;
+    var nextNode;
 
     if (index === 0) {
       // Insert in the beginning
@@ -84,7 +83,7 @@ LinkedList.prototype.add = function (n, index) {
  * @param { Number } index
  * @return misc
  */
-LinkedList.prototype.get = function (index) {
+LinkedList.prototype.get = function(index) {
   return this.getNode(index).value;
 };
 
@@ -94,7 +93,7 @@ LinkedList.prototype.get = function (index) {
  * @param { Number } index
  * @return Node
  */
-LinkedList.prototype.getNode = function (index) {
+LinkedList.prototype.getNode = function(index) {
   if (index >= this.length || index < 0) {
     throw new Error('Index out of bounds');
   }
@@ -112,7 +111,7 @@ LinkedList.prototype.getNode = function (index) {
  *
  * @param { Number } index
  */
-LinkedList.prototype.del = function (index) {
+LinkedList.prototype.del = function(index) {
   if (index >= this.length || index < 0) {
     throw new Error('Index out of bounds');
   }
@@ -120,7 +119,7 @@ LinkedList.prototype.del = function (index) {
   this.delNode(this.getNode(index));
 };
 
-LinkedList.prototype.delNode = function (node) {
+LinkedList.prototype.delNode = function(node) {
   if (node === this.tail) {
     // node is the last element
     this.tail = node.prev;
@@ -140,7 +139,7 @@ LinkedList.prototype.delNode = function (node) {
 /**
  * Performs the fn function with each element in the list
  */
-LinkedList.prototype.forEach = function (fn) {
+LinkedList.prototype.forEach = function(fn) {
   var node = this.head;
   while (node) {
     fn(node.value);

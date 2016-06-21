@@ -2,29 +2,12 @@
 var Comparator = require('../../util/comparator');
 
 /**
- * Quicksort recursively sorts parts of the array in
- * O(n.lg n)
+ * Swaps two elements in the array
  */
-var quicksortInit = function (array, comparatorFn) {
-
-  var comparator = new Comparator(comparatorFn);
-
-  return (function quicksort(array, lo, hi) {
-    while (lo < hi) {
-      var p = partition(array, comparator, lo, hi);
-      //Chooses only the smallest partition to use recursion on and
-      //tail-optimize the other. This guarantees O(log n) space in worst case.
-      if (p - lo < hi - p) {
-        quicksort(array, lo, p - 1);
-        lo = p + 1;
-      } else {
-        quicksort(array, p + 1, hi);
-        hi = p - 1;
-      }
-    }
-
-    return array;
-  })(array, 0, array.length - 1);
+var swap = function(array, x, y) {
+  var tmp = array[y];
+  array[y] = array[x];
+  array[x] = tmp;
 };
 
 /**
@@ -34,7 +17,7 @@ var quicksortInit = function (array, comparatorFn) {
  *
  * @return Number the positon of the pivot
  */
-var partition = function (a, comparator, lo, hi) {
+var partition = function(a, comparator, lo, hi) {
   // pick a random element, swap with the rightmost and
   // use it as pivot
   swap(a, Math.floor(Math.random() * (hi - lo)) + lo, hi);
@@ -55,12 +38,28 @@ var partition = function (a, comparator, lo, hi) {
 };
 
 /**
- * Swaps two elements in the array
+ * Quicksort recursively sorts parts of the array in
+ * O(n.lg n)
  */
-var swap = function (array, x, y) {
-  var tmp = array[y];
-  array[y] = array[x];
-  array[x] = tmp;
+var quicksortInit = function(array, comparatorFn) {
+  var comparator = new Comparator(comparatorFn);
+
+  return (function quicksort(array, lo, hi) {
+    while (lo < hi) {
+      var p = partition(array, comparator, lo, hi);
+      // Chooses only the smallest partition to use recursion on and
+      // tail-optimize the other. This guarantees O(log n) space in worst case.
+      if (p - lo < hi - p) {
+        quicksort(array, lo, p - 1);
+        lo = p + 1;
+      } else {
+        quicksort(array, p + 1, hi);
+        hi = p - 1;
+      }
+    }
+
+    return array;
+  })(array, 0, array.length - 1);
 };
 
 module.exports = quicksortInit;

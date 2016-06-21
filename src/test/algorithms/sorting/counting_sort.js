@@ -1,7 +1,7 @@
 'use strict';
 
-var countingSort = require('../../..').Sorting.countingSort,
-    assert = require('assert');
+var countingSort = require('../../..').Sorting.countingSort;
+var assert = require('assert');
 
 var firstObject = {
   someProperty: 'The',
@@ -27,8 +27,8 @@ var array = [
   firstObject
 ];
 
-describe('Counting Sort', function () {
-  it('should sort the given array', function () {
+describe('Counting Sort', function() {
+  it('should sort the given array', function() {
     array = countingSort(array);
 
     // Asserts that the array is truly sorted

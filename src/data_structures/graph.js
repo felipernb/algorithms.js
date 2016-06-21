@@ -7,17 +7,17 @@ var HashSet = require('./set');
  * @param {bool} directed
  */
 function Graph(directed) {
-  this.directed = (directed === undefined ? true : !!directed);
+  this.directed = typeof directed === 'undefined' || Boolean(directed);
   this.adjList = Object.create(null);
   this.vertices = new HashSet();
 }
 
 // Normalize vertex labels as strings
-var _ = function (v) {
-  return '' + v;
+var _ = function(v) {
+  return String(v);
 };
 
-Graph.prototype.addVertex = function (v) {
+Graph.prototype.addVertex = function(v) {
   v = _(v);
   if (this.vertices.contains(v)) {
     throw new Error('Vertex "' + v + '" has already been added');
@@ -26,7 +26,7 @@ Graph.prototype.addVertex = function (v) {
   this.adjList[v] = Object.create(null);
 };
 
-Graph.prototype.addEdge = function (a, b, w) {
+Graph.prototype.addEdge = function(a, b, w) {
   a = _(a);
   b = _(b);
   // If no weight is assigned to the edge, 1 is the default
@@ -45,11 +45,11 @@ Graph.prototype.addEdge = function (a, b, w) {
   }
 };
 
-Graph.prototype.neighbors = function (v) {
+Graph.prototype.neighbors = function(v) {
   return Object.keys(this.adjList[_(v)]);
 };
 
-Graph.prototype.edge = function (a, b) {
+Graph.prototype.edge = function(a, b) {
   return this.adjList[_(a)][_(b)];
 };
 

@@ -8,7 +8,7 @@
  *
  * @return Number
  */
-var gcdDivisionBased = function (a, b) {
+var gcdDivisionBased = function(a, b) {
   var tmp = a;
   a = Math.max(a, b);
   b = Math.min(tmp, b);
@@ -32,8 +32,7 @@ var gcdDivisionBased = function (a, b) {
  *
  * @return Number
  */
-var gcdBinaryIterative = function (a, b) {
-
+var gcdBinaryIterative = function(a, b) {
   // GCD(0,b) == b; GCD(a,0) == a, GCD(0,0) == 0
   if (a === 0) {
     return b;

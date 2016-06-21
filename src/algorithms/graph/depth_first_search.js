@@ -1,6 +1,5 @@
 'use strict';
 
-
 /**
  * @typedef {Object} Callbacks
  * @param {function(vertex: *, neighbor: *): boolean} allowTraversal -
@@ -14,7 +13,6 @@
  * @param {function(vertex: *)} leaveVertex - Called when DFS leaves the vertex.
  */
 
-
 /**
  * Fill in missing callbacks.
  * @param {Callbacks} callbacks
@@ -22,16 +20,16 @@
  *   used by default allowTraversal implementation.
  * @return {Callbacks} The same object or new one (if null passed).
  */
-var normalizeCallbacks = function (callbacks, seenVertices) {
+var normalizeCallbacks = function(callbacks, seenVertices) {
   callbacks = callbacks || {};
 
-  callbacks.allowTraversal = callbacks.allowTraversal || (function () {
+  callbacks.allowTraversal = callbacks.allowTraversal || (function() {
     var seen = {};
-    seenVertices.forEach(function (vertex) {
+    seenVertices.forEach(function(vertex) {
       seen[vertex] = true;
     });
 
-    return function (vertex, neighbor) {
+    return function(vertex, neighbor) {
       // It should still be possible to redefine other callbacks,
       // so we better do all at once here.
 
@@ -43,7 +41,7 @@ var normalizeCallbacks = function (callbacks, seenVertices) {
     };
   })();
 
-  var noop = function () {};
+  var noop = function() {};
   callbacks.beforeTraversal = callbacks.beforeTraversal || noop;
   callbacks.afterTraversal = callbacks.afterTraversal || noop;
   callbacks.enterVertex = callbacks.enterVertex || noop;
@@ -52,24 +50,10 @@ var normalizeCallbacks = function (callbacks, seenVertices) {
   return callbacks;
 };
 
-
-/**
- * Run Depth-First Search from a start vertex.
- * Complexity (default implementation): O(V + E).
- *
- * @param {Graph} graph
- * @param {*} startVertex
- * @param {Callbacks} [callbacks]
- */
-var depthFirstSearch = function (graph, startVertex, callbacks) {
-  dfsLoop(graph, startVertex, normalizeCallbacks(callbacks, [startVertex]));
-};
-
-
 var dfsLoop = function dfsLoop(graph, vertex, callbacks) {
   callbacks.enterVertex(vertex);
 
-  graph.neighbors(vertex).forEach(function (neighbor) {
+  graph.neighbors(vertex).forEach(function(neighbor) {
     if (callbacks.allowTraversal(vertex, neighbor)) {
       callbacks.beforeTraversal(vertex, neighbor);
       dfsLoop(graph, neighbor, callbacks);
@@ -80,5 +64,16 @@ var dfsLoop = function dfsLoop(graph, vertex, callbacks) {
   callbacks.leaveVertex(vertex);
 };
 
+/**
+ * Run Depth-First Search from a start vertex.
+ * Complexity (default implementation): O(V + E).
+ *
+ * @param {Graph} graph
+ * @param {*} startVertex
+ * @param {Callbacks} [callbacks]
+ */
+var depthFirstSearch = function(graph, startVertex, callbacks) {
+  dfsLoop(graph, startVertex, normalizeCallbacks(callbacks, [startVertex]));
+};
 
 module.exports = depthFirstSearch;

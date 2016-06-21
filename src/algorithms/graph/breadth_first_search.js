@@ -2,7 +2,6 @@
 
 var Queue = require('../../data_structures/queue');
 
-
 /**
  * @typedef {Object} Callbacks
  * @param {function(vertex: *, neighbor: *): boolean} allowTraversal -
@@ -14,7 +13,6 @@ var Queue = require('../../data_structures/queue');
  * @param {function(vertex: *)} leaveVertex - Called when BFS leaves the vertex.
  */
 
-
 /**
  * Fill in missing callbacks.
  *
@@ -23,34 +21,31 @@ var Queue = require('../../data_structures/queue');
  *   used by default allowTraversal implementation.
  * @return {Callbacks} The same object or new one (if null passed).
  */
-var normalizeCallbacks = function (callbacks, seenVertices) {
+var normalizeCallbacks = function(callbacks, seenVertices) {
   callbacks = callbacks || {};
 
-  callbacks.allowTraversal = callbacks.allowTraversal || (function () {
-    var seen = seenVertices.reduce(function (seen, vertex) {
+  callbacks.allowTraversal = callbacks.allowTraversal || (function() {
+    var seen = seenVertices.reduce(function(seen, vertex) {
       seen[vertex] = true;
       return seen;
     }, {});
 
-    return function (vertex, neighbor) {
+    return function(vertex, neighbor) {
       if (!seen[neighbor]) {
         seen[neighbor] = true;
         return true;
       }
-      else {
-        return false;
-      }
+      return false;
     };
   })();
 
-  var noop = function () {};
+  var noop = function() {};
   callbacks.onTraversal = callbacks.onTraversal || noop;
   callbacks.enterVertex = callbacks.enterVertex || noop;
   callbacks.leaveVertex = callbacks.leaveVertex || noop;
 
   return callbacks;
 };
-
 
 /**
  * Run Breadth-First Search from a start vertex.
@@ -60,13 +55,13 @@ var normalizeCallbacks = function (callbacks, seenVertices) {
  * @param {*} startVertex
  * @param {Callbacks} [callbacks]
  */
-var breadthFirstSearch = function (graph, startVertex, callbacks) {
+var breadthFirstSearch = function(graph, startVertex, callbacks) {
   var vertexQueue = new Queue();
   vertexQueue.push(startVertex);
   callbacks = normalizeCallbacks(callbacks, [startVertex]);
 
   var vertex;
-  var enqueue = function (neighbor) {
+  var enqueue = function(neighbor) {
     if (callbacks.allowTraversal(vertex, neighbor)) {
       callbacks.onTraversal(vertex, neighbor);
       vertexQueue.push(neighbor);
@@ -80,6 +75,5 @@ var breadthFirstSearch = function (graph, startVertex, callbacks) {
     callbacks.leaveVertex(vertex);
   }
 };
-
 
 module.exports = breadthFirstSearch;

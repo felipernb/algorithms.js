@@ -1,11 +1,11 @@
 'use strict';
 
-var levenshtein = require('../../..').String.levenshtein,
-    assert = require('assert');
+var levenshtein = require('../../..').String.levenshtein;
+var assert = require('assert');
 
-describe('Levenshtein', function () {
+describe('Levenshtein', function() {
   it('should calculate the minimal edit distance between two words',
-    function () {
+    function() {
       assert.equal(levenshtein('', ''), 0);
       assert.equal(levenshtein('a', ''), 1);
       assert.equal(levenshtein('', 'a'), 1);

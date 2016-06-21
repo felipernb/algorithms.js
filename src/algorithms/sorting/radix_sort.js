@@ -1,28 +1,4 @@
 'use strict';
-
-/**
- * Sorts an array of objects according to their 'key' property
- * Every object inside the array MUST have the 'key' property with
- * a integer value.
- *
- * Asymptotic Complexity: O(array.length * d), where 'd' represents
- * the amount of digits in the larger key of the array
- *
- * @param Array
- * @return Array
- */
-var radixSort = function (array) {
-  var max = maximumKey(array);
-  var digitsMax = (max === 0 ? 1 :
-    1 + Math.floor(Math.log(max) / Math.log(10))); // log base 10
-
-  for (var i = 0; i < digitsMax; i++) {
-    array = auxiliaryCountingSort(array, i);
-  }
-
-  return array;
-};
-
 /**
  * Auxiliary sorting method for RadixSort
  * Sorts an array of objects according to only one digit of
@@ -37,7 +13,7 @@ var radixSort = function (array) {
  * @param Array
  * @return Array
  */
-var auxiliaryCountingSort = function (array, mod) {
+var auxiliaryCountingSort = function(array, mod) {
   var length = array.length;
   var bucket = [];
   var i;
@@ -47,7 +23,8 @@ var auxiliaryCountingSort = function (array, mod) {
   }
 
   for (i = 0; i < length; i++) {
-    var digit = parseInt((array[i].key / Math.pow(10, mod)).toFixed(mod)) % 10;
+    var digit = parseInt((array[i].key / Math.pow(10, mod))
+                         .toFixed(mod), 10) % 10;
     bucket[digit].push(array[i]);
   }
 
@@ -73,7 +50,7 @@ var auxiliaryCountingSort = function (array, mod) {
  * @return Integer if array non-empty
  *         Undefined otherwise
  */
-var maximumKey = function (a) {
+var maximumKey = function(a) {
   var max;
   for (var i = 1; i < a.length; i++) {
     if (max === undefined || a[i].key > max) {
@@ -81,6 +58,29 @@ var maximumKey = function (a) {
     }
   }
   return max;
+};
+
+/**
+ * Sorts an array of objects according to their 'key' property
+ * Every object inside the array MUST have the 'key' property with
+ * a integer value.
+ *
+ * Asymptotic Complexity: O(array.length * d), where 'd' represents
+ * the amount of digits in the larger key of the array
+ *
+ * @param Array
+ * @return Array
+ */
+var radixSort = function(array) {
+  var max = maximumKey(array);
+  var digitsMax = (max === 0 ? 1 :
+    1 + Math.floor(Math.log(max) / Math.log(10))); // log base 10
+
+  for (var i = 0; i < digitsMax; i++) {
+    array = auxiliaryCountingSort(array, i);
+  }
+
+  return array;
 };
 
 module.exports = radixSort;

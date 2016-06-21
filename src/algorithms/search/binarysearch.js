@@ -9,9 +9,9 @@
   *
   * @return Boolean
   */
-var binarySearch = function (sortedArray, element) {
-  var init = 0,
-      end = sortedArray.length - 1;
+var binarySearch = function(sortedArray, element) {
+  var init = 0;
+  var end = sortedArray.length - 1;
 
   while (end >= init) {
     var m = ((end - init) >> 1) + init;

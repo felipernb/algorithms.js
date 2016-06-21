@@ -1,10 +1,10 @@
 'use strict';
 
-var heap = require('../..').DataStructures.Heap,
-    assert = require('assert');
+var heap = require('../..').DataStructures.Heap;
+var assert = require('assert');
 
-describe('Min Heap', function () {
-  it('should always return the lowest element', function () {
+describe('Min Heap', function() {
+  it('should always return the lowest element', function() {
     var h = new heap.MinHeap();
     assert(h.isEmpty());
     h.insert(10);
@@ -35,7 +35,7 @@ describe('Min Heap', function () {
     assert(h.isEmpty());
   });
 
-  it('should heapify an unordered array', function () {
+  it('should heapify an unordered array', function() {
     var h = new heap.MinHeap();
     h.heapify([10, 2091, 4, 1, 5, 500, 0, 18, 3, 22, 20]);
 
@@ -55,12 +55,12 @@ describe('Min Heap', function () {
   });
 
   it('should perform a function to all elements from smallest to largest' +
-     ' with forEach', function () {
+     ' with forEach', function() {
     var h = new heap.MinHeap();
     h.heapify([3, 10, 1000, 0, 2, 1]);
 
     var output = [];
-    h.forEach(function (n) {
+    h.forEach(function(n) {
       output.push(n);
     });
 
@@ -71,8 +71,8 @@ describe('Min Heap', function () {
   });
 });
 
-describe('Max Heap', function () {
-  it('should always return the greatest element', function () {
+describe('Max Heap', function() {
+  it('should always return the greatest element', function() {
     var h = new heap.MaxHeap();
     assert(h.isEmpty());
     h.insert(10);
@@ -103,7 +103,7 @@ describe('Max Heap', function () {
     assert(h.isEmpty());
   });
 
-  it('should heapify an unordered array', function () {
+  it('should heapify an unordered array', function() {
     var h = new heap.MaxHeap();
     h.heapify([10, 2091, 4, 1, 5, 500, 0, 18, 3, 22, 20]);
 
@@ -123,12 +123,12 @@ describe('Max Heap', function () {
   });
 
   it('should perform a function to all elements from largest to smallest' +
-     ' with forEach', function () {
+     ' with forEach', function() {
     var h = new heap.MaxHeap();
     h.heapify([3, 10, 1000, 0, 2, 1]);
 
     var output = [];
-    h.forEach(function (n) {
+    h.forEach(function(n) {
       output.push(n);
     });
 

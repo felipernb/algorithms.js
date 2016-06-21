@@ -1,22 +1,19 @@
 'use strict';
 
-var math = require('../../..').Math,
-    power = math.fastPower,
-    assert = require('assert');
+var math = require('../../..').Math;
+var power = math.fastPower;
+var assert = require('assert');
 
-
-var assertApproximatelyEqual = function (a, b, eps) {
+var assertApproximatelyEqual = function(a, b, eps) {
   eps = eps || 1e-12;
   assert(Math.abs(a - b) < eps);
 };
 
-
-var multiplyModulo = function (modulo) {
-  return function (a, b) {
+var multiplyModulo = function(modulo) {
+  return function(a, b) {
     return (a * b) % modulo;
   };
 };
-
 
 /**
  * This operation is isomorphic to addition in Z/3.
@@ -28,7 +25,7 @@ var multiplyModulo = function (modulo) {
  * c | c | a | b |
  * ---------------
  */
-var abcMultiply = function (a, b) {
+var abcMultiply = function(a, b) {
   var table = {
     a: {a: 'a', b: 'b', c: 'c'},
     b: {a: 'b', b: 'c', c: 'a'},
@@ -38,9 +35,8 @@ var abcMultiply = function (a, b) {
   return table[a][b];
 };
 
-
-describe('Fast Power', function () {
-  it('should correctly raise numbers to positive integer powers', function () {
+describe('Fast Power', function() {
+  it('should correctly raise numbers to positive integer powers', function() {
     assert.equal(power(2, 5), 32);
     assert.equal(power(32, 1), 32);
     assert.equal(power(3, 7), Math.pow(3, 7));
@@ -52,15 +48,15 @@ describe('Fast Power', function () {
   });
 
   it('should raise an error if the power is not a nonnegative integer',
-     function () {
+     function() {
         // It is not clear how to handle these cases
         // when custom multiplication is also supplied.
-        assert.throws(power.bind(null, 7, -2));
-        assert.throws(power.bind(null, 5, -1));
-        assert.throws(power.bind(null, Math.PI, Math.E));
-      });
+       assert.throws(power.bind(null, 7, -2));
+       assert.throws(power.bind(null, 5, -1));
+       assert.throws(power.bind(null, Math.PI, Math.E));
+     });
 
-  it('should accept custom multiplication functions', function () {
+  it('should accept custom multiplication functions', function() {
     // Math.pow is basically useless here.
 
     assert.equal(power(0, 0, multiplyModulo(5), 1), 1);
@@ -77,8 +73,8 @@ describe('Fast Power', function () {
   });
 
   it('should raise an error if the power is zero but no identity value given' +
-     ' (custom multiplication)', function () {
-        assert.throws(power.bind(null, 0, 0, multiplyModulo(5)));
-        assert.throws(power.bind(null, 'a', 0, abcMultiply));
-      });
+     ' (custom multiplication)', function() {
+    assert.throws(power.bind(null, 0, 0, multiplyModulo(5)));
+    assert.throws(power.bind(null, 'a', 0, abcMultiply));
+  });
 });
