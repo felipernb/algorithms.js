@@ -9,29 +9,32 @@ var MinHeap = require('./heap').MinHeap;
  */
 class PriorityQueue extends MinHeap {
   constructor(initialItems) {
-    var self = this;
-    MinHeap.call(this, function(a, b) {
-      return self.priority(a) < self.priority(b) ? -1 : 1;
-    });
+    super();
+
+    this.setComparator(
+      (function(a, b) {
+         return this.priority(a) < this.priority(b) ? -1 : 1;
+       }).bind(this) );
 
     this._priority = {};
 
     initialItems = initialItems || {};
-    Object.keys(initialItems).forEach(function(item) {
-      self.insert(item, initialItems[item]);
-    });
+    Object.keys(initialItems).forEach(
+      (function(item) {
+         this.insert(item, initialItems[item]);
+       }).bind(this) );
   };
-  	
+
   insert(item, priority) {
     if (this._priority[item] !== undefined) {
       return this.changePriority(item, priority);
     }
     this._priority[item] = priority;
-    MinHeap.prototype.insert.call(this, item);
+    super.insert(item);
   };
 
   extract(withPriority) {
-    var min = MinHeap.prototype.extract.call(this);
+    var min = super.extract();
     return withPriority ?
       min && {item: min, priority: this._priority[min]} :
       min;

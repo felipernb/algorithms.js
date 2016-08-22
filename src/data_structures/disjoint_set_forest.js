@@ -78,7 +78,7 @@ class DisjointSetForest {
    */
   merge(element1, element2) {
     if (arguments.length > 2) {
-      merge.apply(this, [].slice.call(arguments, 1));
+      this.merge.apply(this, [].slice.call(arguments, 1));
     }
 
     this._introduce(element1);

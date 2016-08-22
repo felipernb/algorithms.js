@@ -15,6 +15,10 @@ class MinHeap {
       }.bind(this)
     });
   };
+
+  setComparator(compareFn) {
+    this._comparator = new Comparator(compareFn);
+  }
   	
   _swap(a, b) {
     var tmp = this._elements[a];
@@ -119,7 +123,8 @@ class MinHeap {
  */
 class MaxHeap extends MinHeap {
   constructor(compareFn) {
-    MinHeap.call(this, compareFn);
+    //MinHeap.call(this, compareFn);
+    super(compareFn);
     this._comparator.reverse();
   };	
 };
