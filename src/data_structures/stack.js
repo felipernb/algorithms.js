@@ -7,7 +7,7 @@ var Queue = require('./queue');
  */
 class Stack extends Queue {
   constructor() {
-    Queue.call(this);
+    super();
   };
   	
   /**

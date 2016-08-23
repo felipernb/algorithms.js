@@ -123,7 +123,6 @@ class MinHeap {
  */
 class MaxHeap extends MinHeap {
   constructor(compareFn) {
-    //MinHeap.call(this, compareFn);
     super(compareFn);
     this._comparator.reverse();
   };	
