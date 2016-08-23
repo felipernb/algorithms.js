@@ -8,7 +8,7 @@ class Node {
     this.value = value;
     this.prev = null;
     this.next = null;
-  }	
+  }
 }
 
 /**
@@ -26,8 +26,8 @@ class LinkedList {
         return this._length;
       }.bind(this)
     });
-  };
-  	
+  }
+
   /**
    * Whether the list is empty
    *
@@ -35,7 +35,7 @@ class LinkedList {
    */
   isEmpty() {
     return this.length === 0;
-  };
+  }
 
   /**
    * Adds the element to the end of the list or to the desired index
@@ -78,7 +78,7 @@ class LinkedList {
     }
 
     this._length++;
-  };
+  }
 
   /**
    * Return the value associated to the Node on the given index
@@ -88,7 +88,7 @@ class LinkedList {
    */
   get(index) {
     return this.getNode(index).value;
-  };
+  }
 
   /**
    * O(n) get
@@ -107,7 +107,7 @@ class LinkedList {
     }
 
     return node;
-  };
+  }
 
   /**
    * Delete the element in the indexth position
@@ -120,7 +120,7 @@ class LinkedList {
     }
 
     this.delNode(this.getNode(index));
-  };
+  }
 
   delNode(node) {
     if (node === this.tail) {
@@ -137,7 +137,7 @@ class LinkedList {
     }
 
     this._length--;
-  };
+  }
 
   /**
    * Performs the fn function with each element in the list
@@ -148,7 +148,7 @@ class LinkedList {
       fn(node.value);
       node = node.next;
     }
-  };
+  }
 }
 
 module.exports = LinkedList;

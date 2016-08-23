@@ -31,8 +31,8 @@ class BezierCurve {
     for (i = 0; i < this.n; ++i) {
       this.p.push({x: c[i] * points[i].x, y: c[i] * points[i].y});
     }
-  };
-  	
+  }
+
   /**
    * @param Number float variable from 0 to 1
    */
@@ -55,8 +55,8 @@ class BezierCurve {
       b *= 1 - t;
     }
     return res;
-  };
+  }
 
-};
+}
 
 module.exports = BezierCurve;

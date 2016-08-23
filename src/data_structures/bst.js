@@ -10,7 +10,7 @@ class Node {
     this.parent = parent;
     this.left = null;
     this.right = null;
-  }	
+  }
 }
 
 /**
@@ -33,8 +33,8 @@ class BST {
         return this._size;
       }.bind(this)
     });
-  };
-  	
+  }
+
   /**
    * Insert elements to the tree respecting the BST restrictions
    */
@@ -50,21 +50,22 @@ class BST {
       parent = this.root;
     }
 
-    var child = this._comparator.lessThan(value, parent.value) ? 'left' : 'right';
+    var child = this._comparator.lessThan(value, parent.value) ? 'left' :
+ 'right';
     if (parent[child]) {
       this.insert(value, parent[child]);
     } else {
       parent[child] = new Node(value, parent);
       this._size++;
     }
-  };
+  }
 
   /**
    * Returns if a tree contains an element in O(lg n)
    */
   contains(e) {
     return Boolean(this._find(e));
-  };
+  }
 
   _find(e, root) {
     if (!root) {
@@ -80,7 +81,7 @@ class BST {
 
     if (this._comparator.greaterThan(e, root.value))
       return root.right && this._find(e, root.right);
-  };
+  }
 
   /**
    * Substitute two nodes
@@ -94,7 +95,7 @@ class BST {
     } else {
       this.root = newNode;
     }
-  };
+  }
 
   /**
    * Find the minimum value in a tree
@@ -105,7 +106,7 @@ class BST {
       minNode = minNode.left;
     }
     return minNode;
-  };
+  }
 
   /**
    * Remove an element from the BST
@@ -134,8 +135,8 @@ class BST {
       this._replaceNodeInParent(node, node.left || node.right);
       this._size--;
     }
-  };
+  }
 
-};
+}
 
 module.exports = BST;

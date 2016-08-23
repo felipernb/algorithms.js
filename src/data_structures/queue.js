@@ -14,18 +14,18 @@ class Queue {
         return this._elements.length;
       }.bind(this)
     });
-  };
-  	
+  }
+
   isEmpty() {
     return this._elements.isEmpty();
-  };
+  }
 
   /**
    * Adds element to the end of the queue
    */
   push(e) {
     this._elements.add(e);
-  };
+  }
 
   /**
    * Pops the element in the beginning of the queue
@@ -37,7 +37,7 @@ class Queue {
     var e = this._elements.get(0);
     this._elements.del(0);
     return e;
-  };
+  }
 
   peek() {
     if (this.isEmpty()) {
@@ -45,11 +45,11 @@ class Queue {
     }
 
     return this._elements.get(0);
-  };
+  }
 
   forEach(fn) {
     this._elements.forEach(fn);
-  };
+  }
 
 }
 

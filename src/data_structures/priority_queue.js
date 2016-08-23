@@ -13,17 +13,17 @@ class PriorityQueue extends MinHeap {
 
     this.setComparator(
       (function(a, b) {
-         return this.priority(a) < this.priority(b) ? -1 : 1;
-       }).bind(this) );
+        return this.priority(a) < this.priority(b) ? -1 : 1;
+      }).bind(this));
 
     this._priority = {};
 
     initialItems = initialItems || {};
     Object.keys(initialItems).forEach(
       (function(item) {
-         this.insert(item, initialItems[item]);
-       }).bind(this) );
-  };
+        this.insert(item, initialItems[item]);
+      }).bind(this));
+  }
 
   insert(item, priority) {
     if (this._priority[item] !== undefined) {
@@ -31,26 +31,24 @@ class PriorityQueue extends MinHeap {
     }
     this._priority[item] = priority;
     super.insert(item);
-  };
+  }
 
   extract(withPriority) {
     var min = super.extract();
     return withPriority ?
       min && {item: min, priority: this._priority[min]} :
       min;
-  };
+  }
 
   priority(item) {
     return this._priority[item];
-  };
+  }
 
   changePriority(item, priority) {
     this._priority[item] = priority;
     this.heapify();
-  };
+  }
 
 }
-
-// PriorityQueue.prototype = new MinHeap();  - new syntax (ES6) uses the keyword 'extends'
 
 module.exports = PriorityQueue;

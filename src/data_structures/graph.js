@@ -16,8 +16,8 @@ class Graph {
     this.directed = typeof directed === 'undefined' || Boolean(directed);
     this.adjList = Object.create(null);
     this.vertices = new HashSet();
-  };	
-  
+  }
+
   addVertex(v) {
     v = _(v);
     if (this.vertices.contains(v)) {
@@ -25,7 +25,7 @@ class Graph {
     }
     this.vertices.add(v);
     this.adjList[v] = Object.create(null);
-  };
+  }
 
   addEdge(a, b, w) {
     a = _(a);
@@ -44,15 +44,15 @@ class Graph {
     if (!this.directed) {
       this.adjList[b][a] = (this.adjList[b][a] || 0) + w;
     }
-  };
+  }
 
   neighbors(v) {
     return Object.keys(this.adjList[_(v)]);
-  };
+  }
 
   edge(a, b) {
     return this.adjList[_(a)][_(b)];
-  };
+  }
 
 }
 

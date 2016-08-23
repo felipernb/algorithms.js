@@ -17,29 +17,29 @@ class HashSet {
         return this._elements.size;
       }
     });
-  };
-    
+  }
+
   add() {
     for (var i = 0; i < arguments.length; i++) {
       this._elements.put(arguments[i], true);
     }
     return this;
-  };
+  }
 
   remove() {
     for (var i = 0; i < arguments.length; i++) {
       this._elements.del(arguments[i]);
     }
     return this;
-  };
+  }
 
   contains(e) {
     return typeof this._elements.get(e) !== 'undefined';
-  };
+  }
 
   forEach(fn) {
     this._elements.forEach(fn);
-  };
-};
+  }
+}
 
 module.exports = HashSet;

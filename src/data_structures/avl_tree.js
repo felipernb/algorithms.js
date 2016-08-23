@@ -10,7 +10,7 @@ class Node {
     this.right = right;
     this.parent = parent;
     this.height = height;
-  }	
+  }
 }
 
 /**
@@ -19,8 +19,8 @@ class Node {
 class AVLTree {
   constructor() {
     this.root = null;
-  };	
-  
+  }
+
   /**
    * Calculates the height of a node based on height
    * property of all his children.
@@ -35,7 +35,7 @@ class AVLTree {
       height = node.right.height + 1;
     }
     return height;
-  };
+  }
 
   /**
    * Verifies if the given node is balanced.
@@ -51,7 +51,7 @@ class AVLTree {
       isBalanced = node.left.height < 2;
     }
     return isBalanced;
-  };
+  }
 
   /**
    * When a removal happens, some nodes need to be
@@ -91,7 +91,7 @@ class AVLTree {
       x = y.right;
     }
     return [x, y, z];
-  };
+  }
 
   /**
    * When a insertion happens, some nodes need to be
@@ -127,7 +127,7 @@ class AVLTree {
       x = y.right;
     }
     return [x, y, z];
-  };
+  }
 
   /**
    * Keep the height balance property by walking to
@@ -147,7 +147,7 @@ class AVLTree {
       }
       current = current.parent;
     }
-  };
+  }
 
   /**
    * Identifies and calls the appropriate pattern
@@ -168,7 +168,7 @@ class AVLTree {
     } else if (z.left === y && y.right === x) {
       this.leftRight(x, y, z);
     }
-  };
+  }
 
   /**
    * Right-right rotation pattern.
@@ -197,7 +197,7 @@ class AVLTree {
     x.height = this.getNodeHeight(x);
     z.height = this.getNodeHeight(z);
     y.height = this.getNodeHeight(y);
-  };
+  }
 
   /**
    * Left-left rotation pattern.
@@ -225,7 +225,7 @@ class AVLTree {
     x.height = this.getNodeHeight(x);
     z.height = this.getNodeHeight(z);
     y.height = this.getNodeHeight(y);
-  };
+  }
 
   /**
    * Right-left rotation pattern.
@@ -261,7 +261,7 @@ class AVLTree {
     y.height = this.getNodeHeight(y);
     z.height = this.getNodeHeight(z);
     x.height = this.getNodeHeight(x);
-  };
+  }
 
   /**
    * Left-right rotation pattern.
@@ -297,7 +297,7 @@ class AVLTree {
     y.height = this.getNodeHeight(y);
     z.height = this.getNodeHeight(z);
     x.height = this.getNodeHeight(x);
-  };
+  }
 
   /**
    * Inserts a value as a Node of an AVL Tree.
@@ -323,7 +323,7 @@ class AVLTree {
       current[insertKey] = new Node(value, null, null, current);
       this.keepHeightBalance(current[insertKey], false);
     }
-  };
+  }
 
   /**
    * In-order traversal from the given node.
@@ -337,7 +337,7 @@ class AVLTree {
       callback(current);
     }
     this.inOrder(current.right, callback);
-  };
+  }
 
   /**
    * Post-order traversal from the given node.
@@ -352,7 +352,7 @@ class AVLTree {
     if (typeof callback === 'function') {
       callback(current);
     }
-  };
+  }
 
   /**
    * Pre-order traversal from the given node.
@@ -366,14 +366,14 @@ class AVLTree {
     }
     this.preOrder(current.left, callback);
     this.preOrder(current.right, callback);
-  };
+  }
 
   /**
    * Finds a node by its value.
    */
   find(value) {
     return this._find(value, this.root);
-  };
+  }
 
   /**
    * Finds a node by its value in the given sub-tree.
@@ -393,7 +393,7 @@ class AVLTree {
     }
 
     return node;
-  };
+  }
 
   /**
    * Replaces the given child with the new one,
@@ -415,7 +415,7 @@ class AVLTree {
         newChild.parent = parent;
       }
     }
-  };
+  }
 
   /**
    * Removes a node by its value.
@@ -443,7 +443,7 @@ class AVLTree {
       this.keepHeightBalance(node.parent, true);
     }
     return true;
-  };
+  }
 
   /**
    * Finds the node with minimum value in the given
@@ -460,7 +460,7 @@ class AVLTree {
       current = node;
     }
     return this._findMin(node.left, current);
-  };
+  }
 
   /**
    * Finds the node with maximum value in the given
@@ -477,21 +477,21 @@ class AVLTree {
       current = node;
     }
     return this._findMax(node.right, current);
-  };
+  }
 
   /**
    * Finds the node with minimum value in the whole tree.
    */
   findMin() {
     return this._findMin(this.root);
-  };
+  }
 
   /**
    * Finds the node with maximum value in the whole tree.
    */
   findMax() {
     return this._findMax(this.root);
-  };
+  }
 
   /**
    * Verifies if the tree is balanced.
@@ -506,7 +506,7 @@ class AVLTree {
       this._isBalanced(current._right) &&
       Math.abs(this._getNodeHeight(current._left) -
         this._getNodeHeight(current._right)) <= 1;
-  };
+  }
 
   /**
    * Calculates the height of the tree based on height
@@ -520,8 +520,8 @@ class AVLTree {
     }
     return 1 + Math.max(this.getNodeHeight(current._left),
       this._getNodeHeight(current._right));
-  };
+  }
 
-};
+}
 
 module.exports = AVLTree;

@@ -22,8 +22,8 @@ class HashTable {
         return this._items;
       }
     });
-  };
-  	
+  }
+
   /**
    * (Same algorithm as Java's String.hashCode)
    * Returns a hash code for this string. The hash code for a String object is
@@ -40,7 +40,7 @@ class HashTable {
       hash &= hash; // Keep it a 32bit int
     }
     return hash;
-  };
+  }
 
   get(key) {
     var i = this._position(key);
@@ -49,7 +49,7 @@ class HashTable {
       return node.value.v;
     }
     return undefined;
-  };
+  }
 
   put(key, value) {
     var i = this._position(key);
@@ -70,7 +70,7 @@ class HashTable {
 
       if (this._items === this.capacity) this._increaseCapacity();
     }
-  };
+  }
 
   del(key) {
     var i = this._position(key);
@@ -80,11 +80,11 @@ class HashTable {
       this._table[i].delNode(node);
       this._items--;
     }
-  };
+  }
 
   _position(key) {
     return Math.abs(this.hash(key)) % this.capacity;
-  };
+  }
 
   _findInList(list, key) {
     var node = list && list.head;
@@ -92,7 +92,7 @@ class HashTable {
       if (node.value.k === key) return node;
       node = node.next;
     }
-  };
+  }
 
   _increaseCapacity() {
     var oldTable = this._table;
@@ -106,7 +106,7 @@ class HashTable {
         node = node.next;
       }
     }
-  };
+  }
 
   forEach(fn) {
     var applyFunction = function(linkedList) {
@@ -120,7 +120,7 @@ class HashTable {
         applyFunction(this._table[i]);
       }
     }
-  };
-};
+  }
+}
 
 module.exports = HashTable;

@@ -14,26 +14,26 @@ class MinHeap {
         return this._elements.length - 1;
       }.bind(this)
     });
-  };
+  }
 
   setComparator(compareFn) {
     this._comparator = new Comparator(compareFn);
   }
-  	
+
   _swap(a, b) {
     var tmp = this._elements[a];
     this._elements[a] = this._elements[b];
     this._elements[b] = tmp;
-  };
+  }
 
   isEmpty() {
     return this.n === 0;
-  };
+  }
 
   insert(e) {
     this._elements.push(e);
     this._siftUp();
-  };
+  }
 
   extract() {
     var element = this._elements[1];
@@ -47,7 +47,7 @@ class MinHeap {
     }
 
     return element;
-  };
+  }
 
   /**
    * Sift up the last element
@@ -63,7 +63,7 @@ class MinHeap {
         i = parent) {
       this._swap(parent, i);
     }
-  };
+  }
 
   /**
    * Sifts down the first element
@@ -82,7 +82,7 @@ class MinHeap {
         break;
       this._swap(i, c);
     }
-  };
+  }
 
   heapify(a) {
     if (a) {
@@ -93,7 +93,7 @@ class MinHeap {
     for (var i = this.n >> 1; i > 0; i--) {
       this._siftDown(i);
     }
-  };
+  }
 
   forEach(fn) {
     // A copy is necessary in order to perform extract(),
@@ -111,9 +111,9 @@ class MinHeap {
     }
 
     this._elements = elementsCopy;
-  };
+  }
 
-};
+}
 
 /**
  * Max Heap, keeps the highest element always on top
@@ -125,8 +125,8 @@ class MaxHeap extends MinHeap {
   constructor(compareFn) {
     super(compareFn);
     this._comparator.reverse();
-  };	
-};
+  }
+}
 
 // MaxHeap.prototype = new MinHeap();  - new syntax (ES6) uses the keyword 'extends'
 

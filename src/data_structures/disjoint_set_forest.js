@@ -12,15 +12,15 @@ class DisjointSetForest {
     this._parents = {};
     this._ranks = {};
     this._sizes = {};
-  };
-  	
+  }
+
   _introduce(element) {
     if (!(element in this._parents)) {
       this._parents[element] = element;
       this._ranks[element] = 0;
       this._sizes[element] = 1;
     }
-  };
+  }
 
   /**
    * Check if the elements belong to the same subset.
@@ -36,7 +36,7 @@ class DisjointSetForest {
       this._introduce(element);
       return this.root(element) === root;
     }.bind(this));
-  };
+  }
 
   /**
    * Return the root element which represents the given element's subset.
@@ -53,7 +53,7 @@ class DisjointSetForest {
       this._parents[element] = this.root(this._parents[element]);
     }
     return this._parents[element];
-  };
+  }
 
   /**
    * Return the size of the given element's subset.
@@ -65,7 +65,7 @@ class DisjointSetForest {
   size(element) {
     this._introduce(element);
     return this._sizes[this.root(element)];
-  };
+  }
 
   /**
    * Merge subsets containing two (or more) given elements into one.
@@ -97,7 +97,7 @@ class DisjointSetForest {
       }
     }
     return this;
-  };
+  }
 
 }
 
