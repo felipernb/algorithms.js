@@ -88,6 +88,7 @@ require('algorithms').Math;
 * extendedEuclidean
 * fastPower
 * fibonacci
+* findDivisors
 * fisherYates
 * gcd (Greatest common divisor)
 * greatestDifference
