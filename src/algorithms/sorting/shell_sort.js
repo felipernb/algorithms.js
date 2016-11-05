@@ -5,24 +5,19 @@ var Comparator = require('../../util/comparator');
  */
 var shellSort = function(array, comparatorFn) {
   var comparator = new Comparator(comparatorFn);
-  var begin = 0;
-  var end = array.length - 1;
-  var gap = parseInt((array.length) / 2, 10);
-  var i = 0;
-  var j = 0;
-  var temp = 0;
+  var gap = Math.floor(array.length / 2);
 
-  while (gap >= 1) {
-    for (i = begin + gap; i <= end; i += 1) {
-      temp = array[i];
-      j = i - gap;
-      while (j >= begin && comparator.greaterThan(array[j], temp)) {
+  while (gap > 0) {
+    for (var i = gap; i < array.length; i++) {
+      var temp = array[i];
+      var j = i - gap;
+      while (j >= 0 && comparator.greaterThan(array[j], temp)) {
         array[j + gap] = array[j];
         j -= gap;
       }
       array[j + gap] = temp;
     }
-    gap = parseInt(gap / 2, 10);
+    gap = Math.floor(gap / 2);
   }
 
   return array;
