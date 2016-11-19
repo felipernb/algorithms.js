@@ -28,7 +28,6 @@ var longestCommonSubstring = function(s1, s2) {
         cache[i][j] = cache[i - 1][j - 1] + 1;
         if (cache[i][j] > lcsLength) {
           lcsPosition.i = i;
-          lcsPosition.j = j;
           lcsLength = cache[i][j];
         }
       } else {
