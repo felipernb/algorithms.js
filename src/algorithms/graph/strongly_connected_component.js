@@ -26,16 +26,16 @@ var stronglyConnectedComponent = function(graph) {
   var count = 0;
   var id = Object.create(null);
 
-  reverse.vertices.forEach(function (node) {
+  reverse.vertices.forEach(function(node) {
     if (!visited[node]) {
       depthFirstSearch(reverse, node, {
-        allowTraversal: function (node, neighbor) {
+        allowTraversal: function(node, neighbor) {
           return !visited[neighbor];
         },
-        enterVertex: function (node) {
+        enterVertex: function(node) {
           visited[node] = true;
         },
-        leaveVertex: function (node) {
+        leaveVertex: function(node) {
           stack.push(node);
         }
       });
@@ -43,10 +43,10 @@ var stronglyConnectedComponent = function(graph) {
   });
 
   visited = {};
-  stack.forEach(function (node) {
+  stack.forEach(function(node) {
     if (!visited[node]) {
       depthFirstSearch(graph, node, {
-        allowTraversal: function (node, neighbor) {
+        allowTraversal: function(node, neighbor) {
           return !visited[neighbor];
         },
         enterVertex: function(node) {
@@ -62,7 +62,7 @@ var stronglyConnectedComponent = function(graph) {
   return {
     count: count,
     id: id
-  }
+  };
 };
 
 module.exports = stronglyConnectedComponent;

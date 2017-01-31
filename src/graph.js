@@ -13,5 +13,6 @@ module.exports = {
   bfsShortestPath: require('./algorithms/graph/bfs_shortest_path'),
   prim: require('./algorithms/graph/prim'),
   floydWarshall: require('./algorithms/graph/floyd_warshall'),
-  strongConnectedComponent: require('./algorithms/graph/strongly_connected_component')
+  strongConnectedComponent: require('./algorithms/graph/' +
+    'strongly_connected_component')
 };

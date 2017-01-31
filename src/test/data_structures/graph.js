@@ -86,7 +86,8 @@ describe('Graph - Adjacency list', function() {
     assert.equal(g.edge('b', 'a'), 2);
   });
 
-  it('should have reversed edges with same weight for a reverse directed graph', function() {
+  it('should have reversed edges with same weight for a reverse directed graph',
+    function() {
     var g = new Graph();
     g.addVertex('a');
     g.addVertex('b');

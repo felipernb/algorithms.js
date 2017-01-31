@@ -10,7 +10,7 @@ describe('Strongly Connected Component', function() {
     // graph: 0 -> 1 -> 2
     var graph = new Graph();
     graph.addEdge(0, 1);
-    graph.addEdge(1,2);
+    graph.addEdge(1, 2);
 
     var scc = stronglyConnectedComponent(graph);
     assert.equal(scc.count, 3);
