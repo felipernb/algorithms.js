@@ -53,4 +53,21 @@ Graph.prototype.edge = function(a, b) {
   return this.adjList[_(a)][_(b)];
 };
 
+Graph.prototype.reverse = function() {
+  var self = this;
+  var r = new Graph(this.directed);
+
+  self.vertices.forEach(function(v) {
+    r.addVertex(v);
+  });
+
+  Object.keys(self.adjList).forEach(function(a) {
+    Object.keys(self.adjList[a]).forEach(function(b) {
+      r.adjList[b][a] = self.adjList[a][b];
+    });
+  });
+
+  return r;
+};
+
 module.exports = Graph;
