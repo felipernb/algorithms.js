@@ -88,28 +88,28 @@ describe('Graph - Adjacency list', function() {
 
   it('should have reversed edges with same weight for a reverse directed graph',
     function() {
-    var g = new Graph();
-    g.addVertex('a');
-    g.addVertex('b');
-    g.addVertex('c');
-    g.addVertex('d');
-    g.addEdge('a', 'b', 10);
-    g.addEdge('a', 'c', 5);
-    g.addEdge('c', 'd', 2);
+      var g = new Graph();
+      g.addVertex('a');
+      g.addVertex('b');
+      g.addVertex('c');
+      g.addVertex('d');
+      g.addEdge('a', 'b', 10);
+      g.addEdge('a', 'c', 5);
+      g.addEdge('c', 'd', 2);
 
-    var r = g.reverse();
-    assert(r.directed);
-    assert.equal(r.edge('a', 'b'), undefined);
-    assert.equal(r.edge('b', 'a'), 10);
-    assert.equal(r.edge('a', 'c'), undefined);
-    assert.equal(r.edge('c', 'a'), 5);
-    assert.equal(r.edge('c', 'd'), undefined);
-    assert.equal(r.edge('d', 'c'), 2);
+      var r = g.reverse();
+      assert(r.directed);
+      assert.equal(r.edge('a', 'b'), undefined);
+      assert.equal(r.edge('b', 'a'), 10);
+      assert.equal(r.edge('a', 'c'), undefined);
+      assert.equal(r.edge('c', 'a'), 5);
+      assert.equal(r.edge('c', 'd'), undefined);
+      assert.equal(r.edge('d', 'c'), 2);
 
-    assert.equal(r.edge('a', 'd'), undefined);
-    r.addEdge('a', 'b', 2);
-    assert.equal(r.edge('a', 'b'), 2);
-    assert.equal(r.edge('b', 'a'), 10);
+      assert.equal(r.edge('a', 'd'), undefined);
+      r.addEdge('a', 'b', 2);
+      assert.equal(r.edge('a', 'b'), 2);
+      assert.equal(r.edge('b', 'a'), 10);
   });
 
   it('should have a list of vertices', function() {
