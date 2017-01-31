@@ -12,7 +12,8 @@ var depthFirstSearch = require('../../algorithms/graph/depth_first_search');
  *           count is the number of strongly connected components in the graph
  *           id is a Object, receives a vertex and returns id of the strongly
  *           connected component vertex belongs to, ranges from 0 to count - 1.
- *           note: if there is a path from v to w, then id[v] > id[w].
+ *           note: 1.if v and w are in same scc, then id[v] == id[w]
+ *                 2.if v and w are in different scc and there is a path from v to w, then id[v] > id[w].
  *
  * Usage:
  *  var scc = stronglyConnectedComponent(g);
