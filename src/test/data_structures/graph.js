@@ -110,7 +110,7 @@ describe('Graph - Adjacency list', function() {
       r.addEdge('a', 'b', 2);
       assert.equal(r.edge('a', 'b'), 2);
       assert.equal(r.edge('b', 'a'), 10);
-  });
+    });
 
   it('should have a list of vertices', function() {
     var g = new Graph();
