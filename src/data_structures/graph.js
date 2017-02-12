@@ -61,9 +61,9 @@ Graph.prototype.reverse = function() {
     r.addVertex(v);
   });
 
-  Object.keys(self.adjList).forEach(function(a) {
-    Object.keys(self.adjList[a]).forEach(function(b) {
-      r.adjList[b][a] = self.adjList[a][b];
+  self.vertices.forEach(function(a) {
+    self.neighbors(a).forEach(function(b) {
+      r.addEdge(b, a, self.edge(a, b));
     });
   });
 
