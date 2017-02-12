@@ -44,19 +44,21 @@ var stronglyConnectedComponent = function(graph) {
   });
 
   visited = {};
+  var allowTraversal = function(node, neighbor) {
+    return !visited[neighbor];
+  };
+  var enterVertex = function(node) {
+    visited[node] = true;
+    id[node] = count;
+  };
+
   while(!stack.isEmpty()) {
     var node = stack.pop();
     if (!visited[node]) {
       depthFirstSearch(graph, node, {
-        allowTraversal: function(node, neighbor) {
-          return !visited[neighbor];
-        },
-        enterVertex: function(node) {
-          visited[node] = true;
-          id[node] = count;
-        }
+        allowTraversal: allowTraversal,
+        enterVertex: enterVertex
       });
-
       ++count;
     }
   }
