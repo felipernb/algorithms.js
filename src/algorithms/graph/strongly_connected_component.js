@@ -44,7 +44,8 @@ var stronglyConnectedComponent = function(graph) {
   });
 
   visited = {};
-  stack.forEach(function(node) {
+  while(!stack.isEmpty()) {
+    var node = stack.pop();
     if (!visited[node]) {
       depthFirstSearch(graph, node, {
         allowTraversal: function(node, neighbor) {
@@ -58,7 +59,7 @@ var stronglyConnectedComponent = function(graph) {
 
       ++count;
     }
-  });
+  }
 
   return {
     count: count,
