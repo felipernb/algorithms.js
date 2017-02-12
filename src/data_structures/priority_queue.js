@@ -7,44 +7,48 @@ var MinHeap = require('./heap').MinHeap;
  * the heap operations are performed based on the priority of the element
  * and not on the element itself
  */
-function PriorityQueue(initialItems) {
-  var self = this;
-  MinHeap.call(this, function(a, b) {
-    return self.priority(a) < self.priority(b) ? -1 : 1;
-  });
+class PriorityQueue extends MinHeap {
+  constructor(initialItems) {
+    super();
 
-  this._priority = {};
+    this.setComparator(
+      (function(a, b) {
+        return this.priority(a) < this.priority(b) ? -1 : 1;
+      }).bind(this));
 
-  initialItems = initialItems || {};
-  Object.keys(initialItems).forEach(function(item) {
-    self.insert(item, initialItems[item]);
-  });
-}
+    this._priority = {};
 
-PriorityQueue.prototype = new MinHeap();
-
-PriorityQueue.prototype.insert = function(item, priority) {
-  if (this._priority[item] !== undefined) {
-    return this.changePriority(item, priority);
+    initialItems = initialItems || {};
+    Object.keys(initialItems).forEach(
+      (function(item) {
+        this.insert(item, initialItems[item]);
+      }).bind(this));
   }
-  this._priority[item] = priority;
-  MinHeap.prototype.insert.call(this, item);
-};
 
-PriorityQueue.prototype.extract = function(withPriority) {
-  var min = MinHeap.prototype.extract.call(this);
-  return withPriority ?
-    min && {item: min, priority: this._priority[min]} :
-    min;
-};
+  insert(item, priority) {
+    if (this._priority[item] !== undefined) {
+      return this.changePriority(item, priority);
+    }
+    this._priority[item] = priority;
+    super.insert(item);
+  }
 
-PriorityQueue.prototype.priority = function(item) {
-  return this._priority[item];
-};
+  extract(withPriority) {
+    var min = super.extract();
+    return withPriority ?
+      min && {item: min, priority: this._priority[min]} :
+      min;
+  }
 
-PriorityQueue.prototype.changePriority = function(item, priority) {
-  this._priority[item] = priority;
-  this.heapify();
-};
+  priority(item) {
+    return this._priority[item];
+  }
+
+  changePriority(item, priority) {
+    this._priority[item] = priority;
+    this.heapify();
+  }
+
+}
 
 module.exports = PriorityQueue;

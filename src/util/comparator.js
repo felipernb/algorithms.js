@@ -8,51 +8,53 @@
  *
  * @param { Function } compareFn
  */
-function Comparator(compareFn) {
-  if (compareFn) {
-    this.compare = compareFn;
+class Comparator {
+  constructor(compareFn) {
+    if (compareFn) {
+      this.compare = compareFn;
+    }
+  }
+
+  /**
+   * Default implementation for the compare function
+   */
+  compare(a, b) {
+    if (a === b) return 0;
+    return a < b ? -1 : 1;
+  }
+
+  lessThan(a, b) {
+    return this.compare(a, b) < 0;
+  }
+
+  lessThanOrEqual(a, b) {
+    return this.lessThan(a, b) || this.equal(a, b);
+  }
+
+  greaterThan(a, b) {
+    return this.compare(a, b) > 0;
+  }
+
+  greaterThanOrEqual(a, b) {
+    return this.greaterThan(a, b) || this.equal(a, b);
+  }
+
+  equal(a, b) {
+    return this.compare(a, b) === 0;
+  }
+
+  /**
+   * Reverse the comparison function to use the opposite logic, e.g:
+   * this.compare(a, b) => 1
+   * this.reverse();
+   * this.compare(a, b) => -1
+   */
+  reverse() {
+    var originalCompareFn = this.compare;
+    this.compare = function(a, b) {
+      return originalCompareFn(b, a);
+    };
   }
 }
-
-/**
- * Default implementation for the compare function
- */
-Comparator.prototype.compare = function(a, b) {
-  if (a === b) return 0;
-  return a < b ? -1 : 1;
-};
-
-Comparator.prototype.lessThan = function(a, b) {
-  return this.compare(a, b) < 0;
-};
-
-Comparator.prototype.lessThanOrEqual = function(a, b) {
-  return this.lessThan(a, b) || this.equal(a, b);
-};
-
-Comparator.prototype.greaterThan = function(a, b) {
-  return this.compare(a, b) > 0;
-};
-
-Comparator.prototype.greaterThanOrEqual = function(a, b) {
-  return this.greaterThan(a, b) || this.equal(a, b);
-};
-
-Comparator.prototype.equal = function(a, b) {
-  return this.compare(a, b) === 0;
-};
-
-/**
- * Reverse the comparison function to use the opposite logic, e.g:
- * this.compare(a, b) => 1
- * this.reverse();
- * this.compare(a, b) => -1
- */
-Comparator.prototype.reverse = function() {
-  var originalCompareFn = this.compare;
-  this.compare = function(a, b) {
-    return originalCompareFn(b, a);
-  };
-};
 
 module.exports = Comparator;
