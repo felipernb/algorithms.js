@@ -52,7 +52,7 @@ var stronglyConnectedComponent = function(graph) {
     id[node] = count;
   };
 
-  while(!stack.isEmpty()) {
+  while (!stack.isEmpty()) {
     var node = stack.pop();
     if (!visited[node]) {
       depthFirstSearch(graph, node, {
