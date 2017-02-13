@@ -46,8 +46,4 @@ Stack.prototype.peek = function() {
   return this._elements.tail.value;
 };
 
-Stack.prototype.forEach = function(fn) {
-  this._elements.forEach(fn);
-};
-
 module.exports = Stack;

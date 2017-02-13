@@ -33,9 +33,9 @@ Queue.prototype.pop = function() {
   if (this.isEmpty()) {
     throw new Error('Empty queue');
   }
-  var e = this._elements.get(0);
-  this._elements.del(0);
-  return e;
+  var e = this._elements.head;
+  this._elements.delNode(e);
+  return e.value;
 };
 
 Queue.prototype.peek = function() {
@@ -44,10 +44,6 @@ Queue.prototype.peek = function() {
   }
 
   return this._elements.get(0);
-};
-
-Queue.prototype.forEach = function(fn) {
-  this._elements.forEach(fn);
 };
 
 module.exports = Queue;
