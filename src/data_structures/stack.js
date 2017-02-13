@@ -19,14 +19,14 @@ Stack.prototype.isEmpty = function() {
 };
 
 /**
- * Adds element to the end of the stack
+ * Adds element to the top of the stack
  */
 Stack.prototype.push = function(e) {
   this._elements.add(e);
 };
 
 /**
- * Pops the element from the end of the stack
+ * Pops the element from the top of the stack
  */
 Stack.prototype.pop = function() {
   if (this.isEmpty()) {
