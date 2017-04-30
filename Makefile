@@ -27,5 +27,5 @@ coveralls:
 
 VERSION := $(shell node -e "console.log(require('./package.json').version);")
 browser_bundle: setup
-	browserify $(realpath src/index.js) --s algorithms | uglifyjs -c -m --screw-ie8 --wrap --preamble "/* algorithms.js v$(VERSION) | (c) 2015 Felipe Ribeiro | https://github.com/felipernb/algorithms.js/blob/master/LICENSE */" > bundle/algorithms.browser.min.js
+	browserify $(realpath src/index.js) --s algorithms | uglifyjs -c -m  --wrap --beautify preamble "/* algorithms.js v$(VERSION) | (c) 2015 Felipe Ribeiro | https://github.com/felipernb/algorithms.js/blob/master/LICENSE */" > bundle/algorithms.browser.min.js
 
