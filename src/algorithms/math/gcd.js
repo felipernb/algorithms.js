@@ -8,7 +8,7 @@
  *
  * @return Number
  */
-const gcdDivisionBased = function(a, b) {
+const gcdDivisionBased = (a, b) => {
   let tmp = a;
   a = Math.max(a, b);
   b = Math.min(tmp, b);
@@ -32,7 +32,7 @@ const gcdDivisionBased = function(a, b) {
  *
  * @return Number
  */
-const gcdBinaryIterative = function(a, b) {
+const gcdBinaryIterative = (a, b) => {
   // GCD(0,b) == b; GCD(a,0) == a, GCD(0,0) == 0
   if (a === 0) {
     return b;

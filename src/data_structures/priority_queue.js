@@ -9,14 +9,12 @@ const MinHeap = require('./heap').MinHeap;
  */
 function PriorityQueue(initialItems) {
   const self = this;
-  MinHeap.call(this, function(a, b) {
-    return self.priority(a) < self.priority(b) ? -1 : 1;
-  });
+  MinHeap.call(this, (a, b) => self.priority(a) < self.priority(b) ? -1 : 1);
 
   this._priority = {};
 
   initialItems = initialItems || {};
-  Object.keys(initialItems).forEach(function(item) {
+  Object.keys(initialItems).forEach(item => {
     self.insert(item, initialItems[item]);
   });
 }

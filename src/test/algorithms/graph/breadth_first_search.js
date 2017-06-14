@@ -5,10 +5,10 @@ const breadthFirstSearch = root.Graph.breadthFirstSearch;
 const Graph = root.DataStructures.Graph;
 const assert = require('assert');
 
-describe('Breadth-First Search', function() {
+describe('Breadth-First Search', () => {
   let graph;
 
-  before(function() {
+  before(() => {
     graph = new Graph();
     graph.addEdge(1, 2);
     graph.addEdge(1, 5);
@@ -21,7 +21,7 @@ describe('Breadth-First Search', function() {
     graph.addEdge('alpha', 'omega');
   });
 
-  it('should visit reachable vertices in a breadth-first manner', function() {
+  it('should visit reachable vertices in a breadth-first manner', () => {
     const enter = [];
     const leave = [];
     let lastEntered = null;
@@ -53,7 +53,7 @@ describe('Breadth-First Search', function() {
     assert.equal(enter[5], 3);
   });
 
-  it('should allow user-defined allowTraversal rules', function() {
+  it('should allow user-defined allowTraversal rules', () => {
     const seen = new Graph(graph.directed);
     graph.vertices.forEach(seen.addVertex.bind(seen));
     const indegrees = {1: -1};

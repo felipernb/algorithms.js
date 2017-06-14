@@ -7,7 +7,7 @@
  * @param Number tolerance - The error margin accepted (Default 1e-7)
  * @param Number maxIterations - The max number of iterations (Default 1e7)
  */
-const sqrt = function(n, tolerance, maxIterations) {
+const sqrt = (n, tolerance, maxIterations) => {
   tolerance = tolerance || 1e-7;
   maxIterations = maxIterations || 1e7;
 

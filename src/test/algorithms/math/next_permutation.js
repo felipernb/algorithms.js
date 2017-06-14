@@ -5,7 +5,7 @@ const nextPermutation = math.nextPermutation;
 const Comparator = require('../../../util/comparator');
 const assert = require('assert');
 
-const range = function(begin, end) {
+const range = (begin, end) => {
   if (end === undefined) {
     end = begin;
     begin = 0;
@@ -13,18 +13,12 @@ const range = function(begin, end) {
   if (end <= begin) {
     return [];
   }
-  return new Array(end - begin + 1).join(0).split('').map(function(_, index) {
-    return begin + index;
-  });
+  return new Array(end - begin + 1).join(0).split('').map((_, index) => begin + index);
 };
 
-const factorial = function(n) {
-  return range(1, n + 1).reduce(function(product, value) {
-    return product * value;
-  }, 1);
-};
+const factorial = n => range(1, n + 1).reduce((product, value) => product * value, 1);
 
-const permutations = function(start, compareFn) {
+const permutations = (start, compareFn) => {
   const permutations = [];
   const perm = start.slice();
   do {
@@ -33,8 +27,8 @@ const permutations = function(start, compareFn) {
   return permutations;
 };
 
-describe('Next Permutation', function() {
-  it('should return immediately following permutation', function() {
+describe('Next Permutation', () => {
+  it('should return immediately following permutation', () => {
     assert.deepEqual(permutations([1, 2]), [[1, 2], [2, 1]]);
     assert.deepEqual(permutations([1, 2, 2]),
                      [[1, 2, 2], [2, 1, 2], [2, 2, 1]]);
@@ -43,8 +37,8 @@ describe('Next Permutation', function() {
   });
 
   it('should generate all N! permutations if the elements are distinct',
-     function() {
-       [4, 5, 6].forEach(function(size) {
+     () => {
+       [4, 5, 6].forEach(size => {
          let count = 0;
          const perm = range(size);
          do {
@@ -54,7 +48,7 @@ describe('Next Permutation', function() {
        });
      });
 
-  it('should support custom compare functions', function() {
+  it('should support custom compare functions', () => {
     const reverseComparator = new Comparator();
     reverseComparator.reverse();
     const reverseCompareFn = reverseComparator.compare;

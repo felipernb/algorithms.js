@@ -31,10 +31,10 @@ DisjointSetForest.prototype._introduce = function(element) {
 DisjointSetForest.prototype.sameSubset = function(element) {
   this._introduce(element);
   const root = this.root(element);
-  return [].slice.call(arguments, 1).every(function(element) {
+  return [].slice.call(arguments, 1).every(element => {
     this._introduce(element);
     return this.root(element) === root;
-  }.bind(this));
+  });
 };
 
 /**

@@ -9,7 +9,7 @@
   *
   * @return Boolean
   */
-const binarySearch = function(sortedArray, element) {
+const binarySearch = (sortedArray, element) => {
   let init = 0;
   let end = sortedArray.length - 1;
 

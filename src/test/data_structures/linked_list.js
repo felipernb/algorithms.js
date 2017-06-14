@@ -3,14 +3,14 @@
 const LinkedList = require('../..').DataStructures.LinkedList;
 const assert = require('assert');
 
-describe('LinkedList', function() {
-  it('should start empty', function() {
+describe('LinkedList', () => {
+  it('should start empty', () => {
     const l = new LinkedList();
     assert(l.isEmpty());
     assert.equal(l.length, 0);
   });
 
-  it('should increment length when an item is added', function() {
+  it('should increment length when an item is added', () => {
     const l = new LinkedList();
     l.add(1);
     assert.equal(l.length, 1);
@@ -21,7 +21,7 @@ describe('LinkedList', function() {
   });
 
   it('should return the items from the positions they were inserted',
-    function() {
+    () => {
       const l = new LinkedList();
       l.add(1);
       l.add(2);
@@ -62,7 +62,7 @@ describe('LinkedList', function() {
     });
 
   it('should throw errors when trying to access indexes out of bounds',
-      function() {
+      () => {
         const l = new LinkedList();
         assert.throws(() => l.get(0), Error);
         assert.throws(() => l.get(1), Error);
@@ -85,7 +85,7 @@ describe('LinkedList', function() {
         assert.throws(() => l.get(10), Error);
       });
 
-  it('should be able to delete elements', function() {
+  it('should be able to delete elements', () => {
     const l = new LinkedList();
 
     l.add(1);
@@ -132,7 +132,7 @@ describe('LinkedList', function() {
     assert.equal(l.length, 0);
   });
 
-  it('should perform a function to all elements with forEach', function() {
+  it('should perform a function to all elements with forEach', () => {
     const l = new LinkedList();
     l.add(5);
     l.add(1);
@@ -141,7 +141,7 @@ describe('LinkedList', function() {
     l.add(1000);
 
     const a = [];
-    l.forEach(function(e) {
+    l.forEach(e => {
       a.push(e);
     });
 
@@ -149,7 +149,7 @@ describe('LinkedList', function() {
   });
 
   it('should throw an error when trying to delete from an empty list',
-      function() {
+      () => {
         const l = new LinkedList();
         assert.throws(() => l.del(0), Error);
       });

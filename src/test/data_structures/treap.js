@@ -4,13 +4,13 @@ const root = require('../..');
 const Treap = root.DataStructures.Treap;
 const assert = require('assert');
 
-describe('Treap', function() {
+describe('Treap', () => {
   let treap;
-  before(function() {
+  before(() => {
     treap = new Treap();
   });
 
-  it('should insert elements', function() {
+  it('should insert elements', () => {
     treap.insert(3);
     treap.insert(2);
     treap.insert(10);
@@ -23,7 +23,7 @@ describe('Treap', function() {
     assert.equal(treap.root.size, 8);
   });
 
-  it('should remove elements correctly', function() {
+  it('should remove elements correctly', () => {
     // Value that not exist
     treap.remove(200);
     assert.equal(treap.root.size, 8);
@@ -36,7 +36,7 @@ describe('Treap', function() {
     assert.equal(treap.root.size, 4);
   });
 
-  it('should insert and remove elements', function() {
+  it('should insert and remove elements', () => {
     // [-100, 2, 3, 10]
     treap.insert(200);
     // [-100, 2, 3, 10, 200]
@@ -54,7 +54,7 @@ describe('Treap', function() {
     assert.equal(treap.root.size, 5);
   });
 
-  it('should check if an element exists', function() {
+  it('should check if an element exists', () => {
     // [1, 2, 3, 10, 100]
     assert.equal(treap.find(1), true);
     assert.equal(treap.find(2), true);
@@ -67,7 +67,7 @@ describe('Treap', function() {
     assert.equal(treap.find(101), false);
   });
 
-  it('should get minimum element', function() {
+  it('should get minimum element', () => {
     // [1, 2, 3, 10, 100]
     assert.equal(treap.minimum(), 1);
     treap.remove(1);
@@ -81,7 +81,7 @@ describe('Treap', function() {
     assert.equal(treap.minimum(), 2);
   });
 
-  it('should get maximum element', function() {
+  it('should get maximum element', () => {
     // [2, 3, 10, 100]
     assert.equal(treap.maximum(), 100);
     treap.remove(100);
@@ -101,7 +101,7 @@ describe('Treap', function() {
     assert.equal(treap.maximum(), 1);
   });
 
-  it('should handle dumplicated elements', function() {
+  it('should handle dumplicated elements', () => {
     treap.insert(1);
   // [1, 1]
     assert.equal(treap.size(), 2);
@@ -124,7 +124,7 @@ describe('Treap', function() {
     assert.equal(treap.size(), 0);
   });
 
-  it('should keep balance', function() {
+  it('should keep balance', () => {
   // Insert 1023 elements randomly
     for (let i = 0; i < 1023; ++i) {
       treap.insert(Math.random());
@@ -134,7 +134,7 @@ describe('Treap', function() {
     assert(Math.abs(treap.height() - 23) < 5);
   });
 
-  it('should rotate correctly', function() {
+  it('should rotate correctly', () => {
     // Force clear the tree
     treap.root = null;
     treap.insert(1);

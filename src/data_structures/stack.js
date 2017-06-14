@@ -8,9 +8,7 @@ function Stack() {
   this._elements = new LinkedList();
 
   Object.defineProperty(this, 'length', {
-    get: (function() {
-      return this._elements.length;
-    }).bind(this)
+    get: () => this._elements.length
   });
 }
 

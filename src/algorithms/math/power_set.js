@@ -7,7 +7,7 @@
 /**
  * Iterative power set calculation
  */
-const powerSetIterative = function(array) {
+const powerSetIterative = array => {
   if (array.length === 0) {
     return [];
   }
@@ -40,7 +40,7 @@ const powerSetIterative = function(array) {
 /**
  * Recursive power set calculation
  */
-const powerSetRecursive = function(array) {
+const powerSetRecursive = array => {
   if (array.length === 0) {
     return [];
   } else if (array.length === 1) {
@@ -51,7 +51,7 @@ const powerSetRecursive = function(array) {
 
   array.splice(0, 1);
 
-  powerSetRecursive(array).forEach(function(elem) {
+  powerSetRecursive(array).forEach(elem => {
     powerSet.push(elem);
     const withFirstElem = [firstElem];
     withFirstElem.push.apply(withFirstElem, elem);

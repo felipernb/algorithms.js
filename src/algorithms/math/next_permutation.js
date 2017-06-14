@@ -12,7 +12,7 @@ const Comparator = require('../../util/comparator');
  * @return {boolean} Boolean flag indicating whether the algorithm succeeded,
  *   true unless the input permutation is lexicographically the last one.
  */
-const nextPermutation = function(array, compareFn) {
+const nextPermutation = (array, compareFn) => {
   if (!array.length) {
     return false;
   }

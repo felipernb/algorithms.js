@@ -4,9 +4,9 @@ const root = require('../../..');
 const lcm = root.Math.lcm;
 const assert = require('assert');
 
-describe('LCM', function() {
+describe('LCM', () => {
   it('should calculate the correct LCM between two numbers ' +
-    'using Euclidean algorithm', function() {
+    'using Euclidean algorithm', () => {
     assert.equal(lcm(2, 3), 6);
     assert.equal(lcm(0, 1), 0);
     assert.equal(lcm(4, 9), 36);
@@ -24,7 +24,7 @@ describe('LCM', function() {
   });
 
   it('should calculate the correct LCM between two numbers ' +
-    'using the binary method', function() {
+    'using the binary method', () => {
     const lcmb = lcm.binary;
     assert.equal(lcmb(2, 3), 6);
     assert.equal(lcmb(0, 1), 0);

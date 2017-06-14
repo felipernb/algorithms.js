@@ -4,7 +4,7 @@ const Comparator = require('../../util/comparator');
 /**
  * Insertion sort algorithm O(n + d)
  */
-const insertionSort = function(vector, comparatorFn) {
+const insertionSort = (vector, comparatorFn) => {
   const comparator = new Comparator(comparatorFn);
 
   for (let i = 1, len = vector.length; i < len; i++) {

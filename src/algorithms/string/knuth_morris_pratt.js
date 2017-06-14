@@ -10,7 +10,7 @@
  *     or {String}
  * @return {Array} of Integers
  */
-const buildTable = function(pattern) {
+const buildTable = pattern => {
   const length = pattern.length;
   const table = [];
   let position = 2;
@@ -50,7 +50,7 @@ const buildTable = function(pattern) {
  *     or {String}
  * @return {Number}
  */
-const knuthMorrisPratt = function(text, pattern) {
+const knuthMorrisPratt = (text, pattern) => {
   const textLength = text.length;
   const patternLength = pattern.length;
   let m = 0;

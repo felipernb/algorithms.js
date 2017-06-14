@@ -27,8 +27,8 @@ let array = [
   firstObject
 ];
 
-describe('Counting Sort', function() {
-  it('should sort the given array', function() {
+describe('Counting Sort', () => {
+  it('should sort the given array', () => {
     array = countingSort(array);
 
     // Asserts that the array is truly sorted

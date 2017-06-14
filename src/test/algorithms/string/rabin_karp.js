@@ -3,13 +3,13 @@
 const rabinKarp = require('../../..').String.rabinKarp;
 const assert = require('assert');
 
-const rabinKarpEqualsToIndexOf = function(a, b) {
+const rabinKarpEqualsToIndexOf = (a, b) => {
   assert.equal(rabinKarp(a, b), a.indexOf(b));
 };
 
-describe('Karp-Rabin', function() {
+describe('Karp-Rabin', () => {
   it('should verify if a string is contained in another string',
-    function() {
+    () => {
       rabinKarpEqualsToIndexOf('', '');
       rabinKarpEqualsToIndexOf('a', 'b');
       rabinKarpEqualsToIndexOf('b', 'a');

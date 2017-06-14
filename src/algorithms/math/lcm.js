@@ -12,7 +12,7 @@ const gcd = require('./gcd.js');
  *
  * @return Number
  */
-const genericLCM = function(gcdFunction, a, b) {
+const genericLCM = (gcdFunction, a, b) => {
   if (a === 0 || b === 0) {
     return 0;
   }

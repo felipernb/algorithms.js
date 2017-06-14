@@ -4,8 +4,8 @@ const root = require('../../..');
 const gcd = root.Math.gcd;
 const assert = require('assert');
 
-describe('GCD', function() {
-  it('should calculate the correct GCD between two numbers', function() {
+describe('GCD', () => {
+  it('should calculate the correct GCD between two numbers', () => {
     assert.equal(gcd(1, 0), 1);
     assert.equal(gcd(2, 2), 2);
     assert.equal(gcd(2, 4), 2);
@@ -19,7 +19,7 @@ describe('GCD', function() {
   });
 
   it('should calculate the correct GCD between two numbers using ' +
-    'the binary method', function() {
+    'the binary method', () => {
     const gcdb = gcd.binary;
     assert.equal(gcdb(1, 0), 1);
     assert.equal(gcdb(0, 1), 1);

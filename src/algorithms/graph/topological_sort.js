@@ -17,12 +17,12 @@ const depthFirstSearch = require('../../algorithms/graph/depth_first_search');
  * @param {Graph}
  * @return Stack
  */
-const topologicalSort = function(graph) {
+const topologicalSort = graph => {
   const stack = new Stack();
   const firstHit = {};
   let time = 0;
 
-  graph.vertices.forEach(function(node) {
+  graph.vertices.forEach(node => {
     if (!firstHit[node]) {
       depthFirstSearch(graph, node, {
         allowTraversal: function(node, neighbor) {

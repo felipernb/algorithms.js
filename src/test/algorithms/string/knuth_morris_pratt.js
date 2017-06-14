@@ -3,9 +3,9 @@
 const knuthMorrisPratt = require('../../..').String.knuthMorrisPratt;
 const assert = require('assert');
 
-describe('Knuth-Morris-Pratt', function() {
+describe('Knuth-Morris-Pratt', () => {
   it('should verify if a pattern is contained in some text (or array)',
-    function() {
+    () => {
       const text = 'A string matching algorithm wants to find the starting' +
         'index m in string S[] that matches the search word W[].The most' +
         ' straightforward algorithm is to look for a character match at ' +

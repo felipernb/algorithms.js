@@ -4,7 +4,7 @@ const Comparator = require('../../util/comparator');
 /**
  * Bubble sort algorithm O(n^2)
  */
-const bubbleSort = function(a, comparatorFn) {
+const bubbleSort = (a, comparatorFn) => {
   const comparator = new Comparator(comparatorFn);
   const n = a.length;
   let bound = n - 1;

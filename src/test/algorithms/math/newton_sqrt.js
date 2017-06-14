@@ -4,8 +4,8 @@ const math = require('../../..').Math;
 const newtonSqrt = math.newtonSqrt;
 const assert = require('assert');
 
-describe('Newton square root', function() {
-  it('should calculate the exact root of square numbers', function() {
+describe('Newton square root', () => {
+  it('should calculate the exact root of square numbers', () => {
     assert.strictEqual(newtonSqrt(0), 0);
     assert.strictEqual(newtonSqrt(1), 1);
     assert.strictEqual(newtonSqrt(4), 2);
@@ -20,7 +20,7 @@ describe('Newton square root', function() {
   });
 
   it('should calculate an approximated root for every number',
-    function() {
+    () => {
       for (let i = 0; i < 1000; i++) {
         const newton = newtonSqrt(i);
         const nativeJS = Math.sqrt(i);

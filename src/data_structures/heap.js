@@ -9,9 +9,7 @@ function MinHeap(compareFn) {
   this._comparator = new Comparator(compareFn);
 
   Object.defineProperty(this, 'n', {
-    get: function() {
-      return this._elements.length - 1;
-    }.bind(this)
+    get: () => this._elements.length - 1
   });
 }
 

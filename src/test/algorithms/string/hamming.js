@@ -3,14 +3,14 @@
 const hamming = require('../../..').String.hamming;
 const assert = require('assert');
 
-describe('Hamming distance', function() {
-  it('should raise an error if the inputs are not equal lengths', function() {
-    assert.throws(function() {
+describe('Hamming distance', () => {
+  it('should raise an error if the inputs are not equal lengths', () => {
+    assert.throws(() => {
       hamming('abcde', '1234');
     });
   });
 
-  it('should return the correct the correct distances', function() {
+  it('should return the correct the correct distances', () => {
     const inputs = [
       {a: 'karolin', b: 'kathrin', expected: 3},
       {a: 'karolin', b: 'kerstin', expected: 3},
@@ -20,7 +20,7 @@ describe('Hamming distance', function() {
       {a: '', b: '', expected: 0}
     ];
 
-    inputs.forEach(function(val) {
+    inputs.forEach(val => {
       assert.equal(hamming(val.a, val.b), val.expected);
     });
   });

@@ -6,22 +6,18 @@
  * @param {Array} arr - An array of values.
  * @return Number
  */
-const shannonEntropy = function(arr) {
+const shannonEntropy = arr => {
   // find the frequency of each value
-  const freqs = arr.reduce(function(acc, item) {
+  const freqs = arr.reduce((acc, item) => {
     acc[item] = acc[item] + 1 || 1;
     return acc;
   }, {});
 
   // find the probability of each value
-  const probs = Object.keys(freqs).map(function(key) {
-    return freqs[key] / arr.length;
-  });
+  const probs = Object.keys(freqs).map(key => freqs[key] / arr.length);
 
   // calulate the shannon entropy of the array
-  return probs.reduce(function(e, p) {
-    return e - p * Math.log(p);
-  }, 0) * Math.LOG2E;
+  return probs.reduce((e, p) => e - p * Math.log(p), 0) * Math.LOG2E;
 };
 
 module.exports = shannonEntropy;

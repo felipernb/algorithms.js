@@ -15,7 +15,7 @@ const base = 997;
  * @param String
  * @return Number
  */
-const hash = function(word) {
+const hash = word => {
   let h = 0;
 
   for (let i = 0; i < word.length; i++) {
@@ -36,7 +36,7 @@ const hash = function(word) {
  * @param String
  * @return Integer
  */
-const rabinKarp = function(s, pattern) {
+const rabinKarp = (s, pattern) => {
   if (pattern.length === 0) return 0;
 
   const hashPattern = hash(pattern);

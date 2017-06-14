@@ -4,7 +4,7 @@ const root = require('../../..');
 const primalityTests = root.Math.primalityTests;
 const assert = require('assert');
 
-const validate = function(primalityTest) {
+const validate = primalityTest => {
   assert.equal(primalityTest(1), false);
   assert.equal(primalityTest(2), true);
   assert.equal(primalityTest(3), true);
@@ -17,14 +17,14 @@ const validate = function(primalityTest) {
   assert.equal(primalityTest(211), true);
 };
 
-describe('Primality Tests', function() {
-  describe('#naiveTest()', function() {
-    it('should correctly determine whether a number is prime', function() {
+describe('Primality Tests', () => {
+  describe('#naiveTest()', () => {
+    it('should correctly determine whether a number is prime', () => {
       validate(primalityTests.naiveTest);
     });
   });
-  describe('#trialDivisionTest()', function() {
-    it('should correctly determine whether a number is prime', function() {
+  describe('#trialDivisionTest()', () => {
+    it('should correctly determine whether a number is prime', () => {
       validate(primalityTests.trialDivisionTest);
     });
   });

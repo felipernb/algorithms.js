@@ -12,7 +12,7 @@ const breadthFirstSearch = require('./breadth_first_search');
  * @return {{distance: Object.<string, number>,
  *           previous: Object.<string, string>}}
  */
-const bfsShortestPath = function(graph, source) {
+const bfsShortestPath = (graph, source) => {
   const distance = {};
   const previous = {};
   distance[source] = 0;

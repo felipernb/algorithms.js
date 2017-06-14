@@ -24,8 +24,8 @@ const fourthObject = {
   anotherProperty: '!'
 };
 
-describe('Radix Sort', function() {
-  it('should sort the given array', function() {
+describe('Radix Sort', () => {
+  it('should sort the given array', () => {
     const sorted = radixSort([
       thirdObject,
       fourthObject,

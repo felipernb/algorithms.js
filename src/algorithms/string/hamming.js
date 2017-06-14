@@ -8,7 +8,7 @@
  */
 'use strict';
 
-const hamming = function(a, b) {
+const hamming = (a, b) => {
   if (a.length !== b.length) {
     throw new Error('Strings must be equal in length');
   }

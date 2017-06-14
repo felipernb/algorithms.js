@@ -20,14 +20,14 @@ const depthFirstSearch = require('../../algorithms/graph/depth_first_search');
  *  scc.count; // count of strongly connected components
  *  scc.id[v]; // id of the strongly connected component which v belongs to
  */
-const stronglyConnectedComponent = function(graph) {
+const stronglyConnectedComponent = graph => {
   const reverse = graph.reverse();
   const stack = new Stack();
   let visited = {};
   let count = 0;
   const id = Object.create(null);
 
-  reverse.vertices.forEach(function(node) {
+  reverse.vertices.forEach(node => {
     if (!visited[node]) {
       depthFirstSearch(reverse, node, {
         allowTraversal: function(node, neighbor) {
@@ -44,10 +44,8 @@ const stronglyConnectedComponent = function(graph) {
   });
 
   visited = {};
-  const allowTraversal = function(node, neighbor) {
-    return !visited[neighbor];
-  };
-  const enterVertex = function(node) {
+  const allowTraversal = (node, neighbor) => !visited[neighbor];
+  const enterVertex = node => {
     visited[node] = true;
     id[node] = count;
   };

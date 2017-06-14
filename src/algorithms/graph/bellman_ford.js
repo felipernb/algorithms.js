@@ -13,15 +13,15 @@
  *    the graph starting in 'startNode', or an empty object if there
  *    exists a Negative-Weighted Cycle in the graph
  */
-const bellmanFord = function(graph, startNode) {
+const bellmanFord = (graph, startNode) => {
   const minDistance = {};
   const previousVertex = {};
   const edges = [];
   let adjacencyListSize = 0;
 
   // Add all the edges from the graph to the 'edges' array
-  graph.vertices.forEach(function(s) {
-    graph.neighbors(s).forEach(function(t) {
+  graph.vertices.forEach(s => {
+    graph.neighbors(s).forEach(t => {
       edges.push({
         source: s,
         target: t,

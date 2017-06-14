@@ -17,7 +17,7 @@ function Comparator(compareFn) {
 /**
  * Default implementation for the compare function
  */
-Comparator.prototype.compare = function(a, b) {
+Comparator.prototype.compare = (a, b) => {
   if (a === b) return 0;
   return a < b ? -1 : 1;
 };
@@ -50,9 +50,7 @@ Comparator.prototype.equal = function(a, b) {
  */
 Comparator.prototype.reverse = function() {
   const originalCompareFn = this.compare;
-  this.compare = function(a, b) {
-    return originalCompareFn(b, a);
-  };
+  this.compare = (a, b) => originalCompareFn(b, a);
 };
 
 module.exports = Comparator;

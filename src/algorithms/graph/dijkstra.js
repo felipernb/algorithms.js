@@ -16,7 +16,7 @@ function dijkstra(graph, s) {
   const q = new PriorityQueue();
   // Initialize
   distance[s] = 0;
-  graph.vertices.forEach(function(v) {
+  graph.vertices.forEach(v => {
     if (v !== s) {
       distance[v] = Infinity;
     }
@@ -24,7 +24,7 @@ function dijkstra(graph, s) {
   });
 
   let currNode;
-  const relax = function(v) {
+  const relax = v => {
     const newDistance = distance[currNode] + graph.edge(currNode, v);
     if (newDistance < distance[v]) {
       distance[v] = newDistance;

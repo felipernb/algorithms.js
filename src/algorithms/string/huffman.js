@@ -15,12 +15,12 @@ const MAX_BLOCK_SIZE = (-1 >>> 0).toString(2).length;
  * @param {string} string
  * @return {number[]}
  */
-const compress = function(string) {
+const compress = string => {
   const blocks = [];
   let currentBlock = 0;
   let currentBlockSize = 0;
 
-  string.split('').forEach(function(char) {
+  string.split('').forEach(char => {
     currentBlock = (currentBlock << 1) | char;
     currentBlockSize += 1;
 
@@ -46,7 +46,7 @@ const compress = function(string) {
  * @param {number[]} array
  * @return {string}
  */
-const decompress = function(array) {
+const decompress = array => {
   if (!array.length) {
     return '';
   } else if (array.length === 1) {
@@ -56,9 +56,7 @@ const decompress = function(array) {
 
   const padding = new Array(MAX_BLOCK_SIZE + 1).join(0);
 
-  let string = array.slice(0, -2).map(function(block) {
-    return (padding + (block >>> 0).toString(2)).slice(-padding.length);
-  }).join('');
+  let string = array.slice(0, -2).map(block => (padding + (block >>> 0).toString(2)).slice(-padding.length)).join('');
 
   // Append the last block.
   const lastBlockSize = array.slice(-1)[0];
@@ -75,7 +73,7 @@ const decompress = function(array) {
  * @param {boolean} [compressed=false] - Whether compress the string to bits.
  * @return {{encoding: Object.<string, string>, value: string|number[]}}
  */
-huffman.encode = function(string, compressed) {
+huffman.encode = (string, compressed) => {
   if (!string.length) {
     return {
       encoding: {},
@@ -84,23 +82,17 @@ huffman.encode = function(string, compressed) {
   }
 
   const counter = {};
-  string.split('').forEach(function(char) {
+  string.split('').forEach(char => {
     counter[char] = (counter[char] || 0) + 1;
   });
 
-  const letters = Object.keys(counter).map(function(char) {
-    return {
-      char: char,
-      count: counter[char]
-    };
-  });
+  const letters = Object.keys(counter).map(char => ({
+    char: char,
+    count: counter[char]
+  }));
 
-  const compare = function(a, b) {
-    return a.count - b.count;
-  };
-  const less = function(a, b) {
-    return a && (b && (a.count < b.count) || !b);
-  };
+  const compare = (a, b) => a.count - b.count;
+  const less = (a, b) => a && (b && (a.count < b.count) || !b);
 
   letters.sort(compare);
 
@@ -111,10 +103,8 @@ huffman.encode = function(string, compressed) {
   let lettersIndex = 0;
   let bufferIndex = 0;
 
-  const extractMinimum = function() {
-    return less(letters[lettersIndex], buffer[bufferIndex]) ?
-      letters[lettersIndex++] : buffer[bufferIndex++];
-  };
+  const extractMinimum = () => less(letters[lettersIndex], buffer[bufferIndex]) ?
+    letters[lettersIndex++] : buffer[bufferIndex++];
 
   for (let numLetters = letters.length; numLetters > 1; --numLetters) {
     const a = extractMinimum();
@@ -144,15 +134,13 @@ huffman.encode = function(string, compressed) {
     }
   })(root);
 
-  const encoding = letters.reduce(function(acc, letter) {
+  const encoding = letters.reduce((acc, letter) => {
     acc[letter.char] = letter.code.split('').reverse().join('');
     return acc;
   }, {});
 
   // Finally, apply the encoding to the given string.
-  const result = string.split('').map(function(char) {
-    return encoding[char];
-  }).join('');
+  const result = string.split('').map(char => encoding[char]).join('');
 
   return {
     encoding: encoding,
@@ -167,21 +155,21 @@ huffman.encode = function(string, compressed) {
  * @param {string|number[]} encodedString
  * @return {string} Decoded string.
  */
-huffman.decode = function(encoding, encodedString) {
+huffman.decode = (encoding, encodedString) => {
   if (Array.isArray(encodedString)) {
     encodedString = decompress(encodedString);
   }
 
   // We can make use of the fact that encoding mapping is always one-to-one
   // and rely on the power of JS hashes instead of building hand-made FSMs.
-  const letterByCode = Object.keys(encoding).reduce(function(acc, letter) {
+  const letterByCode = Object.keys(encoding).reduce((acc, letter) => {
     acc[encoding[letter]] = letter;
     return acc;
   }, {});
 
   const decodedLetters = [];
 
-  const unresolved = encodedString.split('').reduce(function(code, char) {
+  const unresolved = encodedString.split('').reduce((code, char) => {
     code += char;
     const letter = letterByCode[code];
     if (letter) {

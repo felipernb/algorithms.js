@@ -5,9 +5,9 @@ const topologicalSort = root.Graph.topologicalSort;
 const Graph = root.DataStructures.Graph;
 const assert = require('assert');
 
-describe('Topological Sort', function() {
+describe('Topological Sort', () => {
   it('should return a stack with the vertices ordered' +
-    ' considering the dependencies', function() {
+    ' considering the dependencies', () => {
     const graph = new Graph();
     graph.addVertex('shoes');
     graph.addVertex('watch');

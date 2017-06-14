@@ -21,7 +21,7 @@ function spfa(graph, s) {
   queue[0] = s;
   isInQue[s] = true;
   cnt[s] = 1;
-  graph.vertices.forEach(function(v) {
+  graph.vertices.forEach(v => {
     if (v !== s) {
       distance[v] = Infinity;
       isInQue[v] = false;

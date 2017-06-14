@@ -6,7 +6,7 @@
   *  Time complexity: O(log(n))
   */
 
-const ternarySearch = function(fn, left, right, precision) {
+const ternarySearch = (fn, left, right, precision) => {
   while (Math.abs(right - left) > precision) {
     const leftThird = left + (right - left) / 3;
     const rightThird = right - (right - left) / 3;

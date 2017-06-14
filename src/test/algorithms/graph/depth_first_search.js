@@ -5,9 +5,9 @@ const depthFirstSearch = root.Graph.depthFirstSearch;
 const Graph = root.DataStructures.Graph;
 const assert = require('assert');
 
-describe('Depth First Search Algorithm', function() {
+describe('Depth First Search Algorithm', () => {
   let graph;
-  before(function() {
+  before(() => {
     graph = new Graph(true);
     graph.addEdge('one', 'three');
     graph.addEdge('one', 'four');
@@ -18,7 +18,7 @@ describe('Depth First Search Algorithm', function() {
   });
 
   it('should visit only the nodes reachable from the start node (inclusive)',
-    function() {
+    () => {
       const enter = [];
       const leave = [];
       let numEdgeTails = 0;
@@ -53,7 +53,7 @@ describe('Depth First Search Algorithm', function() {
     }
   );
 
-  it('should allow user-defined allowTraversal rules', function() {
+  it('should allow user-defined allowTraversal rules', () => {
     const seen = new Graph(graph.directed);
     graph.vertices.forEach(seen.addVertex.bind(seen));
     const path = ['one'];

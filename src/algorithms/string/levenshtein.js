@@ -15,7 +15,7 @@
  * @param String
  * @return Number
  */
-const levenshtein = function(a, b) {
+const levenshtein = (a, b) => {
   const editDistance = [];
   let i;
   let j;

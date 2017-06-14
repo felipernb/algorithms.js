@@ -20,16 +20,16 @@
  *   used by default allowTraversal implementation.
  * @return {Callbacks} The same object or new one (if null passed).
  */
-const normalizeCallbacks = function(callbacks, seenVertices) {
+const normalizeCallbacks = (callbacks, seenVertices) => {
   callbacks = callbacks || {};
 
-  callbacks.allowTraversal = callbacks.allowTraversal || (function() {
+  callbacks.allowTraversal = callbacks.allowTraversal || ((() => {
     const seen = {};
-    seenVertices.forEach(function(vertex) {
+    seenVertices.forEach(vertex => {
       seen[vertex] = true;
     });
 
-    return function(vertex, neighbor) {
+    return (vertex, neighbor) => {
       // It should still be possible to redefine other callbacks,
       // so we better do all at once here.
 
@@ -39,9 +39,9 @@ const normalizeCallbacks = function(callbacks, seenVertices) {
       }
       return false;
     };
-  })();
+  }))();
 
-  const noop = function() {};
+  const noop = () => {};
   callbacks.beforeTraversal = callbacks.beforeTraversal || noop;
   callbacks.afterTraversal = callbacks.afterTraversal || noop;
   callbacks.enterVertex = callbacks.enterVertex || noop;
@@ -53,7 +53,7 @@ const normalizeCallbacks = function(callbacks, seenVertices) {
 const dfsLoop = function dfsLoop(graph, vertex, callbacks) {
   callbacks.enterVertex(vertex);
 
-  graph.neighbors(vertex).forEach(function(neighbor) {
+  graph.neighbors(vertex).forEach(neighbor => {
     if (callbacks.allowTraversal(vertex, neighbor)) {
       callbacks.beforeTraversal(vertex, neighbor);
       dfsLoop(graph, neighbor, callbacks);
@@ -72,7 +72,7 @@ const dfsLoop = function dfsLoop(graph, vertex, callbacks) {
  * @param {*} startVertex
  * @param {Callbacks} [callbacks]
  */
-const depthFirstSearch = function(graph, startVertex, callbacks) {
+const depthFirstSearch = (graph, startVertex, callbacks) => {
   dfsLoop(graph, startVertex, normalizeCallbacks(callbacks, [startVertex]));
 };
 

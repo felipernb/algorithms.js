@@ -3,13 +3,13 @@
 const HashSet = require('../..').DataStructures.Set;
 const assert = require('assert');
 
-describe('HashSet', function() {
-  it('should start empty', function() {
+describe('HashSet', () => {
+  it('should start empty', () => {
     const s = new HashSet();
     assert.equal(s.size, 0);
   });
 
-  it('should add all initial arguments', function() {
+  it('should add all initial arguments', () => {
     const s = new HashSet(1, 2, 3);
     assert.equal(s.size, 3);
     assert(s.contains(1));
@@ -17,7 +17,7 @@ describe('HashSet', function() {
     assert(s.contains(3));
   });
 
-  it('should add all arguments', function() {
+  it('should add all arguments', () => {
     const s = new HashSet(1, 2, 3);
     assert.equal(s.size, 3);
     s.add(4, 5, 6);
@@ -30,7 +30,7 @@ describe('HashSet', function() {
     assert(s.contains(6));
   });
 
-  it('should remove all arguments', function() {
+  it('should remove all arguments', () => {
     const s = new HashSet(1, 2, 3);
     assert.equal(s.size, 3);
     s.remove(1, 3);
@@ -41,7 +41,7 @@ describe('HashSet', function() {
   });
 
   it('should do nothing when trying to remove an element that doesn\'t exist',
-    function() {
+    () => {
       const s = new HashSet(1, 2, 3);
       assert.equal(s.size, 3);
       s.remove(4);
@@ -51,18 +51,18 @@ describe('HashSet', function() {
       assert(s.contains(3));
     });
 
-  it('should only contain its elements', function() {
+  it('should only contain its elements', () => {
     const s = new HashSet(1, 2, 3);
     assert(s.contains(1));
     assert(!s.contains(4));
   });
 
-  it('should perform a function to all elements with forEach', function() {
+  it('should perform a function to all elements with forEach', () => {
     const s = new HashSet();
     s.add(1, 2, 3);
 
     let total = 0;
-    s.forEach(function(elem) {
+    s.forEach(elem => {
       total += elem;
     });
 

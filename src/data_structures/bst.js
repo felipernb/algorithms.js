@@ -16,9 +16,7 @@ function BST(compareFn) {
    * Read-only property for the size of the tree
    */
   Object.defineProperty(this, 'size', {
-    get: function() {
-      return this._size;
-    }.bind(this)
+    get: () => this._size
   });
 }
 
@@ -96,7 +94,7 @@ BST.prototype._replaceNodeInParent = function(currNode, newNode) {
 /**
  * Find the minimum value in a tree
  */
-BST.prototype._findMin = function(root) {
+BST.prototype._findMin = root => {
   let minNode = root;
   while (minNode.left) {
     minNode = minNode.left;

@@ -11,7 +11,7 @@ function testArrayEqual(a, b) {
   let arrayEqual = true;
   a.sort();
   b.sort();
-  a.forEach(function(elem, index) {
+  a.forEach((elem, index) => {
     if (a[index] !== b[index]) {
       arrayEqual = false;
     }
@@ -19,7 +19,7 @@ function testArrayEqual(a, b) {
   return arrayEqual && a.length === b.length;
 }
 
-const testFindDivisors = function(findDivisors) {
+const testFindDivisors = findDivisors => {
   assert(testArrayEqual([], findDivisors(-2)));
   assert(testArrayEqual([], findDivisors(0)));
   assert(testArrayEqual([1], findDivisors(1)));
@@ -31,21 +31,21 @@ const testFindDivisors = function(findDivisors) {
   assert(testArrayEqual([1, 2, 7, 13, 14, 26, 91, 182], findDivisors(182)));
 };
 
-describe('Find divisors', function() {
-  describe('#Generic()', function() {
-    it('should return the divisors of the number', function() {
+describe('Find divisors', () => {
+  describe('#Generic()', () => {
+    it('should return the divisors of the number', () => {
       testFindDivisors(findDivisors);
     });
   });
 
-  describe('#PairingUnsorted()', function() {
-    it('should return the divisors of the number', function() {
+  describe('#PairingUnsorted()', () => {
+    it('should return the divisors of the number', () => {
       testFindDivisors(findDivisors.pairingUnsorted);
     });
   });
 
-  describe('#PairingSorted()', function() {
-    it('should return the divisors of the number', function() {
+  describe('#PairingSorted()', () => {
+    it('should return the divisors of the number', () => {
       testFindDivisors(findDivisors.pairingSorted);
     });
   });

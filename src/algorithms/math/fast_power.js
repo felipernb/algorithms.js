@@ -1,8 +1,6 @@
 'use strict';
 
-const multiplicationOperator = function(a, b) {
-  return a * b;
-};
+const multiplicationOperator = (a, b) => a * b;
 
 /**
  * Raise value to a positive integer power by repeated squaring.
@@ -15,7 +13,7 @@ const multiplicationOperator = function(a, b) {
  *   If mul is not set, defaults to 1.
  * @return {*}
  */
-const fastPower = function(base, power, mul, identity) {
+const fastPower = (base, power, mul, identity) => {
   if (mul === undefined) {
     mul = multiplicationOperator;
     identity = 1;
@@ -34,7 +32,7 @@ const fastPower = function(base, power, mul, identity) {
 
   // Iterative form of the algorithm avoids checking the same thing twice.
   let result;
-  const multiplyBy = function(value) {
+  const multiplyBy = value => {
     result = (result === undefined) ? value : mul(result, value);
   };
   for (let factor = base; power; power >>>= 1, factor = mul(factor, factor)) {

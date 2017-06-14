@@ -7,7 +7,7 @@
 /**
  * Implementation via dynamic programming
  */
-const longestCommonSubstring = function(s1, s2) {
+const longestCommonSubstring = (s1, s2) => {
   // Multidimensional array for dynamic programming algorithm
   const cache = new Array(s1.length + 1);
 

@@ -3,8 +3,8 @@
 const FenwickTree = require('../..').DataStructures.FenwickTree;
 const assert = require('assert');
 
-describe('FenwickTree', function() {
-  it('should allow prefix queries', function() {
+describe('FenwickTree', () => {
+  it('should allow prefix queries', () => {
     const tree = new FenwickTree(10);
     tree.adjust(5, 42);
     tree.adjust(7, 43);
@@ -23,7 +23,7 @@ describe('FenwickTree', function() {
     assert.equal(tree.prefixSum(10), 42 + 43 + 44);
   });
 
-  it('should allow range queries', function() {
+  it('should allow range queries', () => {
     const tree = new FenwickTree(10);
     tree.adjust(5, 42);
     tree.adjust(7, 43);

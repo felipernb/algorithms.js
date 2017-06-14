@@ -3,14 +3,14 @@
 const Stack = require('../..').DataStructures.Stack;
 const assert = require('assert');
 
-describe('Stack', function() {
-  it('should start empty', function() {
+describe('Stack', () => {
+  it('should start empty', () => {
     const s = new Stack();
     assert(s.isEmpty());
     assert.equal(s.length, 0);
   });
 
-  it('should implement a LIFO logic', function() {
+  it('should implement a LIFO logic', () => {
     const s = new Stack();
     s.push(1);
     s.push(2);
@@ -24,7 +24,7 @@ describe('Stack', function() {
   });
 
   it('should allow me to peek at the top element in' +
-    ' the stack without popping it', function() {
+    ' the stack without popping it', () => {
     const s = new Stack();
     s.push(1);
     s.push(2);

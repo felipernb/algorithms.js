@@ -13,9 +13,7 @@ function Graph(directed) {
 }
 
 // Normalize vertex labels as strings
-const _ = function(v) {
-  return String(v);
-};
+const _ = v => String(v);
 
 Graph.prototype.addVertex = function(v) {
   v = _(v);
@@ -57,12 +55,12 @@ Graph.prototype.reverse = function() {
   const self = this;
   const r = new Graph(this.directed);
 
-  self.vertices.forEach(function(v) {
+  self.vertices.forEach(v => {
     r.addVertex(v);
   });
 
-  self.vertices.forEach(function(a) {
-    self.neighbors(a).forEach(function(b) {
+  self.vertices.forEach(a => {
+    self.neighbors(a).forEach(b => {
       r.addEdge(b, a, self.edge(a, b));
     });
   });

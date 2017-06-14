@@ -4,7 +4,7 @@ const Queue = require('../../data_structures/queue.js');
 /**
  * Breadth-first search for binary trees
  */
-const bfs = function(root, callback) {
+const bfs = (root, callback) => {
   const q = new Queue();
   q.push(root);
   let node;

@@ -31,7 +31,7 @@ function HashTable(initialCapacity) {
  * n is the length of the string, and ^ indicates exponentiation.
  * (The hash value of the empty string is zero.)
  */
-HashTable.prototype.hash = function(s) {
+HashTable.prototype.hash = s => {
   if (typeof s !== 'string') s = JSON.stringify(s);
   let hash = 0;
   for (let i = 0; i < s.length; i++) {
@@ -85,7 +85,7 @@ HashTable.prototype._position = function(key) {
   return Math.abs(this.hash(key)) % this.capacity;
 };
 
-HashTable.prototype._findInList = function(list, key) {
+HashTable.prototype._findInList = (list, key) => {
   let node = list && list.head;
   while (node) {
     if (node.value.k === key) return node;
@@ -108,8 +108,8 @@ HashTable.prototype._increaseCapacity = function() {
 };
 
 HashTable.prototype.forEach = function(fn) {
-  const applyFunction = function(linkedList) {
-    linkedList.forEach(function(elem) {
+  const applyFunction = linkedList => {
+    linkedList.forEach(elem => {
       fn(elem.k, elem.v);
     });
   };

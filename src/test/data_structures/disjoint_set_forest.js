@@ -3,9 +3,9 @@
 const DisjointSetForest = require('../..').DataStructures.DisjointSetForest;
 const assert = require('assert');
 
-describe('Disjoint Set Forest', function() {
+describe('Disjoint Set Forest', () => {
   it('should decide if two elements belong to the same subset or not',
-     function() {
+     () => {
        const forest = new DisjointSetForest();
        assert(!forest.sameSubset(1, 2));
        forest.merge(1, 2);
@@ -17,10 +17,10 @@ describe('Disjoint Set Forest', function() {
        assert(!forest.sameSubset(1, 5));
      });
 
-  it('should maintain subset sizes', function() {
+  it('should maintain subset sizes', () => {
     const forest = new DisjointSetForest();
-    const assertSizesCorrect = function(elements, size) {
-      elements.forEach(function(element) {
+    const assertSizesCorrect = (elements, size) => {
+      elements.forEach(element => {
         assert.equal(forest.size(element), size);
       });
     };
@@ -37,11 +37,11 @@ describe('Disjoint Set Forest', function() {
     assertSizesCorrect([0, 1, 2, 3, 4], 5);
   });
 
-  it('should point all elements to the same root', function() {
+  it('should point all elements to the same root', () => {
     const forest = new DisjointSetForest();
     const assertSameRoot = function(element) {
       const root = forest.root(element);
-      [].slice.call(arguments, 1).forEach(function(element) {
+      [].slice.call(arguments, 1).forEach(element => {
         assert.equal(forest.root(element), root);
       });
     };
@@ -55,13 +55,9 @@ describe('Disjoint Set Forest', function() {
     assertSameRoot(0, 1, 2, 3, 4, 5);
   });
 
-  it('should not choose the root element outside the subset', function() {
+  it('should not choose the root element outside the subset', () => {
     const forest = new DisjointSetForest();
-    const assertInside = function(value, set) {
-      return set.some(function(element) {
-        return element === value;
-      });
-    };
+    const assertInside = (value, set) => set.some(element => element === value);
     assert.equal(forest.root(0), 0);
     forest.merge(0, 1);
     assertInside(forest.root(0), [0, 1]);

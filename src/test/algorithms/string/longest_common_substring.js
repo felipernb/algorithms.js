@@ -5,8 +5,8 @@ const filename = 'longest_common_substring';
 const longestCommonSubstring = require(directory + filename);
 const assert = require('assert');
 
-describe('Longest common substring', function() {
-  it('should return the longest common substring of two strings', function() {
+describe('Longest common substring', () => {
+  it('should return the longest common substring of two strings', () => {
     assert.equal('', longestCommonSubstring('', ''));
     assert.equal('', longestCommonSubstring('', 'aaa'));
     assert.equal('', longestCommonSubstring('aaa', ''));

@@ -1,7 +1,7 @@
 'use strict';
 const Comparator = require('../../util/comparator');
 
-const merge = function(a, b, comparator) {
+const merge = (a, b, comparator) => {
   let i = 0;
   let j = 0;
   const result = [];
@@ -19,7 +19,7 @@ const merge = function(a, b, comparator) {
  * Merge sort
  * O(n.lgn)
  */
-const mergeSortInit = function(a, compareFn) {
+const mergeSortInit = (a, compareFn) => {
   const comparator = new Comparator(compareFn);
 
   return (function mergeSort(a) {

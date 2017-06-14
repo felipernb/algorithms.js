@@ -11,7 +11,7 @@ const Graph = require('../../data_structures/graph');
  * @return {Graph} Minimum spanning tree or forest
  *   (depending on whether input graph is connected itself).
  */
-const prim = function(graph) {
+const prim = graph => {
   if (graph.directed) {
     throw new Error('Can\'t build MST of a directed graph.');
   }
@@ -20,11 +20,11 @@ const prim = function(graph) {
   const parent = Object.create(null);
 
   const q = new PriorityQueue();
-  graph.vertices.forEach(function(vertex) {
+  graph.vertices.forEach(vertex => {
     q.insert(vertex, Infinity);
   });
 
-  const relax = function(vertex, neighbor) {
+  const relax = (vertex, neighbor) => {
     const weight = graph.edge(vertex, neighbor);
     if (weight < q.priority(neighbor)) {
       q.changePriority(neighbor, weight);

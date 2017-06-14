@@ -10,7 +10,7 @@
  *
  * @return {Number, Number}
  */
-const extEuclid = function(a, b) {
+const extEuclid = (a, b) => {
   let s = 0;
   let oldS = 1;
   let t = 1;

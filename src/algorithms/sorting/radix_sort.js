@@ -13,7 +13,7 @@
  * @param Array
  * @return Array
  */
-const auxiliaryCountingSort = function(array, mod) {
+const auxiliaryCountingSort = (array, mod) => {
   const length = array.length;
   const bucket = [];
   let i;
@@ -50,7 +50,7 @@ const auxiliaryCountingSort = function(array, mod) {
  * @return Integer if array non-empty
  *         Undefined otherwise
  */
-const maximumKey = function(a) {
+const maximumKey = a => {
   let max;
   for (let i = 1; i < a.length; i++) {
     if (max === undefined || a[i].key > max) {
@@ -71,7 +71,7 @@ const maximumKey = function(a) {
  * @param Array
  * @return Array
  */
-const radixSort = function(array) {
+const radixSort = array => {
   const max = maximumKey(array);
   const digitsMax = (max === 0 ? 1 :
     1 + Math.floor(Math.log(max) / Math.log(10))); // log base 10

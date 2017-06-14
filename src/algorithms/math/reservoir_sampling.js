@@ -7,7 +7,7 @@
  * @param {number} sampleSize
  * @return {Array}
  */
-const reservoirSampling = function(array, sampleSize) {
+const reservoirSampling = (array, sampleSize) => {
   if (sampleSize > array.length) {
     throw new Error('Sample size exceeds the total number of elements.');
   }

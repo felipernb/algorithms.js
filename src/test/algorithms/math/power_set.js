@@ -9,7 +9,7 @@ const assert = require('assert');
  */
 function testArrayEqual(a, b) {
   let arrayEqual = true;
-  a.forEach(function(elem, index) {
+  a.forEach((elem, index) => {
     if (a[index] !== b[index]) {
       arrayEqual = false;
     }
@@ -22,7 +22,7 @@ function testArrayEqual(a, b) {
  */
 function testArrayInArray(a, b) {
   let arrayInArray = false;
-  b.forEach(function(array) {
+  b.forEach(array => {
     if (testArrayEqual(a, array)) {
       arrayInArray = true;
     }
@@ -30,9 +30,9 @@ function testArrayInArray(a, b) {
   return arrayInArray;
 }
 
-describe('Power set', function() {
-  describe('#iterative()', function() {
-    it('should return the right elements of power set', function() {
+describe('Power set', () => {
+  describe('#iterative()', () => {
+    it('should return the right elements of power set', () => {
       const zeroElementTest = powerSet([]);
       assert(zeroElementTest.length === 0);
 
@@ -81,8 +81,8 @@ describe('Power set', function() {
     });
   });
 
-  describe('#recursive()', function() {
-    it('should return the right elements of power set', function() {
+  describe('#recursive()', () => {
+    it('should return the right elements of power set', () => {
       const zeroElementTest = powerSet.recursive([]);
       assert(zeroElementTest.length === 0);
 

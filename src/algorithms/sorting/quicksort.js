@@ -4,7 +4,7 @@ const Comparator = require('../../util/comparator');
 /**
  * Swaps two elements in the array
  */
-const swap = function(array, x, y) {
+const swap = (array, x, y) => {
   const tmp = array[y];
   array[y] = array[x];
   array[x] = tmp;
@@ -17,7 +17,7 @@ const swap = function(array, x, y) {
  *
  * @return Number the positon of the pivot
  */
-const partition = function(a, comparator, lo, hi) {
+const partition = (a, comparator, lo, hi) => {
   // pick a random element, swap with the rightmost and
   // use it as pivot
   swap(a, Math.floor(Math.random() * (hi - lo)) + lo, hi);
@@ -41,7 +41,7 @@ const partition = function(a, comparator, lo, hi) {
  * Quicksort recursively sorts parts of the array in
  * O(n.lg n)
  */
-const quicksortInit = function(array, comparatorFn) {
+const quicksortInit = (array, comparatorFn) => {
   const comparator = new Comparator(comparatorFn);
 
   return (function quicksort(array, lo, hi) {

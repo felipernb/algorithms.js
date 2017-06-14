@@ -22,7 +22,7 @@ function Node(value, left, right, parent, height) {
  * Calculates the height of a node based on height
  * property of all his children.
  */
-AVLTree.prototype.getNodeHeight = function(node) {
+AVLTree.prototype.getNodeHeight = node => {
   let height = 1;
   if (node.left !== null && node.right !== null) {
     height = Math.max(node.left.height, node.right.height) + 1;
@@ -37,7 +37,7 @@ AVLTree.prototype.getNodeHeight = function(node) {
 /**
  * Verifies if the given node is balanced.
  */
-AVLTree.prototype.isNodeBalanced = function(node) {
+AVLTree.prototype.isNodeBalanced = node => {
   let isBalanced = true;
 
   if (node.left !== null && node.right !== null) {
@@ -54,7 +54,7 @@ AVLTree.prototype.isNodeBalanced = function(node) {
  * When a removal happens, some nodes need to be
  * restructured. Gets and return these nodes.
  */
-AVLTree.prototype.getNodesToRestructureAfterRemove = function(traveledNodes) {
+AVLTree.prototype.getNodesToRestructureAfterRemove = traveledNodes => {
   // z is last traveled node - imbalance found at z
   const zIndex = traveledNodes.length - 1;
   const z = traveledNodes[zIndex];
@@ -94,7 +94,7 @@ AVLTree.prototype.getNodesToRestructureAfterRemove = function(traveledNodes) {
  * When a insertion happens, some nodes need to be
  * restructured. Gets and return these nodes.
  */
-AVLTree.prototype.getNodesToRestructureAfterInsert = function(traveledNodes) {
+AVLTree.prototype.getNodesToRestructureAfterInsert = traveledNodes => {
   // z is last traveled node - imbalance found at z
   const zIndex = traveledNodes.length - 1;
   const z = traveledNodes[zIndex];

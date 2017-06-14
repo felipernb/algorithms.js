@@ -3,7 +3,7 @@ const Comparator = require('../../util/comparator');
 /**
  * shell sort  worst:O(n lg n)  best:O(n)
  */
-const shellSort = function(array, comparatorFn) {
+const shellSort = (array, comparatorFn) => {
   const comparator = new Comparator(comparatorFn);
   let gap = Math.floor(array.length / 2);
 

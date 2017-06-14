@@ -3,9 +3,9 @@
 const levenshtein = require('../../..').String.levenshtein;
 const assert = require('assert');
 
-describe('Levenshtein', function() {
+describe('Levenshtein', () => {
   it('should calculate the minimal edit distance between two words',
-    function() {
+    () => {
       assert.equal(levenshtein('', ''), 0);
       assert.equal(levenshtein('a', ''), 1);
       assert.equal(levenshtein('', 'a'), 1);

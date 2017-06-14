@@ -11,7 +11,7 @@ const Graph = require('../../data_structures/graph');
  * @return {Graph} Minimum spanning tree or forest
  *   (depending on whether input graph is connected itself).
  */
-const kruskal = function(graph) {
+const kruskal = graph => {
   if (graph.directed) {
     throw new Error('Can\'t build MST of a directed graph.');
   }
@@ -21,8 +21,8 @@ const kruskal = function(graph) {
   graph.vertices.forEach(mst.addVertex.bind(mst));
 
   const edges = [];
-  graph.vertices.forEach(function(vertex) {
-    graph.neighbors(vertex).forEach(function(neighbor) {
+  graph.vertices.forEach(vertex => {
+    graph.neighbors(vertex).forEach(neighbor => {
       // Compared as strings, loops intentionally omitted.
       if (vertex < neighbor) {
         edges.push({
@@ -33,9 +33,7 @@ const kruskal = function(graph) {
     });
   });
 
-  edges.sort(function(a, b) {
-    return a.weight - b.weight;
-  }).forEach(function(edge) {
+  edges.sort((a, b) => a.weight - b.weight).forEach(edge => {
     if (!connectedComponents.sameSubset(edge.ends[0], edge.ends[1])) {
       mst.addEdge(edge.ends[0], edge.ends[1], edge.weight);
       connectedComponents.merge(edge.ends[0], edge.ends[1]);

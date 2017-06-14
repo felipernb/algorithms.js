@@ -5,9 +5,9 @@ const spfa = root.Graph.SPFA;
 const Graph = root.DataStructures.Graph;
 const assert = require('assert');
 
-describe('SPFA Algorithm', function() {
+describe('SPFA Algorithm', () => {
   it('should return the shortest paths to all nodes from a given origin',
-    function() {
+    () => {
       const graph = new Graph(true);
 
       graph.addEdge('a', 'b', -1);

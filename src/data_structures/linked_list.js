@@ -10,9 +10,7 @@ function LinkedList() {
 
   // Read-only length property
   Object.defineProperty(this, 'length', {
-    get: function() {
-      return this._length;
-    }.bind(this)
+    get: () => this._length
   });
 }
 

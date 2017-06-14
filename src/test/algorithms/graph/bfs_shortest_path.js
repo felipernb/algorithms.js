@@ -5,9 +5,9 @@ const bfsShortestPath = root.Graph.bfsShortestPath;
 const Graph = root.DataStructures.Graph;
 const assert = require('assert');
 
-describe('BFS Shortest Path Algorithm', function() {
+describe('BFS Shortest Path Algorithm', () => {
   it('should return the shortest paths to all nodes from a given origin',
-     function() {
+     () => {
        const graph = new Graph();
        graph.addEdge(0, 1);
        graph.addEdge(1, 2);

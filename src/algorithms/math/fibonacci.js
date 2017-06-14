@@ -15,9 +15,7 @@ const power = require('./fast_power');
   * @param Number
   * @return Number
   */
-const fibExponential = function(n) {
-  return n < 2 ? n : fibExponential(n - 1) + fibExponential(n - 2);
-};
+const fibExponential = n => n < 2 ? n : fibExponential(n - 1) + fibExponential(n - 2);
 
 /**
   * O(n) in time, O(1) in space and doesn't use recursion
@@ -25,7 +23,7 @@ const fibExponential = function(n) {
   * @param Number
   * @return Number
   */
-const fibLinear = function(n) {
+const fibLinear = n => {
   let fibNMinus2 = 0;
   let fibNMinus1 = 1;
   let fib = n;
@@ -43,10 +41,10 @@ const fibLinear = function(n) {
   * @param Number
   * @return Number
   */
-const fibWithMemoization = (function() {
+const fibWithMemoization = ((() => {
   const cache = [0, 1];
 
-  const fib = function(n) {
+  const fib = n => {
     if (cache[n] === undefined) {
       cache[n] = fib(n - 1) + fib(n - 2);
     }
@@ -54,7 +52,7 @@ const fibWithMemoization = (function() {
   };
 
   return fib;
-})();
+}))();
 
 /**
   * Implementation using Binet's formula with the rounding trick.
@@ -63,7 +61,7 @@ const fibWithMemoization = (function() {
   * @param Number
   * @return Number
   */
-const fibDirect = function(number) {
+const fibDirect = number => {
   const phi = (1 + Math.sqrt(5)) / 2;
   return Math.floor(Math.pow(phi, number) / Math.sqrt(5) + 0.5);
 };
@@ -75,16 +73,14 @@ const fibDirect = function(number) {
   * @param Number
   * @return Number
   */
-const fibLogarithmic = function(number) {
+const fibLogarithmic = number => {
   // Transforms [f_1, f_0] to [f_2, f_1] and so on.
   const nextFib = [[1, 1], [1, 0]];
 
-  const matrixMultiply = function(a, b) {
-    return [[a[0][0] * b[0][0] + a[0][1] * b[1][0],
-             a[0][0] * b[0][1] + a[0][1] * b[1][1]],
-            [a[1][0] * b[0][0] + a[1][1] * b[1][0],
-             a[1][0] * b[0][1] + a[1][1] * b[1][1]]];
-  };
+  const matrixMultiply = (a, b) => [[a[0][0] * b[0][0] + a[0][1] * b[1][0],
+           a[0][0] * b[0][1] + a[0][1] * b[1][1]],
+          [a[1][0] * b[0][0] + a[1][1] * b[1][0],
+           a[1][0] * b[0][1] + a[1][1] * b[1][1]]];
 
   const transform = power(nextFib, number, matrixMultiply, [[1, 0], [0, 1]]);
 
