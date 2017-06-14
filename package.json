@@ -12,7 +12,6 @@
     "lint",
     "test"
   ],
-  "dependencies": {},
   "devDependencies": {
     "coveralls": "^2.11.4",
     "eslint": "^4.0.0",

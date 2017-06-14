@@ -30,7 +30,7 @@ const abcMultiply = (a, b) => {
 };
 
 describe('Fast Power', () => {
-  it('should correctly raise numbers to positive integer powers', () => {
+  it('raise numbers to positive integer powers', () => {
     assert.equal(power(2, 5), 32);
     assert.equal(power(32, 1), 32);
     assert.equal(power(3, 7), Math.pow(3, 7));
@@ -41,7 +41,7 @@ describe('Fast Power', () => {
     assert.equal(power(1, 10000), 1);
   });
 
-  it('should raise an error if the power is not a nonnegative integer', () => {
+  it('raises an error if the power is not a nonnegative integer', () => {
     // It is not clear how to handle these cases
     // when custom multiplication is also supplied.
     assert.throws(power.bind(null, 7, -2));
@@ -49,7 +49,7 @@ describe('Fast Power', () => {
     assert.throws(power.bind(null, Math.PI, Math.E));
   });
 
-  it('should accept custom multiplication functions', () => {
+  it('accepts custom multiplication functions', () => {
     // Math.pow is basically useless here.
 
     assert.equal(power(0, 0, multiplyModulo(5), 1), 1);
@@ -66,7 +66,7 @@ describe('Fast Power', () => {
   });
 
   it(
-    'should raise an error if the power is zero but no identity value given' +
+    'raise an error if the power is zero but no identity value given' +
       ' (custom multiplication)',
     () => {
       assert.throws(power.bind(null, 0, 0, multiplyModulo(5)));

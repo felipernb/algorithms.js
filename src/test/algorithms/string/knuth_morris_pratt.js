@@ -2,7 +2,7 @@ const knuthMorrisPratt = require('../../..').String.knuthMorrisPratt;
 const assert = require('assert');
 
 describe('Knuth-Morris-Pratt', () => {
-  it('should verify if a pattern is contained in some text (or array)', () => {
+  it('verifies if a pattern is contained in some text (or array)', () => {
     const text =
       'A string matching algorithm wants to find the starting' +
       'index m in string S[] that matches the search word W[].The most' +

@@ -24,7 +24,7 @@ describe('Breadth First Search', () => {
 
   const callbackGenerator = a => n => a.push(n);
 
-  it('should return the items by level', () => {
+  it('returns the items by level', () => {
     const a = [];
     bfs(bst.root, callbackGenerator(a));
     assert.deepEqual(a, [4, 2, 8, 1, 3, 5, 10, 0, 2.5, 100]);

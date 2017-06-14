@@ -5,6 +5,8 @@ module.exports = {
   knuthMorrisPratt: require('./algorithms/string/knuth_morris_pratt'),
   huffman: require('./algorithms/string/huffman'),
   hamming: require('./algorithms/string/hamming'),
-  longestCommonSubsequence: require('./algorithms/string/longest_common_subsequence'),
-  longestCommonSubstring: require('./algorithms/string/longest_common_substring')
+  longestCommonSubsequence:
+    require('./algorithms/string/longest_common_subsequence'),
+  longestCommonSubstring:
+    require('./algorithms/string/longest_common_substring')
 };

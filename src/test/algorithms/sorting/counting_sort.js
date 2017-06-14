@@ -26,7 +26,7 @@ let array = [
 ];
 
 describe('Counting Sort', () => {
-  it('should sort the given array', () => {
+  it('sorts the given array', () => {
     array = countingSort(array);
 
     // Asserts that the array is truly sorted

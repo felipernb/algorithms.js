@@ -30,7 +30,7 @@ const permutations = (start, compareFn) => {
 };
 
 describe('Next Permutation', () => {
-  it('should return immediately following permutation', () => {
+  it('returns immediately following permutation', () => {
     assert.deepEqual(permutations([1, 2]), [[1, 2], [2, 1]]);
     assert.deepEqual(permutations([1, 2, 2]), [
       [1, 2, 2],
@@ -41,7 +41,7 @@ describe('Next Permutation', () => {
     assert.deepEqual(permutations([]), [[]]);
   });
 
-  it('should generate all N! permutations if the elements are distinct', () => {
+  it('generate all N! permutations if the elements are distinct', () => {
     [4, 5, 6].forEach(size => {
       let count = 0;
       const perm = range(size);
@@ -52,7 +52,7 @@ describe('Next Permutation', () => {
     });
   });
 
-  it('should support custom compare functions', () => {
+  it('supports custom compare functions', () => {
     const reverseComparator = new Comparator();
     reverseComparator.reverse();
     const reverseCompareFn = reverseComparator.compare;

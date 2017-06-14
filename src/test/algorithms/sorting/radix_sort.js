@@ -23,7 +23,7 @@ const fourthObject = {
 };
 
 describe('Radix Sort', () => {
-  it('should sort the given array', () => {
+  it('sorts the given array', () => {
     const sorted = radixSort([
       thirdObject,
       fourthObject,

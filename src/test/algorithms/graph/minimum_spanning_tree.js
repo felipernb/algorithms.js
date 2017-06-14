@@ -114,7 +114,7 @@ describe('Minimum Spanning Tree', () => {
   };
 
   const testMstAlgorithm = mst => {
-    it('should find a minimum spanning tree', () => {
+    it('finds a minimum spanning tree', () => {
       const graph = new Graph(false);
       graph.addEdge(1, 2, 1);
       graph.addEdge(1, 4, 2);
@@ -152,7 +152,7 @@ describe('Minimum Spanning Tree', () => {
       assert(isMinimumSpanningForest(mst(graph), graph, -100));
     });
 
-    it('should find a minimum spaning forest if the graph is not connected', () => {
+    it('finds a minimum spaning forest if the graph is not connected', () => {
       const graph = new Graph(false);
       graph.addVertex(1);
       graph.addVertex(2);
@@ -177,7 +177,7 @@ describe('Minimum Spanning Tree', () => {
       assert(isMinimumSpanningForest(mst(graph), graph, -200, 2));
     });
 
-    it('should throw an error if the graph is directed', () => {
+    it('throws an error if the graph is directed', () => {
       const directedGraph = new Graph(true);
       directedGraph.addEdge('Rock', 'Hard Place');
       assert.throws(mst.bind(null, directedGraph));

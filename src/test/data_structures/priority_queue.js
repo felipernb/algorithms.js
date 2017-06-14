@@ -2,7 +2,7 @@ const PriorityQueue = require('../..').DataStructures.PriorityQueue;
 const assert = require('assert');
 
 describe('Min Priority Queue', () => {
-  it('should always return the element with the lowest priority', () => {
+  it('always returns the element with the lowest priority', () => {
     const q = new PriorityQueue();
     assert(q.isEmpty());
     q.insert('a', 10);
@@ -50,7 +50,7 @@ describe('Min Priority Queue', () => {
     assert.equal(q.extract(), 'b');
   });
 
-  it('should be possible to change the priority of an item', () => {
+  it('is possible to change the priority of an item', () => {
     const q = new PriorityQueue({
       a: 10,
       b: 2091,
@@ -76,7 +76,7 @@ describe('Min Priority Queue', () => {
   });
 
   it(
-    'should just update the priority when trying to insert an element that ' +
+    'just updates the priority when trying to insert an element that ' +
       ' already exists',
     () => {
       const q = new PriorityQueue({

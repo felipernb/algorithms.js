@@ -2,13 +2,13 @@ const hamming = require('../../..').String.hamming;
 const assert = require('assert');
 
 describe('Hamming distance', () => {
-  it('should raise an error if the inputs are not equal lengths', () => {
+  it('raises an error if the inputs are not equal lengths', () => {
     assert.throws(() => {
       hamming('abcde', '1234');
     });
   });
 
-  it('should return the correct the correct distances', () => {
+  it('returns the correct the correct distances', () => {
     const inputs = [
       {a: 'karolin', b: 'kathrin', expected: 3},
       {a: 'karolin', b: 'kerstin', expected: 3},

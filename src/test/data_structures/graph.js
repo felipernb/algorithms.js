@@ -2,7 +2,7 @@ const Graph = require('../..').DataStructures.Graph;
 const assert = require('assert');
 
 describe('Graph - Adjacency list', () => {
-  it('should be directed by default', () => {
+  it('is directed by default', () => {
     let g = new Graph();
     assert(g.directed);
 
@@ -13,7 +13,7 @@ describe('Graph - Adjacency list', () => {
     assert(g.directed);
   });
 
-  it('should default weight 1 for edges', () => {
+  it('defaults weight 1 for edges', () => {
     const g = new Graph();
     g.addVertex('a');
     g.addVertex('b');
@@ -21,15 +21,19 @@ describe('Graph - Adjacency list', () => {
     assert.strictEqual(g.edge('a', 'b'), 1);
   });
 
-  it('should create the vertex if an edge is inserted and vertex doesnt exist', () => {
-    const g = new Graph();
-    g.addEdge('a', 'b');
-    assert.equal(g.vertices.size, 2);
-    assert(g.vertices.contains('a'));
-    assert(g.vertices.contains('b'));
-  });
+  it(
+    'creates the vertex if an edge is inserted and ' +
+      'the vertex doesn\'t exist',
+    () => {
+      const g = new Graph();
+      g.addEdge('a', 'b');
+      assert.equal(g.vertices.size, 2);
+      assert(g.vertices.contains('a'));
+      assert(g.vertices.contains('b'));
+    }
+  );
 
-  it('should sum multiple edges between the same vertices', () => {
+  it('sums multiple edges between the same vertices', () => {
     const g = new Graph();
     g.addEdge('a', 'b', 10);
     assert.equal(g.edge('a', 'b'), 10);
@@ -37,7 +41,7 @@ describe('Graph - Adjacency list', () => {
     assert.equal(g.edge('a', 'b'), 14);
   });
 
-  it('should have edges in both directions if undirected', () => {
+  it('has edges in both directions if undirected', () => {
     const g = new Graph(false);
     g.addVertex('a');
     g.addVertex('b');
@@ -60,7 +64,7 @@ describe('Graph - Adjacency list', () => {
     assert.equal(g.edge('b', 'a'), 12);
   });
 
-  it('should respect direction of the edges in directed graphs', () => {
+  it('respects direction of the edges in directed graphs', () => {
     const g = new Graph();
     g.addVertex('a');
     g.addVertex('b');
@@ -83,7 +87,7 @@ describe('Graph - Adjacency list', () => {
     assert.equal(g.edge('b', 'a'), 2);
   });
 
-  it('should have reversed edges with same weight for a reverse directed graph', () => {
+  it('has reversed edges with same weight for a reverse directed graph', () => {
     const g = new Graph();
     g.addVertex('a');
     g.addVertex('b');
@@ -108,7 +112,7 @@ describe('Graph - Adjacency list', () => {
     assert.equal(r.edge('b', 'a'), 10);
   });
 
-  it('should have a list of vertices', () => {
+  it('has a list of vertices', () => {
     const g = new Graph();
     assert.equal(g.vertices.size, 0);
     g.addVertex('a');
@@ -120,7 +124,7 @@ describe('Graph - Adjacency list', () => {
     assert(g.vertices.contains('c'));
   });
 
-  it('should not allow repeated vertices', () => {
+  it('does not allow repeated vertices', () => {
     const g = new Graph();
     g.addVertex('a');
     assert.throws(() => {
@@ -128,7 +132,7 @@ describe('Graph - Adjacency list', () => {
     });
   });
 
-  it('should return a list of neighbors of a vertex', () => {
+  it('returns a list of neighbors of a vertex', () => {
     const g = new Graph();
     g.addVertex('a');
     g.addVertex('b');
@@ -143,7 +147,7 @@ describe('Graph - Adjacency list', () => {
     assert.deepEqual(g.neighbors('c'), ['d']);
   });
 
-  it('should return the weight of the edge', () => {
+  it('returns the weight of the edge', () => {
     const g = new Graph();
     g.addVertex('a');
     g.addVertex('b');
@@ -158,7 +162,7 @@ describe('Graph - Adjacency list', () => {
     assert.equal(g.edge('c', 'd'), 2);
   });
 
-  it('should not "inherit" edges from Object.prototype', () => {
+  it('does not "inherit" edges from Object.prototype', () => {
     const g = new Graph();
     g.addEdge('a', 'b');
 

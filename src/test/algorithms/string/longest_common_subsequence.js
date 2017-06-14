@@ -4,7 +4,7 @@ const longestCommonSubsequence = require(directory + filename);
 const assert = require('assert');
 
 describe('Longest common subsequence', () => {
-  it('should return the longest common subsequence of ' + 'two strings', () => {
+  it('returns the longest common subsequence of ' + 'two strings', () => {
     assert.equal('', longestCommonSubsequence('', ''));
     assert.equal('', longestCommonSubsequence('', 'aaa'));
     assert.equal('', longestCommonSubsequence('aaa', ''));

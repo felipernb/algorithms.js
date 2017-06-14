@@ -15,7 +15,7 @@ describe('Depth First Search Algorithm', () => {
     graph.addEdge('five', 'six');
   });
 
-  it('should visit only the nodes reachable from the start node (inclusive)', () => {
+  it('visits only the nodes reachable from the start node (inclusive)', () => {
     const enter = [];
     const leave = [];
     let numEdgeTails = 0;
@@ -49,7 +49,7 @@ describe('Depth First Search Algorithm', () => {
     assert.equal(numEdgeHeads, 4);
   });
 
-  it('should allow user-defined allowTraversal rules', () => {
+  it('allows user-defined allowTraversal rules', () => {
     const seen = new Graph(graph.directed);
     graph.vertices.forEach(seen.addVertex.bind(seen));
     const path = ['one'];

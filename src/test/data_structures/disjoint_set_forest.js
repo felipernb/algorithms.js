@@ -2,7 +2,7 @@ const DisjointSetForest = require('../..').DataStructures.DisjointSetForest;
 const assert = require('assert');
 
 describe('Disjoint Set Forest', () => {
-  it('should decide if two elements belong to the same subset or not', () => {
+  it('decides if two elements belong to the same subset or not', () => {
     const forest = new DisjointSetForest();
     assert(!forest.sameSubset(1, 2));
     forest.merge(1, 2);
@@ -14,7 +14,7 @@ describe('Disjoint Set Forest', () => {
     assert(!forest.sameSubset(1, 5));
   });
 
-  it('should maintain subset sizes', () => {
+  it('maintains subset sizes', () => {
     const forest = new DisjointSetForest();
     const assertSizesCorrect = (elements, size) => {
       elements.forEach(element => {
@@ -34,7 +34,7 @@ describe('Disjoint Set Forest', () => {
     assertSizesCorrect([0, 1, 2, 3, 4], 5);
   });
 
-  it('should point all elements to the same root', () => {
+  it('points all elements to the same root', () => {
     const forest = new DisjointSetForest();
     const assertSameRoot = function(element, ...rest) {
       const root = forest.root(element);
@@ -52,7 +52,7 @@ describe('Disjoint Set Forest', () => {
     assertSameRoot(0, 1, 2, 3, 4, 5);
   });
 
-  it('should not choose the root element outside the subset', () => {
+  it('does not choose the root element outside the subset', () => {
     const forest = new DisjointSetForest();
     const assertInside = (value, set) => set.some(element => element === value);
     assert.equal(forest.root(0), 0);

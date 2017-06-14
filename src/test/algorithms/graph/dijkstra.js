@@ -4,7 +4,7 @@ const Graph = root.DataStructures.Graph;
 const assert = require('assert');
 
 describe('Dijkstra Algorithm', () => {
-  it('should return the shortest paths to all nodes from a given origin', () => {
+  it('returns the shortest paths to all nodes from a given origin', () => {
     const g = new Graph();
     g.addEdge('a', 'b', 5);
     g.addEdge('a', 'c', 10);

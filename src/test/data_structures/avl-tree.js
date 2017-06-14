@@ -3,11 +3,11 @@ const AVLTree = root.DataStructures.AVLTree;
 const assert = require('assert');
 
 describe('AVL Tree', () => {
-  it('should start with null root', () => {
+  it('starts with null root', () => {
     assert.equal(new AVLTree().root, null);
   });
 
-  it('should insert and single rotate (leftRight) properly', () => {
+  it('inserts and single rotate (leftRight) properly', () => {
     const avlTree = new AVLTree();
     avlTree.insert(9);
     avlTree.insert(3);
@@ -22,7 +22,7 @@ describe('AVL Tree', () => {
     assert.equal(avlTree.root.right.height, 1);
   });
 
-  it('should insert and single rotate (rightLeft) properly', () => {
+  it('inserts and single rotate (rightLeft) properly', () => {
     const avlTree = new AVLTree();
     avlTree.insert(50);
     avlTree.insert(75);
@@ -37,7 +37,7 @@ describe('AVL Tree', () => {
     assert.equal(avlTree.root.right.height, 1);
   });
 
-  it('should insert and double rotate (leftLeft) properly', () => {
+  it('inserts and double rotate (leftLeft) properly', () => {
     const avlTree = new AVLTree();
     avlTree.insert(50);
     avlTree.insert(25);
@@ -52,7 +52,7 @@ describe('AVL Tree', () => {
     assert.equal(avlTree.root.right.height, 1);
   });
 
-  it('should insert and double rotate (rightRight) properly', () => {
+  it('inserts and double rotate (rightRight) properly', () => {
     const avlTree = new AVLTree();
     avlTree.insert(50);
     avlTree.insert(75);
@@ -67,7 +67,7 @@ describe('AVL Tree', () => {
     assert.equal(avlTree.root.right.height, 1);
   });
 
-  it('should insert multiple nodes and balance properly (1)', () => {
+  it('inserts multiple nodes and balance properly (1)', () => {
     const avlTree = new AVLTree();
     avlTree.insert(30);
     avlTree.insert(15);
@@ -88,7 +88,7 @@ describe('AVL Tree', () => {
     assert.equal(avlTree.root.right.right.height, 1);
   });
 
-  it('should remove nodes and balance properly (2)', () => {
+  it('removes nodes and balance properly (2)', () => {
     const avlTree = new AVLTree();
     avlTree.insert(55);
     avlTree.insert(25);
@@ -105,7 +105,7 @@ describe('AVL Tree', () => {
     assert.equal(avlTree.root.right.height, 1);
   });
 
-  it('should always keep the tree balanced', () => {
+  it('keeps the tree always balanced', () => {
     const avlTree = new AVLTree();
 
     avlTree.insert(50);
@@ -193,101 +193,93 @@ describe('AVL Tree', () => {
     assert.equal(avlTree.root.right.right.value, 200);
   });
 
-  it(
-    'should return the parents before the children when ' +
-      'traversing in preorder',
-    () => {
-      const avlTree = new AVLTree();
+  it('returns parents before children when traversing in preorder', () => {
+    const avlTree = new AVLTree();
 
-      avlTree.insert(50);
-      avlTree.insert(100);
-      avlTree.insert(200);
-      avlTree.insert(1);
-      avlTree.insert(2);
-      avlTree.insert(75);
-      avlTree.insert(80);
-      avlTree.insert(4);
-      avlTree.insert(5);
-      avlTree.insert(6);
-      avlTree.insert(7);
-      avlTree.insert(20);
-      avlTree.insert(40);
-      avlTree.insert(30);
-      avlTree.insert(15);
+    avlTree.insert(50);
+    avlTree.insert(100);
+    avlTree.insert(200);
+    avlTree.insert(1);
+    avlTree.insert(2);
+    avlTree.insert(75);
+    avlTree.insert(80);
+    avlTree.insert(4);
+    avlTree.insert(5);
+    avlTree.insert(6);
+    avlTree.insert(7);
+    avlTree.insert(20);
+    avlTree.insert(40);
+    avlTree.insert(30);
+    avlTree.insert(15);
 
-      const expectedPreOrder = [
-        50,
-        5,
-        2,
-        1,
-        4,
-        20,
-        7,
-        6,
-        15,
-        30,
-        40,
-        100,
-        75,
-        80,
-        200
-      ];
-      const preOrder = [];
-      avlTree.preOrder(avlTree.root, n => {
-        preOrder.push(n.value);
-      });
-      assert.deepEqual(expectedPreOrder, preOrder);
-    }
-  );
+    const expectedPreOrder = [
+      50,
+      5,
+      2,
+      1,
+      4,
+      20,
+      7,
+      6,
+      15,
+      30,
+      40,
+      100,
+      75,
+      80,
+      200
+    ];
+    const preOrder = [];
+    avlTree.preOrder(avlTree.root, n => {
+      preOrder.push(n.value);
+    });
+    assert.deepEqual(expectedPreOrder, preOrder);
+  });
 
-  it(
-    'should return the children before the parents when ' +
-      'traversing in postorder',
-    () => {
-      const avlTree = new AVLTree();
+  it('returns children before parents when traversing in postorder', () => {
+    const avlTree = new AVLTree();
 
-      avlTree.insert(50);
-      avlTree.insert(100);
-      avlTree.insert(200);
-      avlTree.insert(1);
-      avlTree.insert(2);
-      avlTree.insert(75);
-      avlTree.insert(80);
-      avlTree.insert(4);
-      avlTree.insert(5);
-      avlTree.insert(6);
-      avlTree.insert(7);
-      avlTree.insert(20);
-      avlTree.insert(40);
-      avlTree.insert(30);
-      avlTree.insert(15);
+    avlTree.insert(50);
+    avlTree.insert(100);
+    avlTree.insert(200);
+    avlTree.insert(1);
+    avlTree.insert(2);
+    avlTree.insert(75);
+    avlTree.insert(80);
+    avlTree.insert(4);
+    avlTree.insert(5);
+    avlTree.insert(6);
+    avlTree.insert(7);
+    avlTree.insert(20);
+    avlTree.insert(40);
+    avlTree.insert(30);
+    avlTree.insert(15);
 
-      const expectedPostOrder = [
-        1,
-        4,
-        2,
-        6,
-        15,
-        7,
-        40,
-        30,
-        20,
-        5,
-        80,
-        75,
-        200,
-        100,
-        50
-      ];
-      const postOrder = [];
-      avlTree.postOrder(avlTree.root, n => {
-        postOrder.push(n.value);
-      });
-      assert.deepEqual(expectedPostOrder, postOrder);
-    }
-  );
+    const expectedPostOrder = [
+      1,
+      4,
+      2,
+      6,
+      15,
+      7,
+      40,
+      30,
+      20,
+      5,
+      80,
+      75,
+      200,
+      100,
+      50
+    ];
+    const postOrder = [];
+    avlTree.postOrder(avlTree.root, n => {
+      postOrder.push(n.value);
+    });
+    assert.deepEqual(expectedPostOrder, postOrder);
+  });
 
-  it('should return the sorted elements when traversing in order', () => {
+  it('returns the sorted elements when traversing in order', () => {
     const avlTree = new AVLTree();
     const a = [];
     let i;

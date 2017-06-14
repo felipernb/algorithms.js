@@ -4,7 +4,7 @@ const Graph = root.DataStructures.Graph;
 const assert = require('assert');
 
 describe('Floyd-Warshall Algorithm', () => {
-  it('should compute all-pairs shortest paths in the graph', () => {
+  it('computes all-pairs shortest paths in the graph', () => {
     const graph = new Graph();
     graph.addEdge('a', 'b', -2);
     graph.addEdge('b', 'c', -1);
@@ -73,7 +73,7 @@ describe('Floyd-Warshall Algorithm', () => {
     assert.deepEqual(result.path('a', 'y'), ['a', 'b', 'c', 'y']);
   });
 
-  it('should determine if the graph contains a negative-weighted cycle', () => {
+  it('determines if the graph contains a negative-weighted cycle', () => {
     const graph = new Graph();
     graph.addEdge('a', 'b', -2);
     graph.addEdge('b', 'c', -1);

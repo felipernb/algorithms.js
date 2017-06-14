@@ -23,7 +23,7 @@ describe('Huffman', () => {
     messages.push(characters.join(''));
   }
 
-  it('should decode previously encoded messages correctly', () => {
+  it('decodes previously encoded messages correctly', () => {
     messages.forEach(message => {
       const encoded = huffman.encode(message);
       const decoded = huffman.decode(encoded.encoding, encoded.value);
@@ -37,7 +37,7 @@ describe('Huffman', () => {
     });
   });
 
-  it('should raise an error if it fails to decode', () => {
+  it('raises an error if it fails to decode', () => {
     const badArgs = [[{}, '0'], [{}, [0]], [{a: '0', b: '10', c: '11'}, '001']];
     badArgs.forEach(args => {
       assert.throws(() => {
@@ -46,7 +46,7 @@ describe('Huffman', () => {
     });
   });
 
-  it('should encode sample strings in the expected manner', () => {
+  it('encodes sample strings in the expected manner', () => {
     assert.deepEqual(huffman.encode(''), {encoding: {}, value: ''});
     assert.deepEqual(huffman.encode('a'), {encoding: {a: '0'}, value: '0'});
     assert.deepEqual(huffman.encode('aaaaa'), {
@@ -64,7 +64,7 @@ describe('Huffman', () => {
     assert.equal(result.value.length, 32);
   });
 
-  it('should satisfy the entropy condition (H <= cost <= H+1)', () => {
+  it('satisfies the entropy condition (H <= cost <= H+1)', () => {
     messages.forEach(message => {
       const frequencies = message.split('').reduce((acc, char) => {
         acc[char] = (acc[char] || 0) + 1;

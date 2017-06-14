@@ -4,7 +4,7 @@ const assert = require('assert');
 
 describe('Find divisors', () => {
   describe('#Generic()', () => {
-    it('should return the divisors of the number', () => {
+    it('returns the divisors of the number', () => {
       assert.deepStrictEqual(findDivisors(-2), []);
       assert.deepStrictEqual(findDivisors(0), []);
       assert.deepStrictEqual(findDivisors(1), [1]);
@@ -28,7 +28,7 @@ describe('Find divisors', () => {
   });
 
   describe('#PairingUnsorted()', () => {
-    it('should return the divisors of the number', () => {
+    it('returns the divisors of the number', () => {
       assert.deepStrictEqual(findDivisors.pairingUnsorted(-2), []);
       assert.deepStrictEqual(findDivisors.pairingUnsorted(0), []);
       assert.deepStrictEqual(findDivisors.pairingUnsorted(1), [1]);
@@ -61,7 +61,7 @@ describe('Find divisors', () => {
   });
 
   describe('#PairingSorted()', () => {
-    it('should return the divisors of the number', () => {
+    it('returns the divisors of the number', () => {
       assert.deepStrictEqual(findDivisors.pairingSorted(-2), []);
       assert.deepStrictEqual(findDivisors.pairingSorted(0), []);
       assert.deepStrictEqual(findDivisors.pairingSorted(1), [1]);

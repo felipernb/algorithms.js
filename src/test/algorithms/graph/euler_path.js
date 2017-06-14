@@ -31,7 +31,7 @@ describe('Euler Path', () => {
     return graph;
   };
 
-  it('should compute Euler tour over the undirected graph', () => {
+  it('computes Euler tour over the undirected graph', () => {
     const graph = graphFromEdges(false, [
       [1, 2],
       [1, 5],
@@ -54,7 +54,7 @@ describe('Euler Path', () => {
     assert.equal(trail[0], trail.slice(-1)[0]);
   });
 
-  it('should compute Euler walk over the undirected graph', () => {
+  it('computes Euler walk over the undirected graph', () => {
     const graph = graphFromEdges(false, [
       [1, 2],
       [1, 5],
@@ -79,7 +79,7 @@ describe('Euler Path', () => {
     assert.equal(endpoints[1], 8);
   });
 
-  it('should compute Euler tour over the directed graph', () => {
+  it('computes Euler tour over the directed graph', () => {
     const graph = graphFromEdges(true, [
       [0, 1],
       [1, 2],
@@ -97,7 +97,7 @@ describe('Euler Path', () => {
     assert.equal(trail[0], trail.slice(-1)[0]);
   });
 
-  it('should compute Euler walk over the directed graph', () => {
+  it('computes Euler walk over the directed graph', () => {
     const graph = graphFromEdges(true, [
       [5, 0],
       [0, 2],
@@ -111,20 +111,20 @@ describe('Euler Path', () => {
     assert.deepEqual(trail, [5, 3, 1, 5, 0, 2, 4, 0]);
   });
 
-  it('should return single-vertex-trail for an isolated vertex', () => {
+  it('returns single-vertex-trail for an isolated vertex', () => {
     const graph = new Graph();
     graph.addVertex('loner');
     const trail = eulerPath(graph);
     assert.deepEqual(trail, ['loner']);
   });
 
-  it('should return empty trail for an empty graph', () => {
+  it('returns empty trail for an empty graph', () => {
     const graph = new Graph();
     const trail = eulerPath(graph);
     assert.deepEqual(trail, []);
   });
 
-  it('should raise an error if there is no Euler path', () => {
+  it('raises an error if there is no Euler path', () => {
     let graph = graphFromEdges(false, [[0, 1], [2, 3]]);
     assert.throws(eulerPath.bind(null, graph));
 

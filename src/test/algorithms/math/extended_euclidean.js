@@ -3,7 +3,7 @@ const extEuclid = math.extendedEuclidean;
 const assert = require('assert');
 
 describe('extEuclid', () => {
-  it('should calculate the solve to Bézout\'s identity', () => {
+  it('calculates the solve to Bézout\'s identity', () => {
     let solve = extEuclid(1, 0);
     assert.equal(solve.x, 1);
     assert.equal(solve.y, 0);

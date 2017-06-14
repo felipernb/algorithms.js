@@ -17,12 +17,12 @@ const validate = primalityTest => {
 
 describe('Primality Tests', () => {
   describe('#naiveTest()', () => {
-    it('should correctly determine whether a number is prime', () => {
+    it('determines whether a number is prime', () => {
       validate(primalityTests.naiveTest);
     });
   });
   describe('#trialDivisionTest()', () => {
-    it('should correctly determine whether a number is prime', () => {
+    it('determines whether a number is prime', () => {
       validate(primalityTests.trialDivisionTest);
     });
   });

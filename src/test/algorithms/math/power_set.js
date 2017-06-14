@@ -30,7 +30,7 @@ function testArrayInArray(a, b) {
 
 describe('Power set', () => {
   describe('#iterative()', () => {
-    it('should return the right elements of power set', () => {
+    it('returns the right elements of power set', () => {
       const zeroElementTest = powerSet([]);
       assert(zeroElementTest.length === 0);
 
@@ -80,7 +80,7 @@ describe('Power set', () => {
   });
 
   describe('#recursive()', () => {
-    it('should return the right elements of power set', () => {
+    it('returns the right elements of power set', () => {
       const zeroElementTest = powerSet.recursive([]);
       assert(zeroElementTest.length === 0);
 

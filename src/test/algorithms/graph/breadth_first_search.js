@@ -19,7 +19,7 @@ describe('Breadth-First Search', () => {
     graph.addEdge('alpha', 'omega');
   });
 
-  it('should visit reachable vertices in a breadth-first manner', () => {
+  it('visits reachable vertices in a breadth-first manner', () => {
     const enter = [];
     const leave = [];
     let lastEntered = null;
@@ -51,7 +51,7 @@ describe('Breadth-First Search', () => {
     assert.equal(enter[5], 3);
   });
 
-  it('should allow user-defined allowTraversal rules', () => {
+  it('allows user-defined allowTraversal rules', () => {
     const seen = new Graph(graph.directed);
     graph.vertices.forEach(seen.addVertex.bind(seen));
     const indegrees = {1: -1};

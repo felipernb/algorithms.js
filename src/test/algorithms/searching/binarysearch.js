@@ -2,7 +2,7 @@ const binarySearch = require('../../..').Search.binarySearch;
 const assert = require('assert');
 
 describe('Binary Search', () => {
-  it('should find elements in the sorted array', () => {
+  it('finds elements in the sorted array', () => {
     assert.equal(binarySearch([1, 2, 3, 4, 5], 3), 2);
     assert.equal(binarySearch([1, 2, 3, 4, 5], 1), 0);
     assert.equal(binarySearch([1, 2, 3, 4, 5], 2), 1);

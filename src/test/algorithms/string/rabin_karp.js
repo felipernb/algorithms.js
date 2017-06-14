@@ -6,7 +6,7 @@ const rabinKarpEqualsToIndexOf = (a, b) => {
 };
 
 describe('Karp-Rabin', () => {
-  it('should verify if a string is contained in another string', () => {
+  it('verifies if a string is contained in another string', () => {
     rabinKarpEqualsToIndexOf('', '');
     rabinKarpEqualsToIndexOf('a', 'b');
     rabinKarpEqualsToIndexOf('b', 'a');

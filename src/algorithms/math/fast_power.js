@@ -35,8 +35,8 @@ const fastPower = (base, power, mul, identity) => {
   };
   for (
     let factor = base;
-    power;
-    (power >>>= 1), (factor = mul(factor, factor))
+    power > 0;
+    power >>>= 1, factor = mul(factor, factor)
   ) {
     if (power & 1) {
       multiplyBy(factor);

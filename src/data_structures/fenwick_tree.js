@@ -33,20 +33,22 @@ class FenwickTree {
    */
   adjust(index, value) {
     /*
-      This function goes up the tree adding the value to all parent nodes.
-
-      In the array, to know where a index is in the tree, just look at where is
-      the rightmost bit. 1 is a leaf, because the rightmost bit is at position 0.
-      2 (10) is 1 level above the leafs. 4 (100) is 2 levels above the leafs.
-
-      Going up the tree means pushing the rightmost bit far to the left. We do
-      this by adding only the bit itself to the index. Eventually we skip
-      some levels that aren't represented in the array. E.g. starting at 3 (11),
-      it's imediate parent is 11b + 1b = 100b. We started at a leaf  and skipped
-      the level-1 node, because it wasn't represented in the array
-      (a right child).
-
-      Note: (index&-index) finds the rightmost bit in index.
+     * This function goes up the tree adding the value to all parent nodes.
+     *
+     * In the array, to know where a index is in the tree, just look at where is
+     * the rightmost bit. 1 is a leaf, because the rightmost bit is at position
+     * 0.
+     * 2 (10) is 1 level above the leafs. 4 (100) is 2 levels above the leafs.
+     *
+     * Going up the tree means pushing the rightmost bit far to the left. We do
+     * this by adding only the bit itself to the index. Eventually we skip
+     * some levels that aren't represented in the array.
+     * E.g. starting at 3 (11),
+     * it's imediate parent is 11b + 1b = 100b. We started at a leaf and skipped
+     * the level-1 node, because it wasn't represented in the array
+     * (a right child).
+     *
+     * Note: (index&-index) finds the rightmost bit in index.
     */
     for (; index < this._elements.length; index += index & -index) {
       this._elements[index] += value;
@@ -58,19 +60,20 @@ class FenwickTree {
   */
   prefixSum(index) {
     /*
-      This function goes up the tree adding the required nodes to sum the prefix.
-
-      The key here is to sum every node that isn't in the same subtree as an
-      already seen node. In practice we proceed always getting a node's uncle
-      (the sibling of the node's parent). So, if we start at the index 7, we must
-      go to 6 (7's uncle), then to 4 (6's uncle), then we stop, because 4 has
-      no uncle.
-
-      Binary-wise, this is the same as erasing the rightmost bit of the index.
-      E.g. 7 (111) -> 6 (110) -> 4 (100).
-
-      Note: (index&-index) finds the rightmost bit in index.
-    */
+     * This function goes up the tree adding the required nodes to sum the
+     * prefix.
+     *
+     * The key here is to sum every node that isn't in the same subtree as an
+     * already seen node. In practice we proceed always getting a node's uncle
+     * (the sibling of the node's parent). So, if we start at the index 7, we
+     *  must go to 6 (7's uncle), then to 4 (6's uncle), then we stop, because
+     * 4 has no uncle.
+     *
+     * Binary-wise, this is the same as erasing the rightmost bit of the index.
+     * E.g. 7 (111) -> 6 (110) -> 4 (100).
+     *
+     *  Note: (index&-index) finds the rightmost bit in index.
+     */
 
     let sum = 0;
     for (; index > 0; index -= index & -index) {

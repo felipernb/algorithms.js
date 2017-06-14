@@ -20,31 +20,31 @@ const testFibonacciSequence = fib => {
 
 describe('Fibonacci', () => {
   describe('#exponential()', () => {
-    it('should return the right value for fibonacci sequence', () => {
+    it('returns the right value for fibonacci sequence', () => {
       testFibonacciSequence(fib.exponential);
     });
   });
 
   describe('#linear()', () => {
-    it('should return the right value for fibonacci sequence', () => {
+    it('returns the right value for fibonacci sequence', () => {
       testFibonacciSequence(fib);
     });
   });
 
   describe('#withMemoization()', () => {
-    it('should return the right value for fibonacci sequence', () => {
+    it('returns the right value for fibonacci sequence', () => {
       testFibonacciSequence(fib.withMemoization);
     });
   });
 
   describe('#direct()', () => {
-    it('should return the right value for fibonacci sequence', () => {
+    it('returns the right value for fibonacci sequence', () => {
       testFibonacciSequence(fib.direct);
     });
   });
 
   describe('#logarithmic()', () => {
-    it('should return the right value for fibonacci sequence', () => {
+    it('returns the right value for fibonacci sequence', () => {
       testFibonacciSequence(fib.logarithmic);
     });
   });
