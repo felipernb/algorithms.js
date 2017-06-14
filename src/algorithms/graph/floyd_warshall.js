@@ -84,8 +84,8 @@ const floydWarshall = graph => {
   };
 
   return {
-    distance: distance,
-    path: path
+    distance,
+    path
   };
 };
 

@@ -23,8 +23,8 @@ const bfsShortestPath = (graph, source) => {
   });
 
   return {
-    distance: distance,
-    previous: previous
+    distance,
+    previous
   };
 };
 

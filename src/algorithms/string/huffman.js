@@ -85,7 +85,7 @@ huffman.encode = (string, compressed) => {
   });
 
   const letters = Object.keys(counter).map(char => ({
-    char: char,
+    char,
     count: counter[char]
   }));
 
@@ -141,7 +141,7 @@ huffman.encode = (string, compressed) => {
   const result = string.split('').map(char => encoding[char]).join('');
 
   return {
-    encoding: encoding,
+    encoding,
     value: (compressed ? compress(result) : result)
   };
 };

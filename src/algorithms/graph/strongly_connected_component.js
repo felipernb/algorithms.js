@@ -52,16 +52,16 @@ const stronglyConnectedComponent = graph => {
     const node = stack.pop();
     if (!visited[node]) {
       depthFirstSearch(graph, node, {
-        allowTraversal: allowTraversal,
-        enterVertex: enterVertex
+        allowTraversal,
+        enterVertex
       });
       ++count;
     }
   }
 
   return {
-    count: count,
-    id: id
+    count,
+    id
   };
 };
 

@@ -119,6 +119,6 @@ function MaxHeap(compareFn) {
 MaxHeap.prototype = new MinHeap();
 
 module.exports = {
-  MinHeap: MinHeap,
-  MaxHeap: MaxHeap
+  MinHeap,
+  MaxHeap
 };

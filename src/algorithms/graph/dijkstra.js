@@ -35,8 +35,8 @@ function dijkstra(graph, s) {
     graph.neighbors(currNode).forEach(relax);
   }
   return {
-    distance: distance,
-    previous: previous
+    distance,
+    previous
   };
 }
 

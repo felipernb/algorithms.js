@@ -54,8 +54,8 @@ function spfa(graph, s) {
   }
 
   return {
-    distance: distance,
-    previous: previous
+    distance,
+    previous
   };
 }
 
