@@ -127,11 +127,13 @@ class BST {
 /**
  * Tree node
  */
-function Node(value, parent) {
-  this.value = value;
-  this.parent = parent;
-  this.left = null;
-  this.right = null;
+class Node {
+  constructor(value, parent) {
+    this.value = value;
+    this.parent = parent;
+    this.left = null;
+    this.right = null;
+  }
 }
 
 module.exports = BST;

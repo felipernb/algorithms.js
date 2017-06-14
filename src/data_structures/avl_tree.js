@@ -519,12 +519,14 @@ class AVLTree {
 /**
  * Tree node
  */
-function Node(value, left, right, parent, height) {
-  this.value = value;
-  this.left = left;
-  this.right = right;
-  this.parent = parent;
-  this.height = height;
+class Node {
+  constructor(value, left, right, parent, height) {
+    this.value = value;
+    this.left = left;
+    this.right = right;
+    this.parent = parent;
+    this.height = height;
+  }
 }
 
 module.exports = AVLTree;

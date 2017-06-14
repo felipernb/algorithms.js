@@ -1,15 +1,4 @@
 /**
- * A linked list node
- */
-class Node {
-  constructor(value) {
-    this.value = value;
-    this.prev = null;
-    this.next = null;
-  }
-}
-
-/**
  * Doubly-linked list
  */
 class LinkedList {
@@ -143,6 +132,17 @@ class LinkedList {
       fn(node.value);
       node = node.next;
     }
+  }
+}
+
+/**
+ * A linked list node
+ */
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.prev = null;
+    this.next = null;
   }
 }
 
