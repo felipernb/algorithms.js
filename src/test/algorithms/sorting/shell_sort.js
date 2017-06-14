@@ -1,7 +1,7 @@
 'use strict';
 
-var shellSort = require('../../..').Sorting.shellSort;
-var sortingTestsHelper = require('./sorting_tests_helper.js');
+const shellSort = require('../../..').Sorting.shellSort;
+const sortingTestsHelper = require('./sorting_tests_helper.js');
 
 describe('ShellSort', function() {
   it('should sort the given array', function() {

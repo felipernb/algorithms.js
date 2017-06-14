@@ -1,6 +1,6 @@
 'use strict';
 
-var MinHeap = require('./heap').MinHeap;
+const MinHeap = require('./heap').MinHeap;
 
 /**
  * Extends the MinHeap with the only difference that
@@ -8,7 +8,7 @@ var MinHeap = require('./heap').MinHeap;
  * and not on the element itself
  */
 function PriorityQueue(initialItems) {
-  var self = this;
+  const self = this;
   MinHeap.call(this, function(a, b) {
     return self.priority(a) < self.priority(b) ? -1 : 1;
   });
@@ -32,7 +32,7 @@ PriorityQueue.prototype.insert = function(item, priority) {
 };
 
 PriorityQueue.prototype.extract = function(withPriority) {
-  var min = MinHeap.prototype.extract.call(this);
+  const min = MinHeap.prototype.extract.call(this);
   return withPriority ?
     min && {item: min, priority: this._priority[min]} :
     min;

@@ -1,5 +1,5 @@
 'use strict';
-var LinkedList = require('./linked_list');
+const LinkedList = require('./linked_list');
 
 /**
  * Stack (LIFO) using a Linked List as basis
@@ -33,7 +33,7 @@ Stack.prototype.pop = function() {
     throw new Error('Empty queue');
   }
 
-  var e = this._elements.tail;
+  const e = this._elements.tail;
   this._elements.delNode(e);
   return e.value;
 };

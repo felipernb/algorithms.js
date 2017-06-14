@@ -1,10 +1,10 @@
 'use strict';
-var Comparator = require('../../util/comparator');
+const Comparator = require('../../util/comparator');
 
-var merge = function(a, b, comparator) {
-  var i = 0;
-  var j = 0;
-  var result = [];
+const merge = function(a, b, comparator) {
+  let i = 0;
+  let j = 0;
+  const result = [];
 
   while (i < a.length && j < b.length) {
     result.push(comparator.lessThan(a[i], b[j]) ? a[i++] : b[j++]);
@@ -19,14 +19,14 @@ var merge = function(a, b, comparator) {
  * Merge sort
  * O(n.lgn)
  */
-var mergeSortInit = function(a, compareFn) {
-  var comparator = new Comparator(compareFn);
+const mergeSortInit = function(a, compareFn) {
+  const comparator = new Comparator(compareFn);
 
   return (function mergeSort(a) {
     if (a.length > 1) {
-      var middle = a.length >> 1;
-      var left = mergeSort(a.slice(0, middle));
-      var right = mergeSort(a.slice(middle));
+      const middle = a.length >> 1;
+      const left = mergeSort(a.slice(0, middle));
+      const right = mergeSort(a.slice(middle));
       a = merge(left, right, comparator);
     }
 

@@ -6,15 +6,15 @@
  * @param {Array} arr - An array of values.
  * @return Number
  */
-var shannonEntropy = function(arr) {
+const shannonEntropy = function(arr) {
   // find the frequency of each value
-  var freqs = arr.reduce(function(acc, item) {
+  const freqs = arr.reduce(function(acc, item) {
     acc[item] = acc[item] + 1 || 1;
     return acc;
   }, {});
 
   // find the probability of each value
-  var probs = Object.keys(freqs).map(function(key) {
+  const probs = Object.keys(freqs).map(function(key) {
     return freqs[key] / arr.length;
   });
 

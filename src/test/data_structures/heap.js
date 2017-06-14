@@ -1,11 +1,11 @@
 'use strict';
 
-var heap = require('../..').DataStructures.Heap;
-var assert = require('assert');
+const heap = require('../..').DataStructures.Heap;
+const assert = require('assert');
 
 describe('Min Heap', function() {
   it('should always return the lowest element', function() {
-    var h = new heap.MinHeap();
+    const h = new heap.MinHeap();
     assert(h.isEmpty());
     h.insert(10);
     h.insert(2091);
@@ -36,7 +36,7 @@ describe('Min Heap', function() {
   });
 
   it('should heapify an unordered array', function() {
-    var h = new heap.MinHeap();
+    const h = new heap.MinHeap();
     h.heapify([10, 2091, 4, 1, 5, 500, 0, 18, 3, 22, 20]);
 
     assert.equal(h.extract(), 0);
@@ -56,10 +56,10 @@ describe('Min Heap', function() {
 
   it('should perform a function to all elements from smallest to largest' +
      ' with forEach', function() {
-    var h = new heap.MinHeap();
+    const h = new heap.MinHeap();
     h.heapify([3, 10, 1000, 0, 2, 1]);
 
-    var output = [];
+    const output = [];
     h.forEach(function(n) {
       output.push(n);
     });
@@ -73,7 +73,7 @@ describe('Min Heap', function() {
 
 describe('Max Heap', function() {
   it('should always return the greatest element', function() {
-    var h = new heap.MaxHeap();
+    const h = new heap.MaxHeap();
     assert(h.isEmpty());
     h.insert(10);
     h.insert(2091);
@@ -104,7 +104,7 @@ describe('Max Heap', function() {
   });
 
   it('should heapify an unordered array', function() {
-    var h = new heap.MaxHeap();
+    const h = new heap.MaxHeap();
     h.heapify([10, 2091, 4, 1, 5, 500, 0, 18, 3, 22, 20]);
 
     assert.equal(h.extract(), 2091);
@@ -124,10 +124,10 @@ describe('Max Heap', function() {
 
   it('should perform a function to all elements from largest to smallest' +
      ' with forEach', function() {
-    var h = new heap.MaxHeap();
+    const h = new heap.MaxHeap();
     h.heapify([3, 10, 1000, 0, 2, 1]);
 
-    var output = [];
+    const output = [];
     h.forEach(function(n) {
       output.push(n);
     });

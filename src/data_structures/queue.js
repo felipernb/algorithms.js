@@ -1,6 +1,6 @@
 'use strict';
 
-var LinkedList = require('./linked_list');
+const LinkedList = require('./linked_list');
 
 /**
  * Queue (FIFO) using a Linked List as basis
@@ -33,7 +33,7 @@ Queue.prototype.pop = function() {
   if (this.isEmpty()) {
     throw new Error('Empty queue');
   }
-  var e = this._elements.head;
+  const e = this._elements.head;
   this._elements.delNode(e);
   return e.value;
 };

@@ -1,12 +1,12 @@
 'use strict';
 
-var knuthMorrisPratt = require('../../..').String.knuthMorrisPratt;
-var assert = require('assert');
+const knuthMorrisPratt = require('../../..').String.knuthMorrisPratt;
+const assert = require('assert');
 
 describe('Knuth-Morris-Pratt', function() {
   it('should verify if a pattern is contained in some text (or array)',
     function() {
-      var text = 'A string matching algorithm wants to find the starting' +
+      const text = 'A string matching algorithm wants to find the starting' +
         'index m in string S[] that matches the search word W[].The most' +
         ' straightforward algorithm is to look for a character match at ' +
         'successive values of the index m, the position in the string be' +
@@ -22,7 +22,7 @@ describe('Knuth-Morris-Pratt', function() {
         'match in W at position m then a match is found at that position' +
         ' in the search string. (Wikipedia, 2014): https://en.wikipedia.' +
         'org/wiki/Knuth-Morris-Pratt_algorithm';
-      var pattern = 'https://en.wikipedia.org/wiki/Knuth-Morris-Pratt_al' +
+      let pattern = 'https://en.wikipedia.org/wiki/Knuth-Morris-Pratt_al' +
         'gorithm';
 
       assert.equal(knuthMorrisPratt(text, pattern), 915);
@@ -31,8 +31,8 @@ describe('Knuth-Morris-Pratt', function() {
 
       assert.equal(knuthMorrisPratt(text, pattern), text.length);
 
-      var arrayText = [3, 4, 5, 6, 7, 8, 9, 8, 7, 6, 5, 4, 3, 4];
-      var arrayPattern = [8, 9, 8];
+      const arrayText = [3, 4, 5, 6, 7, 8, 9, 8, 7, 6, 5, 4, 3, 4];
+      let arrayPattern = [8, 9, 8];
 
       assert.equal(knuthMorrisPratt(arrayText, arrayPattern), 5);
 

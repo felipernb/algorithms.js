@@ -7,16 +7,16 @@
  * @param Number tolerance - The error margin accepted (Default 1e-7)
  * @param Number maxIterations - The max number of iterations (Default 1e7)
  */
-var sqrt = function(n, tolerance, maxIterations) {
+const sqrt = function(n, tolerance, maxIterations) {
   tolerance = tolerance || 1e-7;
   maxIterations = maxIterations || 1e7;
 
-  var upperBound = n;
-  var lowerBound = 0;
+  let upperBound = n;
+  let lowerBound = 0;
 
-  var i = 0;
-  var square;
-  var x;
+  let i = 0;
+  let square;
+  let x;
   do {
     i++;
     x = (upperBound - lowerBound) / 2 + lowerBound;
@@ -26,7 +26,7 @@ var sqrt = function(n, tolerance, maxIterations) {
   } while (Math.abs(square - n) > tolerance && i < maxIterations);
 
   // Checks if the number is a perfect square to return the exact root
-  var roundX = Math.round(x);
+  const roundX = Math.round(x);
   if (roundX * roundX === n) x = roundX;
 
   return x;

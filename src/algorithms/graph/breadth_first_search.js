@@ -1,6 +1,6 @@
 'use strict';
 
-var Queue = require('../../data_structures/queue');
+const Queue = require('../../data_structures/queue');
 
 /**
  * @typedef {Object} Callbacks
@@ -21,11 +21,11 @@ var Queue = require('../../data_structures/queue');
  *   used by default allowTraversal implementation.
  * @return {Callbacks} The same object or new one (if null passed).
  */
-var normalizeCallbacks = function(callbacks, seenVertices) {
+const normalizeCallbacks = function(callbacks, seenVertices) {
   callbacks = callbacks || {};
 
   callbacks.allowTraversal = callbacks.allowTraversal || (function() {
-    var seen = seenVertices.reduce(function(seen, vertex) {
+    const seen = seenVertices.reduce(function(seen, vertex) {
       seen[vertex] = true;
       return seen;
     }, {});
@@ -39,7 +39,7 @@ var normalizeCallbacks = function(callbacks, seenVertices) {
     };
   })();
 
-  var noop = function() {};
+  const noop = function() {};
   callbacks.onTraversal = callbacks.onTraversal || noop;
   callbacks.enterVertex = callbacks.enterVertex || noop;
   callbacks.leaveVertex = callbacks.leaveVertex || noop;
@@ -55,13 +55,13 @@ var normalizeCallbacks = function(callbacks, seenVertices) {
  * @param {*} startVertex
  * @param {Callbacks} [callbacks]
  */
-var breadthFirstSearch = function(graph, startVertex, callbacks) {
-  var vertexQueue = new Queue();
+const breadthFirstSearch = function(graph, startVertex, callbacks) {
+  const vertexQueue = new Queue();
   vertexQueue.push(startVertex);
   callbacks = normalizeCallbacks(callbacks, [startVertex]);
 
-  var vertex;
-  var enqueue = function(neighbor) {
+  let vertex;
+  const enqueue = function(neighbor) {
     if (callbacks.allowTraversal(vertex, neighbor)) {
       callbacks.onTraversal(vertex, neighbor);
       vertexQueue.push(neighbor);

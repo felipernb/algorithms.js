@@ -1,8 +1,8 @@
 'use strict';
 
-var root = require('../..');
-var AVLTree = root.DataStructures.AVLTree;
-var assert = require('assert');
+const root = require('../..');
+const AVLTree = root.DataStructures.AVLTree;
+const assert = require('assert');
 
 describe('AVL Tree', function() {
   it('should start with null root', function() {
@@ -10,7 +10,7 @@ describe('AVL Tree', function() {
   });
 
   it('should insert and single rotate (leftRight) properly', function() {
-    var avlTree = new AVLTree();
+    const avlTree = new AVLTree();
     avlTree.insert(9);
     avlTree.insert(3);
     avlTree.insert(5);
@@ -25,7 +25,7 @@ describe('AVL Tree', function() {
   });
 
   it('should insert and single rotate (rightLeft) properly', function() {
-    var avlTree = new AVLTree();
+    const avlTree = new AVLTree();
     avlTree.insert(50);
     avlTree.insert(75);
     avlTree.insert(60);
@@ -40,7 +40,7 @@ describe('AVL Tree', function() {
   });
 
   it('should insert and double rotate (leftLeft) properly', function() {
-    var avlTree = new AVLTree();
+    const avlTree = new AVLTree();
     avlTree.insert(50);
     avlTree.insert(25);
     avlTree.insert(10);
@@ -55,7 +55,7 @@ describe('AVL Tree', function() {
   });
 
   it('should insert and double rotate (rightRight) properly', function() {
-    var avlTree = new AVLTree();
+    const avlTree = new AVLTree();
     avlTree.insert(50);
     avlTree.insert(75);
     avlTree.insert(100);
@@ -70,7 +70,7 @@ describe('AVL Tree', function() {
   });
 
   it('should insert multiple nodes and balance properly (1)', function() {
-    var avlTree = new AVLTree();
+    const avlTree = new AVLTree();
     avlTree.insert(30);
     avlTree.insert(15);
     avlTree.insert(60);
@@ -91,7 +91,7 @@ describe('AVL Tree', function() {
   });
 
   it('should remove nodes and balance properly (2)', function() {
-    var avlTree = new AVLTree();
+    const avlTree = new AVLTree();
     avlTree.insert(55);
     avlTree.insert(25);
     avlTree.insert(11);
@@ -108,7 +108,7 @@ describe('AVL Tree', function() {
   });
 
   it('should always keep the tree balanced', function() {
-    var avlTree = new AVLTree();
+    const avlTree = new AVLTree();
 
     avlTree.insert(50);
     avlTree.insert(100);
@@ -197,7 +197,7 @@ describe('AVL Tree', function() {
 
   it('should return the parents before the children when ' +
       'traversing in preorder', function() {
-    var avlTree = new AVLTree();
+    const avlTree = new AVLTree();
 
     avlTree.insert(50);
     avlTree.insert(100);
@@ -215,9 +215,9 @@ describe('AVL Tree', function() {
     avlTree.insert(30);
     avlTree.insert(15);
 
-    var expectedPreOrder = [50, 5, 2, 1, 4, 20, 7, 6,
+    const expectedPreOrder = [50, 5, 2, 1, 4, 20, 7, 6,
                             15, 30, 40, 100, 75, 80, 200];
-    var preOrder = [];
+    const preOrder = [];
     avlTree.preOrder(avlTree.root, function(n) {
       preOrder.push(n.value);
     });
@@ -226,7 +226,7 @@ describe('AVL Tree', function() {
 
   it('should return the children before the parents when ' +
       'traversing in postorder', function() {
-    var avlTree = new AVLTree();
+    const avlTree = new AVLTree();
 
     avlTree.insert(50);
     avlTree.insert(100);
@@ -244,9 +244,9 @@ describe('AVL Tree', function() {
     avlTree.insert(30);
     avlTree.insert(15);
 
-    var expectedPostOrder = [1, 4, 2, 6, 15, 7, 40, 30,
+    const expectedPostOrder = [1, 4, 2, 6, 15, 7, 40, 30,
                             20, 5, 80, 75, 200, 100, 50];
-    var postOrder = [];
+    const postOrder = [];
     avlTree.postOrder(avlTree.root, function(n) {
       postOrder.push(n.value);
     });
@@ -254,17 +254,17 @@ describe('AVL Tree', function() {
   });
 
   it('should return the sorted elements when traversing in order', function() {
-    var avlTree = new AVLTree();
-    var a = [];
-    var i;
+    const avlTree = new AVLTree();
+    const a = [];
+    let i;
     for (i = 0; i < 1000; i++) {
-      var x = Math.round(Math.random() * 100000);
+      const x = Math.round(Math.random() * 100000);
       avlTree.insert(x);
       a.push(x);
     }
     a.sort((a, b) => a - b);
 
-    var b = [];
+    const b = [];
     avlTree.inOrder(avlTree.root, node => b.push(node.value));
     assert.equal(a.length, b.length);
     for (i = 0; i < a.length; i++) {

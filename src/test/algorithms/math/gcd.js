@@ -1,8 +1,8 @@
 'use strict';
 
-var root = require('../../..');
-var gcd = root.Math.gcd;
-var assert = require('assert');
+const root = require('../../..');
+const gcd = root.Math.gcd;
+const assert = require('assert');
 
 describe('GCD', function() {
   it('should calculate the correct GCD between two numbers', function() {
@@ -20,7 +20,7 @@ describe('GCD', function() {
 
   it('should calculate the correct GCD between two numbers using ' +
     'the binary method', function() {
-    var gcdb = gcd.binary;
+    const gcdb = gcd.binary;
     assert.equal(gcdb(1, 0), 1);
     assert.equal(gcdb(0, 1), 1);
     assert.equal(gcdb(0, 0), 0);

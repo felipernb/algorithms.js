@@ -1,12 +1,12 @@
 'use strict';
 
-var root = require('../../../');
-var breadthFirstSearch = root.Graph.breadthFirstSearch;
-var Graph = root.DataStructures.Graph;
-var assert = require('assert');
+const root = require('../../../');
+const breadthFirstSearch = root.Graph.breadthFirstSearch;
+const Graph = root.DataStructures.Graph;
+const assert = require('assert');
 
 describe('Breadth-First Search', function() {
-  var graph;
+  let graph;
 
   before(function() {
     graph = new Graph();
@@ -22,10 +22,10 @@ describe('Breadth-First Search', function() {
   });
 
   it('should visit reachable vertices in a breadth-first manner', function() {
-    var enter = [];
-    var leave = [];
-    var lastEntered = null;
-    var traversed = 0;
+    const enter = [];
+    const leave = [];
+    let lastEntered = null;
+    let traversed = 0;
 
     breadthFirstSearch(graph, 1);
 
@@ -54,15 +54,15 @@ describe('Breadth-First Search', function() {
   });
 
   it('should allow user-defined allowTraversal rules', function() {
-    var seen = new Graph(graph.directed);
+    const seen = new Graph(graph.directed);
     graph.vertices.forEach(seen.addVertex.bind(seen));
-    var indegrees = {1: -1};
-    var outdegrees = {};
+    const indegrees = {1: -1};
+    const outdegrees = {};
 
     // Edge-centric BFS.
     breadthFirstSearch(graph, 1, {
       allowTraversal: function(vertex, neighbor) {
-        var visited = seen.edge(vertex, neighbor);
+        const visited = seen.edge(vertex, neighbor);
         if (!visited) {
           seen.addEdge(vertex, neighbor);
           outdegrees[vertex] = (outdegrees[vertex] || 0) + 1;

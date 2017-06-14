@@ -1,6 +1,6 @@
 'use strict';
 
-var multiplicationOperator = function(a, b) {
+const multiplicationOperator = function(a, b) {
   return a * b;
 };
 
@@ -15,7 +15,7 @@ var multiplicationOperator = function(a, b) {
  *   If mul is not set, defaults to 1.
  * @return {*}
  */
-var fastPower = function(base, power, mul, identity) {
+const fastPower = function(base, power, mul, identity) {
   if (mul === undefined) {
     mul = multiplicationOperator;
     identity = 1;
@@ -33,11 +33,11 @@ var fastPower = function(base, power, mul, identity) {
   }
 
   // Iterative form of the algorithm avoids checking the same thing twice.
-  var result;
-  var multiplyBy = function(value) {
+  let result;
+  const multiplyBy = function(value) {
     result = (result === undefined) ? value : mul(result, value);
   };
-  for (var factor = base; power; power >>>= 1, factor = mul(factor, factor)) {
+  for (let factor = base; power; power >>>= 1, factor = mul(factor, factor)) {
     if (power & 1) {
       multiplyBy(factor);
     }

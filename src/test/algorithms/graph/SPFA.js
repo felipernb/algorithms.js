@@ -1,14 +1,14 @@
 'use strict';
 
-var root = require('../../../');
-var spfa = root.Graph.SPFA;
-var Graph = root.DataStructures.Graph;
-var assert = require('assert');
+const root = require('../../../');
+const spfa = root.Graph.SPFA;
+const Graph = root.DataStructures.Graph;
+const assert = require('assert');
 
 describe('SPFA Algorithm', function() {
   it('should return the shortest paths to all nodes from a given origin',
     function() {
-      var graph = new Graph(true);
+      const graph = new Graph(true);
 
       graph.addEdge('a', 'b', -1);
       graph.addEdge('a', 'c', 4);
@@ -19,7 +19,7 @@ describe('SPFA Algorithm', function() {
       graph.addEdge('e', 'd', -3);
       graph.addEdge('d', 'c', 5);
 
-      var shortestPaths = spfa(graph, 'a');
+      let shortestPaths = spfa(graph, 'a');
 
       assert.equal(shortestPaths.distance.a, 0);
       assert.equal(shortestPaths.distance.d, -2);

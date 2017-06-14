@@ -4,7 +4,7 @@
  * Depth first search for trees
  * (in order)
  */
-var inOrder = function(node, callback) {
+const inOrder = function(node, callback) {
   if (node) {
     inOrder(node.left, callback);
     callback(node.value);
@@ -15,7 +15,7 @@ var inOrder = function(node, callback) {
 /**
  * Pre order
  */
-var preOrder = function(node, callback) {
+const preOrder = function(node, callback) {
   if (node) {
     callback(node.value);
     preOrder(node.left, callback);
@@ -26,7 +26,7 @@ var preOrder = function(node, callback) {
 /**
  * Post order
  */
-var postOrder = function(node, callback) {
+const postOrder = function(node, callback) {
   if (node) {
     postOrder(node.left, callback);
     postOrder(node.right, callback);

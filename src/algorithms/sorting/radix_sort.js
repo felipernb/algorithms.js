@@ -13,27 +13,27 @@
  * @param Array
  * @return Array
  */
-var auxiliaryCountingSort = function(array, mod) {
-  var length = array.length;
-  var bucket = [];
-  var i;
+const auxiliaryCountingSort = function(array, mod) {
+  const length = array.length;
+  const bucket = [];
+  let i;
 
   for (i = 0; i < 10; i++) {
     bucket[i] = [];
   }
 
   for (i = 0; i < length; i++) {
-    var digit = parseInt((array[i].key / Math.pow(10, mod))
+    const digit = parseInt((array[i].key / Math.pow(10, mod))
                          .toFixed(mod), 10) % 10;
     bucket[digit].push(array[i]);
   }
 
-  var pointer = 0;
+  let pointer = 0;
 
   for (i = 0; i < 10; i++) {
-    var localLength = bucket[i].length;
+    const localLength = bucket[i].length;
 
-    for (var j = 0; j < localLength; j++) {
+    for (let j = 0; j < localLength; j++) {
       array[pointer++] = bucket[i][j];
     }
   }
@@ -50,9 +50,9 @@ var auxiliaryCountingSort = function(array, mod) {
  * @return Integer if array non-empty
  *         Undefined otherwise
  */
-var maximumKey = function(a) {
-  var max;
-  for (var i = 1; i < a.length; i++) {
+const maximumKey = function(a) {
+  let max;
+  for (let i = 1; i < a.length; i++) {
     if (max === undefined || a[i].key > max) {
       max = a[i].key;
     }
@@ -71,12 +71,12 @@ var maximumKey = function(a) {
  * @param Array
  * @return Array
  */
-var radixSort = function(array) {
-  var max = maximumKey(array);
-  var digitsMax = (max === 0 ? 1 :
+const radixSort = function(array) {
+  const max = maximumKey(array);
+  const digitsMax = (max === 0 ? 1 :
     1 + Math.floor(Math.log(max) / Math.log(10))); // log base 10
 
-  for (var i = 0; i < digitsMax; i++) {
+  for (let i = 0; i < digitsMax; i++) {
     array = auxiliaryCountingSort(array, i);
   }
 

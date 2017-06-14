@@ -1,15 +1,15 @@
 'use strict';
-var Comparator = require('../../util/comparator');
+const Comparator = require('../../util/comparator');
 
 /**
  * Insertion sort algorithm O(n + d)
  */
-var insertionSort = function(vector, comparatorFn) {
-  var comparator = new Comparator(comparatorFn);
+const insertionSort = function(vector, comparatorFn) {
+  const comparator = new Comparator(comparatorFn);
 
-  for (var i = 1, len = vector.length; i < len; i++) {
-    var aux = vector[i];
-    var j = i;
+  for (let i = 1, len = vector.length; i < len; i++) {
+    const aux = vector[i];
+    let j = i;
 
     while (j > 0 && comparator.lessThan(aux, vector[j - 1])) {
       vector[j] = vector[j - 1];

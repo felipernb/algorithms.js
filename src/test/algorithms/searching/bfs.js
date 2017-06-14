@@ -1,12 +1,12 @@
 'use strict';
 
-var root = require('../../..');
-var BST = root.DataStructures.BST;
-var bfs = root.Search.bfs;
-var assert = require('assert');
+const root = require('../../..');
+const BST = root.DataStructures.BST;
+const bfs = root.Search.bfs;
+const assert = require('assert');
 
 describe('Breadth First Search', function() {
-  var bst = new BST();
+  const bst = new BST();
   /**
    *            4
    *       2          8
@@ -24,12 +24,12 @@ describe('Breadth First Search', function() {
   bst.insert(100);
   bst.insert(2.5);
 
-  var callbackGenerator = function(a) {
+  const callbackGenerator = function(a) {
     return n => a.push(n);
   };
 
   it('should return the items by level', function() {
-    var a = [];
+    const a = [];
     bfs(bst.root, callbackGenerator(a));
     assert.deepEqual(a, [4, 2, 8, 1, 3, 5, 10, 0, 2.5, 100]);
   });

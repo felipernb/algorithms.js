@@ -1,14 +1,14 @@
 'use strict';
 
-var math = require('../../..').Math;
-var powerSet = math.powerSet;
-var assert = require('assert');
+const math = require('../../..').Math;
+const powerSet = math.powerSet;
+const assert = require('assert');
 
 /**
  * Deep equal for arrays
  */
 function testArrayEqual(a, b) {
-  var arrayEqual = true;
+  let arrayEqual = true;
   a.forEach(function(elem, index) {
     if (a[index] !== b[index]) {
       arrayEqual = false;
@@ -21,7 +21,7 @@ function testArrayEqual(a, b) {
  * Tests if one array is an element of another
  */
 function testArrayInArray(a, b) {
-  var arrayInArray = false;
+  let arrayInArray = false;
   b.forEach(function(array) {
     if (testArrayEqual(a, array)) {
       arrayInArray = true;
@@ -33,22 +33,22 @@ function testArrayInArray(a, b) {
 describe('Power set', function() {
   describe('#iterative()', function() {
     it('should return the right elements of power set', function() {
-      var zeroElementTest = powerSet([]);
+      const zeroElementTest = powerSet([]);
       assert(zeroElementTest.length === 0);
 
-      var oneElementTest = powerSet([0]);
+      const oneElementTest = powerSet([0]);
       assert(testArrayInArray([], oneElementTest));
       assert(testArrayInArray([0], oneElementTest));
       assert(oneElementTest.length === 2);
 
-      var twoElementTest = powerSet([0, 1]);
+      const twoElementTest = powerSet([0, 1]);
       assert(testArrayInArray([], twoElementTest));
       assert(testArrayInArray([0], twoElementTest));
       assert(testArrayInArray([1], twoElementTest));
       assert(testArrayInArray([0, 1], twoElementTest));
       assert(twoElementTest.length === 4);
 
-      var threeElementTest = powerSet([0, 1, 2]);
+      const threeElementTest = powerSet([0, 1, 2]);
       assert(testArrayInArray([], threeElementTest));
       assert(testArrayInArray([0], threeElementTest));
       assert(testArrayInArray([1], threeElementTest));
@@ -60,7 +60,7 @@ describe('Power set', function() {
       assert(testArrayInArray([0, 1], threeElementTest));
       assert(threeElementTest.length === 8);
 
-      var fourElementTest = powerSet([0, 1, 2, 3]);
+      const fourElementTest = powerSet([0, 1, 2, 3]);
       assert(testArrayInArray([], fourElementTest));
       assert(testArrayInArray([0], fourElementTest));
       assert(testArrayInArray([1], fourElementTest));
@@ -83,22 +83,22 @@ describe('Power set', function() {
 
   describe('#recursive()', function() {
     it('should return the right elements of power set', function() {
-      var zeroElementTest = powerSet.recursive([]);
+      const zeroElementTest = powerSet.recursive([]);
       assert(zeroElementTest.length === 0);
 
-      var oneElementTest = powerSet.recursive([0]);
+      const oneElementTest = powerSet.recursive([0]);
       assert(testArrayInArray([], oneElementTest));
       assert(testArrayInArray([0], oneElementTest));
       assert(oneElementTest.length === 2);
 
-      var twoElementTest = powerSet.recursive([0, 1]);
+      const twoElementTest = powerSet.recursive([0, 1]);
       assert(testArrayInArray([], twoElementTest));
       assert(testArrayInArray([0], twoElementTest));
       assert(testArrayInArray([1], twoElementTest));
       assert(testArrayInArray([0, 1], twoElementTest));
       assert(twoElementTest.length === 4);
 
-      var threeElementTest = powerSet.recursive([0, 1, 2]);
+      const threeElementTest = powerSet.recursive([0, 1, 2]);
       assert(testArrayInArray([], threeElementTest));
       assert(testArrayInArray([0], threeElementTest));
       assert(testArrayInArray([1], threeElementTest));
@@ -110,7 +110,7 @@ describe('Power set', function() {
       assert(testArrayInArray([0, 1], threeElementTest));
       assert(threeElementTest.length === 8);
 
-      var fourElementTest = powerSet.recursive([0, 1, 2, 3]);
+      const fourElementTest = powerSet.recursive([0, 1, 2, 3]);
       assert(testArrayInArray([], fourElementTest));
       assert(testArrayInArray([0], fourElementTest));
       assert(testArrayInArray([1], fourElementTest));

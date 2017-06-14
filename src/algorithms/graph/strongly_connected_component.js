@@ -1,7 +1,7 @@
 'use strict';
 
-var Stack = require('../../data_structures/stack');
-var depthFirstSearch = require('../../algorithms/graph/depth_first_search');
+const Stack = require('../../data_structures/stack');
+const depthFirstSearch = require('../../algorithms/graph/depth_first_search');
 
 /**
  * Kosaraju's Strongly Connected Component algorithm, https://en.wikipedia.org/wiki/Kosaraju%27s_algorithm
@@ -20,12 +20,12 @@ var depthFirstSearch = require('../../algorithms/graph/depth_first_search');
  *  scc.count; // count of strongly connected components
  *  scc.id[v]; // id of the strongly connected component which v belongs to
  */
-var stronglyConnectedComponent = function(graph) {
-  var reverse = graph.reverse();
-  var stack = new Stack();
-  var visited = {};
-  var count = 0;
-  var id = Object.create(null);
+const stronglyConnectedComponent = function(graph) {
+  const reverse = graph.reverse();
+  const stack = new Stack();
+  let visited = {};
+  let count = 0;
+  const id = Object.create(null);
 
   reverse.vertices.forEach(function(node) {
     if (!visited[node]) {
@@ -44,16 +44,16 @@ var stronglyConnectedComponent = function(graph) {
   });
 
   visited = {};
-  var allowTraversal = function(node, neighbor) {
+  const allowTraversal = function(node, neighbor) {
     return !visited[neighbor];
   };
-  var enterVertex = function(node) {
+  const enterVertex = function(node) {
     visited[node] = true;
     id[node] = count;
   };
 
   while (!stack.isEmpty()) {
-    var node = stack.pop();
+    const node = stack.pop();
     if (!visited[node]) {
       depthFirstSearch(graph, node, {
         allowTraversal: allowTraversal,

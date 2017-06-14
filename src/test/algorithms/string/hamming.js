@@ -1,7 +1,7 @@
 'use strict';
 
-var hamming = require('../../..').String.hamming;
-var assert = require('assert');
+const hamming = require('../../..').String.hamming;
+const assert = require('assert');
 
 describe('Hamming distance', function() {
   it('should raise an error if the inputs are not equal lengths', function() {
@@ -11,7 +11,7 @@ describe('Hamming distance', function() {
   });
 
   it('should return the correct the correct distances', function() {
-    var inputs = [
+    const inputs = [
       {a: 'karolin', b: 'kathrin', expected: 3},
       {a: 'karolin', b: 'kerstin', expected: 3},
       {a: '1011101', b: '1001001', expected: 2},

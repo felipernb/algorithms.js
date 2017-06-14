@@ -1,18 +1,18 @@
 'use strict';
 
-var root = require('../../../');
-var Graph = root.DataStructures.Graph;
-var stronglyConnectedComponent = root.Graph.strongConnectedComponent;
-var assert = require('assert');
+const root = require('../../../');
+const Graph = root.DataStructures.Graph;
+const stronglyConnectedComponent = root.Graph.strongConnectedComponent;
+const assert = require('assert');
 
 describe('Strongly Connected Component', function() {
   it('should correctly compute strongly connected components', function() {
     // graph: 0 -> 1 -> 2
-    var graph = new Graph();
+    let graph = new Graph();
     graph.addEdge(0, 1);
     graph.addEdge(1, 2);
 
-    var scc = stronglyConnectedComponent(graph);
+    let scc = stronglyConnectedComponent(graph);
     assert.equal(scc.count, 3);
     assert(scc.id[0] > scc.id[1]);
     assert(scc.id[1] > scc.id[2]);

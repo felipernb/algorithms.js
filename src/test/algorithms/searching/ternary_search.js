@@ -1,18 +1,18 @@
 'use strict';
 
-var ternarySearch = require('../../..').Search.ternarySearch;
-var assert = require('assert');
-var eps = 1e-6;
+const ternarySearch = require('../../..').Search.ternarySearch;
+const assert = require('assert');
+const eps = 1e-6;
 
-var fn1 = function(x) {
+const fn1 = function(x) {
   return -Math.pow(x - 2, 2) + 4;
 };
 
-var fn2 = function(x) {
+const fn2 = function(x) {
   return -2 * Math.cos(x);
 };
 
-var closeEnough = function(a, b, precision) {
+const closeEnough = function(a, b, precision) {
   return Math.abs(a - b) < precision;
 };
 

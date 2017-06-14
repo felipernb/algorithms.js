@@ -1,5 +1,5 @@
 'use strict';
-var Comparator = require('../util/comparator');
+const Comparator = require('../util/comparator');
 
 /**
  * Basic Heap structure
@@ -16,7 +16,7 @@ function MinHeap(compareFn) {
 }
 
 MinHeap.prototype._swap = function(a, b) {
-  var tmp = this._elements[a];
+  const tmp = this._elements[a];
   this._elements[a] = this._elements[b];
   this._elements[b] = tmp;
 };
@@ -31,11 +31,11 @@ MinHeap.prototype.insert = function(e) {
 };
 
 MinHeap.prototype.extract = function() {
-  var element = this._elements[1];
+  const element = this._elements[1];
 
   // Get the one from the bottom in insert it on top
   // If this isn't already the last element
-  var last = this._elements.pop();
+  const last = this._elements.pop();
   if (this.n) {
     this._elements[1] = last;
     this._siftDown();
@@ -49,8 +49,8 @@ MinHeap.prototype.extract = function() {
  * O(lg n)
  */
 MinHeap.prototype._siftUp = function() {
-  var i;
-  var parent;
+  let i;
+  let parent;
 
   for (i = this.n;
       i > 1 && (parent = i >> 1) && this._comparator.greaterThan(
@@ -65,7 +65,7 @@ MinHeap.prototype._siftUp = function() {
  * O(lg n)
  */
 MinHeap.prototype._siftDown = function(i) {
-  var c;
+  let c;
   for (i = i || 1; (c = i << 1) <= this.n; i = c) {
     // checks which is the smaller child to compare with
     if (c + 1 <= this.n && this._comparator.lessThan(
@@ -85,7 +85,7 @@ MinHeap.prototype.heapify = function(a) {
     this._elements.unshift(null);
   }
 
-  for (var i = this.n >> 1; i > 0; i--) {
+  for (let i = this.n >> 1; i > 0; i--) {
     this._siftDown(i);
   }
 };
@@ -94,8 +94,8 @@ MinHeap.prototype.forEach = function(fn) {
   // A copy is necessary in order to perform extract(),
   // get the items in sorted order and then restore the original
   // this._elements array
-  var elementsCopy = [];
-  var i;
+  const elementsCopy = [];
+  let i;
 
   for (i = 0; i < this._elements.length; i++) {
     elementsCopy.push(this._elements[i]);

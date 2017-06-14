@@ -8,8 +8,8 @@
  *
  * @return Number
  */
-var gcdDivisionBased = function(a, b) {
-  var tmp = a;
+const gcdDivisionBased = function(a, b) {
+  let tmp = a;
   a = Math.max(a, b);
   b = Math.min(tmp, b);
   while (b !== 0) {
@@ -32,7 +32,7 @@ var gcdDivisionBased = function(a, b) {
  *
  * @return Number
  */
-var gcdBinaryIterative = function(a, b) {
+const gcdBinaryIterative = function(a, b) {
   // GCD(0,b) == b; GCD(a,0) == a, GCD(0,0) == 0
   if (a === 0) {
     return b;
@@ -42,7 +42,7 @@ var gcdBinaryIterative = function(a, b) {
     return a;
   }
 
-  var shift;
+  let shift;
   // Let shift = log(K), where K is the greatest power of 2
   // dividing both a and b
   for (shift = 0; ((a | b) & 1) === 0; ++shift) {
@@ -56,7 +56,7 @@ var gcdBinaryIterative = function(a, b) {
     a >>= 1;
   }
 
-  var tmp;
+  let tmp;
 
   // From here on, a is always odd
   do {

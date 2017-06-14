@@ -1,15 +1,15 @@
 'use strict';
 
-var math = require('../../..').Math;
-var power = math.fastPower;
-var assert = require('assert');
+const math = require('../../..').Math;
+const power = math.fastPower;
+const assert = require('assert');
 
-var assertApproximatelyEqual = function(a, b, eps) {
+const assertApproximatelyEqual = function(a, b, eps) {
   eps = eps || 1e-12;
   assert(Math.abs(a - b) < eps);
 };
 
-var multiplyModulo = function(modulo) {
+const multiplyModulo = function(modulo) {
   return function(a, b) {
     return (a * b) % modulo;
   };
@@ -25,8 +25,8 @@ var multiplyModulo = function(modulo) {
  * c | c | a | b |
  * ---------------
  */
-var abcMultiply = function(a, b) {
-  var table = {
+const abcMultiply = function(a, b) {
+  const table = {
     a: {a: 'a', b: 'b', c: 'c'},
     b: {a: 'b', b: 'c', c: 'a'},
     c: {a: 'c', b: 'a', c: 'b'}

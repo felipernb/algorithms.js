@@ -30,7 +30,7 @@ DisjointSetForest.prototype._introduce = function(element) {
  */
 DisjointSetForest.prototype.sameSubset = function(element) {
   this._introduce(element);
-  var root = this.root(element);
+  const root = this.root(element);
   return [].slice.call(arguments, 1).every(function(element) {
     this._introduce(element);
     return this.root(element) === root;
@@ -82,8 +82,8 @@ DisjointSetForest.prototype.merge = function merge(element1, element2) {
 
   this._introduce(element1);
   this._introduce(element2);
-  var root1 = this.root(element1);
-  var root2 = this.root(element2);
+  const root1 = this.root(element1);
+  const root2 = this.root(element2);
 
   if (this._ranks[root1] < this._ranks[root2]) {
     this._parents[root1] = root2;

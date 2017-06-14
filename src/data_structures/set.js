@@ -1,13 +1,13 @@
 'use strict';
 
-var HashTable = require('./hash_table');
+const HashTable = require('./hash_table');
 
 /**
  * Typical representation of a mathematical set
  * No restriction on element types
  *   i.e. set.add(1,'a', "b", { "foo" : "bar" })
  */
-var HashSet = function() {
+const HashSet = function() {
   this._elements = new HashTable(arguments.length);
   this.add.apply(this, arguments);
 
@@ -19,14 +19,14 @@ var HashSet = function() {
 };
 
 HashSet.prototype.add = function() {
-  for (var i = 0; i < arguments.length; i++) {
+  for (let i = 0; i < arguments.length; i++) {
     this._elements.put(arguments[i], true);
   }
   return this;
 };
 
 HashSet.prototype.remove = function() {
-  for (var i = 0; i < arguments.length; i++) {
+  for (let i = 0; i < arguments.length; i++) {
     this._elements.del(arguments[i]);
   }
   return this;

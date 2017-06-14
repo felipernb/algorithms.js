@@ -1,24 +1,24 @@
 'use strict';
 
-var countingSort = require('../../..').Sorting.countingSort;
-var assert = require('assert');
+const countingSort = require('../../..').Sorting.countingSort;
+const assert = require('assert');
 
-var firstObject = {
+const firstObject = {
   someProperty: 'The',
   key: 12
 };
 
-var secondObject = {
+const secondObject = {
   someProperty: 'chosen',
   key: 66
 };
 
-var thirdObject = {
+const thirdObject = {
   someProperty: 'one!',
   key: 43
 };
 
-var array = [
+let array = [
   thirdObject,
   firstObject,
   secondObject,

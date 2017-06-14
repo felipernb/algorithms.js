@@ -9,13 +9,13 @@
  *
  */
 function spfa(graph, s) {
-  var distance = {};
-  var previous = {};
-  var queue = {};
-  var isInQue = {};
-  var cnt = {};
-  var head = 0;
-  var tail = 1;
+  const distance = {};
+  const previous = {};
+  const queue = {};
+  const isInQue = {};
+  const cnt = {};
+  let head = 0;
+  let tail = 1;
   // initialize
   distance[s] = 0;
   queue[0] = s;
@@ -29,15 +29,15 @@ function spfa(graph, s) {
     }
   });
 
-  var currNode;
+  let currNode;
   while (head !== tail) {
     currNode = queue[head++];
     isInQue[currNode] = false;
-    var neighbors = graph.neighbors(currNode);
-    for (var i = 0; i < neighbors.length; i++) {
-      var v = neighbors[i];
+    const neighbors = graph.neighbors(currNode);
+    for (let i = 0; i < neighbors.length; i++) {
+      const v = neighbors[i];
       // relaxation
-      var newDistance = distance[currNode] + graph.edge(currNode, v);
+      const newDistance = distance[currNode] + graph.edge(currNode, v);
       if (newDistance < distance[v]) {
         distance[v] = newDistance;
         previous[v] = currNode;

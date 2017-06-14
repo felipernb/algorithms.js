@@ -1,17 +1,17 @@
 'use strict';
 
-var Stack = require('../..').DataStructures.Stack;
-var assert = require('assert');
+const Stack = require('../..').DataStructures.Stack;
+const assert = require('assert');
 
 describe('Stack', function() {
   it('should start empty', function() {
-    var s = new Stack();
+    const s = new Stack();
     assert(s.isEmpty());
     assert.equal(s.length, 0);
   });
 
   it('should implement a LIFO logic', function() {
-    var s = new Stack();
+    const s = new Stack();
     s.push(1);
     s.push(2);
     s.push(3);
@@ -25,7 +25,7 @@ describe('Stack', function() {
 
   it('should allow me to peek at the top element in' +
     ' the stack without popping it', function() {
-    var s = new Stack();
+    const s = new Stack();
     s.push(1);
     s.push(2);
     s.push(3);

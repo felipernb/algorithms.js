@@ -1,7 +1,7 @@
 'use strict';
 
-var DisjointSetForest = require('../../data_structures/disjoint_set_forest');
-var Graph = require('../../data_structures/graph');
+const DisjointSetForest = require('../../data_structures/disjoint_set_forest');
+const Graph = require('../../data_structures/graph');
 
 /**
  * Kruskal's minimum spanning tree (forest) algorithm.
@@ -11,16 +11,16 @@ var Graph = require('../../data_structures/graph');
  * @return {Graph} Minimum spanning tree or forest
  *   (depending on whether input graph is connected itself).
  */
-var kruskal = function(graph) {
+const kruskal = function(graph) {
   if (graph.directed) {
     throw new Error('Can\'t build MST of a directed graph.');
   }
 
-  var connectedComponents = new DisjointSetForest();
-  var mst = new Graph(false);
+  const connectedComponents = new DisjointSetForest();
+  const mst = new Graph(false);
   graph.vertices.forEach(mst.addVertex.bind(mst));
 
-  var edges = [];
+  const edges = [];
   graph.vertices.forEach(function(vertex) {
     graph.neighbors(vertex).forEach(function(neighbor) {
       // Compared as strings, loops intentionally omitted.

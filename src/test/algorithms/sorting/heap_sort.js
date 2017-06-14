@@ -1,7 +1,7 @@
 'use strict';
 
-var heapSort = require('../../..').Sorting.heapSort;
-var sortingTestsHelper = require('./sorting_tests_helper');
+const heapSort = require('../../..').Sorting.heapSort;
+const sortingTestsHelper = require('./sorting_tests_helper');
 
 describe('Heap Sort', function() {
   it('should sort the given array', function() {

@@ -7,14 +7,14 @@
 /**
  * Iterative power set calculation
  */
-var powerSetIterative = function(array) {
+const powerSetIterative = function(array) {
   if (array.length === 0) {
     return [];
   }
 
-  var powerSet = [];
-  var cache = [];
-  var i;
+  const powerSet = [];
+  const cache = [];
+  let i;
 
   for (i = 0; i < array.length; i++) {
     cache[i] = true;
@@ -23,7 +23,7 @@ var powerSetIterative = function(array) {
   for (i = 0; i < Math.pow(2, array.length); i++) {
     powerSet.push([]);
 
-    for (var j = 0; j < array.length; j++) {
+    for (let j = 0; j < array.length; j++) {
       if (i % Math.pow(2, j) === 0) {
         cache[j] = !cache[j];
       }
@@ -40,20 +40,20 @@ var powerSetIterative = function(array) {
 /**
  * Recursive power set calculation
  */
-var powerSetRecursive = function(array) {
+const powerSetRecursive = function(array) {
   if (array.length === 0) {
     return [];
   } else if (array.length === 1) {
     return [[], [array[0]]];
   }
-  var powerSet = [];
-  var firstElem = array[0];
+  const powerSet = [];
+  const firstElem = array[0];
 
   array.splice(0, 1);
 
   powerSetRecursive(array).forEach(function(elem) {
     powerSet.push(elem);
-    var withFirstElem = [firstElem];
+    const withFirstElem = [firstElem];
     withFirstElem.push.apply(withFirstElem, elem);
     powerSet.push(withFirstElem);
   });
@@ -62,6 +62,6 @@ var powerSetRecursive = function(array) {
 };
 
 // Use powerSetIterative as the default implementation
-var powerSet = powerSetIterative;
+const powerSet = powerSetIterative;
 powerSet.recursive = powerSetRecursive;
 module.exports = powerSet;

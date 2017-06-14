@@ -7,19 +7,19 @@
 /**
  * Implementation via dynamic programming
  */
-var longestCommonSubstring = function(s1, s2) {
+const longestCommonSubstring = function(s1, s2) {
   // Multidimensional array for dynamic programming algorithm
-  var cache = new Array(s1.length + 1);
+  const cache = new Array(s1.length + 1);
 
-  var i;
-  var j;
+  let i;
+  let j;
 
   for (i = 0; i <= s1.length + 1; i++) {
     cache[i] = new Int32Array(s2.length + 1);
   }
 
-  var lcsPosition = {};
-  var lcsLength = 0;
+  const lcsPosition = {};
+  let lcsLength = 0;
 
   // Fill in the cache
   for (i = 1; i <= s1.length; i++) {
@@ -36,7 +36,7 @@ var longestCommonSubstring = function(s1, s2) {
     }
   }
 
-  var lcs = '';
+  let lcs = '';
   if (lcsLength) {
     lcs = s1.substring(lcsPosition.i - lcsLength, lcsPosition.i);
   }

@@ -8,7 +8,7 @@
 *
 * @return Boolean
 */
-var genericPrimalityTest = function(primalityTest, n) {
+const genericPrimalityTest = function(primalityTest, n) {
   if (n <= 1) {
     return false;
   }
@@ -22,8 +22,8 @@ var genericPrimalityTest = function(primalityTest, n) {
 *
 * @return Boolean
 */
-var naiveTest = function(n) {
-  for (var i = 2; i < n; ++i) {
+const naiveTest = function(n) {
+  for (let i = 2; i < n; ++i) {
     if (n % i === 0) {
       return false;
     }
@@ -38,9 +38,9 @@ var naiveTest = function(n) {
 *
 * @return Boolean
 */
-var trialDivisionTest = function(n) {
-  var sqrt = Math.sqrt(n);
-  for (var i = 2; i <= sqrt; ++i) {
+const trialDivisionTest = function(n) {
+  const sqrt = Math.sqrt(n);
+  for (let i = 2; i <= sqrt; ++i) {
     if (n % i === 0) {
       return false;
     }

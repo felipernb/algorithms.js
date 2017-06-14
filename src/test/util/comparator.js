@@ -1,12 +1,12 @@
 'use strict';
 
-var Comparator = require('../../util/comparator');
-var assert = require('assert');
+const Comparator = require('../../util/comparator');
+const assert = require('assert');
 
 describe('Comparator', function() {
   it('Should use a default arithmetic comparison if no function is passed',
     function() {
-      var c = new Comparator();
+      const c = new Comparator();
       assert.equal(c.compare(1, 1), 0);
       assert.equal(c.compare(1, 2), -1);
       assert.equal(c.compare(1, 0), 1);
@@ -26,10 +26,10 @@ describe('Comparator', function() {
     });
 
   it('should allow comparison function to be defined by user', function() {
-    var compareFn = function() {
+    const compareFn = function() {
       return 0;
     };
-    var c = new Comparator(compareFn);
+    const c = new Comparator(compareFn);
     assert.equal(c.compare(1, 1), 0);
     assert.equal(c.compare(1, 2), 0);
     assert.equal(c.compare(1, 0), 0);
@@ -49,7 +49,7 @@ describe('Comparator', function() {
   });
 
   it('Should allow reversing the comparisons', function() {
-    var c = new Comparator();
+    const c = new Comparator();
     c.reverse();
     assert.equal(c.compare(1, 1), 0);
     assert.equal(c.compare(1, 2), 1);

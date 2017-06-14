@@ -1,19 +1,19 @@
 'use strict';
 
-var Comparator = require('../../util/comparator');
+const Comparator = require('../../util/comparator');
 
 /**
  * short bubble sort algorithm
  * worst: O(n^2) best: O(n)
  */
 function shortBubbleSort(array, comparatorFn) {
-  var comparator = new Comparator(comparatorFn);
-  var length = array.length - 1;
-  var i = 0;
+  const comparator = new Comparator(comparatorFn);
+  const length = array.length - 1;
+  let i = 0;
 
   for (i; i < length; i++) {
-    var current = array[i];
-    var next = array[i + 1];
+    const current = array[i];
+    const next = array[i + 1];
 
     /**
      * If the current value if greater than the next:

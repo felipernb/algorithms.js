@@ -7,7 +7,7 @@
  * Bigger the prime number,
  * bigger the hash value
  */
-var base = 997;
+const base = 997;
 
 /**
  * Creates the hash representation of 'word'
@@ -15,10 +15,10 @@ var base = 997;
  * @param String
  * @return Number
  */
-var hash = function(word) {
-  var h = 0;
+const hash = function(word) {
+  let h = 0;
 
-  for (var i = 0; i < word.length; i++) {
+  for (let i = 0; i < word.length; i++) {
     h += word.charCodeAt(i) * Math.pow(base, word.length - i - 1);
   }
 
@@ -36,14 +36,14 @@ var hash = function(word) {
  * @param String
  * @return Integer
  */
-var rabinKarp = function(s, pattern) {
+const rabinKarp = function(s, pattern) {
   if (pattern.length === 0) return 0;
 
-  var hashPattern = hash(pattern);
-  var currentSubstring = s.substring(0, pattern.length);
-  var hashCurrentSubstring;
+  const hashPattern = hash(pattern);
+  let currentSubstring = s.substring(0, pattern.length);
+  let hashCurrentSubstring;
 
-  for (var i = pattern.length; i <= s.length; i++) {
+  for (let i = pattern.length; i <= s.length; i++) {
     if (hashCurrentSubstring === undefined) {
       hashCurrentSubstring = hash(currentSubstring);
     } else {

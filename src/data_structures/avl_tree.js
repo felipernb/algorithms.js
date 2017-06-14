@@ -23,7 +23,7 @@ function Node(value, left, right, parent, height) {
  * property of all his children.
  */
 AVLTree.prototype.getNodeHeight = function(node) {
-  var height = 1;
+  let height = 1;
   if (node.left !== null && node.right !== null) {
     height = Math.max(node.left.height, node.right.height) + 1;
   } else if (node.left !== null) {
@@ -38,7 +38,7 @@ AVLTree.prototype.getNodeHeight = function(node) {
  * Verifies if the given node is balanced.
  */
 AVLTree.prototype.isNodeBalanced = function(node) {
-  var isBalanced = true;
+  let isBalanced = true;
 
   if (node.left !== null && node.right !== null) {
     isBalanced = (Math.abs(node.left.height - node.right.height) <= 1);
@@ -56,12 +56,12 @@ AVLTree.prototype.isNodeBalanced = function(node) {
  */
 AVLTree.prototype.getNodesToRestructureAfterRemove = function(traveledNodes) {
   // z is last traveled node - imbalance found at z
-  var zIndex = traveledNodes.length - 1;
-  var z = traveledNodes[zIndex];
+  const zIndex = traveledNodes.length - 1;
+  const z = traveledNodes[zIndex];
 
   // y should be child of z with larger height
   // (cannot be ancestor of removed node)
-  var y;
+  let y;
   if (z.left !== null && z.right !== null) {
     y = (z.left === y) ? z.right : z.left;
   } else if (z.left !== null && z.right === null) {
@@ -73,7 +73,7 @@ AVLTree.prototype.getNodesToRestructureAfterRemove = function(traveledNodes) {
   // x should be tallest child of y
   // If children same height, x should be child of y
   // that has same orientation as z to y
-  var x;
+  let x;
   if (y.left !== null && y.right !== null) {
     if (y.left.height > y.right.height) {
       x = y.left;
@@ -96,26 +96,26 @@ AVLTree.prototype.getNodesToRestructureAfterRemove = function(traveledNodes) {
  */
 AVLTree.prototype.getNodesToRestructureAfterInsert = function(traveledNodes) {
   // z is last traveled node - imbalance found at z
-  var zIndex = traveledNodes.length - 1;
-  var z = traveledNodes[zIndex];
+  const zIndex = traveledNodes.length - 1;
+  const z = traveledNodes[zIndex];
 
   // y should be child of z with larger height
   // (must be ancestor of inserted node)
   // therefore, last traveled node is correct.
-  var yIndex = traveledNodes.length - 2;
-  var y = traveledNodes[yIndex];
+  const yIndex = traveledNodes.length - 2;
+  const y = traveledNodes[yIndex];
 
   // x should be tallest child of y
   // If children same height, x should be ancestor
   // of inserted node (in traveled path)
-  var x;
+  let x;
   if (y.left !== null && y.right !== null) {
     if (y.left.height > y.right.height) {
       x = y.left;
     } else if (y.left.height < y.right.height) {
       x = y.right;
     } else if (y.left.height === y.right.height) {
-      var xIndex = traveledNodes.length - 3;
+      const xIndex = traveledNodes.length - 3;
       x = traveledNodes[xIndex];
     }
   } else if (y.left !== null && y.right === null) {
@@ -131,13 +131,13 @@ AVLTree.prototype.getNodesToRestructureAfterInsert = function(traveledNodes) {
  * root and checking for invalid heights.
  */
 AVLTree.prototype.keepHeightBalance = function(node, afterRemove) {
-  var current = node;
-  var traveledNodes = [];
+  let current = node;
+  const traveledNodes = [];
   while (current !== null) {
     traveledNodes.push(current);
     current.height = this.getNodeHeight(current);
     if (!this.isNodeBalanced(current)) {
-      var nodesToBeRestructured = (afterRemove) ?
+      const nodesToBeRestructured = (afterRemove) ?
         this.getNodesToRestructureAfterRemove(traveledNodes) :
         this.getNodesToRestructureAfterInsert(traveledNodes);
       this.restructure(nodesToBeRestructured);
@@ -151,9 +151,9 @@ AVLTree.prototype.keepHeightBalance = function(node, afterRemove) {
  * rotator.
  */
 AVLTree.prototype.restructure = function(nodesToRestructure) {
-  var x = nodesToRestructure[0];
-  var y = nodesToRestructure[1];
-  var z = nodesToRestructure[2];
+  const x = nodesToRestructure[0];
+  const y = nodesToRestructure[1];
+  const z = nodesToRestructure[2];
 
   // Determine Rotation Pattern
   if (z.right === y && y.right === x) {
@@ -173,7 +173,7 @@ AVLTree.prototype.restructure = function(nodesToRestructure) {
 AVLTree.prototype.rightRight = function(x, y, z) {
   // pass z parent to y and move y's left to z's right
   if (z.parent) {
-    var orientation = (z.parent.left === z) ? 'left' : 'right';
+    const orientation = (z.parent.left === z) ? 'left' : 'right';
     z.parent[orientation] = y;
     y.parent = z.parent;
   } else {
@@ -202,7 +202,7 @@ AVLTree.prototype.rightRight = function(x, y, z) {
 AVLTree.prototype.leftLeft = function(x, y, z) {
   // pass z parent to y and move y's right to z's left
   if (z.parent) {
-    var orientation = (z.parent.left === z) ? 'left' : 'right';
+    const orientation = (z.parent.left === z) ? 'left' : 'right';
     z.parent[orientation] = y;
     y.parent = z.parent;
   } else {
@@ -230,7 +230,7 @@ AVLTree.prototype.leftLeft = function(x, y, z) {
 AVLTree.prototype.rightLeft = function(x, y, z) {
   // pass z parent to x
   if (z.parent) {
-    var orientation = (z.parent.left === z) ? 'left' : 'right';
+    const orientation = (z.parent.left === z) ? 'left' : 'right';
     z.parent[orientation] = x;
     x.parent = z.parent;
   } else {
@@ -266,7 +266,7 @@ AVLTree.prototype.rightLeft = function(x, y, z) {
 AVLTree.prototype.leftRight = function(x, y, z) {
   // pass z parent to x
   if (z.parent) {
-    var orientation = (z.parent.left === z) ? 'left' : 'right';
+    const orientation = (z.parent.left === z) ? 'left' : 'right';
     z.parent[orientation] = x;
     x.parent = z.parent;
   } else {
@@ -306,7 +306,7 @@ AVLTree.prototype.insert = function(value, current) {
     return;
   }
 
-  var insertKey;
+  let insertKey;
   current = current || this.root;
   if (current.value > value) {
     insertKey = 'left';
@@ -380,7 +380,7 @@ AVLTree.prototype._find = function(value, current) {
     return null;
   }
 
-  var node;
+  let node;
   if (current.value === value) {
     node = current;
   } else if (current.value > value) {
@@ -418,14 +418,14 @@ AVLTree.prototype.replaceChild = function(parent, oldChild, newChild) {
  * Removes a node by its value.
  */
 AVLTree.prototype.remove = function(value) {
-  var node = this.find(value);
+  const node = this.find(value);
   if (!node) {
     return false;
   }
 
   if (node.left && node.right) {
-    var min = this.findMin(node.right);
-    var temp = node.value;
+    const min = this.findMin(node.right);
+    const temp = node.value;
     node.value = min.value;
     min.value = temp;
     return this.remove(min);
@@ -494,7 +494,7 @@ AVLTree.prototype.findMax = function() {
  * Verifies if the tree is balanced.
  */
 AVLTree.prototype.isTreeBalanced = function() {
-  var current = this.root;
+  const current = this.root;
 
   if (!current) {
     return true;
@@ -510,7 +510,7 @@ AVLTree.prototype.isTreeBalanced = function() {
  * property.
  */
 AVLTree.prototype.getTreeHeight = function() {
-  var current = this.root;
+  const current = this.root;
 
   if (!current) {
     return 0;

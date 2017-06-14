@@ -1,6 +1,6 @@
 'use strict';
 
-var gcd = require('./gcd.js');
+const gcd = require('./gcd.js');
 
 /**
  * Calcule the Least Common Multiple with a given Greatest Common Denominator
@@ -12,7 +12,7 @@ var gcd = require('./gcd.js');
  *
  * @return Number
  */
-var genericLCM = function(gcdFunction, a, b) {
+const genericLCM = function(gcdFunction, a, b) {
   if (a === 0 || b === 0) {
     return 0;
   }
@@ -30,7 +30,7 @@ var genericLCM = function(gcdFunction, a, b) {
  *
  * @return Number
  */
-var lcmDivisionBased = genericLCM.bind(null, gcd);
+const lcmDivisionBased = genericLCM.bind(null, gcd);
 
 /**
  * Algorithm to calculate Least Common Multiple based on Stein's Algorithm
@@ -41,8 +41,8 @@ var lcmDivisionBased = genericLCM.bind(null, gcd);
  *
  * @return Number
  */
-var lcmBinaryIterative = genericLCM.bind(null, gcd.binary);
+const lcmBinaryIterative = genericLCM.bind(null, gcd.binary);
 
-var lcm = lcmDivisionBased;
+const lcm = lcmDivisionBased;
 lcm.binary = lcmBinaryIterative;
 module.exports = lcm;

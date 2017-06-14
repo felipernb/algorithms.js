@@ -1,11 +1,11 @@
 'use strict';
-var Comparator = require('../../util/comparator');
+const Comparator = require('../../util/comparator');
 
 /**
  * Swaps two elements in the array
  */
-var swap = function(array, x, y) {
-  var tmp = array[y];
+const swap = function(array, x, y) {
+  const tmp = array[y];
   array[y] = array[x];
   array[x] = tmp;
 };
@@ -17,17 +17,17 @@ var swap = function(array, x, y) {
  *
  * @return Number the positon of the pivot
  */
-var partition = function(a, comparator, lo, hi) {
+const partition = function(a, comparator, lo, hi) {
   // pick a random element, swap with the rightmost and
   // use it as pivot
   swap(a, Math.floor(Math.random() * (hi - lo)) + lo, hi);
-  var pivot = hi;
+  const pivot = hi;
 
   // dividerPosition keeps track of the position
   // where the pivot should be inserted
-  var dividerPosition = lo;
+  let dividerPosition = lo;
 
-  for (var i = lo; i < hi; i++) {
+  for (let i = lo; i < hi; i++) {
     if (comparator.lessThan(a[i], a[pivot])) {
       swap(a, i, dividerPosition);
       dividerPosition++;
@@ -41,12 +41,12 @@ var partition = function(a, comparator, lo, hi) {
  * Quicksort recursively sorts parts of the array in
  * O(n.lg n)
  */
-var quicksortInit = function(array, comparatorFn) {
-  var comparator = new Comparator(comparatorFn);
+const quicksortInit = function(array, comparatorFn) {
+  const comparator = new Comparator(comparatorFn);
 
   return (function quicksort(array, lo, hi) {
     while (lo < hi) {
-      var p = partition(array, comparator, lo, hi);
+      const p = partition(array, comparator, lo, hi);
       // Chooses only the smallest partition to use recursion on and
       // tail-optimize the other. This guarantees O(log n) space in worst case.
       if (p - lo < hi - p) {

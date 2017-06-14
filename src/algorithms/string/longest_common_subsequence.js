@@ -7,12 +7,12 @@
 /**
  * Implementation via dynamic programming
  */
-var longestCommonSubsequence = function(s1, s2) {
+const longestCommonSubsequence = function(s1, s2) {
   // Multidimensional array for dynamic programming algorithm
-  var cache = new Array(s1.length + 1);
+  const cache = new Array(s1.length + 1);
 
-  var i;
-  var j;
+  let i;
+  let j;
 
   for (i = 0; i <= s1.length; i++) {
     cache[i] = new Int32Array(s2.length + 1);
@@ -32,7 +32,7 @@ var longestCommonSubsequence = function(s1, s2) {
   // Build LCS from cache
   i = s1.length;
   j = s2.length;
-  var lcs = '';
+  let lcs = '';
 
   while (cache[i][j] !== 0) {
     if (s1[i - 1] === s2[j - 1]) {

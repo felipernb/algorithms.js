@@ -15,10 +15,10 @@
  * @param String
  * @return Number
  */
-var levenshtein = function(a, b) {
-  var editDistance = [];
-  var i;
-  var j;
+const levenshtein = function(a, b) {
+  const editDistance = [];
+  let i;
+  let j;
 
   // Initialize the edit distance matrix. The first collumn contains
   // the values comparing the string a to an empty string b

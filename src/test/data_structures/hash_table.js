@@ -1,18 +1,18 @@
 'use strict';
 
-var HashTable = require('../..').DataStructures.HashTable;
-var assert = require('assert');
+const HashTable = require('../..').DataStructures.HashTable;
+const assert = require('assert');
 
 describe('Hash Table', function() {
   it('should calculate hashes using the same algorithm as ' +
     'Java\'s String.hashCode', function() {
-    var h = new HashTable();
+    const h = new HashTable();
     assert.equal(h.hash('The quick brown fox jumps over the lazy dog'),
         -609428141);
     assert.equal(h.hash('Testing the hashCode function'), 1538083358);
     assert.equal(h.hash(''), 0);
     assert.equal(h.hash('a'), 97);
-    var longString =
+    const longString =
         'k"hg3q#+~/l2Eljan;DB x.P<pX[!C`/Nr6w~YIPz;X3z<]b6nDvda|ToZM+a%D#' +
         ':PE@z[bl$/PRT7m76}FV=UW/3SPkkdRkuC~9TKgMg.^#n)iiq{AZ?}+pv;>%-:iA' +
         '/b/hG($8-SZcZX871&;fDEWthw.b5agzov],X00--O:mcQ$JFi-4uIo"D:(r(yvs' +
@@ -34,7 +34,7 @@ describe('Hash Table', function() {
 
   it('should initialize the table with the given capacity',
     function() {
-      var h = new HashTable();
+      let h = new HashTable();
       assert.equal(h.capacity, 64); // default initial capacity;
       assert.equal(h.size, 0);
 
@@ -43,14 +43,14 @@ describe('Hash Table', function() {
     });
 
   it('should allow putting and getting elements from the table', function() {
-    var h = new HashTable(16);
-    var a = {a: 'foo', b: 'bar'};
+    const h = new HashTable(16);
+    const a = {a: 'foo', b: 'bar'};
     h.put('foo', a);
 
     assert.equal(h.size, 1);
     assert.strictEqual(h.get('foo'), a);
 
-    var b = {a: 'bar', b: 'baz'};
+    const b = {a: 'bar', b: 'baz'};
     h.put('bar', b);
 
     assert.equal(h.size, 2);
@@ -58,24 +58,24 @@ describe('Hash Table', function() {
   });
 
   it('should replace items if the same key is reused', function() {
-    var h = new HashTable(16);
-    var a = {a: 'foo', b: 'bar'};
+    const h = new HashTable(16);
+    const a = {a: 'foo', b: 'bar'};
     h.put('foo', a);
     assert.strictEqual(h.get('foo'), a);
 
-    var b = {a: 'bar', b: 'baz'};
+    const b = {a: 'bar', b: 'baz'};
     h.put('foo', b);
     assert.strictEqual(h.get('foo'), b);
   });
 
   it('should return undefined if there\'s no element', function() {
-    var h = new HashTable(8);
+    const h = new HashTable(8);
     assert.equal(h.get('foo'), undefined);
     assert.equal(h.get('bar'), undefined);
   });
 
   it('should handle hash conflicts', function() {
-    var h = new HashTable(4);
+    const h = new HashTable(4);
     // Both keys are supposed to be pushed to the same position
     assert.equal(h._position('a'), h._position('e'));
     h.put('a', 'foo');
@@ -89,7 +89,7 @@ describe('Hash Table', function() {
   });
 
   it('should increase capacity if needed', function() {
-    var h = new HashTable(2);
+    const h = new HashTable(2);
     assert.equal(h.capacity, 2);
 
     h.put('foo', 'foo');
@@ -100,7 +100,7 @@ describe('Hash Table', function() {
   });
 
   it('should allow removing items', function() {
-    var h = new HashTable();
+    const h = new HashTable();
     assert.equal(h.get('foo'), undefined);
 
     h.put('foo', 'bar');
@@ -115,23 +115,23 @@ describe('Hash Table', function() {
   });
 
   it('should allow non-string keys', function() {
-    var h = new HashTable();
+    const h = new HashTable();
     h.put(10, 5);
     assert.equal(h.get(10), 5);
 
-    var o = {a: 'foo', b: 'bar'};
+    const o = {a: 'foo', b: 'bar'};
     h.put(o, 'foo');
     assert.equal(h.get(o), 'foo');
   });
 
   it('should perform a function to all keys with forEach', function() {
-    var h = new HashTable();
+    const h = new HashTable();
     h.put(1, 10);
     h.put(2, 20);
     h.put(3, 30);
 
-    var totalKeys = 0;
-    var totalValues = 0;
+    let totalKeys = 0;
+    let totalValues = 0;
     h.forEach(function(k, v) {
       totalKeys += k;
       totalValues += v;

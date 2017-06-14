@@ -10,15 +10,15 @@
  *
  * @return {Number, Number}
  */
-var extEuclid = function(a, b) {
-  var s = 0;
-  var oldS = 1;
-  var t = 1;
-  var oldT = 0;
-  var r = b;
-  var oldR = a;
-  var quotient;
-  var temp;
+const extEuclid = function(a, b) {
+  let s = 0;
+  let oldS = 1;
+  let t = 1;
+  let oldT = 0;
+  let r = b;
+  let oldR = a;
+  let quotient;
+  let temp;
   while (r !== 0) {
     quotient = Math.floor(oldR / r);
 

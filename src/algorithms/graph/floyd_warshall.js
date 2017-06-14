@@ -8,12 +8,12 @@
  * @param {Graph} graph
  * @return {{distance, path}}
  */
-var floydWarshall = function(graph) {
+const floydWarshall = function(graph) {
   // Fill in the distances with initial values:
   //   - 0 if source == destination;
   //   - edge(source, destination) if there is a direct edge;
   //   - +inf otherwise.
-  var distance = Object.create(null);
+  const distance = Object.create(null);
   graph.vertices.forEach(function(src) {
     distance[src] = Object.create(null);
     graph.vertices.forEach(function(dest) {
@@ -29,7 +29,7 @@ var floydWarshall = function(graph) {
 
   // Internal vertex with the largest index along the shortest path.
   // Needed for path reconstruction.
-  var middleVertex = Object.create(null);
+  const middleVertex = Object.create(null);
   graph.vertices.forEach(function(vertex) {
     middleVertex[vertex] = Object.create(null);
   });
@@ -37,7 +37,7 @@ var floydWarshall = function(graph) {
   graph.vertices.forEach(function(middle) {
     graph.vertices.forEach(function(src) {
       graph.vertices.forEach(function(dest) {
-        var dist = distance[src][middle] + distance[middle][dest];
+        const dist = distance[src][middle] + distance[middle][dest];
         if (dist < distance[src][dest]) {
           distance[src][dest] = dist;
           middleVertex[src][dest] = middle;
@@ -62,20 +62,20 @@ var floydWarshall = function(graph) {
    * @param {string} dest
    * @return {?string[]} Null if destination is unreachable.
    */
-  var path = function(src, dest) {
+  const path = function(src, dest) {
     if (!Number.isFinite(distance[src][dest])) {
       // dest unreachable.
       return null;
     }
 
-    var path = [src];
+    const path = [src];
 
     if (src !== dest) {
       (function pushInOrder(src, dest) {
         if (middleVertex[src][dest] === undefined) {
           path.push(dest);
         } else {
-          var middle = middleVertex[src][dest];
+          const middle = middleVertex[src][dest];
           pushInOrder(src, middle);
           pushInOrder(middle, dest);
         }

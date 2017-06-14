@@ -1,6 +1,6 @@
 'use strict';
 
-var assert = require('assert');
+const assert = require('assert');
 
 module.exports = {
   testSort: function(sortFn) {
@@ -16,7 +16,7 @@ module.exports = {
   },
 
   testSortWithComparisonFn: function(sortFn) {
-    var compare = function(a, b) {
+    const compare = function(a, b) {
       if (a.length === b.length) return 0;
       return a.length < b.length ? -1 : 1;
     };
@@ -29,7 +29,7 @@ module.exports = {
     assert.deepEqual(sortFn(['apple', 'banana', 'car', 'z'], compare),
       ['z', 'car', 'apple', 'banana']);
 
-    var reverseSort = function(a, b) {
+    const reverseSort = function(a, b) {
       if (a === b) return 0;
       return a < b ? 1 : -1;
     };

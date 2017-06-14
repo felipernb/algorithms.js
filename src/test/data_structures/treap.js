@@ -1,11 +1,11 @@
 'use strict';
 
-var root = require('../..');
-var Treap = root.DataStructures.Treap;
-var assert = require('assert');
+const root = require('../..');
+const Treap = root.DataStructures.Treap;
+const assert = require('assert');
 
 describe('Treap', function() {
-  var treap;
+  let treap;
   before(function() {
     treap = new Treap();
   });
@@ -126,7 +126,7 @@ describe('Treap', function() {
 
   it('should keep balance', function() {
   // Insert 1023 elements randomly
-    for (var i = 0; i < 1023; ++i) {
+    for (let i = 0; i < 1023; ++i) {
       treap.insert(Math.random());
     }
     assert.equal(treap.size(), 1023);

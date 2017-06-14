@@ -1,13 +1,13 @@
 'use strict';
 
-var root = require('../..');
-var BST = root.DataStructures.BST;
-var bfs = root.Search.bfs;
-var assert = require('assert');
+const root = require('../..');
+const BST = root.DataStructures.BST;
+const bfs = root.Search.bfs;
+const assert = require('assert');
 
 describe('Binary Search Tree', function() {
   it('should insert elements respecting the BST restrictions', function() {
-    var bst = new BST();
+    const bst = new BST();
     bst.insert(4);
     bst.insert(8);
     bst.insert(10);
@@ -20,7 +20,7 @@ describe('Binary Search Tree', function() {
     assert.equal(bst.size, 9);
   });
   it('should check if an element exists (in O(lg n))', function() {
-    var bst = new BST();
+    const bst = new BST();
     bst.insert(4);
     bst.insert(8);
     bst.insert(10);
@@ -50,7 +50,7 @@ describe('Binary Search Tree', function() {
    *    1     3    5     10
    *  0    2.5               100
    */
-  var bst = new BST();
+  const bst = new BST();
   bst.insert(4);
   bst.insert(8);
   bst.insert(10);
@@ -62,7 +62,7 @@ describe('Binary Search Tree', function() {
   bst.insert(100);
   bst.insert(2.5);
 
-  var callbackGenerator = function(a) {
+  const callbackGenerator = function(a) {
     return n => a.push(n);
   };
 
@@ -75,7 +75,7 @@ describe('Binary Search Tree', function() {
        *    1     3    5     10
        *       2.5               100
        */
-    var a = [];
+    const a = [];
     bfs(bst.root, callbackGenerator(a));
     assert.deepEqual(a, [4, 2, 8, 1, 3, 5, 10, 2.5, 100]);
   });
@@ -89,7 +89,7 @@ describe('Binary Search Tree', function() {
        *    1     3    5     100
        *       2.5
        */
-    var a = [];
+    const a = [];
     bfs(bst.root, callbackGenerator(a));
     assert.deepEqual(a, [4, 2, 8, 1, 3, 5, 100, 2.5]);
   });
@@ -109,7 +109,7 @@ describe('Binary Search Tree', function() {
        *     1     3    5     100
        *
        */
-    var a = [];
+    let a = [];
     bfs(bst.root, callbackGenerator(a));
     assert.deepEqual(a, [4, 2.5, 8, 1, 3, 5, 100]);
 
@@ -137,7 +137,7 @@ describe('Binary Search Tree', function() {
   });
 
   it('should always return the right root and size', function() {
-    var bst = new BST();
+    const bst = new BST();
     bst.insert(5);
     assert.equal(bst.size, 1);
     bst.remove(5);
@@ -157,7 +157,7 @@ describe('Binary Search Tree', function() {
 
   it('should throw an error when trying to remove an unexisting node',
       function() {
-        var bst = new BST();
+        const bst = new BST();
         assert.throws(() => bst.remove(0), Error);
         bst.insert(3);
         assert.throws(() => bst.remove(0), Error);
@@ -165,14 +165,14 @@ describe('Binary Search Tree', function() {
 });
 
 describe('Binary Search Tree with custom comparator', function() {
-  var strLenCompare = function(a, b) {
+  const strLenCompare = function(a, b) {
     if (a.length === b.length) return 0;
     return a.length < b.length ? -1 : 1;
   };
 
   it(
     'should insert elements respecting the BST restrictions', function() {
-      var bst = new BST(strLenCompare);
+      const bst = new BST(strLenCompare);
       bst.insert('banana');
       bst.insert('apple');
       bst.insert('pineapple');
@@ -181,7 +181,7 @@ describe('Binary Search Tree with custom comparator', function() {
     });
 
   it('should check if an element exists (in O(lg n))', function() {
-    var bst = new BST(strLenCompare);
+    const bst = new BST(strLenCompare);
     bst.insert('banana');
     bst.insert('apple');
     bst.insert('pineapple');
@@ -203,19 +203,19 @@ describe('Binary Search Tree with custom comparator', function() {
    *  'pear'               'watermelon'
    *
    */
-  var bst = new BST(strLenCompare);
+  const bst = new BST(strLenCompare);
   bst.insert('banana');
   bst.insert('apple');
   bst.insert('pear');
   bst.insert('pineapple');
   bst.insert('watermelon');
 
-  var callbackGenerator = function(a) {
+  const callbackGenerator = function(a) {
     return n => a.push(n);
   };
 
   it('should insert the items according to the comparator', function() {
-    var a = [];
+    const a = [];
     bfs(bst.root, callbackGenerator(a));
     assert.deepEqual(a, ['banana', 'apple', 'pineapple', 'pear', 'watermelon']);
   });
@@ -228,7 +228,7 @@ describe('Binary Search Tree with custom comparator', function() {
        *     'apple'      'pineapple'
        *  'pear'
        */
-    var a = [];
+    const a = [];
     bfs(bst.root, callbackGenerator(a));
     assert.deepEqual(a, ['banana', 'apple', 'pineapple', 'pear']);
   });
@@ -240,7 +240,7 @@ describe('Binary Search Tree with custom comparator', function() {
        *           'banana'
        *     'pear'      'pineapple'
        */
-    var a = [];
+    const a = [];
     bfs(bst.root, callbackGenerator(a));
     assert.deepEqual(a, ['banana', 'pear', 'pineapple']);
   });
@@ -252,7 +252,7 @@ describe('Binary Search Tree with custom comparator', function() {
        *       'pineapple'
        *   'pear'
        */
-    var a = [];
+    const a = [];
     bfs(bst.root, callbackGenerator(a));
     assert.deepEqual(a, ['pineapple', 'pear']);
   });

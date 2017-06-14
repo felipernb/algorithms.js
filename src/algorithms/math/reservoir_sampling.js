@@ -7,13 +7,13 @@
  * @param {number} sampleSize
  * @return {Array}
  */
-var reservoirSampling = function(array, sampleSize) {
+const reservoirSampling = function(array, sampleSize) {
   if (sampleSize > array.length) {
     throw new Error('Sample size exceeds the total number of elements.');
   }
-  var reservoir = array.slice(0, sampleSize);
-  for (var i = sampleSize; i < array.length; ++i) {
-    var j = Math.floor(Math.random() * (i + 1));
+  const reservoir = array.slice(0, sampleSize);
+  for (let i = sampleSize; i < array.length; ++i) {
+    const j = Math.floor(Math.random() * (i + 1));
     if (j < sampleSize) {
       reservoir[j] = array[i];
     }

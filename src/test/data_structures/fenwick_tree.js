@@ -1,11 +1,11 @@
 'use strict';
 
-var FenwickTree = require('../..').DataStructures.FenwickTree;
-var assert = require('assert');
+const FenwickTree = require('../..').DataStructures.FenwickTree;
+const assert = require('assert');
 
 describe('FenwickTree', function() {
   it('should allow prefix queries', function() {
-    var tree = new FenwickTree(10);
+    const tree = new FenwickTree(10);
     tree.adjust(5, 42);
     tree.adjust(7, 43);
     tree.adjust(9, 44);
@@ -24,7 +24,7 @@ describe('FenwickTree', function() {
   });
 
   it('should allow range queries', function() {
-    var tree = new FenwickTree(10);
+    const tree = new FenwickTree(10);
     tree.adjust(5, 42);
     tree.adjust(7, 43);
     tree.adjust(9, 44);

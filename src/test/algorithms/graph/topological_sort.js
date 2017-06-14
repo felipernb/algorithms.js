@@ -1,14 +1,14 @@
 'use strict';
 
-var root = require('../../../');
-var topologicalSort = root.Graph.topologicalSort;
-var Graph = root.DataStructures.Graph;
-var assert = require('assert');
+const root = require('../../../');
+const topologicalSort = root.Graph.topologicalSort;
+const Graph = root.DataStructures.Graph;
+const assert = require('assert');
 
 describe('Topological Sort', function() {
   it('should return a stack with the vertices ordered' +
     ' considering the dependencies', function() {
-    var graph = new Graph();
+    const graph = new Graph();
     graph.addVertex('shoes');
     graph.addVertex('watch');
     graph.addVertex('underwear');
@@ -35,8 +35,8 @@ describe('Topological Sort', function() {
 
     graph.addEdge('tie', 'jacket');
 
-    var stack = topologicalSort(graph);
-    var a = [];
+    const stack = topologicalSort(graph);
+    const a = [];
     while (!stack.isEmpty()) a.push(stack.pop());
     assert.deepEqual(a, [
       'shirt', 'socks', 'underwear', 'pants', 'shoes',

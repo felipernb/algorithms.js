@@ -1,7 +1,7 @@
 'use strict';
 
-var mergeSort = require('../../..').Sorting.mergeSort;
-var sortingTestsHelper = require('./sorting_tests_helper');
+const mergeSort = require('../../..').Sorting.mergeSort;
+const sortingTestsHelper = require('./sorting_tests_helper');
 
 describe('Merge Sort', function() {
   it('should sort the given array', function() {

@@ -1,12 +1,12 @@
 'use strict';
 
-var DisjointSetForest = require('../..').DataStructures.DisjointSetForest;
-var assert = require('assert');
+const DisjointSetForest = require('../..').DataStructures.DisjointSetForest;
+const assert = require('assert');
 
 describe('Disjoint Set Forest', function() {
   it('should decide if two elements belong to the same subset or not',
      function() {
-       var forest = new DisjointSetForest();
+       const forest = new DisjointSetForest();
        assert(!forest.sameSubset(1, 2));
        forest.merge(1, 2);
        assert(forest.sameSubset(1, 2));
@@ -18,8 +18,8 @@ describe('Disjoint Set Forest', function() {
      });
 
   it('should maintain subset sizes', function() {
-    var forest = new DisjointSetForest();
-    var assertSizesCorrect = function(elements, size) {
+    const forest = new DisjointSetForest();
+    const assertSizesCorrect = function(elements, size) {
       elements.forEach(function(element) {
         assert.equal(forest.size(element), size);
       });
@@ -38,9 +38,9 @@ describe('Disjoint Set Forest', function() {
   });
 
   it('should point all elements to the same root', function() {
-    var forest = new DisjointSetForest();
-    var assertSameRoot = function(element) {
-      var root = forest.root(element);
+    const forest = new DisjointSetForest();
+    const assertSameRoot = function(element) {
+      const root = forest.root(element);
       [].slice.call(arguments, 1).forEach(function(element) {
         assert.equal(forest.root(element), root);
       });
@@ -56,8 +56,8 @@ describe('Disjoint Set Forest', function() {
   });
 
   it('should not choose the root element outside the subset', function() {
-    var forest = new DisjointSetForest();
-    var assertInside = function(value, set) {
+    const forest = new DisjointSetForest();
+    const assertInside = function(value, set) {
       return set.some(function(element) {
         return element === value;
       });

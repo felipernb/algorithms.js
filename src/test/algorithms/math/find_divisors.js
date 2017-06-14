@@ -1,14 +1,14 @@
 'use strict';
 
-var math = require('../../..').Math;
-var findDivisors = math.findDivisors;
-var assert = require('assert');
+const math = require('../../..').Math;
+const findDivisors = math.findDivisors;
+const assert = require('assert');
 
 /**
  * Deep equal for arrays
  */
 function testArrayEqual(a, b) {
-  var arrayEqual = true;
+  let arrayEqual = true;
   a.sort();
   b.sort();
   a.forEach(function(elem, index) {
@@ -19,7 +19,7 @@ function testArrayEqual(a, b) {
   return arrayEqual && a.length === b.length;
 }
 
-var testFindDivisors = function(findDivisors) {
+const testFindDivisors = function(findDivisors) {
   assert(testArrayEqual([], findDivisors(-2)));
   assert(testArrayEqual([], findDivisors(0)));
   assert(testArrayEqual([1], findDivisors(1)));

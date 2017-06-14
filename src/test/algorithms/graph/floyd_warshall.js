@@ -1,13 +1,13 @@
 'use strict';
 
-var root = require('../../../');
-var floydWarshall = root.Graph.floydWarshall;
-var Graph = root.DataStructures.Graph;
-var assert = require('assert');
+const root = require('../../../');
+const floydWarshall = root.Graph.floydWarshall;
+const Graph = root.DataStructures.Graph;
+const assert = require('assert');
 
 describe('Floyd-Warshall Algorithm', function() {
   it('should compute all-pairs shortest paths in the graph', function() {
-    var graph = new Graph();
+    const graph = new Graph();
     graph.addEdge('a', 'b', -2);
     graph.addEdge('b', 'c', -1);
     graph.addEdge('c', 'a', 4);
@@ -16,7 +16,7 @@ describe('Floyd-Warshall Algorithm', function() {
     graph.addEdge('z', 'x', 1);
     graph.addEdge('z', 'y', -4);
 
-    var result = floydWarshall(graph);
+    const result = floydWarshall(graph);
 
     assert.deepEqual(result.distance, {a: {a: 0,
                                              b: -2,
@@ -63,7 +63,7 @@ describe('Floyd-Warshall Algorithm', function() {
 
   it('should determine if the graph contains a negative-weighted cycle',
       function() {
-        var graph = new Graph();
+        const graph = new Graph();
         graph.addEdge('a', 'b', -2);
         graph.addEdge('b', 'c', -1);
         graph.addEdge('c', 'y', -3);

@@ -13,9 +13,9 @@
  * @returns {number[]} - returns the divisors
  */
 
-var findDivisorsGeneric = function(number) {
-  var index = 1;
-  var divisors = [];
+const findDivisorsGeneric = function(number) {
+  let index = 1;
+  const divisors = [];
 
   for (index; index <= number; index++) {
     if (number % index === 0) {
@@ -36,9 +36,9 @@ var findDivisorsGeneric = function(number) {
  * @returns {number[]} - returns the divisors
  */
 
-var findDivisorsByPairingUnsorted = function(number) {
-  var index = 1;
-  var divisors = [];
+const findDivisorsByPairingUnsorted = function(number) {
+  let index = 1;
+  const divisors = [];
 
   for (index; index <= Math.sqrt(number); index++) {
     if (number % index === 0) {
@@ -65,11 +65,11 @@ var findDivisorsByPairingUnsorted = function(number) {
  * @returns {number[]} - returns the divisors
  */
 
-var findDivisorsByPairingSorted = function(number) {
-  var index = 1;
-  var divisors = [];
-  var divisorsLessThanSqrt = [];
-  var divisorsMoreThanSqrt = [];
+const findDivisorsByPairingSorted = function(number) {
+  let index = 1;
+  let divisors = [];
+  const divisorsLessThanSqrt = [];
+  const divisorsMoreThanSqrt = [];
 
   for (index; index <= Math.sqrt(number); index++) {
     if (number % index === 0) {

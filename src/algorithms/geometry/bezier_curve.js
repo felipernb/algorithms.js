@@ -11,14 +11,14 @@
  * Generates a bezier-curve from a series of points
  * @param Array array of control points ([{x: x0, y: y0}, {x: x1, y: y1}])
  */
-var BezierCurve = function(points) {
+const BezierCurve = function(points) {
   this.n = points.length;
   this.p = [];
 
   // The binomial coefficient
-  var c = [1];
-  var i;
-  var j;
+  const c = [1];
+  let i;
+  let j;
   for (i = 1; i < this.n; ++i) {
     c.push(0);
     for (j = i; j >= 1; --j) {
@@ -36,13 +36,13 @@ var BezierCurve = function(points) {
  * @param Number float variable from 0 to 1
  */
 BezierCurve.prototype.get = function(t) {
-  var res = {x: 0, y: 0};
-  var i;
-  var a = 1;
-  var b = 1;
+  const res = {x: 0, y: 0};
+  let i;
+  let a = 1;
+  let b = 1;
 
   // The coefficient
-  var c = [];
+  const c = [];
   for (i = 0; i < this.n; ++i) {
     c.push(a);
     a *= t;

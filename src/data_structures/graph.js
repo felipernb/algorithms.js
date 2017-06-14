@@ -1,6 +1,6 @@
 'use strict';
 
-var HashSet = require('./set');
+const HashSet = require('./set');
 
 /**
  * Adjacency list representation of a graph
@@ -13,7 +13,7 @@ function Graph(directed) {
 }
 
 // Normalize vertex labels as strings
-var _ = function(v) {
+const _ = function(v) {
   return String(v);
 };
 
@@ -54,8 +54,8 @@ Graph.prototype.edge = function(a, b) {
 };
 
 Graph.prototype.reverse = function() {
-  var self = this;
-  var r = new Graph(this.directed);
+  const self = this;
+  const r = new Graph(this.directed);
 
   self.vertices.forEach(function(v) {
     r.addVertex(v);

@@ -1,9 +1,9 @@
 'use strict';
 
-var rabinKarp = require('../../..').String.rabinKarp;
-var assert = require('assert');
+const rabinKarp = require('../../..').String.rabinKarp;
+const assert = require('assert');
 
-var rabinKarpEqualsToIndexOf = function(a, b) {
+const rabinKarpEqualsToIndexOf = function(a, b) {
   assert.equal(rabinKarp(a, b), a.indexOf(b));
 };
 

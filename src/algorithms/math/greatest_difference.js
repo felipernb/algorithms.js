@@ -8,12 +8,12 @@
  * @returns {number}
  */
 
-var greatestDifference = function(numbers) {
-  var index = 0;
-  var largest = numbers[0];
-  var length = numbers.length;
-  var number;
-  var smallest = numbers[0];
+const greatestDifference = function(numbers) {
+  let index = 0;
+  let largest = numbers[0];
+  const length = numbers.length;
+  let number;
+  let smallest = numbers[0];
 
   for (index; index < length; index++) {
     number = numbers[index];

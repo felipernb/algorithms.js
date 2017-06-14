@@ -10,11 +10,11 @@
  *     or {String}
  * @return {Array} of Integers
  */
-var buildTable = function(pattern) {
-  var length = pattern.length;
-  var table = [];
-  var position = 2;
-  var cnd = 0;
+const buildTable = function(pattern) {
+  const length = pattern.length;
+  const table = [];
+  let position = 2;
+  let cnd = 0;
 
   table[0] = -1;
   table[1] = 0;
@@ -50,12 +50,12 @@ var buildTable = function(pattern) {
  *     or {String}
  * @return {Number}
  */
-var knuthMorrisPratt = function(text, pattern) {
-  var textLength = text.length;
-  var patternLength = pattern.length;
-  var m = 0;
-  var i = 0;
-  var table = buildTable(pattern);
+const knuthMorrisPratt = function(text, pattern) {
+  const textLength = text.length;
+  const patternLength = pattern.length;
+  let m = 0;
+  let i = 0;
+  const table = buildTable(pattern);
 
   while (m + i < textLength) {
     if (pattern[i] === text[m + i]) {

@@ -1,8 +1,8 @@
 'use strict';
 
-var root = require('../../..');
-var lcm = root.Math.lcm;
-var assert = require('assert');
+const root = require('../../..');
+const lcm = root.Math.lcm;
+const assert = require('assert');
 
 describe('LCM', function() {
   it('should calculate the correct LCM between two numbers ' +
@@ -25,7 +25,7 @@ describe('LCM', function() {
 
   it('should calculate the correct LCM between two numbers ' +
     'using the binary method', function() {
-    var lcmb = lcm.binary;
+    const lcmb = lcm.binary;
     assert.equal(lcmb(2, 3), 6);
     assert.equal(lcmb(0, 1), 0);
     assert.equal(lcmb(4, 9), 36);

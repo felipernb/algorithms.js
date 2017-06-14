@@ -1,6 +1,6 @@
 'use strict';
 
-var lib = {
+const lib = {
   DataStructures: require('./data_structures'),
   Graph: require('./graph'),
   Geometry: require('./geometry'),

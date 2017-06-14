@@ -1,9 +1,9 @@
 'use strict';
 
-var directory = '../../../algorithms/string/';
-var filename = 'longest_common_subsequence';
-var longestCommonSubsequence = require(directory + filename);
-var assert = require('assert');
+const directory = '../../../algorithms/string/';
+const filename = 'longest_common_subsequence';
+const longestCommonSubsequence = require(directory + filename);
+const assert = require('assert');
 
 describe('Longest common subsequence', function() {
   it('should return the longest common subsequence of ' +

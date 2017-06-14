@@ -45,11 +45,11 @@ LinkedList.prototype.add = function(n, index) {
     throw new Error('Index out of bounds');
   }
 
-  var node = new Node(n);
+  const node = new Node(n);
 
   if (index !== undefined && index < this.length) {
-    var prevNode;
-    var nextNode;
+    let prevNode;
+    let nextNode;
 
     if (index === 0) {
       // Insert in the beginning
@@ -98,8 +98,8 @@ LinkedList.prototype.getNode = function(index) {
     throw new Error('Index out of bounds');
   }
 
-  var node = this.head;
-  for (var i = 1; i <= index; i++) {
+  let node = this.head;
+  for (let i = 1; i <= index; i++) {
     node = node.next;
   }
 
@@ -140,7 +140,7 @@ LinkedList.prototype.delNode = function(node) {
  * Performs the fn function with each element in the list
  */
 LinkedList.prototype.forEach = function(fn) {
-  var node = this.head;
+  let node = this.head;
   while (node) {
     fn(node.value);
     node = node.next;

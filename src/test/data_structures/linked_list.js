@@ -1,17 +1,17 @@
 'use strict';
 
-var LinkedList = require('../..').DataStructures.LinkedList;
-var assert = require('assert');
+const LinkedList = require('../..').DataStructures.LinkedList;
+const assert = require('assert');
 
 describe('LinkedList', function() {
   it('should start empty', function() {
-    var l = new LinkedList();
+    const l = new LinkedList();
     assert(l.isEmpty());
     assert.equal(l.length, 0);
   });
 
   it('should increment length when an item is added', function() {
-    var l = new LinkedList();
+    const l = new LinkedList();
     l.add(1);
     assert.equal(l.length, 1);
     assert(!l.isEmpty());
@@ -22,7 +22,7 @@ describe('LinkedList', function() {
 
   it('should return the items from the positions they were inserted',
     function() {
-      var l = new LinkedList();
+      const l = new LinkedList();
       l.add(1);
       l.add(2);
       l.add(3);
@@ -63,7 +63,7 @@ describe('LinkedList', function() {
 
   it('should throw errors when trying to access indexes out of bounds',
       function() {
-        var l = new LinkedList();
+        const l = new LinkedList();
         assert.throws(() => l.get(0), Error);
         assert.throws(() => l.get(1), Error);
         assert.throws(() => l.get(10), Error);
@@ -86,7 +86,7 @@ describe('LinkedList', function() {
       });
 
   it('should be able to delete elements', function() {
-    var l = new LinkedList();
+    const l = new LinkedList();
 
     l.add(1);
     l.add(2);
@@ -122,7 +122,7 @@ describe('LinkedList', function() {
     assert.equal(l.get(3), 5);
     assert.equal(l.get(4), 7);
 
-    for (var i = 0; i < 5; i++) {
+    for (let i = 0; i < 5; i++) {
       l.del(0);
     }
 
@@ -133,14 +133,14 @@ describe('LinkedList', function() {
   });
 
   it('should perform a function to all elements with forEach', function() {
-    var l = new LinkedList();
+    const l = new LinkedList();
     l.add(5);
     l.add(1);
     l.add(3);
     l.add(10);
     l.add(1000);
 
-    var a = [];
+    const a = [];
     l.forEach(function(e) {
       a.push(e);
     });
@@ -150,7 +150,7 @@ describe('LinkedList', function() {
 
   it('should throw an error when trying to delete from an empty list',
       function() {
-        var l = new LinkedList();
+        const l = new LinkedList();
         assert.throws(() => l.del(0), Error);
       });
 });

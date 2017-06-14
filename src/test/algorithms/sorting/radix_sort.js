@@ -1,24 +1,24 @@
 'use strict';
 
-var radixSort = require('../../..').Sorting.radixSort;
-var assert = require('assert');
+const radixSort = require('../../..').Sorting.radixSort;
+const assert = require('assert');
 
-var firstObject = {
+const firstObject = {
   someProperty: 'The',
   key: 88541234132
 };
 
-var secondObject = {
+const secondObject = {
   someProperty: 'winter',
   key: 90071992540992
 };
 
-var thirdObject = {
+const thirdObject = {
   someProperty: 'is',
   key: 0
 };
 
-var fourthObject = {
+const fourthObject = {
   someProperty: 'coming',
   key: 65234567,
   anotherProperty: '!'
@@ -26,7 +26,7 @@ var fourthObject = {
 
 describe('Radix Sort', function() {
   it('should sort the given array', function() {
-    var sorted = radixSort([
+    const sorted = radixSort([
       thirdObject,
       fourthObject,
       firstObject,

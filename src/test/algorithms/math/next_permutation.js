@@ -1,11 +1,11 @@
 'use strict';
 
-var math = require('../../..').Math;
-var nextPermutation = math.nextPermutation;
-var Comparator = require('../../../util/comparator');
-var assert = require('assert');
+const math = require('../../..').Math;
+const nextPermutation = math.nextPermutation;
+const Comparator = require('../../../util/comparator');
+const assert = require('assert');
 
-var range = function(begin, end) {
+const range = function(begin, end) {
   if (end === undefined) {
     end = begin;
     begin = 0;
@@ -18,15 +18,15 @@ var range = function(begin, end) {
   });
 };
 
-var factorial = function(n) {
+const factorial = function(n) {
   return range(1, n + 1).reduce(function(product, value) {
     return product * value;
   }, 1);
 };
 
-var permutations = function(start, compareFn) {
-  var permutations = [];
-  var perm = start.slice();
+const permutations = function(start, compareFn) {
+  const permutations = [];
+  const perm = start.slice();
   do {
     permutations.push(perm.slice());
   } while (nextPermutation(perm, compareFn));
@@ -45,8 +45,8 @@ describe('Next Permutation', function() {
   it('should generate all N! permutations if the elements are distinct',
      function() {
        [4, 5, 6].forEach(function(size) {
-         var count = 0;
-         var perm = range(size);
+         let count = 0;
+         const perm = range(size);
          do {
            count += 1;
          } while (nextPermutation(perm));
@@ -55,9 +55,9 @@ describe('Next Permutation', function() {
      });
 
   it('should support custom compare functions', function() {
-    var reverseComparator = new Comparator();
+    const reverseComparator = new Comparator();
     reverseComparator.reverse();
-    var reverseCompareFn = reverseComparator.compare;
+    const reverseCompareFn = reverseComparator.compare;
 
     assert.deepEqual(permutations([1, 2, 3]).reverse(),
                      permutations([3, 2, 1], reverseCompareFn));

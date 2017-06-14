@@ -1,21 +1,21 @@
 'use strict';
 
-var root = require('../../../');
-var kruskal = root.Graph.kruskal;
-var prim = root.Graph.prim;
-var depthFirstSearch = root.Graph.depthFirstSearch;
-var Graph = root.DataStructures.Graph;
-var assert = require('assert');
+const root = require('../../../');
+const kruskal = root.Graph.kruskal;
+const prim = root.Graph.prim;
+const depthFirstSearch = root.Graph.depthFirstSearch;
+const Graph = root.DataStructures.Graph;
+const assert = require('assert');
 
 describe('Minimum Spanning Tree', function() {
   /**
    * @param {Graph} graph - Undirected graph.
    * @return {number}
    */
-  var numberOfConnectedComponents = function(graph) {
+  const numberOfConnectedComponents = function(graph) {
     assert(!graph.directed);
-    var seen = {};
-    var coverComponent = function(origin) {
+    const seen = {};
+    const coverComponent = function(origin) {
       depthFirstSearch(graph, origin, {
         enterVertex: function(vertex) {
           seen[vertex] = true;
@@ -23,7 +23,7 @@ describe('Minimum Spanning Tree', function() {
       });
     };
 
-    var count = 0;
+    let count = 0;
     graph.vertices.forEach(function(vertex) {
       if (!seen[vertex]) {
         coverComponent(vertex);
@@ -41,11 +41,11 @@ describe('Minimum Spanning Tree', function() {
    * @param {number} connectivity
    * @return {boolean}
    */
-  var isForest = function(graph, connectivity) {
+  const isForest = function(graph, connectivity) {
     if (graph.directed || numberOfConnectedComponents(graph) !== connectivity) {
       return false;
     }
-    var numberOfEdges = 0;
+    let numberOfEdges = 0;
     graph.vertices.forEach(function(vertex) {
       numberOfEdges += graph.neighbors(vertex).filter(
         function(neighbor) {
@@ -62,8 +62,8 @@ describe('Minimum Spanning Tree', function() {
    * @param {Graph} graph2
    * @return {boolean}
    */
-  var spans = function(graph1, graph2) {
-    var span;
+  const spans = function(graph1, graph2) {
+    let span;
     if (graph1.vertices.size === graph2.vertices.size) {
       span = true;
       graph1.vertices.forEach(function(v) {
@@ -83,8 +83,8 @@ describe('Minimum Spanning Tree', function() {
    * @param {Graph} graph
    * @return {number}
    */
-  var graphCost = function(graph) {
-    var total = 0;
+  const graphCost = function(graph) {
+    let total = 0;
     graph.vertices.forEach(function(vertex) {
       total += graph.neighbors(vertex).reduce(function(accum, neighbor) {
         return accum + graph.edge(vertex, neighbor);
@@ -102,7 +102,7 @@ describe('Minimum Spanning Tree', function() {
    * @param {number} [connectivity=1]
    * @return {boolean}
    */
-  var isMinimumSpanningForest = function(suspect, graph,
+  const isMinimumSpanningForest = function(suspect, graph,
                                           minimumCost, connectivity) {
     assert(!graph.directed);
     return isForest(suspect, connectivity || 1) &&
@@ -110,9 +110,9 @@ describe('Minimum Spanning Tree', function() {
       graphCost(suspect) === minimumCost;
   };
 
-  var testMstAlgorithm = function(mst) {
+  const testMstAlgorithm = function(mst) {
     it('should find a minimum spanning tree', function() {
-      var graph = new Graph(false);
+      const graph = new Graph(false);
       graph.addEdge(1, 2, 1);
       graph.addEdge(1, 4, 2);
       graph.addEdge(1, 5, 2);
@@ -134,7 +134,7 @@ describe('Minimum Spanning Tree', function() {
       assert(isMinimumSpanningForest(mst(graph), graph, 10));
 
       // It should find zero-cost MST.
-      var clear = function(a, b) {
+      const clear = function(a, b) {
         graph.addEdge(a, b, -graph.edge(a, b));
       };
       clear(2, 1);
@@ -151,7 +151,7 @@ describe('Minimum Spanning Tree', function() {
 
     it('should find a minimum spaning forest if the graph is not connected',
        function() {
-         var graph = new Graph(false);
+         const graph = new Graph(false);
          graph.addVertex(1);
          graph.addVertex(2);
          graph.addVertex(3);
@@ -176,7 +176,7 @@ describe('Minimum Spanning Tree', function() {
        });
 
     it('should throw an error if the graph is directed', function() {
-      var directedGraph = new Graph(true);
+      const directedGraph = new Graph(true);
       directedGraph.addEdge('Rock', 'Hard Place');
       assert.throws(mst.bind(null, directedGraph));
     });

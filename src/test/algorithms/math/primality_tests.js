@@ -1,10 +1,10 @@
 'use strict';
 
-var root = require('../../..');
-var primalityTests = root.Math.primalityTests;
-var assert = require('assert');
+const root = require('../../..');
+const primalityTests = root.Math.primalityTests;
+const assert = require('assert');
 
-var validate = function(primalityTest) {
+const validate = function(primalityTest) {
   assert.equal(primalityTest(1), false);
   assert.equal(primalityTest(2), true);
   assert.equal(primalityTest(3), true);

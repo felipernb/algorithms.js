@@ -1,7 +1,7 @@
 'use strict';
 
-var Graph = require('../../data_structures/graph');
-var depthFirstSearch = require('../../algorithms/graph/depth_first_search');
+const Graph = require('../../data_structures/graph');
+const depthFirstSearch = require('../../algorithms/graph/depth_first_search');
 
 /** Examine a graph and compute pair of end vertices of the existing Euler path.
  * Return pair of undefined values if there is no specific choice of end points.
@@ -10,8 +10,8 @@ var depthFirstSearch = require('../../algorithms/graph/depth_first_search');
  * @param {Graph} Graph, must be connected and contain at least one vertex.
  * @return Object
  */
-var eulerEndpoints = function(graph) {
-  var rank = {};
+const eulerEndpoints = function(graph) {
+  const rank = {};
   //     start     ->  rank = +1
   // middle points ->  rank =  0
   //    finish     ->  rank = -1
@@ -30,7 +30,7 @@ var eulerEndpoints = function(graph) {
     });
   } else {
     // Compute ranks from vertex degree parity values.
-    var startChosen = false;
+    let startChosen = false;
     graph.vertices.forEach(function(vertex) {
       rank[vertex] %= 2;
       if (rank[vertex]) {
@@ -42,9 +42,9 @@ var eulerEndpoints = function(graph) {
     });
   }
 
-  var start;
-  var finish;
-  var v;
+  let start;
+  let finish;
+  let v;
 
   graph.vertices.forEach(function(vertex) {
     if (rank[vertex] === 1) {
@@ -82,15 +82,15 @@ var eulerEndpoints = function(graph) {
  * @param {Graph}
  * @return Array
  */
-var eulerPath = function(graph) {
+const eulerPath = function(graph) {
   if (!graph.vertices.size) {
     return [];
   }
 
-  var endpoints = eulerEndpoints(graph);
-  var route = [endpoints.finish];
+  const endpoints = eulerEndpoints(graph);
+  const route = [endpoints.finish];
 
-  var seen = new Graph(graph.directed);
+  const seen = new Graph(graph.directed);
   graph.vertices.forEach(seen.addVertex.bind(seen));
 
   depthFirstSearch(graph, endpoints.start, {

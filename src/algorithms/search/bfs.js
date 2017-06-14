@@ -1,13 +1,13 @@
 'use strict';
-var Queue = require('../../data_structures/queue.js');
+const Queue = require('../../data_structures/queue.js');
 
 /**
  * Breadth-first search for binary trees
  */
-var bfs = function(root, callback) {
-  var q = new Queue();
+const bfs = function(root, callback) {
+  const q = new Queue();
   q.push(root);
-  var node;
+  let node;
   while (!q.isEmpty()) {
     node = q.pop();
     callback(node.value);

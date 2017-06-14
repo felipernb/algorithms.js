@@ -1,12 +1,12 @@
 'use strict';
 
-var root = require('../../../');
-var depthFirstSearch = root.Graph.depthFirstSearch;
-var Graph = root.DataStructures.Graph;
-var assert = require('assert');
+const root = require('../../../');
+const depthFirstSearch = root.Graph.depthFirstSearch;
+const Graph = root.DataStructures.Graph;
+const assert = require('assert');
 
 describe('Depth First Search Algorithm', function() {
-  var graph;
+  let graph;
   before(function() {
     graph = new Graph(true);
     graph.addEdge('one', 'three');
@@ -19,14 +19,14 @@ describe('Depth First Search Algorithm', function() {
 
   it('should visit only the nodes reachable from the start node (inclusive)',
     function() {
-      var enter = [];
-      var leave = [];
-      var numEdgeTails = 0;
-      var numEdgeHeads = 0;
+      const enter = [];
+      const leave = [];
+      let numEdgeTails = 0;
+      let numEdgeHeads = 0;
 
       depthFirstSearch(graph, 'one');
 
-      var dfsCallbacks = {
+      const dfsCallbacks = {
         enterVertex: [].push.bind(enter),
         leaveVertex: [].push.bind(leave),
         beforeTraversal: function() {
@@ -54,9 +54,9 @@ describe('Depth First Search Algorithm', function() {
   );
 
   it('should allow user-defined allowTraversal rules', function() {
-    var seen = new Graph(graph.directed);
+    const seen = new Graph(graph.directed);
     graph.vertices.forEach(seen.addVertex.bind(seen));
-    var path = ['one'];
+    const path = ['one'];
 
     // Edge-centric DFS.
     depthFirstSearch(graph, path[0], {

@@ -9,12 +9,12 @@
   *
   * @return Boolean
   */
-var binarySearch = function(sortedArray, element) {
-  var init = 0;
-  var end = sortedArray.length - 1;
+const binarySearch = function(sortedArray, element) {
+  let init = 0;
+  let end = sortedArray.length - 1;
 
   while (end >= init) {
-    var m = ((end - init) >> 1) + init;
+    const m = ((end - init) >> 1) + init;
     if (sortedArray[m] === element) return m;
 
     if (sortedArray[m] < element) init = m + 1;

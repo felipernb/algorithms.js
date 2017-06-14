@@ -1,6 +1,6 @@
 'use strict';
 
-var breadthFirstSearch = require('./breadth_first_search');
+const breadthFirstSearch = require('./breadth_first_search');
 
 /**
  * Shortest-path algorithm based on Breadth-First Search.
@@ -12,9 +12,9 @@ var breadthFirstSearch = require('./breadth_first_search');
  * @return {{distance: Object.<string, number>,
  *           previous: Object.<string, string>}}
  */
-var bfsShortestPath = function(graph, source) {
-  var distance = {};
-  var previous = {};
+const bfsShortestPath = function(graph, source) {
+  const distance = {};
+  const previous = {};
   distance[source] = 0;
 
   breadthFirstSearch(graph, source, {

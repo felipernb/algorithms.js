@@ -1,8 +1,8 @@
 'use strict';
 
-var assert = require('assert');
-var math = require('../../..').Math;
-var greatestDifference = math.greatestDifference;
+const assert = require('assert');
+const math = require('../../..').Math;
+const greatestDifference = math.greatestDifference;
 
 describe('Greatest Difference', function() {
   it('should return 7 for [5, 8, 6, 1]', function() {

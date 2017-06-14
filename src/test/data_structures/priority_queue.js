@@ -1,11 +1,11 @@
 'use strict';
 
-var PriorityQueue = require('../..').DataStructures.PriorityQueue;
-var assert = require('assert');
+const PriorityQueue = require('../..').DataStructures.PriorityQueue;
+const assert = require('assert');
 
 describe('Min Priority Queue', function() {
   it('should always return the element with the lowest priority', function() {
-    var q = new PriorityQueue();
+    const q = new PriorityQueue();
     assert(q.isEmpty());
     q.insert('a', 10);
     q.insert('b', 2091);
@@ -37,7 +37,7 @@ describe('Min Priority Queue', function() {
 
   it('can receive a dictionary with item => priority in construction',
     function() {
-      var q = new PriorityQueue({
+      const q = new PriorityQueue({
         a: 10,
         b: 2091,
         c: 4,
@@ -54,7 +54,7 @@ describe('Min Priority Queue', function() {
     });
 
   it('should be possible to change the priority of an item', function() {
-    var q = new PriorityQueue({
+    const q = new PriorityQueue({
       a: 10,
       b: 2091,
       c: 4,
@@ -80,7 +80,7 @@ describe('Min Priority Queue', function() {
 
   it('should just update the priority when trying to insert an element that ' +
       ' already exists', function() {
-    var q = new PriorityQueue({
+    const q = new PriorityQueue({
       a: 10,
       b: 2091,
       c: 4,

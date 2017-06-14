@@ -8,14 +8,14 @@
  */
 'use strict';
 
-var hamming = function(a, b) {
+const hamming = function(a, b) {
   if (a.length !== b.length) {
     throw new Error('Strings must be equal in length');
   }
 
-  var dist = 0;
+  let dist = 0;
 
-  for (var i = 0; i < a.length; i++) {
+  for (let i = 0; i < a.length; i++) {
     if (a[i] !== b[i]) {
       dist++;
     }

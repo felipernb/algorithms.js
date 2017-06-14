@@ -1,10 +1,10 @@
 'use strict';
 
-var math = require('../../..').Math;
-var fib = math.fibonacci;
-var assert = require('assert');
+const math = require('../../..').Math;
+const fib = math.fibonacci;
+const assert = require('assert');
 
-var testFibonacciSequence = function(fib) {
+const testFibonacciSequence = function(fib) {
   assert.equal(0, fib(0));
   assert.equal(1, fib(1));
   assert.equal(1, fib(2));

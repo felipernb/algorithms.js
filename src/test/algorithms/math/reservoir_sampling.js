@@ -1,16 +1,16 @@
 'use strict';
 
-var math = require('../../..').Math;
-var reservoirSampling = math.reservoirSampling;
-var assert = require('assert');
+const math = require('../../..').Math;
+const reservoirSampling = math.reservoirSampling;
+const assert = require('assert');
 
 describe('Reservoir Sampling', function() {
-  var array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
   it('should sample K distinct values from the array', function() {
-    var sample = reservoirSampling(array, 5);
+    const sample = reservoirSampling(array, 5);
     assert.equal(sample.length, 5);
-    var seen = {};
+    const seen = {};
     array.forEach(function(value) {
       assert(!seen[value]);
       assert(array.indexOf(value) >= 0);
@@ -21,7 +21,7 @@ describe('Reservoir Sampling', function() {
   it('should work in corner cases', function() {
     assert.deepEqual(reservoirSampling(array, 0), []);
     assert.deepEqual(reservoirSampling([], 0), []);
-    var fullSample = reservoirSampling(array, array.length);
+    const fullSample = reservoirSampling(array, array.length);
     assert.deepEqual(fullSample.sort(), array);
   });
 

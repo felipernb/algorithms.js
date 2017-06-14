@@ -1,5 +1,5 @@
 'use strict';
-var Comparator = require('../util/comparator');
+const Comparator = require('../util/comparator');
 
 /**
  * Binary Search Tree
@@ -47,7 +47,7 @@ BST.prototype.insert = function(value, parent) {
     parent = this.root;
   }
 
-  var child = this._comparator.lessThan(value, parent.value) ? 'left' : 'right';
+  const child = this._comparator.lessThan(value, parent.value) ? 'left' : 'right';
   if (parent[child]) {
     this.insert(value, parent[child]);
   } else {
@@ -83,7 +83,7 @@ BST.prototype._find = function(e, root) {
  * Substitute two nodes
  */
 BST.prototype._replaceNodeInParent = function(currNode, newNode) {
-  var parent = currNode.parent;
+  const parent = currNode.parent;
   if (parent) {
     parent[currNode === parent.left ? 'left' : 'right'] = newNode;
     if (newNode)
@@ -97,7 +97,7 @@ BST.prototype._replaceNodeInParent = function(currNode, newNode) {
  * Find the minimum value in a tree
  */
 BST.prototype._findMin = function(root) {
-  var minNode = root;
+  let minNode = root;
   while (minNode.left) {
     minNode = minNode.left;
   }
@@ -108,7 +108,7 @@ BST.prototype._findMin = function(root) {
  * Remove an element from the BST
  */
 BST.prototype.remove = function(e) {
-  var node = this._find(e);
+  const node = this._find(e);
   if (!node) {
     throw new Error('Item not found in the tree');
   }
@@ -119,7 +119,7 @@ BST.prototype.remove = function(e) {
      * replace the node's value by the minimum value of the right
      * sub-tree, and remove the leave containing the value
      */
-    var successor = this._findMin(node.right);
+    const successor = this._findMin(node.right);
     this.remove(successor.value);
     node.value = successor.value;
   } else {

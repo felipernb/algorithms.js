@@ -1,13 +1,13 @@
 'use strict';
 
-var huffman = {};
+const huffman = {};
 
 /**
  * Maximum block size used by functions "compress", "decompress".
  *
  * @const
  */
-var MAX_BLOCK_SIZE = (-1 >>> 0).toString(2).length;
+const MAX_BLOCK_SIZE = (-1 >>> 0).toString(2).length;
 
 /**
  * Compress 0-1 string to int32 array.
@@ -15,10 +15,10 @@ var MAX_BLOCK_SIZE = (-1 >>> 0).toString(2).length;
  * @param {string} string
  * @return {number[]}
  */
-var compress = function(string) {
-  var blocks = [];
-  var currentBlock = 0;
-  var currentBlockSize = 0;
+const compress = function(string) {
+  const blocks = [];
+  let currentBlock = 0;
+  let currentBlockSize = 0;
 
   string.split('').forEach(function(char) {
     currentBlock = (currentBlock << 1) | char;
@@ -46,7 +46,7 @@ var compress = function(string) {
  * @param {number[]} array
  * @return {string}
  */
-var decompress = function(array) {
+const decompress = function(array) {
   if (!array.length) {
     return '';
   } else if (array.length === 1) {
@@ -54,15 +54,15 @@ var decompress = function(array) {
                     'or at least 2 blocks big.');
   }
 
-  var padding = new Array(MAX_BLOCK_SIZE + 1).join(0);
+  const padding = new Array(MAX_BLOCK_SIZE + 1).join(0);
 
-  var string = array.slice(0, -2).map(function(block) {
+  let string = array.slice(0, -2).map(function(block) {
     return (padding + (block >>> 0).toString(2)).slice(-padding.length);
   }).join('');
 
   // Append the last block.
-  var lastBlockSize = array.slice(-1)[0];
-  var lastBlock = array.slice(-2)[0];
+  const lastBlockSize = array.slice(-1)[0];
+  const lastBlock = array.slice(-2)[0];
   string += (padding + (lastBlock >>> 0).toString(2)).slice(-lastBlockSize);
 
   return string;
@@ -83,22 +83,22 @@ huffman.encode = function(string, compressed) {
     };
   }
 
-  var counter = {};
+  const counter = {};
   string.split('').forEach(function(char) {
     counter[char] = (counter[char] || 0) + 1;
   });
 
-  var letters = Object.keys(counter).map(function(char) {
+  const letters = Object.keys(counter).map(function(char) {
     return {
       char: char,
       count: counter[char]
     };
   });
 
-  var compare = function(a, b) {
+  const compare = function(a, b) {
     return a.count - b.count;
   };
-  var less = function(a, b) {
+  const less = function(a, b) {
     return a && (b && (a.count < b.count) || !b);
   };
 
@@ -107,21 +107,21 @@ huffman.encode = function(string, compressed) {
   // Each time two least letters are merged into one, the result is pushing into
   // this buffer. Since the letters are pushing in ascending order of frequency,
   // no more sorting is ever required.
-  var buffer = [];
-  var lettersIndex = 0;
-  var bufferIndex = 0;
+  const buffer = [];
+  let lettersIndex = 0;
+  let bufferIndex = 0;
 
-  var extractMinimum = function() {
+  const extractMinimum = function() {
     return less(letters[lettersIndex], buffer[bufferIndex]) ?
       letters[lettersIndex++] : buffer[bufferIndex++];
   };
 
-  for (var numLetters = letters.length; numLetters > 1; --numLetters) {
-    var a = extractMinimum();
-    var b = extractMinimum();
+  for (let numLetters = letters.length; numLetters > 1; --numLetters) {
+    const a = extractMinimum();
+    const b = extractMinimum();
     a.code = '0';
     b.code = '1';
-    var union = {
+    const union = {
       count: a.count + b.count,
       parts: [a, b]
     };
@@ -129,14 +129,14 @@ huffman.encode = function(string, compressed) {
   }
 
   // At this point there is a single letter left.
-  var root = extractMinimum();
+  const root = extractMinimum();
   root.code = (letters.length > 1) ? '' : '0';
 
   // Unroll the code recursively in reverse.
   (function unroll(parent) {
     if (parent.parts) {
-      var a = parent.parts[0];
-      var b = parent.parts[1];
+      const a = parent.parts[0];
+      const b = parent.parts[1];
       a.code += parent.code;
       b.code += parent.code;
       unroll(a);
@@ -144,13 +144,13 @@ huffman.encode = function(string, compressed) {
     }
   })(root);
 
-  var encoding = letters.reduce(function(acc, letter) {
+  const encoding = letters.reduce(function(acc, letter) {
     acc[letter.char] = letter.code.split('').reverse().join('');
     return acc;
   }, {});
 
   // Finally, apply the encoding to the given string.
-  var result = string.split('').map(function(char) {
+  const result = string.split('').map(function(char) {
     return encoding[char];
   }).join('');
 
@@ -174,16 +174,16 @@ huffman.decode = function(encoding, encodedString) {
 
   // We can make use of the fact that encoding mapping is always one-to-one
   // and rely on the power of JS hashes instead of building hand-made FSMs.
-  var letterByCode = Object.keys(encoding).reduce(function(acc, letter) {
+  const letterByCode = Object.keys(encoding).reduce(function(acc, letter) {
     acc[encoding[letter]] = letter;
     return acc;
   }, {});
 
-  var decodedLetters = [];
+  const decodedLetters = [];
 
-  var unresolved = encodedString.split('').reduce(function(code, char) {
+  const unresolved = encodedString.split('').reduce(function(code, char) {
     code += char;
-    var letter = letterByCode[code];
+    const letter = letterByCode[code];
     if (letter) {
       decodedLetters.push(letter);
       code = '';

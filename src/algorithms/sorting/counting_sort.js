@@ -8,11 +8,11 @@
  * @param Array
  * @return Integer
  */
-var maximumKey = function(array) {
-  var max = array[0].key;
-  var length = array.length;
+const maximumKey = function(array) {
+  let max = array[0].key;
+  const length = array.length;
 
-  for (var i = 1; i < length; i++) {
+  for (let i = 1; i < length; i++) {
     if (array[i].key > max) {
       max = array[i].key;
     }
@@ -32,14 +32,14 @@ var maximumKey = function(array) {
  * @param Array
  * @return Array
  */
-var countingSort = function(array) {
-  var max = maximumKey(array);
-  var auxiliaryArray = [];
-  var length = array.length;
-  var i;
+const countingSort = function(array) {
+  const max = maximumKey(array);
+  const auxiliaryArray = [];
+  const length = array.length;
+  let i;
 
   for (i = 0; i < length; i++) {
-    var position = array[i].key;
+    const position = array[i].key;
 
     if (auxiliaryArray[position] === undefined) {
       auxiliaryArray[position] = [];
@@ -49,13 +49,13 @@ var countingSort = function(array) {
   }
 
   array = [];
-  var pointer = 0;
+  let pointer = 0;
 
   for (i = 0; i <= max; i++) {
     if (auxiliaryArray[i] !== undefined) {
-      var localLength = auxiliaryArray[i].length;
+      const localLength = auxiliaryArray[i].length;
 
-      for (var j = 0; j < localLength; j++) {
+      for (let j = 0; j < localLength; j++) {
         array[pointer++] = auxiliaryArray[i][j];
       }
     }

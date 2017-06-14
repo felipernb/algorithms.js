@@ -1,6 +1,6 @@
 'use strict';
 
-var Comparator = require('../../util/comparator');
+const Comparator = require('../../util/comparator');
 
 /**
  * Narayana's algorithm computes the subsequent permutation
@@ -12,14 +12,14 @@ var Comparator = require('../../util/comparator');
  * @return {boolean} Boolean flag indicating whether the algorithm succeeded,
  *   true unless the input permutation is lexicographically the last one.
  */
-var nextPermutation = function(array, compareFn) {
+const nextPermutation = function(array, compareFn) {
   if (!array.length) {
     return false;
   }
-  var cmp = new Comparator(compareFn);
+  const cmp = new Comparator(compareFn);
 
   // Find pivot and successor indices.
-  var pivot = array.length - 1;
+  let pivot = array.length - 1;
   while (pivot && cmp.greaterThanOrEqual(array[pivot - 1], array[pivot])) {
     pivot -= 1;
   }
@@ -27,8 +27,8 @@ var nextPermutation = function(array, compareFn) {
     // Permutation is sorted in descending order.
     return false;
   }
-  var pivotValue = array[--pivot];
-  var successor = array.length - 1;
+  const pivotValue = array[--pivot];
+  let successor = array.length - 1;
   while (cmp.lessThanOrEqual(array[successor], pivotValue)) {
     successor -= 1;
   }
@@ -38,8 +38,8 @@ var nextPermutation = function(array, compareFn) {
   array[successor] = pivotValue;
 
   // Reverse the descending part.
-  for (var left = pivot, right = array.length; ++left < --right;) {
-    var temp = array[left];
+  for (let left = pivot, right = array.length; ++left < --right;) {
+    const temp = array[left];
     array[left] = array[right];
     array[right] = temp;
   }

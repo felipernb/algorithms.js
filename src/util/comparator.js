@@ -49,7 +49,7 @@ Comparator.prototype.equal = function(a, b) {
  * this.compare(a, b) => -1
  */
 Comparator.prototype.reverse = function() {
-  var originalCompareFn = this.compare;
+  const originalCompareFn = this.compare;
   this.compare = function(a, b) {
     return originalCompareFn(b, a);
   };

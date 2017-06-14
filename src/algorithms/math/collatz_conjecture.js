@@ -1,7 +1,7 @@
 'use strict';
 
 // cache algorithm results
-var cache = {1: 1};
+const cache = {1: 1};
 
 /**
  * Collatz Conjecture algorithm
@@ -25,7 +25,7 @@ function calculateCollatzConjecture(number) {
  * @return Array
  */
 function generateCollatzConjecture(number) {
-  var collatzConjecture = [];
+  const collatzConjecture = [];
 
   do {
     number = calculateCollatzConjecture(number);

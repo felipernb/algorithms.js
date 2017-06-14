@@ -1,14 +1,14 @@
 'use strict';
 
-var root = require('../../../');
-var bfsShortestPath = root.Graph.bfsShortestPath;
-var Graph = root.DataStructures.Graph;
-var assert = require('assert');
+const root = require('../../../');
+const bfsShortestPath = root.Graph.bfsShortestPath;
+const Graph = root.DataStructures.Graph;
+const assert = require('assert');
 
 describe('BFS Shortest Path Algorithm', function() {
   it('should return the shortest paths to all nodes from a given origin',
      function() {
-       var graph = new Graph();
+       const graph = new Graph();
        graph.addEdge(0, 1);
        graph.addEdge(1, 2);
        graph.addEdge(0, 2);
@@ -22,7 +22,7 @@ describe('BFS Shortest Path Algorithm', function() {
        graph.addEdge(5, 0);
        graph.addEdge('a', 'b');
 
-       var shortestPath = bfsShortestPath(graph, 0);
+       const shortestPath = bfsShortestPath(graph, 0);
 
        assert.deepEqual(shortestPath.distance, {
          0: 0,

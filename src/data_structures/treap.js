@@ -26,7 +26,7 @@ Node.prototype.resize = function() {
  * Zigzag rotate of tree nodes
  */
 Node.prototype.rotate = function(side) {
-  var temp = this.children[side];
+  const temp = this.children[side];
 
   // Rotate
   this.children[side] = temp.children[1 - side];
@@ -54,7 +54,7 @@ Treap.prototype._insert = function(node, value) {
   }
 
   // Passing to childnodes and update
-  var side = ~~(value > node.value);
+  const side = ~~(value > node.value);
   node.children[side] = this._insert(node.children[side], value);
 
   // Keep it balance
@@ -75,7 +75,7 @@ Treap.prototype._find = function(node, value) {
   }
 
   // Search within childnodes
-  var side = ~~(value > node.value);
+  const side = ~~(value > node.value);
   return this._find(node.children[side], value);
 };
 
@@ -103,7 +103,7 @@ Treap.prototype._remove = function(node, value) {
     return null;
   }
 
-  var side;
+  let side;
 
   if (node.value === value) {
     if (node.children[0] === null && node.children[1] === null) {

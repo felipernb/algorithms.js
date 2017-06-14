@@ -1,6 +1,6 @@
 'use strict';
 
-var LinkedList = require('./linked_list');
+const LinkedList = require('./linked_list');
 
 /**
  * HashTable constructor
@@ -33,8 +33,8 @@ function HashTable(initialCapacity) {
  */
 HashTable.prototype.hash = function(s) {
   if (typeof s !== 'string') s = JSON.stringify(s);
-  var hash = 0;
-  for (var i = 0; i < s.length; i++) {
+  let hash = 0;
+  for (let i = 0; i < s.length; i++) {
     hash = ((hash << 5) - hash) + s.charCodeAt(i);
     hash &= hash; // Keep it a 32bit int
   }
@@ -42,8 +42,8 @@ HashTable.prototype.hash = function(s) {
 };
 
 HashTable.prototype.get = function(key) {
-  var i = this._position(key);
-  var node;
+  const i = this._position(key);
+  let node;
   if ((node = this._findInList(this._table[i], key))) {
     return node.value.v;
   }
@@ -51,14 +51,14 @@ HashTable.prototype.get = function(key) {
 };
 
 HashTable.prototype.put = function(key, value) {
-  var i = this._position(key);
+  const i = this._position(key);
   if (!this._table[i]) {
     // Hashing with chaining
     this._table[i] = new LinkedList();
   }
-  var item = {k: key, v: value};
+  const item = {k: key, v: value};
 
-  var node = this._findInList(this._table[i], key);
+  const node = this._findInList(this._table[i], key);
   if (node) {
     // if the key already exists in the list, replace
     // by the current item
@@ -72,8 +72,8 @@ HashTable.prototype.put = function(key, value) {
 };
 
 HashTable.prototype.del = function(key) {
-  var i = this._position(key);
-  var node;
+  const i = this._position(key);
+  let node;
 
   if ((node = this._findInList(this._table[i], key))) {
     this._table[i].delNode(node);
@@ -86,7 +86,7 @@ HashTable.prototype._position = function(key) {
 };
 
 HashTable.prototype._findInList = function(list, key) {
-  var node = list && list.head;
+  let node = list && list.head;
   while (node) {
     if (node.value.k === key) return node;
     node = node.next;
@@ -94,12 +94,12 @@ HashTable.prototype._findInList = function(list, key) {
 };
 
 HashTable.prototype._increaseCapacity = function() {
-  var oldTable = this._table;
+  const oldTable = this._table;
   this._table = new Array(2 * this.capacity);
   this._items = 0;
 
-  for (var i = 0; i < oldTable.length; i++) {
-    var node = oldTable[i] && oldTable[i].head;
+  for (let i = 0; i < oldTable.length; i++) {
+    let node = oldTable[i] && oldTable[i].head;
     while (node) {
       this.put(node.value.k, node.value.v);
       node = node.next;
@@ -108,13 +108,13 @@ HashTable.prototype._increaseCapacity = function() {
 };
 
 HashTable.prototype.forEach = function(fn) {
-  var applyFunction = function(linkedList) {
+  const applyFunction = function(linkedList) {
     linkedList.forEach(function(elem) {
       fn(elem.k, elem.v);
     });
   };
 
-  for (var i = 0; i < this._table.length; i++) {
+  for (let i = 0; i < this._table.length; i++) {
     if (this._table[i]) {
       applyFunction(this._table[i]);
     }

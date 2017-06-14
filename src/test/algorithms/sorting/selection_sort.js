@@ -1,7 +1,7 @@
 'use strict';
 
-var selectionSort = require('../../..').Sorting.selectionSort;
-var sortingTestsHelper = require('./sorting_tests_helper');
+const selectionSort = require('../../..').Sorting.selectionSort;
+const sortingTestsHelper = require('./sorting_tests_helper');
 
 describe('Selection Sort', function() {
   it('should sort the given array', function() {

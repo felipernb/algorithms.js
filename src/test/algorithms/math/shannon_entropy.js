@@ -1,7 +1,7 @@
 'use strict';
 
-var shannonEntropy = require('../../../').Math.shannonEntropy;
-var assert = require('assert');
+const shannonEntropy = require('../../../').Math.shannonEntropy;
+const assert = require('assert');
 
 describe('Shannon Entropy', function() {
   it('calculates shannon entropy', function() {
