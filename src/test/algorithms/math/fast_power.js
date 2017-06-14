@@ -7,7 +7,7 @@ const assertApproximatelyEqual = (a, b, eps) => {
   assert(Math.abs(a - b) < eps);
 };
 
-const multiplyModulo = modulo => (a, b) => (a * b) % modulo;
+const multiplyModulo = modulo => (a, b) => a * b % modulo;
 
 /**
  * This operation is isomorphic to addition in Z/3.
@@ -41,14 +41,13 @@ describe('Fast Power', () => {
     assert.equal(power(1, 10000), 1);
   });
 
-  it('should raise an error if the power is not a nonnegative integer',
-     () => {
-        // It is not clear how to handle these cases
-        // when custom multiplication is also supplied.
-       assert.throws(power.bind(null, 7, -2));
-       assert.throws(power.bind(null, 5, -1));
-       assert.throws(power.bind(null, Math.PI, Math.E));
-     });
+  it('should raise an error if the power is not a nonnegative integer', () => {
+    // It is not clear how to handle these cases
+    // when custom multiplication is also supplied.
+    assert.throws(power.bind(null, 7, -2));
+    assert.throws(power.bind(null, 5, -1));
+    assert.throws(power.bind(null, Math.PI, Math.E));
+  });
 
   it('should accept custom multiplication functions', () => {
     // Math.pow is basically useless here.
@@ -66,9 +65,12 @@ describe('Fast Power', () => {
     assert.equal(power('c', 0xcccc, abcMultiply), 'a');
   });
 
-  it('should raise an error if the power is zero but no identity value given' +
-     ' (custom multiplication)', () => {
-    assert.throws(power.bind(null, 0, 0, multiplyModulo(5)));
-    assert.throws(power.bind(null, 'a', 0, abcMultiply));
-  });
+  it(
+    'should raise an error if the power is zero but no identity value given' +
+      ' (custom multiplication)',
+    () => {
+      assert.throws(power.bind(null, 0, 0, multiplyModulo(5)));
+      assert.throws(power.bind(null, 'a', 0, abcMultiply));
+    }
+  );
 });

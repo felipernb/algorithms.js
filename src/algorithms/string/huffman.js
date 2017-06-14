@@ -48,13 +48,17 @@ const decompress = array => {
   if (!array.length) {
     return '';
   } else if (array.length === 1) {
-    throw new Error('Compressed array must be either empty ' +
-                    'or at least 2 blocks big.');
+    throw new Error(
+      'Compressed array must be either empty ' + 'or at least 2 blocks big.'
+    );
   }
 
   const padding = new Array(MAX_BLOCK_SIZE + 1).join(0);
 
-  let string = array.slice(0, -2).map(block => (padding + (block >>> 0).toString(2)).slice(-padding.length)).join('');
+  let string = array
+    .slice(0, -2)
+    .map(block => (padding + (block >>> 0).toString(2)).slice(-padding.length))
+    .join('');
 
   // Append the last block.
   const lastBlockSize = array.slice(-1)[0];
@@ -75,7 +79,7 @@ huffman.encode = (string, compressed) => {
   if (!string.length) {
     return {
       encoding: {},
-      value: (compressed ? [] : '')
+      value: compressed ? [] : ''
     };
   }
 
@@ -90,7 +94,7 @@ huffman.encode = (string, compressed) => {
   }));
 
   const compare = (a, b) => a.count - b.count;
-  const less = (a, b) => a && (b && (a.count < b.count) || !b);
+  const less = (a, b) => a && ((b && a.count < b.count) || !b);
 
   letters.sort(compare);
 
@@ -101,8 +105,10 @@ huffman.encode = (string, compressed) => {
   let lettersIndex = 0;
   let bufferIndex = 0;
 
-  const extractMinimum = () => less(letters[lettersIndex], buffer[bufferIndex]) ?
-    letters[lettersIndex++] : buffer[bufferIndex++];
+  const extractMinimum = () =>
+    less(letters[lettersIndex], buffer[bufferIndex])
+      ? letters[lettersIndex++]
+      : buffer[bufferIndex++];
 
   for (let numLetters = letters.length; numLetters > 1; --numLetters) {
     const a = extractMinimum();
@@ -118,7 +124,7 @@ huffman.encode = (string, compressed) => {
 
   // At this point there is a single letter left.
   const root = extractMinimum();
-  root.code = (letters.length > 1) ? '' : '0';
+  root.code = letters.length > 1 ? '' : '0';
 
   // Unroll the code recursively in reverse.
   (function unroll(parent) {
@@ -142,7 +148,7 @@ huffman.encode = (string, compressed) => {
 
   return {
     encoding,
-    value: (compressed ? compress(result) : result)
+    value: compressed ? compress(result) : result
   };
 };
 

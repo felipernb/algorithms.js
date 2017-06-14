@@ -10,8 +10,9 @@ const heapsort = (array, comparatorFn) => {
   minHeap.heapify(array);
 
   const result = [];
-  while (!minHeap.isEmpty())
+  while (!minHeap.isEmpty()) {
     result.push(minHeap.extract());
+  }
 
   return result;
 };

@@ -20,18 +20,22 @@ describe('Bézier-Curve Algorithm', () => {
     assert.deepEqual(b.get(0.75), {x: 7.5, y: 2.25});
   });
   it('should get a quadratic Bézier-curve', () => {
-    const b = new BezierCurve([{x: 150, y: 40},
-                             {x: 80, y: 30},
-                             {x: 105, y: 150}]);
+    const b = new BezierCurve([
+      {x: 150, y: 40},
+      {x: 80, y: 30},
+      {x: 105, y: 150}
+    ]);
 
     assert.deepEqual(b.get(0.5), {x: 103.75, y: 62.5});
     assert.deepEqual(b.get(0.25), {x: 120.9375, y: 43.125});
   });
   it('should get a cubic Bézier-curve', () => {
-    const b = new BezierCurve([{x: 150, y: 40},
-                             {x: 80, y: 30},
-                             {x: 105, y: 150},
-                             {x: 100, y: 100}]);
+    const b = new BezierCurve([
+      {x: 150, y: 40},
+      {x: 80, y: 30},
+      {x: 105, y: 150},
+      {x: 100, y: 100}
+    ]);
 
     assert.deepEqual(b.get(0.5), {x: 100.625, y: 85});
   });

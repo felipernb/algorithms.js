@@ -2,26 +2,25 @@ const Comparator = require('../../util/comparator');
 const assert = require('assert');
 
 describe('Comparator', () => {
-  it('Should use a default arithmetic comparison if no function is passed',
-    () => {
-      const c = new Comparator();
-      assert.equal(c.compare(1, 1), 0);
-      assert.equal(c.compare(1, 2), -1);
-      assert.equal(c.compare(1, 0), 1);
-      assert.equal(c.compare('a', 'b'), -1);
-      assert(c.lessThan(0, 1));
-      assert(!c.lessThan(1, 1));
-      assert(c.lessThanOrEqual(1, 1));
-      assert(c.lessThanOrEqual(0, 1));
-      assert(!c.lessThanOrEqual(1, 0));
-      assert(c.greaterThan(1, 0));
-      assert(!c.greaterThan(1, 1));
-      assert(c.greaterThanOrEqual(1, 1));
-      assert(c.greaterThanOrEqual(1, 0));
-      assert(!c.greaterThanOrEqual(0, 1));
-      assert(c.equal(0, 0));
-      assert(!c.equal(0, 1));
-    });
+  it('Should use a default arithmetic comparison if no function is passed', () => {
+    const c = new Comparator();
+    assert.equal(c.compare(1, 1), 0);
+    assert.equal(c.compare(1, 2), -1);
+    assert.equal(c.compare(1, 0), 1);
+    assert.equal(c.compare('a', 'b'), -1);
+    assert(c.lessThan(0, 1));
+    assert(!c.lessThan(1, 1));
+    assert(c.lessThanOrEqual(1, 1));
+    assert(c.lessThanOrEqual(0, 1));
+    assert(!c.lessThanOrEqual(1, 0));
+    assert(c.greaterThan(1, 0));
+    assert(!c.greaterThan(1, 1));
+    assert(c.greaterThanOrEqual(1, 1));
+    assert(c.greaterThanOrEqual(1, 0));
+    assert(!c.greaterThanOrEqual(0, 1));
+    assert(c.equal(0, 0));
+    assert(!c.equal(0, 1));
+  });
 
   it('should allow comparison function to be defined by user', () => {
     const compareFn = () => 0;
@@ -65,4 +64,3 @@ describe('Comparator', () => {
     assert(!c.equal(0, 1));
   });
 });
-

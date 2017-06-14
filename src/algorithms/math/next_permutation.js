@@ -36,7 +36,7 @@ const nextPermutation = (array, compareFn) => {
   array[successor] = pivotValue;
 
   // Reverse the descending part.
-  for (let left = pivot, right = array.length; ++left < --right;) {
+  for (let left = pivot, right = array.length; ++left < --right; ) {
     const temp = array[left];
     array[left] = array[right];
     array[right] = temp;

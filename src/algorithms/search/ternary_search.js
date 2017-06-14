@@ -9,9 +9,8 @@ const ternarySearch = (fn, left, right, precision) => {
     const leftThird = left + (right - left) / 3;
     const rightThird = right - (right - left) / 3;
 
-    if (fn(leftThird) < fn(rightThird))
-      left = leftThird; else
-      right = rightThird;
+    if (fn(leftThird) < fn(rightThird)) left = leftThird;
+    else right = rightThird;
   }
   return (left + right) / 2;
 };

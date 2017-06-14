@@ -2,49 +2,94 @@ const math = require('../../..').Math;
 const findDivisors = math.findDivisors;
 const assert = require('assert');
 
-/**
- * Deep equal for arrays
- */
-function testArrayEqual(a, b) {
-  let arrayEqual = true;
-  a.sort();
-  b.sort();
-  a.forEach((elem, index) => {
-    if (a[index] !== b[index]) {
-      arrayEqual = false;
-    }
-  });
-  return arrayEqual && a.length === b.length;
-}
-
-const testFindDivisors = findDivisors => {
-  assert(testArrayEqual([], findDivisors(-2)));
-  assert(testArrayEqual([], findDivisors(0)));
-  assert(testArrayEqual([1], findDivisors(1)));
-  assert(testArrayEqual([1, 2], findDivisors(2)));
-  assert(testArrayEqual([1, 3], findDivisors(3)));
-  assert(testArrayEqual([1, 2, 4], findDivisors(4)));
-  assert(testArrayEqual([1, 5], findDivisors(5)));
-  assert(testArrayEqual([1, 2, 4, 5, 10, 20, 25, 50, 100], findDivisors(100)));
-  assert(testArrayEqual([1, 2, 7, 13, 14, 26, 91, 182], findDivisors(182)));
-};
-
 describe('Find divisors', () => {
   describe('#Generic()', () => {
     it('should return the divisors of the number', () => {
-      testFindDivisors(findDivisors);
+      assert.deepStrictEqual(findDivisors(-2), []);
+      assert.deepStrictEqual(findDivisors(0), []);
+      assert.deepStrictEqual(findDivisors(1), [1]);
+      assert.deepStrictEqual(findDivisors(2), [1, 2]);
+      assert.deepStrictEqual(findDivisors(3), [1, 3]);
+      assert.deepStrictEqual(findDivisors(4), [1, 2, 4]);
+      assert.deepStrictEqual(findDivisors(5), [1, 5]);
+      assert.deepStrictEqual(findDivisors(100), [
+        1,
+        2,
+        4,
+        5,
+        10,
+        20,
+        25,
+        50,
+        100
+      ]);
+      assert.deepStrictEqual(findDivisors(182), [1, 2, 7, 13, 14, 26, 91, 182]);
     });
   });
 
   describe('#PairingUnsorted()', () => {
     it('should return the divisors of the number', () => {
-      testFindDivisors(findDivisors.pairingUnsorted);
+      assert.deepStrictEqual(findDivisors.pairingUnsorted(-2), []);
+      assert.deepStrictEqual(findDivisors.pairingUnsorted(0), []);
+      assert.deepStrictEqual(findDivisors.pairingUnsorted(1), [1]);
+      assert.deepStrictEqual(findDivisors.pairingUnsorted(2), [1, 2]);
+      assert.deepStrictEqual(findDivisors.pairingUnsorted(3), [1, 3]);
+      assert.deepStrictEqual(findDivisors.pairingUnsorted(4), [1, 4, 2]);
+      assert.deepStrictEqual(findDivisors.pairingUnsorted(5), [1, 5]);
+      assert.deepStrictEqual(findDivisors.pairingUnsorted(100), [
+        1,
+        100,
+        2,
+        50,
+        4,
+        25,
+        5,
+        20,
+        10
+      ]);
+      assert.deepStrictEqual(findDivisors.pairingUnsorted(182), [
+        1,
+        182,
+        2,
+        91,
+        7,
+        26,
+        13,
+        14
+      ]);
     });
   });
 
   describe('#PairingSorted()', () => {
     it('should return the divisors of the number', () => {
-      testFindDivisors(findDivisors.pairingSorted);
+      assert.deepStrictEqual(findDivisors.pairingSorted(-2), []);
+      assert.deepStrictEqual(findDivisors.pairingSorted(0), []);
+      assert.deepStrictEqual(findDivisors.pairingSorted(1), [1]);
+      assert.deepStrictEqual(findDivisors.pairingSorted(2), [1, 2]);
+      assert.deepStrictEqual(findDivisors.pairingSorted(3), [1, 3]);
+      assert.deepStrictEqual(findDivisors.pairingSorted(4), [1, 2, 4]);
+      assert.deepStrictEqual(findDivisors.pairingSorted(5), [1, 5]);
+      assert.deepStrictEqual(findDivisors.pairingSorted(100), [
+        1,
+        2,
+        4,
+        5,
+        10,
+        20,
+        25,
+        50,
+        100
+      ]);
+      assert.deepStrictEqual(findDivisors.pairingSorted(182), [
+        1,
+        2,
+        7,
+        13,
+        14,
+        26,
+        91,
+        182
+      ]);
     });
   });
 });

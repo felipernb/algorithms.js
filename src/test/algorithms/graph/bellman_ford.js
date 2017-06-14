@@ -4,8 +4,7 @@ const Graph = root.DataStructures.Graph;
 const assert = require('assert');
 
 describe('Bellman-Ford Algorithm', () => {
-  it('should return the shortest paths to all nodes from a given origin',
-  () => {
+  it('should return the shortest paths to all nodes from a given origin', () => {
     const graph = new Graph(true);
 
     graph.addEdge('a', 'b', -1);

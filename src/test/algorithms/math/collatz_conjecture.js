@@ -19,4 +19,3 @@ describe('Collatz Conjecture', () => {
     assert.deepEqual(collatzConjecture.generate(10), [5, 16, 8, 4, 2, 1]);
   });
 });
-

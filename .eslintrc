@@ -5,6 +5,9 @@
     "mocha": true
   },
   "rules": {
-    "valid-jsdoc": 0
+    "valid-jsdoc": 0,
+    "require-jsdoc": 0,
+    "comma-dangle": ["error", "never"],
+    "arrow-parens": ["error", "as-needed"]
   }
 }

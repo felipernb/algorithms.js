@@ -52,21 +52,24 @@ describe('Min Heap', () => {
     assert(h.isEmpty());
   });
 
-  it('should perform a function to all elements from smallest to largest' +
-     ' with forEach', () => {
-    const h = new heap.MinHeap();
-    h.heapify([3, 10, 1000, 0, 2, 1]);
+  it(
+    'should perform a function to all elements from smallest to largest' +
+      ' with forEach',
+    () => {
+      const h = new heap.MinHeap();
+      h.heapify([3, 10, 1000, 0, 2, 1]);
 
-    const output = [];
-    h.forEach(n => {
-      output.push(n);
-    });
+      const output = [];
+      h.forEach(n => {
+        output.push(n);
+      });
 
-    assert.deepEqual(output, [0, 1, 2, 3, 10, 1000]);
+      assert.deepEqual(output, [0, 1, 2, 3, 10, 1000]);
 
-    // Make sure nothing was really removed
-    assert.equal(h.n, 6);
-  });
+      // Make sure nothing was really removed
+      assert.equal(h.n, 6);
+    }
+  );
 });
 
 describe('Max Heap', () => {
@@ -120,16 +123,19 @@ describe('Max Heap', () => {
     assert(h.isEmpty());
   });
 
-  it('should perform a function to all elements from largest to smallest' +
-     ' with forEach', () => {
-    const h = new heap.MaxHeap();
-    h.heapify([3, 10, 1000, 0, 2, 1]);
+  it(
+    'should perform a function to all elements from largest to smallest' +
+      ' with forEach',
+    () => {
+      const h = new heap.MaxHeap();
+      h.heapify([3, 10, 1000, 0, 2, 1]);
 
-    const output = [];
-    h.forEach(n => {
-      output.push(n);
-    });
+      const output = [];
+      h.forEach(n => {
+        output.push(n);
+      });
 
-    assert.deepEqual(output, [1000, 10, 3, 2, 1, 0]);
-  });
+      assert.deepEqual(output, [1000, 10, 3, 2, 1, 0]);
+    }
+  );
 });

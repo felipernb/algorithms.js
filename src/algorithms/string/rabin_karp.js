@@ -50,16 +50,15 @@ const rabinKarp = (s, pattern) => {
        * Recalculates the hash representation of a word so that it isn't
        * necessary to traverse the whole word again
        */
-      hashCurrentSubstring -= currentSubstring.charCodeAt(0) *
-        Math.pow(base, pattern.length - 1);
+      hashCurrentSubstring -=
+        currentSubstring.charCodeAt(0) * Math.pow(base, pattern.length - 1);
       hashCurrentSubstring *= base;
       hashCurrentSubstring += s.charCodeAt(i);
 
       currentSubstring = currentSubstring.substring(1) + s[i];
     }
 
-    if (hashPattern === hashCurrentSubstring &&
-        pattern === currentSubstring) {
+    if (hashPattern === hashCurrentSubstring && pattern === currentSubstring) {
       // Hack for the off-by-one when matching in the beginning of the string
       return i === pattern.length ? 0 : i - pattern.length + 1;
     }

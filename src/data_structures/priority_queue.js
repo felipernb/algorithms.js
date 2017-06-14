@@ -7,7 +7,7 @@ const MinHeap = require('./heap').MinHeap;
  */
 class PriorityQueue extends MinHeap {
   constructor(initialItems) {
-    super((a, b) => this.priority(a) < this.priority(b) ? -1 : 1);
+    super((a, b) => (this.priority(a) < this.priority(b) ? -1 : 1));
 
     this._priority = {};
 
@@ -27,9 +27,9 @@ class PriorityQueue extends MinHeap {
 
   extract(withPriority) {
     const min = MinHeap.prototype.extract.call(this);
-    return withPriority ?
-      min && {item: min, priority: this._priority[min]} :
-      min;
+    return withPriority
+      ? min && {item: min, priority: this._priority[min]}
+      : min;
   }
 
   priority(item) {

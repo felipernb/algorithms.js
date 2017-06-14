@@ -14,10 +14,15 @@ class Node {
    * Computer the number of childnodes
    */
   resize() {
-    this.size = (this.children[0] ? this.children[0].size : 0) +
-      (this.children[1] ? this.children[1].size : 0) + 1;
-    this.height = Math.max(this.children[0] ? this.children[0].height : 0,
-      this.children[1] ? this.children[1].height : 0) + 1;
+    this.size =
+      (this.children[0] ? this.children[0].size : 0) +
+      (this.children[1] ? this.children[1].size : 0) +
+      1;
+    this.height =
+      Math.max(
+        this.children[0] ? this.children[0].height : 0,
+        this.children[1] ? this.children[1].height : 0
+      ) + 1;
     return this;
   }
 
@@ -113,7 +118,7 @@ class Treap {
       }
 
       // Rotate to a subtree and remove it
-      side = (node.children[0] === null ? 1 : 0);
+      side = node.children[0] === null ? 1 : 0;
       node = node.rotate(side);
       node.children[1 - side] = this._remove(node.children[1 - side], value);
     } else {

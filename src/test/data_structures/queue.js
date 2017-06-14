@@ -21,16 +21,19 @@ describe('Queue', () => {
     assert.throws(() => q.pop(), Error);
   });
 
-  it('should allow me to peek at the first element in' +
-    ' line without popping it', () => {
-    const q = new Queue();
-    assert.throws(() => q.peek(), Error); // Empty list
-    q.push(1);
-    q.push(2);
-    q.push(3);
-    assert.equal(q.peek(), 1);
-    assert.equal(q.peek(), 1);
-    q.pop();
-    assert.equal(q.peek(), 2);
-  });
+  it(
+    'should allow me to peek at the first element in' +
+      ' line without popping it',
+    () => {
+      const q = new Queue();
+      assert.throws(() => q.peek(), Error); // Empty list
+      q.push(1);
+      q.push(2);
+      q.push(3);
+      assert.equal(q.peek(), 1);
+      assert.equal(q.peek(), 1);
+      q.pop();
+      assert.equal(q.peek(), 2);
+    }
+  );
 });

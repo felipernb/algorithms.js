@@ -21,23 +21,25 @@
 const normalizeCallbacks = (callbacks, seenVertices) => {
   callbacks = callbacks || {};
 
-  callbacks.allowTraversal = callbacks.allowTraversal || ((() => {
-    const seen = {};
-    seenVertices.forEach(vertex => {
-      seen[vertex] = true;
-    });
+  callbacks.allowTraversal =
+    callbacks.allowTraversal ||
+    (() => {
+      const seen = {};
+      seenVertices.forEach(vertex => {
+        seen[vertex] = true;
+      });
 
-    return (vertex, neighbor) => {
-      // It should still be possible to redefine other callbacks,
-      // so we better do all at once here.
+      return (vertex, neighbor) => {
+        // It should still be possible to redefine other callbacks,
+        // so we better do all at once here.
 
-      if (!seen[neighbor]) {
-        seen[neighbor] = true;
-        return true;
-      }
-      return false;
-    };
-  }))();
+        if (!seen[neighbor]) {
+          seen[neighbor] = true;
+          return true;
+        }
+        return false;
+      };
+    })();
 
   const noop = () => {};
   callbacks.beforeTraversal = callbacks.beforeTraversal || noop;

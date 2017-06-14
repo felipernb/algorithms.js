@@ -22,20 +22,22 @@ const Queue = require('../../data_structures/queue');
 const normalizeCallbacks = (callbacks, seenVertices) => {
   callbacks = callbacks || {};
 
-  callbacks.allowTraversal = callbacks.allowTraversal || ((() => {
-    const seen = seenVertices.reduce((seen, vertex) => {
-      seen[vertex] = true;
-      return seen;
-    }, {});
+  callbacks.allowTraversal =
+    callbacks.allowTraversal ||
+    (() => {
+      const seen = seenVertices.reduce((seen, vertex) => {
+        seen[vertex] = true;
+        return seen;
+      }, {});
 
-    return (vertex, neighbor) => {
-      if (!seen[neighbor]) {
-        seen[neighbor] = true;
-        return true;
-      }
-      return false;
-    };
-  }))();
+      return (vertex, neighbor) => {
+        if (!seen[neighbor]) {
+          seen[neighbor] = true;
+          return true;
+        }
+        return false;
+      };
+    })();
 
   const noop = () => {};
   callbacks.onTraversal = callbacks.onTraversal || noop;

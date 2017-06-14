@@ -29,7 +29,7 @@ class AVLTree {
     let isBalanced = true;
 
     if (node.left !== null && node.right !== null) {
-      isBalanced = (Math.abs(node.left.height - node.right.height) <= 1);
+      isBalanced = Math.abs(node.left.height - node.right.height) <= 1;
     } else if (node.right !== null && node.left === null) {
       isBalanced = node.right.height < 2;
     } else if (node.left !== null && node.right === null) {
@@ -51,7 +51,7 @@ class AVLTree {
     // (cannot be ancestor of removed node)
     let y;
     if (z.left !== null && z.right !== null) {
-      y = (z.left === y) ? z.right : z.left;
+      y = z.left === y ? z.right : z.left;
     } else if (z.left !== null && z.right === null) {
       y = z.left;
     } else if (z.right !== null && z.left === null) {
@@ -68,7 +68,7 @@ class AVLTree {
       } else if (y.left.height < y.right.height) {
         x = y.right;
       } else if (y.left.height === y.right.height) {
-        x = (z.left === y) ? y.left : y.right;
+        x = z.left === y ? y.left : y.right;
       }
     } else if (y.left !== null && y.right === null) {
       x = y.left;
@@ -125,9 +125,9 @@ class AVLTree {
       traveledNodes.push(current);
       current.height = this.getNodeHeight(current);
       if (!this.isNodeBalanced(current)) {
-        const nodesToBeRestructured = (afterRemove) ?
-          this.getNodesToRestructureAfterRemove(traveledNodes) :
-          this.getNodesToRestructureAfterInsert(traveledNodes);
+        const nodesToBeRestructured = afterRemove
+          ? this.getNodesToRestructureAfterRemove(traveledNodes)
+          : this.getNodesToRestructureAfterInsert(traveledNodes);
         this.restructure(nodesToBeRestructured);
       }
       current = current.parent;
@@ -161,7 +161,7 @@ class AVLTree {
   rightRight(x, y, z) {
     // pass z parent to y and move y's left to z's right
     if (z.parent) {
-      const orientation = (z.parent.left === z) ? 'left' : 'right';
+      const orientation = z.parent.left === z ? 'left' : 'right';
       z.parent[orientation] = y;
       y.parent = z.parent;
     } else {
@@ -190,7 +190,7 @@ class AVLTree {
   leftLeft(x, y, z) {
     // pass z parent to y and move y's right to z's left
     if (z.parent) {
-      const orientation = (z.parent.left === z) ? 'left' : 'right';
+      const orientation = z.parent.left === z ? 'left' : 'right';
       z.parent[orientation] = y;
       y.parent = z.parent;
     } else {
@@ -218,7 +218,7 @@ class AVLTree {
   rightLeft(x, y, z) {
     // pass z parent to x
     if (z.parent) {
-      const orientation = (z.parent.left === z) ? 'left' : 'right';
+      const orientation = z.parent.left === z ? 'left' : 'right';
       z.parent[orientation] = x;
       x.parent = z.parent;
     } else {
@@ -254,7 +254,7 @@ class AVLTree {
   leftRight(x, y, z) {
     // pass z parent to x
     if (z.parent) {
-      const orientation = (z.parent.left === z) ? 'left' : 'right';
+      const orientation = z.parent.left === z ? 'left' : 'right';
       z.parent[orientation] = x;
       x.parent = z.parent;
     } else {
@@ -487,10 +487,13 @@ class AVLTree {
     if (!current) {
       return true;
     }
-    return this._isBalanced(current._left) &&
+    return (
+      this._isBalanced(current._left) &&
       this._isBalanced(current._right) &&
-      Math.abs(this._getNodeHeight(current._left) -
-        this._getNodeHeight(current._right)) <= 1;
+      Math.abs(
+        this._getNodeHeight(current._left) - this._getNodeHeight(current._right)
+      ) <= 1
+    );
   }
 
   /**
@@ -503,8 +506,13 @@ class AVLTree {
     if (!current) {
       return 0;
     }
-    return 1 + Math.max(this.getNodeHeight(current._left),
-      this._getNodeHeight(current._right));
+    return (
+      1 +
+      Math.max(
+        this.getNodeHeight(current._left),
+        this._getNodeHeight(current._right)
+      )
+    );
   }
 }
 

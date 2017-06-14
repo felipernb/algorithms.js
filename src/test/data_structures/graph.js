@@ -21,14 +21,13 @@ describe('Graph - Adjacency list', () => {
     assert.strictEqual(g.edge('a', 'b'), 1);
   });
 
-  it('should create the vertex if an edge is inserted and vertex doesnt exist',
-    () => {
-      const g = new Graph();
-      g.addEdge('a', 'b');
-      assert.equal(g.vertices.size, 2);
-      assert(g.vertices.contains('a'));
-      assert(g.vertices.contains('b'));
-    });
+  it('should create the vertex if an edge is inserted and vertex doesnt exist', () => {
+    const g = new Graph();
+    g.addEdge('a', 'b');
+    assert.equal(g.vertices.size, 2);
+    assert(g.vertices.contains('a'));
+    assert(g.vertices.contains('b'));
+  });
 
   it('should sum multiple edges between the same vertices', () => {
     const g = new Graph();
@@ -84,31 +83,30 @@ describe('Graph - Adjacency list', () => {
     assert.equal(g.edge('b', 'a'), 2);
   });
 
-  it('should have reversed edges with same weight for a reverse directed graph',
-    () => {
-      const g = new Graph();
-      g.addVertex('a');
-      g.addVertex('b');
-      g.addVertex('c');
-      g.addVertex('d');
-      g.addEdge('a', 'b', 10);
-      g.addEdge('a', 'c', 5);
-      g.addEdge('c', 'd', 2);
+  it('should have reversed edges with same weight for a reverse directed graph', () => {
+    const g = new Graph();
+    g.addVertex('a');
+    g.addVertex('b');
+    g.addVertex('c');
+    g.addVertex('d');
+    g.addEdge('a', 'b', 10);
+    g.addEdge('a', 'c', 5);
+    g.addEdge('c', 'd', 2);
 
-      const r = g.reverse();
-      assert(r.directed);
-      assert.equal(r.edge('a', 'b'), undefined);
-      assert.equal(r.edge('b', 'a'), 10);
-      assert.equal(r.edge('a', 'c'), undefined);
-      assert.equal(r.edge('c', 'a'), 5);
-      assert.equal(r.edge('c', 'd'), undefined);
-      assert.equal(r.edge('d', 'c'), 2);
+    const r = g.reverse();
+    assert(r.directed);
+    assert.equal(r.edge('a', 'b'), undefined);
+    assert.equal(r.edge('b', 'a'), 10);
+    assert.equal(r.edge('a', 'c'), undefined);
+    assert.equal(r.edge('c', 'a'), 5);
+    assert.equal(r.edge('c', 'd'), undefined);
+    assert.equal(r.edge('d', 'c'), 2);
 
-      assert.equal(r.edge('a', 'd'), undefined);
-      r.addEdge('a', 'b', 2);
-      assert.equal(r.edge('a', 'b'), 2);
-      assert.equal(r.edge('b', 'a'), 10);
-    });
+    assert.equal(r.edge('a', 'd'), undefined);
+    r.addEdge('a', 'b', 2);
+    assert.equal(r.edge('a', 'b'), 2);
+    assert.equal(r.edge('b', 'a'), 10);
+  });
 
   it('should have a list of vertices', () => {
     const g = new Graph();

@@ -27,10 +27,10 @@ class DisjointSetForest {
    * @param {...*} element
    * @return {boolean}
    */
-  sameSubset(element) {
+  sameSubset(element, ...rest) {
     this._introduce(element);
     const root = this.root(element);
-    return [].slice.call(arguments, 1).every(element => {
+    return rest.every(element => {
       this._introduce(element);
       return this.root(element) === root;
     });
@@ -74,9 +74,9 @@ class DisjointSetForest {
    * @param {...*}
    * @return {DisjointSetForest}
    */
-  merge(element1, element2) {
-    if (arguments.length > 2) {
-      this.merge(...[].slice.call(arguments, 1));
+  merge(element1, element2, ...rest) {
+    if (rest.length > 0) {
+      this.merge(element2, ...rest);
     }
 
     this._introduce(element1);

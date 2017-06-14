@@ -23,8 +23,9 @@
 class FenwickTree {
   constructor(length) {
     this._elements = new Array(length + 1);
-    for (let i = 0; i < this._elements.length; i++)
+    for (let i = 0; i < this._elements.length; i++) {
       this._elements[i] = 0;
+    }
   }
 
   /**
@@ -47,8 +48,9 @@ class FenwickTree {
 
       Note: (index&-index) finds the rightmost bit in index.
     */
-    for (; index < this._elements.length; index += (index & -index))
+    for (; index < this._elements.length; index += index & -index) {
       this._elements[index] += value;
+    }
   }
 
   /**
@@ -71,8 +73,9 @@ class FenwickTree {
     */
 
     let sum = 0;
-    for (; index > 0; index -= (index & -index))
+    for (; index > 0; index -= index & -index) {
       sum += this._elements[index];
+    }
     return sum;
   }
 

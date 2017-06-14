@@ -15,41 +15,39 @@ describe('Depth First Search Algorithm', () => {
     graph.addEdge('five', 'six');
   });
 
-  it('should visit only the nodes reachable from the start node (inclusive)',
-    () => {
-      const enter = [];
-      const leave = [];
-      let numEdgeTails = 0;
-      let numEdgeHeads = 0;
+  it('should visit only the nodes reachable from the start node (inclusive)', () => {
+    const enter = [];
+    const leave = [];
+    let numEdgeTails = 0;
+    let numEdgeHeads = 0;
 
-      depthFirstSearch(graph, 'one');
+    depthFirstSearch(graph, 'one');
 
-      const dfsCallbacks = {
-        enterVertex: [].push.bind(enter),
-        leaveVertex: [].push.bind(leave),
-        beforeTraversal: function() {
-          numEdgeHeads += 1;
-        },
-        afterTraversal: function() {
-          numEdgeTails += 1;
-        }
-      };
+    const dfsCallbacks = {
+      enterVertex: [].push.bind(enter),
+      leaveVertex: [].push.bind(leave),
+      beforeTraversal: function() {
+        numEdgeHeads += 1;
+      },
+      afterTraversal: function() {
+        numEdgeTails += 1;
+      }
+    };
 
-      depthFirstSearch(graph, 'one', dfsCallbacks);
-      assert.deepEqual(enter, ['one', 'three', 'four', 'two']);
-      assert.deepEqual(leave, ['three', 'two', 'four', 'one']);
-      assert.equal(numEdgeTails, numEdgeHeads);
-      assert.equal(numEdgeHeads, 3);
+    depthFirstSearch(graph, 'one', dfsCallbacks);
+    assert.deepEqual(enter, ['one', 'three', 'four', 'two']);
+    assert.deepEqual(leave, ['three', 'two', 'four', 'one']);
+    assert.equal(numEdgeTails, numEdgeHeads);
+    assert.equal(numEdgeHeads, 3);
 
-      enter.splice(0, 4);
-      leave.splice(0, 4);
-      depthFirstSearch(graph, 'five', dfsCallbacks);
-      assert.deepEqual(enter, ['five', 'six']);
-      assert.deepEqual(leave, ['six', 'five']);
-      assert.equal(numEdgeTails, numEdgeHeads);
-      assert.equal(numEdgeHeads, 4);
-    }
-  );
+    enter.splice(0, 4);
+    leave.splice(0, 4);
+    depthFirstSearch(graph, 'five', dfsCallbacks);
+    assert.deepEqual(enter, ['five', 'six']);
+    assert.deepEqual(leave, ['six', 'five']);
+    assert.equal(numEdgeTails, numEdgeHeads);
+    assert.equal(numEdgeHeads, 4);
+  });
 
   it('should allow user-defined allowTraversal rules', () => {
     const seen = new Graph(graph.directed);

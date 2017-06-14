@@ -19,8 +19,7 @@ const bubbleSort = (a, comparatorFn) => {
         check = true;
       }
     }
-    if (!check)
-      return a;
+    if (!check) return a;
     bound = newbound;
   }
   return a;

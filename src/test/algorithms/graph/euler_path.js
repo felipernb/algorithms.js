@@ -16,8 +16,10 @@ describe('Euler Path', () => {
     }, trail[0]);
 
     graph.vertices.forEach(vertex => {
-      assert.equal(graph.neighbors(vertex).length,
-                   visited.neighbors(vertex).length);
+      assert.equal(
+        graph.neighbors(vertex).length,
+        visited.neighbors(vertex).length
+      );
     });
   };
 
@@ -126,11 +128,7 @@ describe('Euler Path', () => {
     let graph = graphFromEdges(false, [[0, 1], [2, 3]]);
     assert.throws(eulerPath.bind(null, graph));
 
-    graph = graphFromEdges(false, [
-      [0, 1],
-      [0, 2],
-      [0, 3]
-    ]);
+    graph = graphFromEdges(false, [[0, 1], [0, 2], [0, 3]]);
     assert.throws(eulerPath.bind(null, graph));
 
     graph = graphFromEdges(true, [[0, 1], [0, 2]]);
@@ -139,17 +137,10 @@ describe('Euler Path', () => {
     graph = graphFromEdges(true, [[1, 0], [2, 0]]);
     assert.throws(eulerPath.bind(null, graph));
 
-    graph = graphFromEdges(true, [
-      [0, 1],
-      [2, 3],
-      [3, 2]
-    ]);
+    graph = graphFromEdges(true, [[0, 1], [2, 3], [3, 2]]);
     assert.throws(eulerPath.bind(null, graph));
 
-    graph = graphFromEdges(true, [
-      [0, 1],
-      [2, 3]
-    ]);
+    graph = graphFromEdges(true, [[0, 1], [2, 3]]);
     assert.throws(eulerPath.bind(null, graph));
   });
 });

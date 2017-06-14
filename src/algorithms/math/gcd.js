@@ -72,7 +72,7 @@ const gcdBinaryIterative = (a, b) => {
       a = tmp;
     }
 
-    b -= a;  // Here b >= a
+    b -= a; // Here b >= a
   } while (b !== 0);
 
   // restore common factors of 2

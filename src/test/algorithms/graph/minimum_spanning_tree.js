@@ -45,8 +45,9 @@ describe('Minimum Spanning Tree', () => {
     }
     let numberOfEdges = 0;
     graph.vertices.forEach(vertex => {
-      numberOfEdges += graph.neighbors(vertex).filter(
-        neighbor => vertex <= neighbor).length;
+      numberOfEdges += graph
+        .neighbors(vertex)
+        .filter(neighbor => vertex <= neighbor).length;
     });
     return graph.vertices.size === numberOfEdges + connectivity;
   };
@@ -82,7 +83,9 @@ describe('Minimum Spanning Tree', () => {
   const graphCost = graph => {
     let total = 0;
     graph.vertices.forEach(vertex => {
-      total += graph.neighbors(vertex).reduce((accum, neighbor) => accum + graph.edge(vertex, neighbor), 0);
+      total += graph
+        .neighbors(vertex)
+        .reduce((accum, neighbor) => accum + graph.edge(vertex, neighbor), 0);
     });
     return graph.directed ? total : total / 2;
   };
@@ -96,11 +99,18 @@ describe('Minimum Spanning Tree', () => {
    * @param {number} [connectivity=1]
    * @return {boolean}
    */
-  const isMinimumSpanningForest = (suspect, graph, minimumCost, connectivity) => {
+  const isMinimumSpanningForest = (
+    suspect,
+    graph,
+    minimumCost,
+    connectivity
+  ) => {
     assert(!graph.directed);
-    return isForest(suspect, connectivity || 1) &&
+    return (
+      isForest(suspect, connectivity || 1) &&
       spans(suspect, graph) &&
-      graphCost(suspect) === minimumCost;
+      graphCost(suspect) === minimumCost
+    );
   };
 
   const testMstAlgorithm = mst => {
@@ -142,31 +152,30 @@ describe('Minimum Spanning Tree', () => {
       assert(isMinimumSpanningForest(mst(graph), graph, -100));
     });
 
-    it('should find a minimum spaning forest if the graph is not connected',
-       () => {
-         const graph = new Graph(false);
-         graph.addVertex(1);
-         graph.addVertex(2);
-         graph.addVertex(3);
-         assert(isMinimumSpanningForest(mst(graph), graph, 0, 3));
+    it('should find a minimum spaning forest if the graph is not connected', () => {
+      const graph = new Graph(false);
+      graph.addVertex(1);
+      graph.addVertex(2);
+      graph.addVertex(3);
+      assert(isMinimumSpanningForest(mst(graph), graph, 0, 3));
 
-         graph.addEdge(1, 2, 2);
-         assert(isMinimumSpanningForest(mst(graph), graph, 2, 2));
+      graph.addEdge(1, 2, 2);
+      assert(isMinimumSpanningForest(mst(graph), graph, 2, 2));
 
-         graph.addEdge(1, 3, 1);
-         graph.addEdge(2, 3, -1);
-         assert(isMinimumSpanningForest(mst(graph), graph, 0, 1));
+      graph.addEdge(1, 3, 1);
+      graph.addEdge(2, 3, -1);
+      assert(isMinimumSpanningForest(mst(graph), graph, 0, 1));
 
-         graph.addVertex(4);
-         assert(isMinimumSpanningForest(mst(graph), graph, 0, 2));
+      graph.addVertex(4);
+      assert(isMinimumSpanningForest(mst(graph), graph, 0, 2));
 
-         graph.addEdge(5, 6, 1);
-         assert(isMinimumSpanningForest(mst(graph), graph, 1, 3));
+      graph.addEdge(5, 6, 1);
+      assert(isMinimumSpanningForest(mst(graph), graph, 1, 3));
 
-         graph.addEdge(5, 4, -100);
-         graph.addEdge(6, 4, -100);
-         assert(isMinimumSpanningForest(mst(graph), graph, -200, 2));
-       });
+      graph.addEdge(5, 4, -100);
+      graph.addEdge(6, 4, -100);
+      assert(isMinimumSpanningForest(mst(graph), graph, -200, 2));
+    });
 
     it('should throw an error if the graph is directed', () => {
       const directedGraph = new Graph(true);

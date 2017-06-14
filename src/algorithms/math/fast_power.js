@@ -31,9 +31,13 @@ const fastPower = (base, power, mul, identity) => {
   // Iterative form of the algorithm avoids checking the same thing twice.
   let result;
   const multiplyBy = value => {
-    result = (result === undefined) ? value : mul(result, value);
+    result = result === undefined ? value : mul(result, value);
   };
-  for (let factor = base; power; power >>>= 1, factor = mul(factor, factor)) {
+  for (
+    let factor = base;
+    power;
+    (power >>>= 1), (factor = mul(factor, factor))
+  ) {
     if (power & 1) {
       multiplyBy(factor);
     }

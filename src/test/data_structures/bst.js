@@ -62,75 +62,84 @@ describe('Binary Search Tree', () => {
 
   const callbackGenerator = a => n => a.push(n);
 
-  it('should remove a leaf without altering anything else in ' +
-    'the structure of the tree', () => {
-    bst.remove(0);
+  it(
+    'should remove a leaf without altering anything else in ' +
+      'the structure of the tree',
+    () => {
+      bst.remove(0);
       /**
        *            4
        *       2          8
        *    1     3    5     10
        *       2.5               100
        */
-    const a = [];
-    bfs(bst.root, callbackGenerator(a));
-    assert.deepEqual(a, [4, 2, 8, 1, 3, 5, 10, 2.5, 100]);
-  });
+      const a = [];
+      bfs(bst.root, callbackGenerator(a));
+      assert.deepEqual(a, [4, 2, 8, 1, 3, 5, 10, 2.5, 100]);
+    }
+  );
 
-  it('should remove an element with just one child and substitute ' +
-    'it as the root of only subtree', () => {
-    bst.remove(10);
+  it(
+    'should remove an element with just one child and substitute ' +
+      'it as the root of only subtree',
+    () => {
+      bst.remove(10);
       /**
        *            4
        *       2          8
        *    1     3    5     100
        *       2.5
        */
-    const a = [];
-    bfs(bst.root, callbackGenerator(a));
-    assert.deepEqual(a, [4, 2, 8, 1, 3, 5, 100, 2.5]);
-  });
+      const a = [];
+      bfs(bst.root, callbackGenerator(a));
+      assert.deepEqual(a, [4, 2, 8, 1, 3, 5, 100, 2.5]);
+    }
+  );
 
-  it('should substitute an element by the leftmost child in the right ' +
-    'subtree and remove it as a leaf', () => {
+  it(
+    'should substitute an element by the leftmost child in the right ' +
+      'subtree and remove it as a leaf',
+    () => {
       /**
        *            4
        *       2          8
        *    1     3    5     100
        *       2.5
        */
-    bst.remove(2);
+      bst.remove(2);
       /**
        *            4
        *       2.5        8
        *     1     3    5     100
        *
        */
-    let a = [];
-    bfs(bst.root, callbackGenerator(a));
-    assert.deepEqual(a, [4, 2.5, 8, 1, 3, 5, 100]);
+      let a = [];
+      bfs(bst.root, callbackGenerator(a));
+      assert.deepEqual(a, [4, 2.5, 8, 1, 3, 5, 100]);
 
-    bst.remove(4);
+      bst.remove(4);
       /**
        *            5
        *       2.5        8
        *     1     3        100
        *
        */
-    a = [];
-    bfs(bst.root, callbackGenerator(a));
-    assert.deepEqual(a, [5, 2.5, 8, 1, 3, 100]);
+      a = [];
+      bfs(bst.root, callbackGenerator(a));
+      assert.deepEqual(a, [5, 2.5, 8, 1, 3, 100]);
 
-    bst.remove(2.5);
+      bst.remove(2.5);
       /**
        *            5
        *        3        8
        *     1              100
        *
        */
-    a = [];
-    bfs(bst.root, callbackGenerator(a));
-    assert.deepEqual(a, [5, 3, 8, 1, 100]);
-  });
+      a = [];
+      bfs(bst.root, callbackGenerator(a));
+      assert.deepEqual(a, [5, 3, 8, 1, 100]);
+    }
+  );
 
   it('should always return the right root and size', () => {
     const bst = new BST();
@@ -151,13 +160,12 @@ describe('Binary Search Tree', () => {
     assert.equal(bst.size, 0);
   });
 
-  it('should throw an error when trying to remove an unexisting node',
-      () => {
-        const bst = new BST();
-        assert.throws(() => bst.remove(0), Error);
-        bst.insert(3);
-        assert.throws(() => bst.remove(0), Error);
-      });
+  it('should throw an error when trying to remove an unexisting node', () => {
+    const bst = new BST();
+    assert.throws(() => bst.remove(0), Error);
+    bst.insert(3);
+    assert.throws(() => bst.remove(0), Error);
+  });
 });
 
 describe('Binary Search Tree with custom comparator', () => {
@@ -166,15 +174,14 @@ describe('Binary Search Tree with custom comparator', () => {
     return a.length < b.length ? -1 : 1;
   };
 
-  it(
-    'should insert elements respecting the BST restrictions', () => {
-      const bst = new BST(strLenCompare);
-      bst.insert('banana');
-      bst.insert('apple');
-      bst.insert('pineapple');
-      bst.insert('watermelon');
-      assert.equal(bst.size, 4);
-    });
+  it('should insert elements respecting the BST restrictions', () => {
+    const bst = new BST(strLenCompare);
+    bst.insert('banana');
+    bst.insert('apple');
+    bst.insert('pineapple');
+    bst.insert('watermelon');
+    assert.equal(bst.size, 4);
+  });
 
   it('should check if an element exists (in O(lg n))', () => {
     const bst = new BST(strLenCompare);
@@ -214,40 +221,49 @@ describe('Binary Search Tree with custom comparator', () => {
     assert.deepEqual(a, ['banana', 'apple', 'pineapple', 'pear', 'watermelon']);
   });
 
-  it('should remove a leaf without altering anything else in ' +
-    'the structure of the tree', () => {
-    bst.remove('watermelon');
+  it(
+    'should remove a leaf without altering anything else in ' +
+      'the structure of the tree',
+    () => {
+      bst.remove('watermelon');
       /**
        *           'banana'
        *     'apple'      'pineapple'
        *  'pear'
        */
-    const a = [];
-    bfs(bst.root, callbackGenerator(a));
-    assert.deepEqual(a, ['banana', 'apple', 'pineapple', 'pear']);
-  });
+      const a = [];
+      bfs(bst.root, callbackGenerator(a));
+      assert.deepEqual(a, ['banana', 'apple', 'pineapple', 'pear']);
+    }
+  );
 
-  it('should remove an element with just one child and substitute ' +
-    'it as the root of only subtree', () => {
-    bst.remove('apple');
+  it(
+    'should remove an element with just one child and substitute ' +
+      'it as the root of only subtree',
+    () => {
+      bst.remove('apple');
       /**
        *           'banana'
        *     'pear'      'pineapple'
        */
-    const a = [];
-    bfs(bst.root, callbackGenerator(a));
-    assert.deepEqual(a, ['banana', 'pear', 'pineapple']);
-  });
+      const a = [];
+      bfs(bst.root, callbackGenerator(a));
+      assert.deepEqual(a, ['banana', 'pear', 'pineapple']);
+    }
+  );
 
-  it('should substitute an element by the leftmost child in the right ' +
-    'subtree and remove it as a leaf', () => {
-    bst.remove('banana');
+  it(
+    'should substitute an element by the leftmost child in the right ' +
+      'subtree and remove it as a leaf',
+    () => {
+      bst.remove('banana');
       /**
        *       'pineapple'
        *   'pear'
        */
-    const a = [];
-    bfs(bst.root, callbackGenerator(a));
-    assert.deepEqual(a, ['pineapple', 'pear']);
-  });
+      const a = [];
+      bfs(bst.root, callbackGenerator(a));
+      assert.deepEqual(a, ['pineapple', 'pear']);
+    }
+  );
 });

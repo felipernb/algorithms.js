@@ -6,9 +6,9 @@ const HashTable = require('./hash_table');
  *   i.e. set.add(1,'a', "b", { "foo" : "bar" })
  */
 class HashSet {
-  constructor() {
-    this._elements = new HashTable(arguments.length);
-    this.add(...arguments);
+  constructor(...args) {
+    this._elements = new HashTable(args.length);
+    this.add(...args);
 
     Object.defineProperty(this, 'size', {
       get: function() {
@@ -17,16 +17,16 @@ class HashSet {
     });
   }
 
-  add() {
-    for (let i = 0; i < arguments.length; i++) {
-      this._elements.put(arguments[i], true);
+  add(...args) {
+    for (let i = 0; i < args.length; i++) {
+      this._elements.put(args[i], true);
     }
     return this;
   }
 
-  remove() {
-    for (let i = 0; i < arguments.length; i++) {
-      this._elements.del(arguments[i]);
+  remove(...args) {
+    for (let i = 0; i < args.length; i++) {
+      this._elements.del(args[i]);
     }
     return this;
   }

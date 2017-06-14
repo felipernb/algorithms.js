@@ -27,7 +27,7 @@ class Graph {
     a = _(a);
     b = _(b);
     // If no weight is assigned to the edge, 1 is the default
-    w = (w === undefined ? 1 : w);
+    w = w === undefined ? 1 : w;
 
     if (!this.adjList[a]) this.addVertex(a);
     if (!this.adjList[b]) this.addVertex(b);

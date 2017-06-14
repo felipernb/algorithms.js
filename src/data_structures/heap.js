@@ -50,10 +50,13 @@ class MinHeap {
     let i;
     let parent;
 
-    for (i = this.n;
-        i > 1 && (parent = i >> 1) && this._comparator.greaterThan(
-          this._elements[parent], this._elements[i]);
-        i = parent) {
+    for (
+      i = this.n;
+      i > 1 &&
+      (parent = i >> 1) &&
+      this._comparator.greaterThan(this._elements[parent], this._elements[i]);
+      i = parent
+    ) {
       this._swap(parent, i);
     }
   }
@@ -66,13 +69,16 @@ class MinHeap {
     let c;
     for (i = i || 1; (c = i << 1) <= this.n; i = c) {
       // checks which is the smaller child to compare with
-      if (c + 1 <= this.n && this._comparator.lessThan(
-            this._elements[c + 1], this._elements[c]))
+      if (
+        c + 1 <= this.n &&
+        this._comparator.lessThan(this._elements[c + 1], this._elements[c])
+      ) {
         // use the right child if it's lower than the left one
         c++;
-      if (this._comparator.lessThan(this._elements[i],
-            this._elements[c]))
+      }
+      if (this._comparator.lessThan(this._elements[i], this._elements[c])) {
         break;
+      }
       this._swap(i, c);
     }
   }

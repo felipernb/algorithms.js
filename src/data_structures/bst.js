@@ -35,7 +35,9 @@ class BST {
       parent = this.root;
     }
 
-    const child = this._comparator.lessThan(value, parent.value) ? 'left' : 'right';
+    const child = this._comparator.lessThan(value, parent.value)
+      ? 'left'
+      : 'right';
     if (parent[child]) {
       this.insert(value, parent[child]);
     } else {
@@ -57,14 +59,15 @@ class BST {
       else return false;
     }
 
-    if (root.value === e)
-      return root;
+    if (root.value === e) return root;
 
-    if (this._comparator.lessThan(e, root.value))
+    if (this._comparator.lessThan(e, root.value)) {
       return root.left && this._find(e, root.left);
+    }
 
-    if (this._comparator.greaterThan(e, root.value))
+    if (this._comparator.greaterThan(e, root.value)) {
       return root.right && this._find(e, root.right);
+    }
   }
 
   /**
@@ -74,8 +77,7 @@ class BST {
     const parent = currNode.parent;
     if (parent) {
       parent[currNode === parent.left ? 'left' : 'right'] = newNode;
-      if (newNode)
-        newNode.parent = parent;
+      if (newNode) newNode.parent = parent;
     } else {
       this.root = newNode;
     }

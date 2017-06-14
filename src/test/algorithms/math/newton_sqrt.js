@@ -17,15 +17,21 @@ describe('Newton square root', () => {
     assert.strictEqual(newtonSqrt(100), 10);
   });
 
-  it('should calculate an approximated root for every number',
-    () => {
-      for (let i = 0; i < 1000; i++) {
-        const newton = newtonSqrt(i);
-        const nativeJS = Math.sqrt(i);
-        const difference = Math.abs(newton - nativeJS);
-        assert(difference < 1e-6,
-          'Square root of ' + i + ' should be ' + nativeJS +
-          ' but got ' + newton + ' instead');
-      }
-    });
+  it('should calculate an approximated root for every number', () => {
+    for (let i = 0; i < 1000; i++) {
+      const newton = newtonSqrt(i);
+      const nativeJS = Math.sqrt(i);
+      const difference = Math.abs(newton - nativeJS);
+      assert(
+        difference < 1e-6,
+        'Square root of ' +
+          i +
+          ' should be ' +
+          nativeJS +
+          ' but got ' +
+          newton +
+          ' instead'
+      );
+    }
+  });
 });

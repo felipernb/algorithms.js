@@ -22,8 +22,8 @@ const auxiliaryCountingSort = (array, mod) => {
   }
 
   for (i = 0; i < length; i++) {
-    const digit = parseInt((array[i].key / Math.pow(10, mod))
-                         .toFixed(mod), 10) % 10;
+    const digit =
+      parseInt((array[i].key / Math.pow(10, mod)).toFixed(mod), 10) % 10;
     bucket[digit].push(array[i]);
   }
 
@@ -72,8 +72,9 @@ const maximumKey = a => {
  */
 const radixSort = array => {
   const max = maximumKey(array);
-  const digitsMax = (max === 0 ? 1 :
-    1 + Math.floor(Math.log(max) / Math.log(10))); // log base 10
+  const digitsMax = max === 0
+    ? 1
+    : 1 + Math.floor(Math.log(max) / Math.log(10)); // log base 10
 
   for (let i = 0; i < digitsMax; i++) {
     array = auxiliaryCountingSort(array, i);

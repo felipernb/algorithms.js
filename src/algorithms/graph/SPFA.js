@@ -43,11 +43,12 @@ function spfa(graph, s) {
           queue[tail++] = v;
           isInQue[v] = true;
           cnt[v]++;
-          if (cnt[v] > graph.vertices.size)
+          if (cnt[v] > graph.vertices.size) {
             // indicates negative-weighted cycle
             return {
               distance: {}
             };
+          }
         }
       }
     }

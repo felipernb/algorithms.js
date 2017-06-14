@@ -11,7 +11,7 @@ const merge = (a, b, comparator) => {
 
   // Concats the elements from the sub-array
   // that has not been included yet
-  return result.concat((i < a.length ? a.slice(i) : b.slice(j)));
+  return result.concat(i < a.length ? a.slice(i) : b.slice(j));
 };
 
 /**

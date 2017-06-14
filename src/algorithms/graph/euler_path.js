@@ -66,8 +66,10 @@ const eulerEndpoints = graph => {
     start = finish = v;
   }
 
-  return {start,
-          finish};
+  return {
+    start,
+    finish
+  };
 };
 
 /**

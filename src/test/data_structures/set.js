@@ -38,16 +38,15 @@ describe('HashSet', () => {
     assert(s.contains(2));
   });
 
-  it('should do nothing when trying to remove an element that doesn\'t exist',
-    () => {
-      const s = new HashSet(1, 2, 3);
-      assert.equal(s.size, 3);
-      s.remove(4);
-      assert.equal(s.size, 3);
-      assert(s.contains(1));
-      assert(s.contains(2));
-      assert(s.contains(3));
-    });
+  it('should do nothing when trying to remove an element that doesn\'t exist', () => {
+    const s = new HashSet(1, 2, 3);
+    assert.equal(s.size, 3);
+    s.remove(4);
+    assert.equal(s.size, 3);
+    assert(s.contains(1));
+    assert(s.contains(2));
+    assert(s.contains(3));
+  });
 
   it('should only contain its elements', () => {
     const s = new HashSet(1, 2, 3);
@@ -67,4 +66,3 @@ describe('HashSet', () => {
     assert.equal(total, 6);
   });
 });
-

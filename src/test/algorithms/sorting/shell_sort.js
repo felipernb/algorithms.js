@@ -10,4 +10,3 @@ describe('ShellSort', () => {
     sortingTestsHelper.testSortWithComparisonFn(shellSort);
   });
 });
-

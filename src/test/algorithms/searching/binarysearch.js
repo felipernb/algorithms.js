@@ -13,4 +13,3 @@ describe('Binary Search', () => {
     assert.equal(binarySearch([1, 2, 3, 4, 5], 100), -1);
   });
 });
-

@@ -21,16 +21,18 @@ describe('Stack', () => {
     assert.throws(() => s.pop(), Error);
   });
 
-  it('should allow me to peek at the top element in' +
-    ' the stack without popping it', () => {
-    const s = new Stack();
-    s.push(1);
-    s.push(2);
-    s.push(3);
-    assert.equal(s.peek(), 3);
-    assert.equal(s.peek(), 3);
-    s.pop();
-    assert.equal(s.peek(), 2);
-  });
+  it(
+    'should allow me to peek at the top element in' +
+      ' the stack without popping it',
+    () => {
+      const s = new Stack();
+      s.push(1);
+      s.push(2);
+      s.push(3);
+      assert.equal(s.peek(), 3);
+      assert.equal(s.peek(), 3);
+      s.pop();
+      assert.equal(s.peek(), 2);
+    }
+  );
 });
-

@@ -2,15 +2,19 @@ const HashTable = require('../..').DataStructures.HashTable;
 const assert = require('assert');
 
 describe('Hash Table', () => {
-  it('should calculate hashes using the same algorithm as ' +
-    'Java\'s String.hashCode', () => {
-    const h = new HashTable();
-    assert.equal(h.hash('The quick brown fox jumps over the lazy dog'),
-        -609428141);
-    assert.equal(h.hash('Testing the hashCode function'), 1538083358);
-    assert.equal(h.hash(''), 0);
-    assert.equal(h.hash('a'), 97);
-    const longString =
+  it(
+    'should calculate hashes using the same algorithm as ' +
+      'Java\'s String.hashCode',
+    () => {
+      const h = new HashTable();
+      assert.equal(
+        h.hash('The quick brown fox jumps over the lazy dog'),
+        -609428141
+      );
+      assert.equal(h.hash('Testing the hashCode function'), 1538083358);
+      assert.equal(h.hash(''), 0);
+      assert.equal(h.hash('a'), 97);
+      const longString =
         'k"hg3q#+~/l2Eljan;DB x.P<pX[!C`/Nr6w~YIPz;X3z<]b6nDvda|ToZM+a%D#' +
         ':PE@z[bl$/PRT7m76}FV=UW/3SPkkdRkuC~9TKgMg.^#n)iiq{AZ?}+pv;>%-:iA' +
         '/b/hG($8-SZcZX871&;fDEWthw.b5agzov],X00--O:mcQ$JFi-4uIo"D:(r(yvs' +
@@ -27,18 +31,18 @@ describe('Hash Table', () => {
         'fE$O[YV8X3PV6TR(*Ed4|y[8tG~K=[MxgLI%yx]16Kg3YSHE{2^1TOAnf`EsKWm,' +
         'WGD)s;Zs<8K6(K_kVko"mV82Pcl)0Rx}jfq3VBm:MOX/gLfSPvLx~%(3jHh5gG2e' +
         'JaQ|nW}ekR_W5Ldv`@j^hd%Wiw6moGekrS>k7gRR|dd?7Pi:`0; r_wq=-F-e(iY';
-    assert.equal(h.hash(longString), -998071508);
+      assert.equal(h.hash(longString), -998071508);
+    }
+  );
+
+  it('should initialize the table with the given capacity', () => {
+    let h = new HashTable();
+    assert.equal(h.capacity, 64); // default initial capacity;
+    assert.equal(h.size, 0);
+
+    h = new HashTable(2);
+    assert.equal(h.capacity, 2);
   });
-
-  it('should initialize the table with the given capacity',
-    () => {
-      let h = new HashTable();
-      assert.equal(h.capacity, 64); // default initial capacity;
-      assert.equal(h.size, 0);
-
-      h = new HashTable(2);
-      assert.equal(h.capacity, 2);
-    });
 
   it('should allow putting and getting elements from the table', () => {
     const h = new HashTable(16);
@@ -139,4 +143,3 @@ describe('Hash Table', () => {
     assert.equal(totalValues, 60);
   });
 });
-

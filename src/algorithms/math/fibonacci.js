@@ -13,7 +13,8 @@ const power = require('./fast_power');
   * @param Number
   * @return Number
   */
-const fibExponential = n => n < 2 ? n : fibExponential(n - 1) + fibExponential(n - 2);
+const fibExponential = n =>
+  n < 2 ? n : fibExponential(n - 1) + fibExponential(n - 2);
 
 /**
   * O(n) in time, O(1) in space and doesn't use recursion
@@ -39,7 +40,7 @@ const fibLinear = n => {
   * @param Number
   * @return Number
   */
-const fibWithMemoization = ((() => {
+const fibWithMemoization = (() => {
   const cache = [0, 1];
 
   const fib = n => {
@@ -50,7 +51,7 @@ const fibWithMemoization = ((() => {
   };
 
   return fib;
-}))();
+})();
 
 /**
   * Implementation using Binet's formula with the rounding trick.
@@ -75,10 +76,16 @@ const fibLogarithmic = number => {
   // Transforms [f_1, f_0] to [f_2, f_1] and so on.
   const nextFib = [[1, 1], [1, 0]];
 
-  const matrixMultiply = (a, b) => [[a[0][0] * b[0][0] + a[0][1] * b[1][0],
-           a[0][0] * b[0][1] + a[0][1] * b[1][1]],
-          [a[1][0] * b[0][0] + a[1][1] * b[1][0],
-           a[1][0] * b[0][1] + a[1][1] * b[1][1]]];
+  const matrixMultiply = (a, b) => [
+    [
+      a[0][0] * b[0][0] + a[0][1] * b[1][0],
+      a[0][0] * b[0][1] + a[0][1] * b[1][1]
+    ],
+    [
+      a[1][0] * b[0][0] + a[1][1] * b[1][0],
+      a[1][0] * b[0][1] + a[1][1] * b[1][1]
+    ]
+  ];
 
   const transform = power(nextFib, number, matrixMultiply, [[1, 0], [0, 1]]);
 

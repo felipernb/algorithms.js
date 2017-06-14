@@ -21,4 +21,3 @@ describe('Fisher-Yates', () => {
     assert.notDeepEqual(a, [1, 2, 3, 4, 5]);
   });
 });
-

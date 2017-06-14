@@ -101,18 +101,18 @@ describe('Treap', () => {
 
   it('should handle dumplicated elements', () => {
     treap.insert(1);
-  // [1, 1]
+    // [1, 1]
     assert.equal(treap.size(), 2);
     treap.insert(-1);
-  // [-1, 1, 1]
+    // [-1, 1, 1]
     assert.equal(treap.size(), 3);
     treap.remove(1);
-  // [-1, 1]
+    // [-1, 1]
     assert.equal(treap.size(), 2);
     treap.insert(-1);
     treap.insert(-1);
     treap.insert(-1);
-  // [-1, -1, -1, -1, 1]
+    // [-1, -1, -1, -1, 1]
     assert.equal(treap.size(), 5);
     treap.remove(-1);
     treap.remove(1);
@@ -123,12 +123,12 @@ describe('Treap', () => {
   });
 
   it('should keep balance', () => {
-  // Insert 1023 elements randomly
+    // Insert 1023 elements randomly
     for (let i = 0; i < 1023; ++i) {
       treap.insert(Math.random());
     }
     assert.equal(treap.size(), 1023);
-  // The averange height should be 23 (with an error of 5)
+    // The averange height should be 23 (with an error of 5)
     assert(Math.abs(treap.height() - 23) < 5);
   });
 
