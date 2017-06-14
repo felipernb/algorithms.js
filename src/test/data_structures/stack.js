@@ -1,5 +1,3 @@
-'use strict';
-
 const Stack = require('../..').DataStructures.Stack;
 const assert = require('assert');
 

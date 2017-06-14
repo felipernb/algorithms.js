@@ -1,5 +1,3 @@
-'use strict';
-
 const math = require('../../..').Math;
 const newtonSqrt = math.newtonSqrt;
 const assert = require('assert');

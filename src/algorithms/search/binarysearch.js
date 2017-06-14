@@ -1,5 +1,3 @@
-'use strict';
-
 /**
   * Binary Search finds elements in sorted arrays in logarithmic
   * time (O(lg n))

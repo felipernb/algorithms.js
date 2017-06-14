@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Euclidean algorithm to calculate the Greatest Common Divisor (GCD)
  *

@@ -1,5 +1,3 @@
-'use strict';
-
 const Stack = require('../../data_structures/stack');
 const depthFirstSearch = require('../../algorithms/graph/depth_first_search');
 

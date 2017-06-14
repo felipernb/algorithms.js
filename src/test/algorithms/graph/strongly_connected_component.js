@@ -1,5 +1,3 @@
-'use strict';
-
 const root = require('../../../');
 const Graph = root.DataStructures.Graph;
 const stronglyConnectedComponent = root.Graph.strongConnectedComponent;

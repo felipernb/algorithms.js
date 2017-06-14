@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Calculates the edit distance between two strings
  * considering the same cost of 1 to every operation

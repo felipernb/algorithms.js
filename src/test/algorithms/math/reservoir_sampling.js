@@ -1,5 +1,3 @@
-'use strict';
-
 const math = require('../../..').Math;
 const reservoirSampling = math.reservoirSampling;
 const assert = require('assert');

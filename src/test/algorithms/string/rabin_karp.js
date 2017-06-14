@@ -1,5 +1,3 @@
-'use strict';
-
 const rabinKarp = require('../../..').String.rabinKarp;
 const assert = require('assert');
 

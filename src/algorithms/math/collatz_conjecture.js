@@ -1,5 +1,3 @@
-'use strict';
-
 // cache algorithm results
 const cache = {1: 1};
 

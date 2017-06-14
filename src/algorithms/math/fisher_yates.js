@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Fisher-Yates shuffles the elements in an array
  * in O(n)

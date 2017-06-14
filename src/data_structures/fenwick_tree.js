@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Fenwick Tree (Binary Indexed Tree)
  *

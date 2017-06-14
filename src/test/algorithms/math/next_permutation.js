@@ -1,5 +1,3 @@
-'use strict';
-
 const math = require('../../..').Math;
 const nextPermutation = math.nextPermutation;
 const Comparator = require('../../../util/comparator');

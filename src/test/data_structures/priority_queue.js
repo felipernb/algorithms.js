@@ -1,5 +1,3 @@
-'use strict';
-
 const PriorityQueue = require('../..').DataStructures.PriorityQueue;
 const assert = require('assert');
 

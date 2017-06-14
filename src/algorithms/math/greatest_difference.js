@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Find the greatest difference between two numbers in a set
  * This solution has a cost of O(n)

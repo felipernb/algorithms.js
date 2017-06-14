@@ -1,5 +1,3 @@
-'use strict';
-
 const FenwickTree = require('../..').DataStructures.FenwickTree;
 const assert = require('assert');
 

@@ -1,4 +1,3 @@
-'use strict';
 const MinHeap = require('../../data_structures/heap').MinHeap;
 
 /**

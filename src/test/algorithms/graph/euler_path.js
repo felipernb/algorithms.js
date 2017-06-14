@@ -1,5 +1,3 @@
-'use strict';
-
 const root = require('../../../');
 const eulerPath = root.Graph.eulerPath;
 const Graph = root.DataStructures.Graph;

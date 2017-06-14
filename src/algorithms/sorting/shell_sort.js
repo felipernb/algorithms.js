@@ -1,4 +1,3 @@
-'use strict';
 const Comparator = require('../../util/comparator');
 /**
  * shell sort  worst:O(n lg n)  best:O(n)

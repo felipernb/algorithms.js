@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * A prime number used to create
  * the hash representation of a word

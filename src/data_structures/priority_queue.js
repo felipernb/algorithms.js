@@ -1,5 +1,3 @@
-'use strict';
-
 const MinHeap = require('./heap').MinHeap;
 
 /**

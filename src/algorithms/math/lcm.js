@@ -1,5 +1,3 @@
-'use strict';
-
 const gcd = require('./gcd.js');
 
 /**

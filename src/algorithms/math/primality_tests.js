@@ -1,5 +1,3 @@
-'use strict';
-
 /**
 * Checks whether a number is prime using a given primality test
 *

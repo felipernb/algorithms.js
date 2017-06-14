@@ -1,4 +1,3 @@
-'use strict';
 const Comparator = require('../util/comparator');
 
 /**

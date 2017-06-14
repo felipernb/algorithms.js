@@ -1,5 +1,3 @@
-'use strict';
-
 const assert = require('assert');
 const math = require('../../..').Math;
 const greatestDifference = math.greatestDifference;

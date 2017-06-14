@@ -1,5 +1,3 @@
-'use strict';
-
 const math = require('../../..').Math;
 const collatzConjecture = math.collatzConjecture;
 const assert = require('assert');

@@ -1,4 +1,3 @@
-'use strict';
 const Comparator = require('../../util/comparator');
 /**
  * Selection sort algorithm O(n^2)

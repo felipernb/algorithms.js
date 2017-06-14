@@ -1,5 +1,3 @@
-'use strict';
-
 const hamming = require('../../..').String.hamming;
 const assert = require('assert');
 

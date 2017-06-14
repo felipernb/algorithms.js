@@ -1,5 +1,3 @@
-'use strict';
-
 const root = require('../../../');
 const bellmanFord = root.Graph.bellmanFord;
 const Graph = root.DataStructures.Graph;

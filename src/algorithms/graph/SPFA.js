@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Calculates the shortest paths in a graph to every node from the node s
  * with SPFA(Shortest Path Faster Algorithm) algorithm

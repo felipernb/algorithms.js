@@ -1,5 +1,3 @@
-'use strict';
-
 const shannonEntropy = require('../../../').Math.shannonEntropy;
 const assert = require('assert');
 

@@ -6,8 +6,6 @@
  * into the other." - https://en.wikipedia.org/wiki/Hamming_distance
  *
  */
-'use strict';
-
 const hamming = (a, b) => {
   if (a.length !== b.length) {
     throw new Error('Strings must be equal in length');

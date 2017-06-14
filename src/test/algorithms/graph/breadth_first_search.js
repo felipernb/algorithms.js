@@ -1,5 +1,3 @@
-'use strict';
-
 const root = require('../../../');
 const breadthFirstSearch = root.Graph.breadthFirstSearch;
 const Graph = root.DataStructures.Graph;

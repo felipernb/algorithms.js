@@ -1,5 +1,3 @@
-'use strict';
-
 const root = require('../../../');
 const topologicalSort = root.Graph.topologicalSort;
 const Graph = root.DataStructures.Graph;

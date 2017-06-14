@@ -1,5 +1,3 @@
-'use strict';
-
 const levenshtein = require('../../..').String.levenshtein;
 const assert = require('assert');
 

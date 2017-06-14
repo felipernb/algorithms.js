@@ -1,5 +1,3 @@
-'use strict';
-
 const HashTable = require('./hash_table');
 
 /**

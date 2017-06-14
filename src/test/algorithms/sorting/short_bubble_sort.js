@@ -1,5 +1,3 @@
-'use strict';
-
 const shortBubbleSort = require('../../..').Sorting.shortBubbleSort;
 const sortingTestsHelper = require('./sorting_tests_helper');
 

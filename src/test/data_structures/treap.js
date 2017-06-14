@@ -1,5 +1,3 @@
-'use strict';
-
 const root = require('../..');
 const Treap = root.DataStructures.Treap;
 const assert = require('assert');

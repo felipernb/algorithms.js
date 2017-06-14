@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Initialize the comparator object with a compare function
  *

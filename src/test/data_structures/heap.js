@@ -1,5 +1,3 @@
-'use strict';
-
 const heap = require('../..').DataStructures.Heap;
 const assert = require('assert');
 

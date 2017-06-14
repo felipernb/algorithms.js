@@ -1,5 +1,3 @@
-'use strict';
-
 const radixSort = require('../../..').Sorting.radixSort;
 const assert = require('assert');
 

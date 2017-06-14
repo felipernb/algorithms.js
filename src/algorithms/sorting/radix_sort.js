@@ -1,4 +1,3 @@
-'use strict';
 /**
  * Auxiliary sorting method for RadixSort
  * Sorts an array of objects according to only one digit of

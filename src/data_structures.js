@@ -1,5 +1,3 @@
-'use strict';
-
 // Data Structures
 module.exports = {
   AVLTree: require('./data_structures/avl_tree'),

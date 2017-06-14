@@ -1,5 +1,3 @@
-'use strict';
-
 const breadthFirstSearch = require('./breadth_first_search');
 
 /**

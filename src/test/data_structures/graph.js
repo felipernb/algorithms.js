@@ -1,5 +1,3 @@
-'use strict';
-
 const Graph = require('../..').DataStructures.Graph;
 const assert = require('assert');
 

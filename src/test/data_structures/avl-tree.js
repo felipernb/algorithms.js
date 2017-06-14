@@ -1,5 +1,3 @@
-'use strict';
-
 const root = require('../..');
 const AVLTree = root.DataStructures.AVLTree;
 const assert = require('assert');

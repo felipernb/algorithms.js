@@ -1,5 +1,3 @@
-'use strict';
-
 const binarySearch = require('../../..').Search.binarySearch;
 const assert = require('assert');
 

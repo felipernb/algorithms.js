@@ -1,5 +1,3 @@
-'use strict';
-
 const PriorityQueue = require('../../data_structures/priority_queue');
 
 /**

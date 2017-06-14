@@ -1,5 +1,3 @@
-'use strict';
-
 const math = require('../../..').Math;
 const findDivisors = math.findDivisors;
 const assert = require('assert');

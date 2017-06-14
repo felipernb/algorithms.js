@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Sample random elements from the array using reservoir algorithm.
  *

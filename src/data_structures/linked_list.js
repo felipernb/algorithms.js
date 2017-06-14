@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Doubly-linked list
  */

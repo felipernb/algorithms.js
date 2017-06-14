@@ -1,5 +1,3 @@
-'use strict';
-
 const root = require('../../..');
 const BST = root.DataStructures.BST;
 const dfs = root.Search.dfs;

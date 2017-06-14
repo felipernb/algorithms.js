@@ -1,5 +1,3 @@
-'use strict';
-
 const ternarySearch = require('../../..').Search.ternarySearch;
 const assert = require('assert');
 const eps = 1e-6;

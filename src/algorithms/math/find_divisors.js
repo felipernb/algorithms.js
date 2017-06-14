@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Different implementations for finding the divisors
  */

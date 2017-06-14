@@ -1,5 +1,3 @@
-'use strict';
-
 // Math algorithms
 module.exports = {
   fibonacci: require('./algorithms/math/fibonacci'),

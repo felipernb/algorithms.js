@@ -1,5 +1,3 @@
-'use strict';
-
 const multiplicationOperator = (a, b) => a * b;
 
 /**

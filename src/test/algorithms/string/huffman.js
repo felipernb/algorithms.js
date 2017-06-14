@@ -1,5 +1,3 @@
-'use strict';
-
 const huffman = require('../../..').String.huffman;
 const assert = require('assert');
 

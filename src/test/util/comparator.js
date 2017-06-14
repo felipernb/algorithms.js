@@ -1,5 +1,3 @@
-'use strict';
-
 const Comparator = require('../../util/comparator');
 const assert = require('assert');
 

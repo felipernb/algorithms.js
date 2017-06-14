@@ -1,5 +1,3 @@
-'use strict';
-
 const math = require('../../..').Math;
 const extEuclid = math.extendedEuclidean;
 const assert = require('assert');

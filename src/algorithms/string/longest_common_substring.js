@@ -2,8 +2,6 @@
  * Implementation of longest common substring
  */
 
-'use strict';
-
 /**
  * Implementation via dynamic programming
  */

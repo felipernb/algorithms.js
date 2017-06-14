@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Floyd-Warshall algorithm.
  * Compute all-pairs shortest paths (a path for each pair of vertices).

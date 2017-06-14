@@ -1,5 +1,3 @@
-'use strict';
-
 const HashTable = require('../..').DataStructures.HashTable;
 const assert = require('assert');
 

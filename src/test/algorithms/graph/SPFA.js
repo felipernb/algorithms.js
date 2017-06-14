@@ -1,5 +1,3 @@
-'use strict';
-
 const root = require('../../../');
 const spfa = root.Graph.SPFA;
 const Graph = root.DataStructures.Graph;

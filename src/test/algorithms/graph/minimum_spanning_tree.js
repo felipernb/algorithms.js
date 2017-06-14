@@ -1,5 +1,3 @@
-'use strict';
-
 const root = require('../../../');
 const kruskal = root.Graph.kruskal;
 const prim = root.Graph.prim;

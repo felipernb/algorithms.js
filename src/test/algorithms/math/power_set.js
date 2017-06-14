@@ -1,5 +1,3 @@
-'use strict';
-
 const math = require('../../..').Math;
 const powerSet = math.powerSet;
 const assert = require('assert');

@@ -2,8 +2,6 @@
  * Iterative and recursive implementations of power set
  */
 
-'use strict';
-
 /**
  * Iterative power set calculation
  */

@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Builds the dinamic table of the given pattern
  * to record how the pattern can match it self

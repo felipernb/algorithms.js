@@ -1,5 +1,3 @@
-'use strict';
-
 const math = require('../../..').Math;
 const fisherYates = math.fisherYates;
 const assert = require('assert');

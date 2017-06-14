@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Depth first search for trees
  * (in order)

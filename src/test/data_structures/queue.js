@@ -1,5 +1,3 @@
-'use strict';
-
 const Queue = require('../..').DataStructures.Queue;
 const assert = require('assert');
 

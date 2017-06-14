@@ -1,5 +1,3 @@
-'use strict';
-
 const knuthMorrisPratt = require('../../..').String.knuthMorrisPratt;
 const assert = require('assert');
 

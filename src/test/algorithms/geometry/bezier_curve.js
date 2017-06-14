@@ -1,5 +1,3 @@
-'use strict';
-
 const root = require('../../../');
 const BezierCurve = root.Geometry.BezierCurve;
 const assert = require('assert');

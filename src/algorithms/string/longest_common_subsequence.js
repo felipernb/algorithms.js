@@ -2,8 +2,6 @@
  * Implementation of longest common subsequence
  */
 
-'use strict';
-
 /**
  * Implementation via dynamic programming
  */

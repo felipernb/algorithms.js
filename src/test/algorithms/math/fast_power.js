@@ -1,5 +1,3 @@
-'use strict';
-
 const math = require('../../..').Math;
 const power = math.fastPower;
 const assert = require('assert');

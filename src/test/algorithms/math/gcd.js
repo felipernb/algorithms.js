@@ -1,5 +1,3 @@
-'use strict';
-
 const root = require('../../..');
 const gcd = root.Math.gcd;
 const assert = require('assert');

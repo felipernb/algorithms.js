@@ -1,5 +1,3 @@
-'use strict';
-
 const root = require('../../../');
 const dijkstra = root.Graph.dijkstra;
 const Graph = root.DataStructures.Graph;

@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Calculates the shortest paths in a graph to every node
  * from the node 'startNode' with Bellman-Ford's algorithm

@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Extended Euclidean algorithm to calculate the solve of
  *   ax + by = gcd(a, b)

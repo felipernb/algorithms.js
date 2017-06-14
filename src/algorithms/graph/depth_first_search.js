@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * @typedef {Object} Callbacks
  * @param {function(vertex: *, neighbor: *): boolean} allowTraversal -

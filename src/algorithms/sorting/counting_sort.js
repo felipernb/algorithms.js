@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Finds the maximum key from an array of objects
  *

@@ -1,5 +1,3 @@
-'use strict';
-
 // Graph algorithms
 module.exports = {
   topologicalSort: require('./algorithms/graph/topological_sort'),

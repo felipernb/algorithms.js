@@ -1,5 +1,3 @@
-'use strict';
-
 const countingSort = require('../../..').Sorting.countingSort;
 const assert = require('assert');
 

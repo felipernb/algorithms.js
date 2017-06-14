@@ -1,5 +1,3 @@
-'use strict';
-
 // Sorting algorithms
 module.exports = {
   bubbleSort: require('./algorithms/sorting/bubble_sort'),

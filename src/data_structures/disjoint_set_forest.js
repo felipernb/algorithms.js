@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Disjoint Set Forest data structure.
  * Allows fast subset merging and querying.

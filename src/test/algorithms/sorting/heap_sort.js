@@ -1,5 +1,3 @@
-'use strict';
-
 const heapSort = require('../../..').Sorting.heapSort;
 const sortingTestsHelper = require('./sorting_tests_helper');
 

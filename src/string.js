@@ -1,5 +1,3 @@
-'use strict';
-
 // String algorithms
 module.exports = {
   levenshtein: require('./algorithms/string/levenshtein'),

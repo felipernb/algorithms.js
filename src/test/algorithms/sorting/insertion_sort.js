@@ -1,5 +1,3 @@
-'use strict';
-
 const insertionSort = require('../../..').Sorting.insertionSort;
 const sortingTestsHelper = require('./sorting_tests_helper');
 

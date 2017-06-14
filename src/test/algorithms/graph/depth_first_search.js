@@ -1,5 +1,3 @@
-'use strict';
-
 const root = require('../../../');
 const depthFirstSearch = root.Graph.depthFirstSearch;
 const Graph = root.DataStructures.Graph;

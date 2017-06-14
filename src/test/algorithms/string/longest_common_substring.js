@@ -1,5 +1,3 @@
-'use strict';
-
 const directory = '../../../algorithms/string/';
 const filename = 'longest_common_substring';
 const longestCommonSubstring = require(directory + filename);

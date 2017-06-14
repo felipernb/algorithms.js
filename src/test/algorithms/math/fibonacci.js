@@ -1,5 +1,3 @@
-'use strict';
-
 const math = require('../../..').Math;
 const fib = math.fibonacci;
 const assert = require('assert');

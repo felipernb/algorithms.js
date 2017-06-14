@@ -1,5 +1,3 @@
-'use strict';
-
 const root = require('../../..');
 const primalityTests = root.Math.primalityTests;
 const assert = require('assert');

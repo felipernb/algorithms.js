@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Calculate Shannon Entropy of an array
  *

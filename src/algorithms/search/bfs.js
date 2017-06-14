@@ -1,4 +1,3 @@
-'use strict';
 const Queue = require('../../data_structures/queue.js');
 
 /**
