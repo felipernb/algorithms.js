@@ -5,42 +5,41 @@ const MinHeap = require('./heap').MinHeap;
  * the heap operations are performed based on the priority of the element
  * and not on the element itself
  */
-function PriorityQueue(initialItems) {
-  const self = this;
-  MinHeap.call(this, (a, b) => self.priority(a) < self.priority(b) ? -1 : 1);
+class PriorityQueue extends MinHeap {
+  constructor(initialItems) {
+    super((a, b) => this.priority(a) < this.priority(b) ? -1 : 1);
 
-  this._priority = {};
+    this._priority = {};
 
-  initialItems = initialItems || {};
-  Object.keys(initialItems).forEach(item => {
-    self.insert(item, initialItems[item]);
-  });
-}
-
-PriorityQueue.prototype = new MinHeap();
-
-PriorityQueue.prototype.insert = function(item, priority) {
-  if (this._priority[item] !== undefined) {
-    return this.changePriority(item, priority);
+    initialItems = initialItems || {};
+    Object.keys(initialItems).forEach(item => {
+      this.insert(item, initialItems[item]);
+    });
   }
-  this._priority[item] = priority;
-  MinHeap.prototype.insert.call(this, item);
-};
 
-PriorityQueue.prototype.extract = function(withPriority) {
-  const min = MinHeap.prototype.extract.call(this);
-  return withPriority ?
-    min && {item: min, priority: this._priority[min]} :
-    min;
-};
+  insert(item, priority) {
+    if (this._priority[item] !== undefined) {
+      return this.changePriority(item, priority);
+    }
+    this._priority[item] = priority;
+    super.insert(item);
+  }
 
-PriorityQueue.prototype.priority = function(item) {
-  return this._priority[item];
-};
+  extract(withPriority) {
+    const min = MinHeap.prototype.extract.call(this);
+    return withPriority ?
+      min && {item: min, priority: this._priority[min]} :
+      min;
+  }
 
-PriorityQueue.prototype.changePriority = function(item, priority) {
-  this._priority[item] = priority;
-  this.heapify();
-};
+  priority(item) {
+    return this._priority[item];
+  }
+
+  changePriority(item, priority) {
+    this._priority[item] = priority;
+    this.heapify();
+  }
+}
 
 module.exports = PriorityQueue;

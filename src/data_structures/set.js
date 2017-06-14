@@ -5,37 +5,39 @@ const HashTable = require('./hash_table');
  * No restriction on element types
  *   i.e. set.add(1,'a', "b", { "foo" : "bar" })
  */
-const HashSet = function() {
-  this._elements = new HashTable(arguments.length);
-  this.add.apply(this, arguments);
+class HashSet {
+  constructor() {
+    this._elements = new HashTable(arguments.length);
+    this.add(...arguments);
 
-  Object.defineProperty(this, 'size', {
-    get: function() {
-      return this._elements.size;
+    Object.defineProperty(this, 'size', {
+      get: function() {
+        return this._elements.size;
+      }
+    });
+  }
+
+  add() {
+    for (let i = 0; i < arguments.length; i++) {
+      this._elements.put(arguments[i], true);
     }
-  });
-};
-
-HashSet.prototype.add = function() {
-  for (let i = 0; i < arguments.length; i++) {
-    this._elements.put(arguments[i], true);
+    return this;
   }
-  return this;
-};
 
-HashSet.prototype.remove = function() {
-  for (let i = 0; i < arguments.length; i++) {
-    this._elements.del(arguments[i]);
+  remove() {
+    for (let i = 0; i < arguments.length; i++) {
+      this._elements.del(arguments[i]);
+    }
+    return this;
   }
-  return this;
-};
 
-HashSet.prototype.contains = function(e) {
-  return typeof this._elements.get(e) !== 'undefined';
-};
+  contains(e) {
+    return typeof this._elements.get(e) !== 'undefined';
+  }
 
-HashSet.prototype.forEach = function(fn) {
-  this._elements.forEach(fn);
-};
+  forEach(fn) {
+    this._elements.forEach(fn);
+  }
+}
 
 module.exports = HashSet;

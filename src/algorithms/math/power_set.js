@@ -52,7 +52,7 @@ const powerSetRecursive = array => {
   powerSetRecursive(array).forEach(elem => {
     powerSet.push(elem);
     const withFirstElem = [firstElem];
-    withFirstElem.push.apply(withFirstElem, elem);
+    withFirstElem.push(...elem);
     powerSet.push(withFirstElem);
   });
 

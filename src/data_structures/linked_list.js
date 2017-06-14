@@ -1,146 +1,149 @@
 /**
- * Doubly-linked list
- */
-function LinkedList() {
-  this._length = 0;
-  this.head = null;
-  this.tail = null;
-
-  // Read-only length property
-  Object.defineProperty(this, 'length', {
-    get: () => this._length
-  });
-}
-
-/**
  * A linked list node
  */
-function Node(value) {
-  this.value = value;
-  this.prev = null;
-  this.next = null;
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.prev = null;
+    this.next = null;
+  }
 }
 
 /**
- * Whether the list is empty
- *
- * @return Boolean
+ * Doubly-linked list
  */
-LinkedList.prototype.isEmpty = function() {
-  return this.length === 0;
-};
-
-/**
- * Adds the element to the end of the list or to the desired index
- *
- * @param { Object } n
- * @param { Number } index
- */
-LinkedList.prototype.add = function(n, index) {
-  if (index > this.length || index < 0) {
-    throw new Error('Index out of bounds');
+class LinkedList {
+  constructor() {
+    this._length = 0;
+    this.head = null;
+    this.tail = null;
   }
 
-  const node = new Node(n);
+  get length() {
+    return this._length;
+  }
 
-  if (index !== undefined && index < this.length) {
-    let prevNode;
-    let nextNode;
+  /**
+   * Whether the list is empty
+   *
+   * @return Boolean
+   */
+  isEmpty() {
+    return this.length === 0;
+  }
 
-    if (index === 0) {
-      // Insert in the beginning
-      nextNode = this.head;
-      this.head = node;
+  /**
+   * Adds the element to the end of the list or to the desired index
+   *
+   * @param { Object } n
+   * @param { Number } index
+   */
+  add(n, index) {
+    if (index > this.length || index < 0) {
+      throw new Error('Index out of bounds');
+    }
+
+    const node = new Node(n);
+
+    if (index !== undefined && index < this.length) {
+      let prevNode;
+      let nextNode;
+
+      if (index === 0) {
+        // Insert in the beginning
+        nextNode = this.head;
+        this.head = node;
+      } else {
+        nextNode = this.getNode(index);
+        prevNode = nextNode.prev;
+        prevNode.next = node;
+        node.prev = prevNode;
+      }
+      nextNode.prev = node;
+      node.next = nextNode;
     } else {
-      nextNode = this.getNode(index);
-      prevNode = nextNode.prev;
-      prevNode.next = node;
-      node.prev = prevNode;
+      // Insert at the end
+      if (!this.head) this.head = node;
+
+      if (this.tail) {
+        this.tail.next = node;
+        node.prev = this.tail;
+      }
+      this.tail = node;
     }
-    nextNode.prev = node;
-    node.next = nextNode;
-  } else {
-    // Insert at the end
-    if (!this.head) this.head = node;
 
-    if (this.tail) {
-      this.tail.next = node;
-      node.prev = this.tail;
+    this._length++;
+  }
+
+  /**
+   * Return the value associated to the Node on the given index
+   *
+   * @param { Number } index
+   * @return misc
+   */
+  get(index) {
+    return this.getNode(index).value;
+  }
+
+  /**
+   * O(n) get
+   *
+   * @param { Number } index
+   * @return Node
+   */
+  getNode(index) {
+    if (index >= this.length || index < 0) {
+      throw new Error('Index out of bounds');
     }
-    this.tail = node;
+
+    let node = this.head;
+    for (let i = 1; i <= index; i++) {
+      node = node.next;
+    }
+
+    return node;
   }
 
-  this._length++;
-};
+  /**
+   * Delete the element in the indexth position
+   *
+   * @param { Number } index
+   */
+  del(index) {
+    if (index >= this.length || index < 0) {
+      throw new Error('Index out of bounds');
+    }
 
-/**
- * Return the value associated to the Node on the given index
- *
- * @param { Number } index
- * @return misc
- */
-LinkedList.prototype.get = function(index) {
-  return this.getNode(index).value;
-};
-
-/**
- * O(n) get
- *
- * @param { Number } index
- * @return Node
- */
-LinkedList.prototype.getNode = function(index) {
-  if (index >= this.length || index < 0) {
-    throw new Error('Index out of bounds');
+    this.delNode(this.getNode(index));
   }
 
-  let node = this.head;
-  for (let i = 1; i <= index; i++) {
-    node = node.next;
+  delNode(node) {
+    if (node === this.tail) {
+      // node is the last element
+      this.tail = node.prev;
+    } else {
+      node.next.prev = node.prev;
+    }
+    if (node === this.head) {
+      // node is the first element
+      this.head = node.next;
+    } else {
+      node.prev.next = node.next;
+    }
+
+    this._length--;
   }
 
-  return node;
-};
-
-/**
- * Delete the element in the indexth position
- *
- * @param { Number } index
- */
-LinkedList.prototype.del = function(index) {
-  if (index >= this.length || index < 0) {
-    throw new Error('Index out of bounds');
+  /**
+   * Performs the fn function with each element in the list
+   */
+  forEach(fn) {
+    let node = this.head;
+    while (node) {
+      fn(node.value);
+      node = node.next;
+    }
   }
-
-  this.delNode(this.getNode(index));
-};
-
-LinkedList.prototype.delNode = function(node) {
-  if (node === this.tail) {
-    // node is the last element
-    this.tail = node.prev;
-  } else {
-    node.next.prev = node.prev;
-  }
-  if (node === this.head) {
-    // node is the first element
-    this.head = node.next;
-  } else {
-    node.prev.next = node.next;
-  }
-
-  this._length--;
-};
-
-/**
- * Performs the fn function with each element in the list
- */
-LinkedList.prototype.forEach = function(fn) {
-  let node = this.head;
-  while (node) {
-    fn(node.value);
-    node = node.next;
-  }
-};
+}
 
 module.exports = LinkedList;
