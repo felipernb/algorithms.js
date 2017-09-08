@@ -10,19 +10,22 @@ const vectorOp = require('./vector_operations2d.js');
  * example: {x:0,y:0}.
  * @return An array P' with N' points which belongs to the convex hull of P.
  *
- * Node: If three points are collinear and all of the three points
- * belongs to the convex hull, then the three points will be present on P'.
+ * Note: If exists a subset S of P that contains only collinear points
+ * which are present on the convex hull of P, then only the pair with
+ * the largest distance will be present on P'.
  */
 const grahamScan = function(P) {
   if (P.length <= 3) {
     return P;
   }
   preprocessing(P);
+  console.log(P);
   const convexHull = [P[0], P[1]];
   for (let i = 2; i < P.length; i++) {
     let j = convexHull.length;
-    while (j >= 2 && vectorOp.
-                      isClockwise(convexHull[j-2], convexHull[j-1], P[i])) {
+    while (j >= 2 &&
+            vectorOp.
+              parallelogramArea(convexHull[j-2], convexHull[j-1], P[i]) <= 0) {
       convexHull.pop();
       j--;
     }
@@ -31,6 +34,14 @@ const grahamScan = function(P) {
   return convexHull;
 };
 
+/**
+ * @param An array P with N points, each point should be a literal,
+ * @return An array P' with N' points which belongs to the convex hull of P.
+ *
+ * Note: After the preprocessing the points are ordered by the angle
+ * between the vectors pivot -> Pi and (0,1). Where Pi is a point on P.
+ * On the counter-clockwise direction.
+ */
 const preprocessing = function(P) {
   let pivot = P[0];
   for (let i = 1; i < P.length; i++) {
@@ -38,6 +49,7 @@ const preprocessing = function(P) {
       pivot = P[i];
     }
   }
+
   P.sort(function cmp(a, b) {
     const area = vectorOp.parallelogramArea(pivot, a, b);
     if (Math.abs(area) < 1e-6) {
