@@ -8,6 +8,14 @@ const newVector = (a, b) => {
 };
 
 /**
+ * @param A vector v, example: {x : 0,y : 0}
+ * @return The length of v.
+ */
+const length = v => {
+  return v.x*v.x + v.y*v.y;
+};
+
+/**
  * Performs the cross product between two vectors.
  * @param A vector object, example: {x : 0,y : 0}
  * @param A vector object, example: {x : 0,y : 0}
@@ -62,6 +70,7 @@ const isCounterClockwise = (a, b, c) => {
 
 module.exports = {
   newVector: newVector,
+  length: length,
   crossProduct: crossProduct,
   parallelogramArea: parallelogramArea,
   isClockwise: isClockwise,
