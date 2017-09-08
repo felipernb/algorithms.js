@@ -2,6 +2,11 @@ const vectorOp = require('../../../algorithms/geometry/vector_operations2d');
 const assert = require('assert');
 
 describe('VectorOperations', () => {
+  it('newVector: {0,4}->{1,2}', () => {
+    assert.deepEqual(vectorOp.
+                      newVector({x: 0, y: 4}, {x: 1, y: 2}), {x: 1, y: -2});
+  });
+
   it('crossProduct: {-1,7}x{-5,8}', () => {
     assert.equal(vectorOp.
                   crossProduct({x: -1, y: 7}, {x: -5, y: 8}), 27);
