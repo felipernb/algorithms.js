@@ -33,7 +33,7 @@ const crossProduct = (u, v) => {
  * left-turn.
  */
 const parallelogramArea = (a, b, c) => {
-  return crossProduct(newVector(a,b), newVector(a,c));
+  return crossProduct(newVector(a, b), newVector(a, c));
 };
 
 /**
