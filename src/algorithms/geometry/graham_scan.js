@@ -19,7 +19,6 @@ const grahamScan = function(P) {
     return P;
   }
   preprocessing(P);
-  console.log(P);
   const convexHull = [P[0], P[1]];
   for (let i = 2; i < P.length; i++) {
     let j = convexHull.length;
