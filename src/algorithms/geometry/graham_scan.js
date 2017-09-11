@@ -23,8 +23,8 @@ const grahamScan = function(P) {
   for (let i = 2; i < P.length; i++) {
     let j = convexHull.length;
     while (j >= 2 &&
-            vectorOp.
-              parallelogramArea(convexHull[j-2], convexHull[j-1], P[i]) <= 0) {
+            !vectorOp.
+              isCounterClockwise(convexHull[j-2], convexHull[j-1], P[i])) {
       convexHull.pop();
       j--;
     }
