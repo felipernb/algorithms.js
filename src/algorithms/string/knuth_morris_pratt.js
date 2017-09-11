@@ -19,14 +19,11 @@ const buildTable = pattern => {
 
   while (position < length) {
     if (pattern[position - 1] === pattern[cnd]) {
-      ++cnd;
-      table[position] = cnd;
-      ++position;
+      table[position++] = ++cnd;
     } else if (cnd > 0) {
       cnd = table[cnd];
     } else {
-      table[position] = 0;
-      ++position;
+      table[position++] = 0;
     }
   }
 
@@ -60,13 +57,13 @@ const knuthMorrisPratt = (text, pattern) => {
       if (i === patternLength - 1) {
         return m;
       }
-      ++i;
+      i++;
     } else if (table[i] >= 0) {
       i = table[i];
       m = m + i - table[i];
     } else {
       i = 0;
-      ++m;
+      m++;
     }
   }
 
