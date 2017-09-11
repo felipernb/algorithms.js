@@ -1,55 +1,55 @@
 const vectorOp = require('./vector_operations2d.js');
 
 /**
- * Given an array P with N points on a two dimensional space,
- * the function grahamScan calculates the convex hull of P
+ * Given an array p with N points on a two dimensional space,
+ * the function grahamScan calculates the convex hull of p
  * in O(N * log(N)) time and using O(N) space.
  * Implemented algorithm: Graham's Scan.
  *
- * @param An array P with N points, each point should be a literal,
+ * @param An array p with N points, each point should be a literal,
  * example: {x:0,y:0}.
- * @return An array P' with N' points which belongs to the convex hull of P.
+ * @return An array p' with N' points which belongs to the convex hull of p.
  *
- * Note: If exists a subset S of P that contains only collinear points
- * which are present on the convex hull of P, then only the pair with
- * the largest distance will be present on P'.
+ * Note: If exists a subset S of p that contains only collinear points
+ * which are present on the convex hull of p, then only the pair with
+ * the largest distance will be present on p'.
  */
-const grahamScan = function(P) {
-  if (P.length <= 3) {
-    return P;
+const grahamScan = p => {
+  if (p.length <= 3) {
+    return p;
   }
-  preprocessing(P);
-  const convexHull = [P[0], P[1]];
-  for (let i = 2; i < P.length; i++) {
+  preprocessing(p);
+  const convexHull = [p[0], p[1]];
+  for (let i = 2; i < p.length; i++) {
     let j = convexHull.length;
     while (j >= 2 &&
             !vectorOp.
-              isCounterClockwise(convexHull[j-2], convexHull[j-1], P[i])) {
+              isCounterClockwise(convexHull[j-2], convexHull[j-1], p[i])) {
       convexHull.pop();
       j--;
     }
-    convexHull.push(P[i]);
+    convexHull.push(p[i]);
   }
   return convexHull;
 };
 
 /**
- * @param An array P with N points, each point should be a literal,
- * @return An array P' with N' points which belongs to the convex hull of P.
+ * @param An array p with N points, each point should be a literal,
+ * example: {x:0,y:0}.
  *
- * Note: After the preprocessing the points are ordered by the angle
- * between the vectors pivot -> Pi and (0,1). Where Pi is a point on P.
+ * Note: After the preprocessing the points will be ordered by the angle
+ * between the vectors pivot -> pi and (0,1). Where pi is a point on p.
  * On the counter-clockwise direction.
  */
-const preprocessing = function(P) {
-  let pivot = P[0];
-  for (let i = 1; i < P.length; i++) {
-    if (pivot.y > P[i].y || (pivot.y === P[i].y && pivot.x > P[i].x)) {
-      pivot = P[i];
+const preprocessing = p => {
+  let pivot = p[0];
+  for (let i = 1; i < p.length; i++) {
+    if (pivot.y > p[i].y || (pivot.y === p[i].y && pivot.x > p[i].x)) {
+      pivot = p[i];
     }
   }
 
-  P.sort(function cmp(a, b) {
+  p.sort((a, b) => {
     const area = vectorOp.parallelogramArea(pivot, a, b);
     if (Math.abs(area) < 1e-6) {
       return vectorOp.length(vectorOp.newVector(pivot, a))
