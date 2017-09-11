@@ -139,12 +139,18 @@ huffman.encode = (string, compressed) => {
   })(root);
 
   const encoding = letters.reduce((acc, letter) => {
-    acc[letter.char] = letter.code.split('').reverse().join('');
+    acc[letter.char] = letter.code
+      .split('')
+      .reverse()
+      .join('');
     return acc;
   }, {});
 
   // Finally, apply the encoding to the given string.
-  const result = string.split('').map(char => encoding[char]).join('');
+  const result = string
+    .split('')
+    .map(char => encoding[char])
+    .join('');
 
   return {
     encoding,

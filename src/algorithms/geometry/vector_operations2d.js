@@ -3,17 +3,13 @@
  * @param A point b, example: {x : 0,y : 0}
  * @return A vector ab, example: {x : 0,y : 0}
  */
-const newVector = (a, b) => {
-  return {x: b.x-a.x, y: b.y-a.y};
-};
+const newVector = (a, b) => ({x: b.x - a.x, y: b.y - a.y});
 
 /**
  * @param A vector v, example: {x : 0,y : 0}
  * @return The length of v.
  */
-const length = v => {
-  return v.x*v.x + v.y*v.y;
-};
+const length = v => v.x * v.x + v.y * v.y;
 
 /**
  * Performs the cross product between two vectors.
@@ -21,9 +17,7 @@ const length = v => {
  * @param A vector object, example: {x : 0,y : 0}
  * @return The result of the cross product between u and v.
  */
-const crossProduct = (u, v) => {
-  return u.x*v.y - u.y*v.x;
-};
+const crossProduct = (u, v) => u.x * v.y - u.y * v.x;
 
 /**
  * Calculates the area of the parallelogram that can be
@@ -40,9 +34,8 @@ const crossProduct = (u, v) => {
  * the vector ab followed by the vector ac do not performs a
  * left-turn.
  */
-const parallelogramArea = (a, b, c) => {
-  return crossProduct(newVector(a, b), newVector(a, c));
-};
+const parallelogramArea = (a, b, c) =>
+  crossProduct(newVector(a, b), newVector(a, c));
 
 /**
  * @param A point object, example: {x : 0,y : 0}
@@ -52,9 +45,7 @@ const parallelogramArea = (a, b, c) => {
  * to the straight-line which contains the vector ab, otherwise returns false.
  * Note: This rule is given by the Right-hand rule.
  */
-const isClockwise = (a, b, c) => {
-  return parallelogramArea(a, b, c) < 0;
-};
+const isClockwise = (a, b, c) => parallelogramArea(a, b, c) < 0;
 
 /**
  * @param A point object, example: {x : 0,y : 0}
@@ -64,9 +55,7 @@ const isClockwise = (a, b, c) => {
  * to the straight-line which contains the vector ab, otherwise returns false.
  * Note: This rule is given by the Right-hand rule.
  */
-const isCounterClockwise = (a, b, c) => {
-  return parallelogramArea(a, b, c) > 0;
-};
+const isCounterClockwise = (a, b, c) => parallelogramArea(a, b, c) > 0;
 
 module.exports = {
   newVector: newVector,

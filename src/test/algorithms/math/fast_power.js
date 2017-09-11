@@ -7,7 +7,7 @@ const assertApproximatelyEqual = (a, b, eps) => {
   assert(Math.abs(a - b) < eps);
 };
 
-const multiplyModulo = modulo => (a, b) => a * b % modulo;
+const multiplyModulo = modulo => (a, b) => (a * b) % modulo;
 
 /**
  * This operation is isomorphic to addition in Z/3.

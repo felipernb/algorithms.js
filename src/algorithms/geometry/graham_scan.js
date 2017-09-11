@@ -22,9 +22,10 @@ const grahamScan = p => {
   const convexHull = [p[0], p[1]];
   for (let i = 2; i < p.length; i++) {
     let j = convexHull.length;
-    while (j >= 2 &&
-            !vectorOp.
-              isCounterClockwise(convexHull[j-2], convexHull[j-1], p[i])) {
+    while (
+      j >= 2 &&
+      !vectorOp.isCounterClockwise(convexHull[j - 2], convexHull[j - 1], p[i])
+    ) {
       convexHull.pop();
       j--;
     }
@@ -52,8 +53,10 @@ const preprocessing = p => {
   p.sort((a, b) => {
     const area = vectorOp.parallelogramArea(pivot, a, b);
     if (Math.abs(area) < 1e-6) {
-      return vectorOp.length(vectorOp.newVector(pivot, a))
-              - vectorOp.length(vectorOp.newVector(pivot, b));
+      return (
+        vectorOp.length(vectorOp.newVector(pivot, a)) -
+        vectorOp.length(vectorOp.newVector(pivot, b))
+      );
     }
     return -area;
   });
