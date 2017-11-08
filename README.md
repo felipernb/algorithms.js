@@ -32,6 +32,7 @@ require('algorithms').DataStructures;
 * BST
 * DisjointSetForest
 * FenwickTree
+* AVLTree
 * Graph
 * HashTable
 * Heap
@@ -42,6 +43,7 @@ require('algorithms').DataStructures;
 * Queue
 * Set (HashSet)
 * Stack
+* Treap
 
 #### Geometry algorithms
 
@@ -52,6 +54,7 @@ require('algorithms').Geometry;
 ```
 
 * BezierCurve
+* GrahamScan
 
 #### Graph algorithms
 
@@ -113,6 +116,7 @@ require('algorithms').Search;
  * inOrder (default)
  * postOrder
  * preOrder
+* ternarySearch
 
 #### Sorting algorithms
 
@@ -126,6 +130,7 @@ require('algorithms').Sorting;
 * countingSort
 * heapSort
 * insertionSort
+* mergeSortInit
 * quicksort
 * radixSort
 * selectionSort
