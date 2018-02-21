@@ -1,8 +1,12 @@
 language: node_js
 sudo: false
 node_js:
-  - '6'
-  - '7'
   - '8'
-script: "make"
+  - '9'
+script:
+  - make
+  - sonar-scanner
 after_success: "make coveralls"
+addons:
+  sonarcloud:
+    organization: "felipernb-github"
