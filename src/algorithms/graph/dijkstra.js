@@ -5,7 +5,7 @@ const PriorityQueue = require('../../data_structures/priority_queue');
  * with Dijkstra's algorithm
  *
  * @param {Object} graph An adjacency list representing the graph
- * @param {string} start the starting node
+ * @param {string} s the starting node
  *
  */
 function dijkstra(graph, s) {
