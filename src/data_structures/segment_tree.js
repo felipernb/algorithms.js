@@ -4,21 +4,21 @@
 * Segment Tree helps to perform various function over a range efficiently
 * in O(log n) time.
 *
-* In addition to functions that can be implemented by Fenwick Tree, 
-* Segment Tree can even perform functions such as minimum or maximum 
+* In addition to functions that can be implemented by Fenwick Tree,
+* Segment Tree can even perform functions such as minimum or maximum
 * over a range, which cannot be answered by Fenwick Tree.
 *
-* More complicated functions can be done in logarithmic time by doing 
+* More complicated functions can be done in logarithmic time by doing
 * lazy modification, however the implementation depends on type of function
 * and hence is not implemented here.
 *
 * Segment Tree is similiar to binary tree. The element value is stored in
-* leaf nodes and value of function from range[l,r] is stored in internal nodes.
+* leaf nodes and value of function from range[l, r] is stored in internal nodes.
 *
 * The root node i.e. index 1 stores the value by performing function over
-* entire range. Similarly other index stores value by performing function 
+* entire range. Similarly other index stores value by performing function
 * in range of its subtree.
-* /
+*/
 
 class SumSegmentTree {
   // Creates an empty segment tree with capacity = length
@@ -30,22 +30,22 @@ class SumSegmentTree {
           this._tree[i] = 0;
       }
   }
-  
+
   // Commutative binary function to be performed over values
   func(value1, value2) {
       return (value1 + value2);
   }
-  
+
   // Changes the element at given index to be equal to given value
   modify(index, value) {
       let idx = index + this._size;
       this._tree[idx] = value;
       for (let i = idx; i > 1; i >>= 1) {
-          this._tree[ i >> 1 ] = this.func(this._tree[i], this._tree[i^1]);
+          this._tree[i >> 1] = this.func(this._tree[i], this._tree[i ^ 1]);
       }
   }
-  
-  // Returns the value by performing the binary function in range = [from,to]
+
+  // Returns the value by performing the binary function in range = [from, to]
   get(from, to) {
       let ans = this._baseValue;
       let l = from + this._size;
@@ -85,3 +85,4 @@ module.exports = {
   MinSegmentTree,
   MaxSegmentTree
 };
+
