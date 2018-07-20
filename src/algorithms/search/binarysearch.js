@@ -27,7 +27,7 @@ const binarySearch = (sortedArray, element) => {
   * in logarithmic time (O(log n))
   *
   * @param Array
-  * @param Number\String
+  * @param Number|String
   *
   * @return Number
   */
