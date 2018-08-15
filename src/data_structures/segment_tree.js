@@ -34,13 +34,6 @@ class SegmentTree {
     }
   }
 
-  /*
-  combines two values, i.e. performs min, max and sum operation as required
-  */
-  combine(val1, val2, combineFn) {
-    return combineFn(val1, val2);
-  }
-
   /**
   Updates the value at index with the given value
   */
@@ -52,16 +45,16 @@ class SegmentTree {
     this._elementsMax[index] = value;
 
     for (let i = index; i > 1; i >>= 1) {
-      this._elementsSum[i >> 1] = this.combine(
-        this._elementsSum[i], this._elementsSum[i ^ 1], (a, b) => a + b
+      this._elementsSum[i >> 1] = (
+        this._elementsSum[i] + this._elementsSum[i ^ 1]
       );
 
-      this._elementsMin[i >> 1] = this.combine(
-        this._elementsMin[i], this._elementsMin[i ^ 1], Math.min
+      this._elementsMin[i >> 1] = Math.min(
+        this._elementsMin[i], this._elementsMin[i ^ 1]
       );
 
-      this._elementsMax[i >> 1] = this.combine(
-        this._elementsMax[i], this._elementsMax[i ^ 1], Math.max
+      this._elementsMax[i >> 1] = Math.max(
+        this._elementsMax[i], this._elementsMax[i ^ 1]
       );
     }
   }

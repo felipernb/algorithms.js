@@ -1,10 +1,9 @@
-const segmentTree = require('../..').DataStructures.SegmentTree;
+const SegmentTree = require('../..').DataStructures.SegmentTree;
 const assert = require('assert');
 
 describe('SegmentTree', () => {
-
   it('allows modification of value at any index', () => {
-    const tree = new segmentTree(10);
+    const tree = new SegmentTree(10);
     tree.modify(0, 5);
     tree.modify(1, 12);
     tree.modify(2, 7);
@@ -43,7 +42,7 @@ describe('SegmentTree', () => {
   });
 
   it('allows range sum queries', () => {
-    const tree = new segmentTree(10);
+    const tree = new SegmentTree(10);
     tree.modify(0, 5);
     tree.modify(1, 12);
     tree.modify(2, 7);
@@ -61,12 +60,14 @@ describe('SegmentTree', () => {
     assert.equal(tree.getSum(4, 6), 3 + 9 + 100);
     assert.equal(tree.getSum(1, 2), 12 + 7);
     assert.equal(tree.getSum(5, 8), 9 + 100 + 0 - 25);
-    assert.equal(tree.getSum(0, 9), 5 + 12 + 7 - 100 + 3 + 9 + 100 + 0 - 25 + 40);
+    assert.equal(
+      tree.getSum(0, 9), 5 + 12 + 7 - 100 + 3 + 9 + 100 + 0 - 25 + 40
+    );
     assert.equal(tree.getSum(8, 8), -25);
   });
 
   it('allows range minimum queries', () => {
-    const tree = new segmentTree(10);
+    const tree = new SegmentTree(10);
     tree.modify(0, 5);
     tree.modify(1, 12);
     tree.modify(2, 7);
@@ -89,7 +90,7 @@ describe('SegmentTree', () => {
   });
 
   it('allows range maximum queries', () => {
-    const tree = new segmentTree(10);
+    const tree = new SegmentTree(10);
     tree.modify(0, 5);
     tree.modify(1, 12);
     tree.modify(2, 7);
