@@ -54,24 +54,19 @@ class PriorityQueue {
   with parent and then calls fixBottomHeap for index of smallest element
   */
   _fixBottomHeap(idx) {
-    let _leftIndex = (idx << 1) + 1;
-    let _rightIndex = (idx << 1) + 2;
-
-    let _changeIndex = idx;
-    if (_leftIndex < this._size &&
-      this.comparison(
-        this._priorityHeap[_leftIndex], this._priorityHeap[_changeIndex])) {
-      _changeIndex = _leftIndex;
-    }
-    if (_rightIndex < this._size &&
-      this.comparison(
-        this._priorityHeap[_rightIndex], this._priorityHeap[_changeIndex])) {
-      _changeIndex = _rightIndex;
+    let changeIdx = idx;
+    let childIdx = (idx << 1) + 1;
+    while (childIdx <= (idx << 1) + 2) {
+      if (childIdx < this._size && this.comparison(
+        this._priorityHeap[childIdx], this._priorityHeap[changeIdx])) {
+        changeIdx = childIdx;
+      }
+      childIdx++;
     }
 
-    if (_changeIndex != idx) {
-      this._swap(idx, _changeIndex);
-      this._fixBottomHeap(_changeIndex);
+    if (changeIdx != idx) {
+      this._swap(idx, changeIdx);
+      this._fixBottomHeap(changeIdx);
     }
   }
 
