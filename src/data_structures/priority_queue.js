@@ -55,8 +55,9 @@ class PriorityQueue {
   */
   _fixBottomHeap(idx) {
     let changeIdx = idx;
-    let childIdx = (idx << 1) + 1;
-    while (childIdx <= (idx << 1) + 2) {
+    let childIdx = idx * 2 + 1;
+    let rightChildIdx = idx * 2 + 2;
+    while (childIdx <= rightChildIdx) {
       if (childIdx < this._size && this.comparison(
         this._priorityHeap[childIdx], this._priorityHeap[changeIdx])) {
         changeIdx = childIdx;
