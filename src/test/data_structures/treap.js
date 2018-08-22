@@ -99,7 +99,7 @@ describe('Treap', () => {
     assert.equal(treap.maximum(), 1);
   });
 
-  it('handles dumplicated elements', () => {
+  it('handles duplicated elements', () => {
     treap.insert(1);
     // [1, 1]
     assert.equal(treap.size(), 2);
