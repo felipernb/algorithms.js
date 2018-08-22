@@ -3,8 +3,7 @@ Minimum Priority Queue implementation using heap.
 
 elementHeap stores all element,
 priorityHeap stores priority for given element,
-priority[i] stores priority of element[i].
-
+priorityHeap[i] stores priority of elementHeap[i].
 indexLookup stores index of element, so when priority is changed,
 the top or bottom heap can be fixed from that position itself.
 */
@@ -48,7 +47,7 @@ class PriorityQueue {
   }
 
   /*
-  To fix bootom heap from position: idx
+  To fix bottom heap from position: idx
 
   Finds if left or right child is smaller, if true, swaps smallest element
   with parent and then calls fixBottomHeap for index of smallest element
@@ -123,7 +122,7 @@ class PriorityQueue {
     this._swap(0, this._size - 1);
     this._elementHeap.splice(-1, 1);
     this._priorityHeap.splice(-1, 1);
-    this._indexLookup[_minPriorityItem] = null;
+    delete this._indexLookup[_minPriorityItem];
     this._size--;
 
     this._fixBottomHeap(0);
