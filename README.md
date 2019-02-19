@@ -28,20 +28,21 @@ require('algorithms/data_structures');
 // or
 require('algorithms').DataStructures;
 ```
-
+* AVLTree
 * BST
 * DisjointSetForest
 * FenwickTree
 * Graph
 * HashTable
 * Heap
- * MaxHeap
- * MinHeap
+  - MaxHeap
+  - MinHeap
 * LinkedList
 * PriorityQueue
 * Queue
 * Set (HashSet)
 * Stack
+* Treap
 
 #### Geometry algorithms
 
