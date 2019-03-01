@@ -1,15 +1,19 @@
-const MinHeap = require('./heap').MinHeap;
+/*
+Minimum Priority Queue implementation using heap.
 
-/**
- * Extends the MinHeap with the only difference that
- * the heap operations are performed based on the priority of the element
- * and not on the element itself
- */
-class PriorityQueue extends MinHeap {
+elementHeap stores all element,
+priorityHeap stores priority for given element,
+priorityHeap[i] stores priority of elementHeap[i].
+indexLookup stores index of element, so when priority is changed,
+the top or bottom heap can be fixed from that position itself.
+*/
+
+class PriorityQueue {
   constructor(initialItems) {
-    super((a, b) => (this.priority(a) < this.priority(b) ? -1 : 1));
-
-    this._priority = {};
+    this._indexLookup = {};
+    this._elementHeap = [];
+    this._priorityHeap = [];
+    this._size = 0;
 
     initialItems = initialItems || {};
     Object.keys(initialItems).forEach(item => {
@@ -17,28 +21,130 @@ class PriorityQueue extends MinHeap {
     });
   }
 
+  // comparator function
+  comparison(value1, value2) {
+    return value1 < value2;
+  }
+
+  // Returns true if heap is empty
+  isEmpty() {
+    return (this._size === 0);
+  }
+
+  // swaps element with their priorities and their indexLookup values
+  _swap(idx1, idx2) {
+    let _tempElement = this._elementHeap[idx1];
+    let _tempPriority = this._priorityHeap[idx1];
+
+    this._elementHeap[idx1] = this._elementHeap[idx2];
+    this._priorityHeap[idx1] = this._priorityHeap[idx2];
+
+    this._elementHeap[idx2] = _tempElement;
+    this._priorityHeap[idx2] = _tempPriority;
+
+    this._indexLookup[this._elementHeap[idx1]] = idx1;
+    this._indexLookup[this._elementHeap[idx2]] = idx2;
+  }
+
+  /*
+  To fix bottom heap from position: idx
+
+  Finds if left or right child is smaller, if true, swaps smallest element
+  with parent and then calls fixBottomHeap for index of smallest element
+  */
+  _fixBottomHeap(idx) {
+    let changeIdx = idx;
+    let maxChildIdx = Math.min(idx*2 + 2, this._size - 1);
+    for (let childIdx = idx*2 + 1; childIdx <= maxChildIdx; childIdx++) {
+      if (this.comparison(
+        this._priorityHeap[childIdx], this._priorityHeap[changeIdx])) {
+        changeIdx = childIdx;
+      }
+    }
+
+    if (changeIdx != idx) {
+      this._swap(idx, changeIdx);
+      this._fixBottomHeap(changeIdx);
+    }
+  }
+
+  /*
+  Fix the top heap from position: idx
+
+  Finds if the element at given index is smaller than parent, if true
+  swaps it and call fixTopHeap for its parent
+  */
+  _fixTopHeap(idx) {
+    if (idx === 0) return;
+
+    let _parentIdx = (idx - 1) >> 1;
+
+    if (this.comparison(
+      this._priorityHeap[idx], this._priorityHeap[_parentIdx])) {
+      this._swap(idx, _parentIdx);
+      this._fixTopHeap(_parentIdx);
+    }
+  }
+
+  /*
+  Returns priority of element
+  */
+  priority(element) {
+    if (element in this._indexLookup) {
+      return this._priorityHeap[this._indexLookup[element]];
+    }
+  }
+
+  /*
+  Insert item with its priority in heap
+  */
   insert(item, priority) {
-    if (this._priority[item] !== undefined) {
+    if (item == null) return;
+    if (item in this._indexLookup) {
       return this.changePriority(item, priority);
     }
-    this._priority[item] = priority;
-    super.insert(item);
+
+    this._indexLookup[item] = this._size;
+    this._priorityHeap.push(priority);
+    this._elementHeap.push(item);
+
+    this._fixTopHeap(this._size);
+    this._size++;
   }
 
+  /*
+  Returns item with least priority from heap and removes it from heap
+  */
   extract(withPriority) {
-    const min = MinHeap.prototype.extract.call(this);
+    if (this.isEmpty()) return;
+    let _minPriorityItem = this._elementHeap[0];
+    let _minPriority = this._priorityHeap[0];
+    this._swap(0, this._size - 1);
+    this._elementHeap.splice(-1, 1);
+    this._priorityHeap.splice(-1, 1);
+    delete this._indexLookup[_minPriorityItem];
+    this._size--;
+
+    this._fixBottomHeap(0);
     return withPriority
-      ? min && {item: min, priority: this._priority[min]}
-      : min;
+    ? _minPriorityItem && {item: _minPriorityItem, priority: _minPriority}
+    : _minPriorityItem;
   }
 
-  priority(item) {
-    return this._priority[item];
-  }
-
+  /*
+  To change priority of element already in heap
+  */
   changePriority(item, priority) {
-    this._priority[item] = priority;
-    this.heapify();
+    if (item in this._indexLookup === false) return;
+
+    let _index = this._indexLookup[item];
+    if (this._priorityHeap[_index] < priority) {
+      this._priorityHeap[_index] = priority;
+      this._fixBottomHeap(_index);
+    } else if (this._priorityHeap[_index] > priority) {
+      this._priorityHeap[_index] = priority;
+      this._fixTopHeap(_index);
+    }
   }
 }
 
