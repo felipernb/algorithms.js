@@ -1,17 +1,27 @@
 const Comparator = require('../../util/comparator');
 
-const merge = (a, b, comparator) => {
-  let i = 0;
-  let j = 0;
-  const result = [];
+const merge = (wp, arr, left, middle, right, comparator) => {
+  let i = left;
+  let j = middle + 1;
+  let k = i;
 
-  while (i < a.length && j < b.length) {
-    result.push(comparator.lessThan(a[i], b[j]) ? a[i++] : b[j++]);
+  while (i <= middle && j <= right) {
+    if (comparator.lessThan(arr[i], arr[j])) {
+        wp[k++] = arr[i++];
+    } else {
+        wp[k++] = arr[j++];
+    }
   }
 
-  // Concats the elements from the sub-array
-  // that has not been included yet
-  return result.concat(i < a.length ? a.slice(i) : b.slice(j));
+  while (i <= middle) {
+    wp[k++] = arr[i++];
+  }
+  while (j <= right) {
+    wp[k++] = arr[j++];
+  }
+  while (left <= right) {
+    arr[left] = wp[left++];
+  }
 };
 
 /**
@@ -20,17 +30,15 @@ const merge = (a, b, comparator) => {
  */
 const mergeSortInit = (a, compareFn) => {
   const comparator = new Comparator(compareFn);
-
-  return (function mergeSort(a) {
-    if (a.length > 1) {
-      const middle = a.length >> 1;
-      const left = mergeSort(a.slice(0, middle));
-      const right = mergeSort(a.slice(middle));
-      a = merge(left, right, comparator);
+  (function mergeSort(wp, arr, left, right) {
+    if (right - left >= 1) {
+      const middle = Math.floor((left+right)/2);
+      mergeSort(wp, arr, left, middle);
+      mergeSort(wp, arr, middle + 1, right);
+      merge(wp, arr, left, middle, right, comparator);
     }
-
-    return a;
-  })(a);
+  })([], a, 0, a.length - 1);
+  return a;
 };
 
 module.exports = mergeSortInit;
