@@ -4,4 +4,4 @@ const linearSearch = (arr, val) => {
     }
     return -1;
 }
-module.export = linearSearch;
+module.exports = linearSearch;
