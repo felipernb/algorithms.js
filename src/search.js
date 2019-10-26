@@ -4,5 +4,6 @@ module.exports = {
   binarySearch: require('./algorithms/search/binarysearch').binarySearch,
   lowerBound: require('./algorithms/search/binarysearch').lowerBound,
   ternarySearch: require('./algorithms/search/ternary_search'),
-  dfs: require('./algorithms/search/dfs')
+  dfs: require('./algorithms/search/dfs'),
+  linear_search:require('./algorithms/search/linear_search')
 };
