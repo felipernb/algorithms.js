@@ -133,6 +133,20 @@ class LinkedList {
       node = node.next;
     }
   }
+
+  /**
+   * Displays the full linked list in the terminal when run.
+   * You can append this function to other functions for an easier to read display.
+   */
+  display(){
+    var runner = this.head;
+    var str = ''
+    while(runner!=null){
+        str += runner.val + " "
+        runner = runner.next
+    }
+    return str
+  }
 }
 
 /**
