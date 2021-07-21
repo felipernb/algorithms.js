@@ -147,7 +147,19 @@ class LinkedList {
     }
     return str
   }
+
+  /**
+   * removeFront() takes the head off the node, but still prevserves all subsequent nodes. Effectively moves the head to the original head.next.
+   */
+  removeFront(){
+    if(!this.head){
+        return null
+    }
+    this.head = this.head.next
+    return this.head
 }
+}
+
 
 /**
  * A linked list node
