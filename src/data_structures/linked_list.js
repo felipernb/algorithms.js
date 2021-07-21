@@ -133,7 +133,33 @@ class LinkedList {
       node = node.next;
     }
   }
+
+  /**
+   * Displays the full linked list in the terminal when run.
+   * You can append this function to other functions for an easier to read display.
+   */
+  display(){
+    var runner = this.head;
+    var str = ''
+    while(runner!=null){
+        str += runner.val + " "
+        runner = runner.next
+    }
+    return str
+  }
+
+  /**
+   * removeFront() takes the head off the node, but still prevserves all subsequent nodes. Effectively moves the head to the original head.next.
+   */
+  removeFront(){
+    if(!this.head){
+        return null
+    }
+    this.head = this.head.next
+    return this.head
 }
+}
+
 
 /**
  * A linked list node
