@@ -36,3 +36,23 @@ describe('Lower Bound', () => {
     assert.equal(lowerBound(duplicates, 3), 6);
   });
 });
+
+describe('White-box testing with MCC coverage', () => {
+  it('finds first element in the sorted array', () => {
+    assert.equal(binarySearch([], 23), -1);
+    assert.equal(binarySearch([1], 1), 0);
+    assert.equal(binarySearch([-5, 3, 4, 6, 7], 4), 2);
+    assert.equal(binarySearch([0, 2, 9, 12, 23], 23), 4);
+    assert.equal(binarySearch([2, 5, 6, 7, 9], 2), 0);
+  });
+});
+
+describe('White-box testing with All-DU Path coverage', () => {
+  it('finds first element in the sorted array', () => {
+    assert.equal(binarySearch([1], 2), -1);
+    assert.equal(binarySearch([-5, 3, 10, 6, 7, 12, 15], 6), 3);
+    assert.equal(binarySearch([-10, 2, 5, 12, 23], 23), 4);
+    assert.equal(binarySearch([1, 10, 6], 10), 1);
+    assert.equal(binarySearch([-1, 2, 5, 10, 15], 2), 1);
+  });
+});
